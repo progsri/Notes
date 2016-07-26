@@ -1,1 +1,1 @@
-"# Notes" 
+ninjashore.com
