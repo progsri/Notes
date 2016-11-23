@@ -33,7 +33,35 @@
 			<h3><code>var</code> and <code>let</code></h3>
    	
    			 <p class="text-justify">  </p>
-      		
+
+            <hr>
+            <h3><code> Object.assign </code></h3>
+
+                <code> Object.assign </code> is used to create a new object.
+                Lets create a new object todo.
+                <pre class="language-javascript line-numbers"><code>
+                    todo = {
+                        name : "test",
+                        place : "place",
+                        type : "type"
+                    }
+                </code></pre>
+
+                The below code returns a new object. It takes the first argument <code> {} </code> as the base object, then
+                appends the second argument to it and then replace third argument in the newly created object.
+                <pre class="language-javascript line-numbers"><code>
+                    // Returns a New Object
+                    todo_new = Object.assign({}, todo, {type:"NONE"});
+                    console.log(todo_new)
+                </code></pre>
+
+                 <pre class="language-javascript line-numbers"><code>
+                    // Returns a New Object
+                    todo_new_append = Object.assign({j:"tt"}, todo, {type:"NONE"});
+                    console.log(todo_new_append)
+
+                </code></pre>
+            <hr>
       		
 		  		
 		</div>
