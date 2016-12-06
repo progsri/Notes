@@ -26,6 +26,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-jsx.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-json.min.js"></script>
 
+    <style>
+        p {
+            font-size: 20px;
+        }
+
+        pre {
+            font-size: 17px;
+        }
+
+
+    </style>
+
 </head>
 <body>
 
@@ -40,14 +52,15 @@
 
 			<h3><code>var</code> and <code>let</code></h3>
    	
-   			 <p class="text-justify">  </p>
+   			 <p class="text-justify"></p>
 
             <hr>
                 <h3><code> Object.assign </code></h3>
-
-                    <code> Object.assign </code> is used to create a new object.
-                    Lets create a new object todo.
+                    <p>
+                        <code> Object.assign </code> is used to create a new object.Lets create a new object todo.
+                    </p>
                     <pre class="language-javascript line-numbers"><code>
+
                         todo = {
                             name : "test",
                             place : "place",
@@ -56,34 +69,36 @@
 
                         console.log(todo)
                     </code></pre>
-                    Output
+                    <p> Output </p>
                     <pre class="language-javascript line-numbers"><code>
                        { name: 'test', place: 'place', type: 'type' }
                     </code></pre>
 
-                    The below code returns a new object. It takes the first argument <code> {} </code> as the base object, then
-                    appends the second argument to it and then replace third argument in the newly created object.
-                    <br>
-                    Eg 1 : Code
+                    <p>
+                        The below code returns a new object. It takes the first argument <code> {} </code> as the base object, then
+                        appends the second argument to it and then replace third argument in the newly created object.
+                        <br>
+                    </p>
+                    <p>Eg 1 : Code</p>
                     <pre class="language-javascript line-numbers"><code>
 
                         // Returns a New Object
                         todo_new = Object.assign({}, todo, {type:"NONE"});
                         console.log(todo_new)
                     </code></pre>
-                    Eg 1 : Output
+                    <p> Output </p>
                     <pre class="language-javascript line-numbers"><code>
                        { name: 'test', place: 'place', type: 'NONE' }
                     </code></pre>
 
-                    Eg 2 : Code
+                     <p>Eg 2 : Code</p>
                      <pre class="language-javascript line-numbers"><code>
                         // Returns a New Object
                        todo_new_append = Object.assign({ baseproperty:"BASE"}, todo, {type:"NONE"});
                         console.log(todo_new_append)
 
                     </code></pre>
-                    Eg 2 : Output
+                    <p> Output </p>
                     <pre class="language-javascript line-numbers"><code>
                        {
                           baseproperty: 'BASE',
