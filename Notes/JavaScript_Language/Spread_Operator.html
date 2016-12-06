@@ -46,38 +46,32 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2> New Way of Declaring a Method </h2>
+            <h2> Spread Operator </h2>
             <hr>
 
-            <p>
-                The below code is the old fashioned way of declaring a method.
-            </p>
             <pre class="language-javascript line-numbers"><code>
-               function todosOld(state = [] , action){
-                    console.log("old way of declaration");
-                }
-
-                todosOld();
-            </code></pre>
+                    testarray = [1,2];
+                    newarray = testarray.concat(3);
+                    console.log(newarray);
+                    </code></pre>
             <p> Output </p>
             <pre class="language-javascript line-numbers"><code>
-                 old way of declaration
+                   [ 1, 2, 3 ]
             </code></pre>
 
             <p>
-                The below code is the new  way of declaring a method.
+                The above code can be written as follows.
             </p>
             <pre class="language-javascript line-numbers"><code>
-               const todosNew = ( state = [] , action) => {
-                    console.log("new way of declaration");
-                };
-
-                todosNew();
+                    testarray = [1,2];
+                    newarray2 = [...testarray, 3];
+                    console.log(newarray2);
             </code></pre>
             <p> Output </p>
             <pre class="language-javascript line-numbers"><code>
-                 new way of declaration
+                   [ 1, 2, 3 ]
             </code></pre>
+
             <hr>
 
 
