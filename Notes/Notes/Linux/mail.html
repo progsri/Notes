@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mail</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  <!-- PRISM -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/plugins/line-numbers/prism-line-numbers.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/plugins/command-line/prism-command-line.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/plugins/command-line/prism-command-line.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    
+</head>
+<body>
+
+
+
+<div class="container">
+	<div class="row">
+	    <div class="col-md-12">
+      		<h2> Sending Mail in Linux </h2>
+      		<hr>
+
+			<h3>Installing mailutils</h3>
+   	
+   			 <p class="text-justify">  <code> sudo apt-get install mailutils</code></p>
+      		
+      		
+      		<pre class="language-bash line-numbers"><code>
+							  
+			progsri@Machine:~$ sudo apt-get install mailutils
+				Reading package lists... Done
+				Building dependency tree       
+				Reading state information... Done
+				The following packages were automatically installed and are no longer required:
+				  linux-headers-4.4.0-24 linux-headers-4.4.0-24-generic linux-image-4.4.0-24-generic linux-image-extra-4.4.0-24-generic
+				Use 'sudo apt autoremove' to remove them.
+				The following additional packages will be installed:
+				  libgsasl7 libkyotocabinet16v5 libmailutils4 libmysqlclient20 libntlm0 mailutils-common mysql-common postfix
+				Suggested packages:
+				  mailutils-mh mailutils-doc procmail postfix-mysql postfix-pgsql postfix-ldap postfix-pcre sasl2-bin dovecot-common postfix-cdb postfix-doc
+				The following NEW packages will be installed:
+				  libgsasl7 libkyotocabinet16v5 libmailutils4 libmysqlclient20 libntlm0 mailutils mailutils-common mysql-common postfix
+				0 upgraded, 9 newly installed, 0 to remove and 303 not upgraded.
+				Need to get 3,264 kB of archives.
+				After this operation, 15.0 MB of additional disk space will be used.
+				Do you want to continue? [Y/n] y
+				Get:1 http://us.archive.ubuntu.com/ubuntu xenial/universe amd64 libntlm0 amd64 1.4-7 [14.3 kB]
+				Get:2 http://us.archive.ubuntu.com/ubuntu xenial/universe amd64 libgsasl7 amd64 1.8.0-8ubuntu2 [118 kB]
+				Get:3 http://us.archive.ubuntu.com/ubuntu xenial/universe amd64 libkyotocabinet16v5 amd64 1.2.76-4.1 [295 kB]
+				Get:4 http://us.archive.ubuntu.com/ubuntu xenial/universe amd64 mailutils-common all 1:2.99.99-1ubuntu2 [257 kB]
+				Get:5 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 mysql-common all 5.7.13-0ubuntu0.16.04.2 [17.0 kB]
+				Get:6 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libmysqlclient20 amd64 5.7.13-0ubuntu0.16.04.2 [810 kB]
+				Get:7 http://us.archive.ubuntu.com/ubuntu xenial/universe amd64 libmailutils4 amd64 1:2.99.99-1ubuntu2 [439 kB]
+				Get:8 http://us.archive.ubuntu.com/ubuntu xenial/main amd64 postfix amd64 3.1.0-3 [1,152 kB]
+				Get:9 http://us.archive.ubuntu.com/ubuntu xenial/universe amd64 mailutils amd64 1:2.99.99-1ubuntu2 [162 kB]
+				Fetched 3,264 kB in 2s (1,521 kB/s)
+				Preconfiguring packages ...
+				Selecting previously unselected package libntlm0:amd64.
+				(Reading database ... 286799 files and directories currently installed.)
+				Preparing to unpack .../libntlm0_1.4-7_amd64.deb ...
+				Unpacking libntlm0:amd64 (1.4-7) ...
+				Selecting previously unselected package libgsasl7.
+				Preparing to unpack .../libgsasl7_1.8.0-8ubuntu2_amd64.deb ...
+				Unpacking libgsasl7 (1.8.0-8ubuntu2) ...
+				Selecting previously unselected package libkyotocabinet16v5:amd64.
+				Preparing to unpack .../libkyotocabinet16v5_1.2.76-4.1_amd64.deb ...
+				Unpacking libkyotocabinet16v5:amd64 (1.2.76-4.1) ...
+				Selecting previously unselected package mailutils-common.
+				Preparing to unpack .../mailutils-common_1%3a2.99.99-1ubuntu2_all.deb ...
+				Unpacking mailutils-common (1:2.99.99-1ubuntu2) ...
+				Selecting previously unselected package mysql-common.
+				Preparing to unpack .../mysql-common_5.7.13-0ubuntu0.16.04.2_all.deb ...
+				Unpacking mysql-common (5.7.13-0ubuntu0.16.04.2) ...
+				Selecting previously unselected package libmysqlclient20:amd64.
+				Preparing to unpack .../libmysqlclient20_5.7.13-0ubuntu0.16.04.2_amd64.deb ...
+				Unpacking libmysqlclient20:amd64 (5.7.13-0ubuntu0.16.04.2) ...
+				Selecting previously unselected package libmailutils4:amd64.
+				Preparing to unpack .../libmailutils4_1%3a2.99.99-1ubuntu2_amd64.deb ...
+				Unpacking libmailutils4:amd64 (1:2.99.99-1ubuntu2) ...
+				Selecting previously unselected package postfix.
+				Preparing to unpack .../postfix_3.1.0-3_amd64.deb ...
+				Unpacking postfix (3.1.0-3) ...
+				Selecting previously unselected package mailutils.
+				Preparing to unpack .../mailutils_1%3a2.99.99-1ubuntu2_amd64.deb ...
+				Unpacking mailutils (1:2.99.99-1ubuntu2) ...
+				Processing triggers for libc-bin (2.23-0ubuntu3) ...
+				Processing triggers for systemd (229-4ubuntu5) ...
+				Processing triggers for ureadahead (0.100.0-19) ...
+				ureadahead will be reprofiled on next reboot
+				Processing triggers for ufw (0.35-0ubuntu2) ...
+				Processing triggers for man-db (2.7.5-1) ...
+				Setting up libntlm0:amd64 (1.4-7) ...
+				Setting up libgsasl7 (1.8.0-8ubuntu2) ...
+				Setting up libkyotocabinet16v5:amd64 (1.2.76-4.1) ...
+				Setting up mailutils-common (1:2.99.99-1ubuntu2) ...
+				Setting up mysql-common (5.7.13-0ubuntu0.16.04.2) ...
+				update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+				Setting up libmysqlclient20:amd64 (5.7.13-0ubuntu0.16.04.2) ...
+				Setting up libmailutils4:amd64 (1:2.99.99-1ubuntu2) ...
+				Setting up postfix (3.1.0-3) ...
+				Adding group `postfix' (GID 129) ...
+				Done.
+				Adding system user `postfix' (UID 121) ...
+				Adding new user `postfix' (UID 121) with group `postfix' ...
+				Not creating home directory `/var/spool/postfix'.
+				Creating /etc/postfix/dynamicmaps.cf
+				Adding group `postdrop' (GID 130) ...
+				Done.
+				setting myhostname: Machine
+				setting alias maps
+				setting alias database
+				mailname is not a fully qualified domain name.  Not changing /etc/mailname.
+				setting destinations: $myhostname, Machine, localhost.localdomain, , localhost
+				setting relayhost: 
+				setting mynetworks: 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+				setting mailbox_size_limit: 0
+				setting recipient_delimiter: +
+				setting inet_interfaces: all
+				setting inet_protocols: all
+				/etc/aliases does not exist, creating it.
+				WARNING: /etc/aliases exists, but does not have a root alias.
+
+				Postfix is now set up with a default configuration.  If you need to make 
+				changes, edit
+				/etc/postfix/main.cf (and others) as needed.  To view Postfix configuration
+				values, see postconf(1).
+
+				After modifying main.cf, be sure to run '/etc/init.d/postfix reload'.
+
+				Running newaliases
+				Setting up mailutils (1:2.99.99-1ubuntu2) ...
+				update-alternatives: using /usr/bin/frm.mailutils to provide /usr/bin/frm (frm) in auto mode
+				update-alternatives: using /usr/bin/from.mailutils to provide /usr/bin/from (from) in auto mode
+				update-alternatives: using /usr/bin/messages.mailutils to provide /usr/bin/messages (messages) in auto mode
+				update-alternatives: using /usr/bin/movemail.mailutils to provide /usr/bin/movemail (movemail) in auto mode
+				update-alternatives: using /usr/bin/readmsg.mailutils to provide /usr/bin/readmsg (readmsg) in auto mode
+				update-alternatives: using /usr/bin/dotlock.mailutils to provide /usr/bin/dotlock (dotlock) in auto mode
+				update-alternatives: using /usr/bin/mail.mailutils to provide /usr/bin/mailx (mailx) in auto mode
+				Processing triggers for libc-bin (2.23-0ubuntu3) ...
+				Processing triggers for systemd (229-4ubuntu5) ...
+				Processing triggers for ureadahead (0.100.0-19) ...
+				Processing triggers for ufw (0.35-0ubuntu2) ...
+	 		
+	 		</code></pre>
+			
+	 		<h3>Sending mail via commandLine</h3>
+   	
+   			<pre class="language-bash line-numbers"><code>
+   				 mail -s "Test Subject" <xxx>@gmail.com  <<< "TEST LINE" 
+   			</pre></code>
+			
+		  		
+</div>
+</div>
+</div>
+
+</body>
+</html>
