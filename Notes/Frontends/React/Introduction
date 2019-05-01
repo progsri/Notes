@@ -1,0 +1,22 @@
+1. props.children
+
+function WelcomeDialog() {
+  return (
+    <FancyBorder color="blue">  //color is a prop
+      <h1 className="Dialog-title">     // to access this h1 ... see below
+        Welcome
+      </h1>
+      <p className="Dialog-message">
+        Thank you for visiting our spacecraft!
+      </p>
+    </FancyBorder>
+  );
+}
+
+function FancyBorder(props) {
+  return (
+    <div className={'FancyBorder FancyBorder-' + props.color}>  // color prop accessed here
+      {props.children}   // h1 and p from the above are accessed using props.children
+    </div>
+  );
+}
