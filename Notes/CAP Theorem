@@ -12,7 +12,11 @@ Let consider the elements for this distributed system.
 3. Network Partition Tolerance # The cluster or setup should be alive even if the 2 servers are not able to contact each other 
   over the network.
   
-   
+Scenario 1 ( Maintain Availabilty and Consistency even if the network partion occurs )
+Availability can be achieved, however if the clients communicate with any of the server then the new data cannot be replicated
+to other server due to network partition which mean consistency cannot be achieved.
+So if network partition occurs then consistency cannot be achieved
+
    
 Reference#
 https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/
