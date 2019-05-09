@@ -2,7 +2,8 @@
 Setup#
 1. Has 2 servers for simplicity ( it can have more than 2 servers )
 2. Both the servers can be communicated via HTTP for read and writes by the client.
-3. The servers internally communicate over TCP/IP.
+3. The servers internally communicate over TCP/IP with one another. So if a client talks to server 1 then it would replicate 
+   that data to server 2 and vice versa.
 4. If one server gets a write call from a client, it would replicate that to the second server and only when the second server 
 acknowledges back, the client get's back the success response.
 
