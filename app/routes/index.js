@@ -4,7 +4,7 @@ var router = express.Router();
 
 const fs = require('fs');
 
-dir = "/home/progsri/ProgSri/CODE/Notes/Notes"
+dir = "../Notes"
 
 
 var getFiles = function (path) {
