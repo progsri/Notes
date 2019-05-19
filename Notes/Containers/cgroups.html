@@ -4,9 +4,19 @@ cgroups is a kernel technology that helps to do the below on a single process or
 3. Monitoring
 4. Control
 
+<h3>Libraries required</h3>
 sudo apt-get install libcgroup1 cgroup-tools
 
 Linux sys file system
+
+<pre class="language-python line-numbers"><code>
+        import time
+
+        while True:
+            print("Running process")
+            time.sleep(60)
+    </code></pre>
+
 
 
 
