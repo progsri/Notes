@@ -6,6 +6,8 @@ const TAGS = "tags";
 const TOPIC = "topic";
 const NOTES = "notes";
 const HASH = "hash";
+const CREATEDON = "createdon";
+const UPDATEDON = "updatedon";
 
 module.exports = {
   PATH,
@@ -15,5 +17,7 @@ module.exports = {
   TAGS,
   TOPIC,
   NOTES,
-  HASH
+  HASH,
+  CREATEDON,
+  UPDATEDON
 };
