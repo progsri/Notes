@@ -8,7 +8,7 @@ const util = require("util");
 const mongo = require("./mongo.js");
 const md5File = require("md5-file");
 
-dir = "../Notes/Template";
+dir = "../Notes/Template/topic1";
 
 var getFiles = function(path) {
   let list = [];
@@ -16,7 +16,11 @@ var getFiles = function(path) {
   files.forEach(element => {
     let tmp_path = path + "/" + element;
     if (fs.lstatSync(tmp_path).isDirectory()) {
-      list.push(getFiles(tmp_path));
+      let resources = getFiles(tmp_path);
+      console.log("resources " + util.inspect(resources));
+      for (index in resources) {
+        list.push(resources[index]);
+      }
     } else {
       list.push(geMetadata(path, element));
     }
@@ -86,10 +90,24 @@ function afterGitPull(data) {
 
       console.log("existingRecords " + existingRecords);
 
+      let insertMetadata = [];
+      let updateMetadata = [];
+      for (index in metadatas) {
+        let metadata = metadatas[index];
+
+        if (existingRecords.get(metadata[constants.RESOURCE]) == undefined) {
+          metadata[constants.CREATEDON] = new Date();
+          insertMetadata.push(metadata);
+        } else {
+          metadata[constants.UPDATEDON] = new Date();
+          updateMetadata.push(metadata);
+        }
+      }
+
+      console.log("insertMetadata " + util.inspect(insertMetadata));
+      console.log("updateMetadata " + util.inspect(updateMetadata));
+
       // How does node still keep this metadatas value still in mmemory
-      
-
-
     })
     .catch(err => {
       console.log("Error " + util.inspect(err));
