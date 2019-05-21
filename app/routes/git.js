@@ -1,67 +1,106 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const fs = require('fs');
-const { spawn } = require('child_process');
-const cheerio = require('cheerio')
-const constants = require('./constants.js')
+const fs = require("fs");
+const { spawn } = require("child_process");
+const cheerio = require("cheerio");
+const constants = require("./constants.js");
+const util = require("util");
+const mongo = require("./mongo.js");
+const md5File = require("md5-file");
 
-dir = "../Notes"
+dir = "../Notes/Template";
 
-var getFiles = function (path) {
-    let list = []
-    let files = fs.readdirSync(path);
-    files.forEach(element => {
-        let tmp_path = path + "/" + element
-        if (fs.lstatSync(tmp_path).isDirectory()) {
-            list.push(getFiles(tmp_path))
-        } else {
+var getFiles = function(path) {
+  let list = [];
+  let files = fs.readdirSync(path);
+  files.forEach(element => {
+    let tmp_path = path + "/" + element;
+    if (fs.lstatSync(tmp_path).isDirectory()) {
+      list.push(getFiles(tmp_path));
+    } else {
+      list.push(geMetadata(path, element));
+    }
+  });
 
-            list.push(tmp_path)
-        }
-    });
-
-    return list
-}
+  return list;
+};
 
 function pullNewchanges() {
-    const ls = spawn('git', ['pull']);
-    // console.log('Git pull ' + JSON.stringify(ls));
+  const ls = spawn("git", ["pull"]);
+  // console.log('Git pull ' + JSON.stringify(ls));
 
-    ls.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
-        if (data === "Updating") {
-            console.log('Updated git repo')
-            metadatas = getFiles(dir)
-            console.log(metadatas)
-        }
-    });
+  ls.stdout.on("data", data => {
+    console.log(`stdout: ${data}`);
+    afterGitPull();
+  });
 
-    ls.stderr.on('data', (data) => {
-        console.log(`stderr: ${data}`);
-    });
+  ls.stderr.on("data", data => {
+    // afterGitPull(); ///Remove
+    console.log(`stderr: ${data}`);
+  });
 
-    ls.on('close', (code) => {
-        console.log(`child process exited with code ${code}`);
-    });
+  ls.on("close", code => {
+    console.log(`child process exited with code ${code}`);
+  });
 }
 
 function geMetadata(path, resource) {
+  var contents = fs.readFileSync(path + "/" + resource, "utf8");
+  const $ = cheerio.load(contents);
+  let metadata = {};
 
-    var contents = fs.readFileSync(path + "/" + resource, 'utf8');
-    const $ = cheerio.load(contents)
-    let metadata = {}
+  metadata[constants.PATH] = path;
+  metadata[constants.RESOURCE] = resource;
+  metadata[constants.STATUS] = $(
+    "div[class=" + constants.NOTES + "-" + constants.STATUS + "]"
+  ).html();
+  metadata[constants.TITLE] = $("title").text();
+  metadata[constants.TAGS] = $(
+    "div[class=" + constants.NOTES + "-" + constants.TAGS + "]"
+  ).html();
+  metadata[constants.TOPIC] = $(
+    "div[class=" + constants.NOTES + "-" + constants.TOPIC + "]"
+  ).html();
+  //console.log("metadata " + util.inspect(metadata));
 
-    metadata[constants.PATH] = path
-    metadata[constants.RESOURCE] = resource
-    metadata[constants.STATUS] = $('div').attr(constants.STATUS)
+  const hash = md5File.sync(path + "/" + resource);
+  metadata[constants.HASH] = hash;
 
-    return metadata;
+  return metadata;
 }
 
-router.get('/', function (req, res, next) {
-    pullNewchanges()
-    res.send("OK")
+function afterGitPull(data) {
+  console.log("Updated git repo");
+  metadatas = getFiles(dir);
+  selectPromise = mongo.getdata();
 
+  console.log("Promise " + selectPromise);
+  selectPromise
+    .then(data => {
+      console.log("mongo selectPromise" + util.inspect(data));
+
+      let existingRecords = new Map();
+      for (record in data) {
+        existingRecords.set(record[constants.RESOURCE], record[constants.HASH]);
+      }
+
+      console.log("existingRecords " + existingRecords);
+
+      // How does node still keep this metadatas value still in mmemory
+      
+
+
+    })
+    .catch(err => {
+      console.log("Error " + util.inspect(err));
+    });
+
+  console.log("metadatas " + util.inspect(metadatas));
+}
+
+router.get("/", function(req, res, next) {
+  pullNewchanges();
+  res.send("OK");
 });
 
 module.exports = router;
