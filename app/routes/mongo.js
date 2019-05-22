@@ -26,13 +26,16 @@ var getRecords = function() {
       const db = client.db(dbName);
       const collection = db.collection("Notes");
       // Find some documents
-      collection.find({}).toArray(function(err, records) {
-        assert.equal(err, null);
-        //console.log("Found the following records");
-        console.log(records);
-        resolve(records);
-        //client.close();
-      });
+      collection
+        .find({})
+        .sort({ updatedon: -1 })
+        .toArray(function(err, records) {
+          assert.equal(err, null);
+          //console.log("Found the following records");
+          console.log(records);
+          resolve(records);
+          //client.close();
+        });
     });
   });
 };
