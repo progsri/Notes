@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use("/" + constants.RESOURCE, express.static(constants.BASEPATH));
+app.use("/" + constants.RESOURCE, express.static(constants.STATICPATH));
 
 app.use("/", index);
 app.use("/git", git);
