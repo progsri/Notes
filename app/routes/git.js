@@ -8,8 +8,6 @@ const util = require("util");
 const mongo = require("./mongo.js");
 const md5File = require("md5-file");
 
-dir = "../Notes/Template/topic1";
-
 var getFiles = function(path) {
   let list = [];
   let files = fs.readdirSync(path);
@@ -79,7 +77,7 @@ function geMetadata(path, resource) {
 
 function afterGitPull() {
   console.log("Updated git repo");
-  metadatas = getFiles(dir);
+  metadatas = getFiles(constants.BASEPATH);
   let selectPromise = mongo.getRecords();
 
   console.log("Promise " + util.inspect(selectPromise));
