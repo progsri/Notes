@@ -11,8 +11,8 @@ const UPDATEDON = "updatedon";
 const ID = "_id";
 const NINJASHORE = "Ninjashore";
 const MONGOURL = "mongodb://localhost:27017";
-const STATICPATH = "../../Notes";
-const BASEPATH = "../../Notes";
+const STATICPATH = "../";
+const BASEPATH = "../content";
 
 module.exports = {
   PATH,
