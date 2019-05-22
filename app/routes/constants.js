@@ -8,6 +8,9 @@ const NOTES = "notes";
 const HASH = "hash";
 const CREATEDON = "createdon";
 const UPDATEDON = "updatedon";
+const ID = "_id";
+const NINJASHORE = "Ninjashore";
+const MONGOURL = "mongodb://10.220.120.68:27017";
 
 module.exports = {
   PATH,
@@ -19,5 +22,8 @@ module.exports = {
   NOTES,
   HASH,
   CREATEDON,
-  UPDATEDON
+  UPDATEDON,
+  ID,
+  NINJASHORE,
+  MONGOURL
 };
