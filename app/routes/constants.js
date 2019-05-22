@@ -11,6 +11,7 @@ const UPDATEDON = "updatedon";
 const ID = "_id";
 const NINJASHORE = "Ninjashore";
 const MONGOURL = "mongodb://10.220.120.68:27017";
+const BASEPATH = "/Users/bpu219/Desktop/Notes";
 
 module.exports = {
   PATH,
@@ -25,5 +26,6 @@ module.exports = {
   UPDATEDON,
   ID,
   NINJASHORE,
-  MONGOURL
+  MONGOURL,
+  BASEPATH
 };
