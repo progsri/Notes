@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  console.log("pug" + list_of_files)
+  ul 
+  each val in list_of_files
+    h2 
+    li= val
