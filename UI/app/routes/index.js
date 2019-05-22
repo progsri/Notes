@@ -5,7 +5,7 @@ const mongo = require("./mongo.js");
 const constants = require("./constants.js");
 
 /* GET home page. */
-router.get("/", function(req, res, next) {
+router.get("/", function (req, res, next) {
   let selectPromise = mongo.getRecords();
   selectPromise
     .then(data => {
@@ -13,9 +13,8 @@ router.get("/", function(req, res, next) {
       for (index in data) {
         ui.push({
           path:
-            constants.RESOURCE +
-            data[index][constants.PATH].replace("..", "") +
-            "/" +
+            constants.RESOURCE + "/" +
+            data[index][constants.PATH].replace("../", "").replace("../", "") + "/" +
             data[index][constants.RESOURCE],
           resource: data[index][constants.RESOURCE].replace(".html", "")
         });

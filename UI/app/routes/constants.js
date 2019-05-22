@@ -10,8 +10,8 @@ const CREATEDON = "createdon";
 const UPDATEDON = "updatedon";
 const ID = "_id";
 const NINJASHORE = "Ninjashore";
-const MONGOURL = "mongodb://10.220.120.68:27017";
-const STATICPATH = "/Users/bpu219/Desktop/Notes";
+const MONGOURL = "mongodb://localhost:27017";
+const STATICPATH = "../../Notes";
 const BASEPATH = "../../Notes";
 
 module.exports = {
