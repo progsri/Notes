@@ -1,30 +1,34 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-
-
-const fs = require('fs');
-
-dir = "../Notes"
-
-
-var getFiles = function (path) {
-  let list = []
-  let files = fs.readdirSync(path);
-  files.forEach(element => {
-    let tmp_path = path + "/" + element
-    if (fs.lstatSync(tmp_path).isDirectory()) {
-      list.push(getFiles(tmp_path))
-    } else {
-      list.push(tmp_path)
-    }
-  });
-
-  return list
-}
+const fs = require("fs");
+const mongo = require("./mongo.js");
+const constants = require("./constants.js");
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.send(getFiles(dir))
+router.get("/", function(req, res, next) {
+  let selectPromise = mongo.getRecords();
+  selectPromise
+    .then(data => {
+      let ui = [];
+      for (index in data) {
+        ui.push({
+          path:
+            constants.RESOURCE +
+            data[index][constants.PATH].replace("..", "") +
+            "/" +
+            data[index][constants.RESOURCE],
+          resource: data[index][constants.RESOURCE].replace(".html", "")
+        });
+      }
+
+      res.render("index", {
+        title: "Notes by Srikanth & Sirisha",
+        resources: ui
+      });
+    })
+    .catch(err => {
+      console.log("Index  " + util.inspect(err));
+    });
 });
 
 module.exports = router;
