@@ -7,15 +7,15 @@ const constants = require("./constants.js");
 const util = require("util");
 const mongo = require("./mongo.js");
 const md5File = require("md5-file");
-const process = require("process")
+const process = require("process");
 
-var getFiles = function (path) {
+var getFiles = function(path) {
   console.log("PWD " + process.cwd());
   let list = [];
   let files = fs.readdirSync(path);
   files.forEach(element => {
     let tmp_path = path + "/" + element;
-    if (!tmp_path.includes("Template")) {
+    if (isValid(tmp_path)) {
       if (fs.lstatSync(tmp_path).isDirectory()) {
         let resources = getFiles(tmp_path);
         console.log("resources " + util.inspect(resources));
@@ -30,6 +30,22 @@ var getFiles = function (path) {
 
   return list;
 };
+
+function isValid(path) {
+  if (path.includes("Template")) {
+    return false;
+  }
+
+  if (path.includes(".js")) {
+    return false;
+  }
+
+  if (path.includes(".css")) {
+    return false;
+  }
+
+  return true;
+}
 
 function pullNewchanges() {
   const ls = spawn("git", ["pull"]);
@@ -165,12 +181,12 @@ function afterGitPull() {
   console.log("metadatas " + util.inspect(metadatas));
 }
 
-router.post("/", function (req, res, next) {
+router.post("/", function(req, res, next) {
   pullNewchanges();
   res.send("OK");
 });
 
-router.get("/", function (req, res, next) {
+router.get("/", function(req, res, next) {
   pullNewchanges();
   res.send("OK");
 });
