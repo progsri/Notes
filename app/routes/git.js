@@ -170,4 +170,9 @@ router.post("/", function (req, res, next) {
   res.send("OK");
 });
 
+router.get("/", function (req, res, next) {
+  pullNewchanges();
+  res.send("OK");
+});
+
 module.exports = router;
