@@ -1,1 +1,6 @@
-ninjashore.com
+#domain ninjashore.com
+
+#Powered By
+  Express.js
+  Node.js
+  mongo
