@@ -15,14 +15,16 @@ var getFiles = function (path) {
   let files = fs.readdirSync(path);
   files.forEach(element => {
     let tmp_path = path + "/" + element;
-    if (fs.lstatSync(tmp_path).isDirectory()) {
-      let resources = getFiles(tmp_path);
-      console.log("resources " + util.inspect(resources));
-      for (index in resources) {
-        list.push(resources[index]);
+    if (!tmp_path.includes("Template")) {
+      if (fs.lstatSync(tmp_path).isDirectory()) {
+        let resources = getFiles(tmp_path);
+        console.log("resources " + util.inspect(resources));
+        for (index in resources) {
+          list.push(resources[index]);
+        }
+      } else {
+        list.push(geMetadata(path, element));
       }
-    } else {
-      list.push(geMetadata(path, element));
     }
   });
 
