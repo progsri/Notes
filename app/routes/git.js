@@ -165,7 +165,7 @@ function afterGitPull() {
   console.log("metadatas " + util.inspect(metadatas));
 }
 
-router.get("/", function (req, res, next) {
+router.post("/", function (req, res, next) {
   pullNewchanges();
   res.send("OK");
 });
