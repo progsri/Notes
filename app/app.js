@@ -7,6 +7,7 @@ var bodyParser = require("body-parser");
 
 var index = require("./routes/index");
 var git = require("./routes/git");
+var resource = require("./routes/resource");
 var app = express();
 const constants = require("./routes/constants.js");
 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 //app.use("/" + constants.RESOURCE, express.static(constants.STATICPATH));
 
 app.use("/", index);
+app.use("/resource", resource);
 app.use("/git", git);
 
 // catch 404 and forward to error handler

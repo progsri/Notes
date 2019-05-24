@@ -29,17 +29,5 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.get("/" + constants.RESOURCE, function (req, res, next) {
-
-  console.log('req ' + req);
-
-  path = "/home/progsri/Desktop/Notes/content/JavaScript_Language/ext.html";
-  fs.readFile(path, 'utf8', function (err, contents) {
-    res.render("index", {
-      content: contents
-    });
-  });
-});
-
 
 module.exports = router;
