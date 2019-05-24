@@ -30,4 +30,17 @@ router.get("/", function (req, res, next) {
     });
 });
 
+router.get("/exp", function (req, res, next) {
+
+  path = "/home/progsri/Desktop/Notes/content/JavaScript_Language/ext.html";
+  fs.readFile(path, 'utf8', function (err, contents) {
+    res.render("indexext", {
+      content: contents
+    });
+  });
+
+
+
+});
+
 module.exports = router;
