@@ -5,10 +5,11 @@ block content
     div(class="container")
       div(class="row")
         div(class="col-md-12")
-          h2= title
+          h3= title
           br
           each resource in resources
             div
               a(href=resource["path"]) #{resource["resource"]}
+              span(class=resource["color"]) #{resource["status"]}
               br
               br
