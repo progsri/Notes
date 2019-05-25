@@ -19,10 +19,14 @@ router.get("/", function (req, res, next) {
           }
 
           if (data[index][constants.STATUS].includes("incomplete")) {
-            color = "badge badge-warning";
+            color = "badge badge-secondary";
             status = data[index][constants.STATUS];
           }
 
+          if (data[index][constants.STATUS].includes("backlog")) {
+            color = "badge badge-primary";
+            status = data[index][constants.STATUS];
+          }
         }
 
         ui.push({
