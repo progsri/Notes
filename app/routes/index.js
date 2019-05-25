@@ -27,6 +27,11 @@ router.get("/", function (req, res, next) {
             color = "badge badge-primary";
             status = data[index][constants.STATUS];
           }
+
+          if (data[index][constants.STATUS].includes("done")) {
+            color = "badge badge-success";
+            status = data[index][constants.STATUS];
+          }
         }
 
         ui.push({
