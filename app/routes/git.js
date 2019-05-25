@@ -199,4 +199,16 @@ router.get("/", function (req, res, next) {
   res.send("OK");
 });
 
+function test() {
+  var contents = fs.readFileSync("/home/progsri/Desktop/Notes/content/BigData/Spark/Spark_setup.html", "utf8");
+  const $ = cheerio.load(contents);
+
+  let a = $(
+    "div[class=notes-status]"
+  ).html();
+
+  console.log(a);
+}
+
+test();
 module.exports = router;
