@@ -27,7 +27,7 @@ router.get("/", function (req, res, next) {
             constants.RESOURCE + "/" +
             data[index][constants.PATH].replace("../", "").replace("../", "") + "/" +
             data[index][constants.RESOURCE],
-          resource: data[index][constants.RESOURCE].replace(".html", "") + "   ",
+          resource: data[index][constants.RESOURCE].replace(".html", "").replace(/_/g, " ") + "   ",
           status: status,
           color: color
         });
