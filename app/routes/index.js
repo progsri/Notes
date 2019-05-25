@@ -17,6 +17,12 @@ router.get("/", function (req, res, next) {
             color = "badge badge-warning";
             status = data[index][constants.STATUS];
           }
+
+          if (data[index][constants.STATUS].includes("incomplete")) {
+            color = "badge badge-warning";
+            status = data[index][constants.STATUS];
+          }
+
         } else {
           color = "badge badge-primary";
           status = constants.STATUS_BACKLOG;
