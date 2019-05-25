@@ -86,7 +86,7 @@ function geMetadata(path, resource) {
   metadata[constants.PATH] = path;
   metadata[constants.RESOURCE] = resource;
   metadata[constants.STATUS] = $(
-    "div[class=" + constants.NOTES + "-" + constants.STATUS + "]"
+    "div[class='badge badge-warning " + constants.NOTES + "-" + constants.STATUS + "']"
   ).html();
   metadata[constants.TITLE] = $("title").text();
   metadata[constants.TAGS] = $(
@@ -199,16 +199,4 @@ router.get("/", function (req, res, next) {
   res.send("OK");
 });
 
-function test() {
-  var contents = fs.readFileSync("/home/progsri/Desktop/Notes/content/BigData/Spark/Spark_setup.html", "utf8");
-  const $ = cheerio.load(contents);
-
-  let a = $(
-    "div[class=notes-status]"
-  ).html();
-
-  console.log(a);
-}
-
-//test();
 module.exports = router;
