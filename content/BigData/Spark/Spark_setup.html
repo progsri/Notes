@@ -1,0 +1,32 @@
+<h3>Apache Spark standalone cluster</h3>
+<br>
+
+<h4>Lets setup a standalone cluster manually</h4>
+<h5>Create 3 serves ( VMs or physical machines ) </h5>
+<ol>
+   <li>node-1 for master</li>
+   <li>node-2 and node-3 for slaves. </li>
+</ol>
+
+<h5> on node-1 </h5>
+<ol>
+   <li>Download spark binary <a href=https://spark.apache.org/downloads.html> </a> </li> <li>run /sbin/start-master.sh
+         <br>
+         This would open port on 8080 for Master UI and port 7077 for communication with workers processes over the
+         newtwork.
+         The 2 ports are configurable.</li>
+   <img src="./images/Master(node-1).png">
+
+</ol>
+
+
+</h6> on node -2 and node-3 </h6>
+<ol>
+   <li>Download spark binary <a href=https://spark.apache.org/downloads.html> </a> </li> <li>run /sbin/start-slave.sh
+         master-ip:7077</li>
+   This would open port on 8081 for the worker UI and a random port to communicate with the master process over the
+   network.
+   Port 8081 can be configured.
+   <li>At this point workers have communicated with the master and formed a cluster which can be seen in the below pic.
+      <img src="./images/worker(node-2).png" alt="Mountain View" class="img-responsive">
+</ol>

@@ -9,11 +9,17 @@ router.get("/*", function (req, res, next) {
 
   path = process.cwd().replace("/app", "") + req.originalUrl.replace("/" + constants.RESOURCE, "")
   console.log('get contents of ' + path)
-  fs.readFile(path, 'utf8', function (err, contents) {
-    res.render("resource", {
-      content: contents
+  if (path.includes("/images")) {
+    // fs.readFile(path, 'utf8', function (err, contents) {
+    res.sendFile(path);
+    //});
+  } else {
+    fs.readFile(path, 'utf8', function (err, contents) {
+      res.render("resource", {
+        content: contents
+      });
     });
-  });
+  }
 });
 
 
