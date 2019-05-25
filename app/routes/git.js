@@ -91,6 +91,9 @@ function geMetadata(path, resource) {
   metadata[constants.STATUS] = $(
     "div[class='badge badge-secondary " + constants.NOTES + "-" + constants.STATUS + "']"
   ).html();
+  metadata[constants.STATUS] = $(
+    "div[class='badge badge-primary " + constants.NOTES + "-" + constants.STATUS + "']"
+  ).html();
   metadata[constants.TITLE] = $("title").text();
   metadata[constants.TAGS] = $(
     "div[class=" + constants.NOTES + "-" + constants.TAGS + "]"

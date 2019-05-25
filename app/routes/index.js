@@ -23,9 +23,6 @@ router.get("/", function (req, res, next) {
             status = data[index][constants.STATUS];
           }
 
-        } else {
-          color = "badge badge-primary";
-          status = constants.STATUS_BACKLOG;
         }
 
         ui.push({
