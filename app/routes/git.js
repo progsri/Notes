@@ -86,7 +86,7 @@ function geMetadata(path, resource) {
   metadata[constants.PATH] = path;
   metadata[constants.RESOURCE] = resource;
   metadata[constants.STATUS] = $(
-    "span[class=badge badge-warning " + constants.NOTES + "-" + constants.STATUS + "]"
+    "div[class=badge badge-warning " + constants.NOTES + "-" + constants.STATUS + "]"
   ).html();
   metadata[constants.TITLE] = $("title").text();
   metadata[constants.TAGS] = $(

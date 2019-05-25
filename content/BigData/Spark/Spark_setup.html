@@ -1,4 +1,4 @@
-<span class="badge badge-warning notes-status">ongoing</span>
+<div class="badge badge-warning notes-status">ongoing</div>
 
 <h3>Apache Spark standalone cluster</h3>
 <br>
@@ -12,7 +12,8 @@
 
 <h5> on node-1 </h5>
 <ol>
-   <li>Download spark binary <a href=https://spark.apache.org/downloads.html> </a> </li> <li>run /sbin/start-master.sh
+   <li>Download spark binary <a href=https://spark.apache.org/downloads.html> </a> </li> <li>run
+         /sbin/start-master.sh
          <br>
          This would open port on 8080 for Master UI and port 7077 for communication with workers processes over the
          newtwork.
@@ -29,6 +30,7 @@
    This would open port on 8081 for the worker UI and a random port to communicate with the master process over the
    network.
    Port 8081 can be configured.
-   <li>At this point workers have communicated with the master and formed a cluster which can be seen in the below pic.
+   <li>At this point workers have communicated with the master and formed a cluster which can be seen in the below
+      pic.
       <img src="./images/worker(node-2).png" class="img-fluid">
 </ol>
