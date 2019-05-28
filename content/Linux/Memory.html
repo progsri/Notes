@@ -1,0 +1,78 @@
+<div class="badge badge-primary notes-status">incomplete</div>
+
+<h3><strong>Memory in Linux</strong></h3>
+<hr>
+
+<h4>Physical memory</h4>
+<p>
+    Physical memory is divided into <mark>pages</mark>. Use <code>getconf PAGESIZE</code> to find the
+    Page Size for the operating system. <mark>Page Tables </mark> are used to map virtual addess to physical
+    address.
+</p>
+
+<h4>Virtual Memory</h4>
+<p>
+    Linux is a Virtual memory system which means addresses seen by programs do not
+    directly correspond to the physical address.
+    <br>
+    Virtual memory system has the following advantage
+    <ol>
+        <li>
+            Programs can be allotted memory more than the physical memory.
+        </li>
+    </ol>
+    <br>
+    <h5>Use /proc/pid*/maps to find the virtual address of a process</h5>
+    <code>cat /proc/pid*/maps</code> shows the below
+    <pre class="language-shell line-numbers"><code>
+            7f9fd8521000-7f9fd8522000 r--p 00000000 fd:00 1048751                    /lib/x86_64-linux-gnu/libcrypt-2.29.so
+            7f9fd8522000-7f9fd8528000 r-xp 00001000 fd:00 1048751                    /lib/x86_64-linux-gnu/libcrypt-2.29.so
+            7f9fd8528000-7f9fd852a000 r--p 00007000 fd:00 1048751                    /lib/x86_64-linux-gnu/libcrypt-2.29.so
+            7f9fd852a000-7f9fd852b000 ---p 00009000 fd:00 1048751                    /lib/x86_64-linux-gnu/libcrypt-2.29.so
+            7f9fd852b000-7f9fd852c000 r--p 00009000 fd:00 1048751                    /lib/x86_64-linux-gnu/libcrypt-2.29.so
+            7f9fd852c000-7f9fd852d000 rw-p 0000a000 fd:00 1048751                    /lib/x86_64-linux-gnu/libcrypt-2.29.so
+            7f9fd852d000-7f9fd855b000 rw-p 00000000 00:00 0
+            7f9fd855b000-7f9fd8569000 r--p 00000000 fd:00 13375970                   /usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6
+            7f9fd8569000-7f9fd8642000 r-xp 0000e000 fd:00 13375970                   /usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6
+            7f9fd8642000-7f9fd8674000 r--p 000e7000 fd:00 13375970                   /usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6
+            7f9fd8674000-7f9fd8675000 ---p 00119000 fd:00 13375970                   /usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6
+            7f9fd8675000-7f9fd8678000 r--p 00119000 fd:00 13375970                   /usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6
+            7f9fd8678000-7f9fd867b000 rw-p 0011c000 fd:00 13375970                   /usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6
+            7f9fd867b000-7f9fd868b000 r--p 00000000 fd:00 13377475                   /usr/lib/x86_64-linux-gnu/libhx509.so.5.0.0
+            7f9fd868b000-7f9fd86b2000 r-xp 00010000 fd:00 13377475                   /usr/lib/x86_64-linux-gnu/libhx509.so.5.0.0
+            7f9fd86b2000-7f9fd86c2000 r--p 00037000 fd:00 13377475                   /usr/lib/x86_64-linux-gnu/libhx509.so.5.0.0
+            7f9fd86c2000-7f9fd86c5000 r--p 00046000 fd:00 13377475                   /usr/lib/x86_64-linux-gnu/libhx509.so.5.0.0
+            7f9fd86c5000-7f9fd86c6000 rw-p 00049000 fd:00 13377475                   /usr/lib/x86_64-linux-gnu/libhx509.so.5.0.0
+            7f9fd86c6000-7f9fd86c7000 rw-p 00000000 00:00 0
+                        
+    </code></pre>
+    <p>
+        Each field in /proc/*/maps (except the image name) corresponds to a field in struct
+        <mark>vm_area_struct</mark>:
+        <ul></ul>
+        <li>start
+        end
+        The beginning and ending virtual addresses for this memory area.</li>
+        <li>perm
+        A bit mask with the memory area’s read, write, and execute permissions. This
+        field describes what the process is allowed to do with pages belonging to the
+        area. The last character in the field is either p for “private” or s for “shared.”</li>
+        <li>offset
+        Where the memory area begins in the file that it is mapped to. An offset of 0
+        means that the beginning of the memory area corresponds to the beginning of
+        the file.</li>
+        <li>major
+        minor
+        The major and minor numbers of the device holding the file that has been
+        mapped. Confusingly, for device mappings, the major and minor numbers refer
+        to the disk partition holding the device special file that was opened by the user,
+        and not the device itself.</li>
+        <li>inode
+        The inode number of the mapped file.</li>
+        <li>image
+        The name of the file (usually an executable image) that has been mapped.</li>
+    </p>
+</p>
+
+<h4>References</h4>
+<a href="https://static.lwn.net/images/pdf/LDD3/ch15.pdf">Memory Mapping and DMA</a>
