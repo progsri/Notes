@@ -1,4 +1,4 @@
-<div class="badge badge-primary notes-status">incomplete</div>
+<div class="badge badge-secondary notes-status">incomplete</div>
 
 <h3><strong>Memory in Linux</strong></h3>
 <hr>
@@ -51,26 +51,26 @@
         <mark>vm_area_struct</mark>:
         <ul></ul>
         <li>start
-        end
-        The beginning and ending virtual addresses for this memory area.</li>
+            end
+            The beginning and ending virtual addresses for this memory area.</li>
         <li>perm
-        A bit mask with the memory area’s read, write, and execute permissions. This
-        field describes what the process is allowed to do with pages belonging to the
-        area. The last character in the field is either p for “private” or s for “shared.”</li>
+            A bit mask with the memory area’s read, write, and execute permissions. This
+            field describes what the process is allowed to do with pages belonging to the
+            area. The last character in the field is either p for “private” or s for “shared.”</li>
         <li>offset
-        Where the memory area begins in the file that it is mapped to. An offset of 0
-        means that the beginning of the memory area corresponds to the beginning of
-        the file.</li>
+            Where the memory area begins in the file that it is mapped to. An offset of 0
+            means that the beginning of the memory area corresponds to the beginning of
+            the file.</li>
         <li>major
-        minor
-        The major and minor numbers of the device holding the file that has been
-        mapped. Confusingly, for device mappings, the major and minor numbers refer
-        to the disk partition holding the device special file that was opened by the user,
-        and not the device itself.</li>
+            minor
+            The major and minor numbers of the device holding the file that has been
+            mapped. Confusingly, for device mappings, the major and minor numbers refer
+            to the disk partition holding the device special file that was opened by the user,
+            and not the device itself.</li>
         <li>inode
-        The inode number of the mapped file.</li>
+            The inode number of the mapped file.</li>
         <li>image
-        The name of the file (usually an executable image) that has been mapped.</li>
+            The name of the file (usually an executable image) that has been mapped.</li>
     </p>
 </p>
 
