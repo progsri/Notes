@@ -46,7 +46,43 @@ EXPOSE 4000
 CMD ["node","index.js"]
 </code></pre>
 
-<code>docker build -t node-http ./Dockerfile</code>
+<p>To build a container image. <code>docker build -t node-http ./Dockerfile</code> -t is to tag the image</p>
+output of docker build
+<pre class="language-docker line-numbers"><code>
+Sending build context to Docker daemon  3.072kB
+Step 1/4 : FROM node
+ ---> 6be2fabd4196
+Step 2/4 : COPY index.js ./
+ ---> 63204596fda4
+Step 3/4 : EXPOSE 4000
+ ---> Running in 704cdc8d63bd
+Removing intermediate container 704cdc8d63bd
+ ---> 741e8fdb603a
+Step 4/4 : CMD ["node","index.js"]
+ ---> Running in ec3e62e8d183
+Removing intermediate container ec3e62e8d183
+ ---> bb832306704b
+Successfully built bb832306704b
+Successfully tagged node-http:latest
+</code></pre>
+
+<p>Once the image is successfully built. It can be seen in <code>docker images</code></p>
+List all images
+<pre class="language-docker line-numbers"><code>
+REPOSITORY TAG IMAGE ID CREATED SIZE
+node-http latest bb832306704b 9 seconds ago 908MB
+</code></pre>
+
+<p>To run the image <code>docker run -p 11111:4000 node-http</code> where 11111 is the port on the host and 4000 is
+    the port of the container instance. Cannot access 4000 from host ????
+</p>
+running the image
+<pre class="language-docker line-numbers"><code>
+root@machine:/home/progsri/Desktop/temp/Docker# 
+server is listening on 4000
+</code></pre>
+
+show running docker ps
 
 <br>
 <hr>
