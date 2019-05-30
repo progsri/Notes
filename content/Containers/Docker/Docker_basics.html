@@ -40,15 +40,16 @@ index.js
 
 Dockerfile
 <pre class="language-dockerfile line-numbers"><code>
-Dockerfile
-
 FROM node
 COPY index.js ./
 EXPOSE 4000
 CMD ["node","index.js"]
 </code></pre>
 
-<p>To build a container image. <code>docker build -t node-http ./Dockerfile</code> -t is to tag the image</p>
+<p>To build a container image. <code>docker build -t node-http ./Dockerfile</code> -t is to tag the image. Here we are 
+    tagging as node-http.
+</p>
+
 output of docker build
 <pre class="language-bash line-numbers"><code>
 Sending build context to Docker daemon  3.072kB
@@ -69,24 +70,27 @@ Successfully tagged node-http:latest
 </code></pre>
 
 <p>Once the image is successfully built. It can be seen in <code>docker images</code></p>
-List all images
+list all images
 <pre class="language-docker line-numbers"><code>
 REPOSITORY TAG IMAGE ID CREATED SIZE
 node-http latest bb832306704b 9 seconds ago 908MB
 </code></pre>
 
 <p>To run the image <code>docker run -p 11111:4000 node-http</code> where 11111 is the port on the host and 4000 is
-    the port of the container instance. <code>http://localhost:11111</code> should work.Cannot access 4000 from host
-    ????
+    the port of the container instance. <code>http://localhost:11111</code> should work.
 </p>
-running the image
+<p class="class="text-danger">Cannot access 4000 from host ??? </p>
+                             
+running the image(prints the log)
 <pre class="language-docker line-numbers"><code>
-root@machine:/home/progsri/Desktop/temp/Docker# 
 server is listening on 4000
 </code></pre>
 
-show running docker ps
+<p>To see running containers use <code>docker ps </code><p>
+<pre class="language-bash line-numbers"><code>
 
+</code></pre>
+                                         
 <br>
 <hr>
 <h4>References</h4>
