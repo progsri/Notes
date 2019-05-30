@@ -1,0 +1,53 @@
+<div class="badge badge-warning notes-status">ongoing</div>
+
+<h3><strong>Docker Basics</strong></h3>
+<hr>
+
+<h4>Definition</h4>
+<p>Docker is a container platform. Container is not a VM, but a special process which
+    uses kernel feature such as cgroups to monitor process, namespaces to isolate process etc.
+</p>
+
+<br>
+<h4>Building a container image</h4>
+<p>Docker looks for <mark>Dockerfile</mark> to build a container image. Lets us <mark>node</mark> as a I will be
+    creating a node.js application
+</p>
+
+<p>Create a basic node.js http server listening on port 4000. Let's call it index.js</p>
+
+index.js
+<pre class="language-javascript line-numbers"><code>
+    const http = require('http')
+    const port = 4000
+    
+    const requestHandler = (request, response) => {
+      console.log(request.url)
+      response.end('Hello Node.js Server!')
+    }
+    
+    const server = http.createServer(requestHandler)
+    
+    server.listen(port, (err) => {
+      if (err) {
+        return console.log('something bad happened', err)
+      }
+    
+      console.log(`server is listening on ${port}`)
+    })
+    
+</code></pre>
+
+Dockerfile
+<pre class="language-docker line-numbers"><code>
+FROM node
+COPY index.js ./
+EXPOSE 4000
+CMD ["node","index.js"]
+</code></pre>
+
+<code>docker build -t node-http ./Dockerfile</code>
+
+<br>
+<hr>
+<h4>References</h4>
