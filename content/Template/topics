@@ -1,0 +1,18 @@
+Lambda
+  What ports can Lambda open
+Kinesis
+EC2
+ECS
+S3
+Athena
+Kibana
+EMR
+Dynamo
+VPC
+Fargate
+AWS cross account concerns
+
+
+Internals of TLS ( Openssl )
+Reading a very large files 
+ACID Explanation
