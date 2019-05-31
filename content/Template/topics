@@ -16,3 +16,7 @@ AWS cross account concerns
 Internals of TLS ( Openssl )
 Reading a very large files 
 ACID Explanation
+
+Redis non cluster communication ( sentinel )
+Rabbit MQ clustering
+
