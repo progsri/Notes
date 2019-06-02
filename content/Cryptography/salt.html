@@ -20,22 +20,26 @@
 <p>
     Hacker maintain a list of all common passwords and their hashes, so if you have a hash and you get the password string,
    if it is a common password only. This is called a rainbow table which is a very long list.
-<br><br>
+</p>
+<p>
    Which means if the compromised password string is let say abc123. Then the md5sum hash for it would be 2c6c8ab6ba8b9c98a1939450eb4089ed.
    The chance of having the hash 2c6c8ab6ba8b9c98a1939450eb4089ed in the rainbow table is very high as it is a common one.
    But if the password is let say "abc123!@#R&*" , which is a rare password, then it would not be in the rainbow table.
    This is the concept that <mark>salt technique</mark> uses.
-<br><br>
+</p>
+<p>
    In salt, a random generated string is generated at the time of user registration for every user, this random generated string is called
    salt, which is then concatenated to the password string and then the hash is generated and stored. So, when ever the user
    logins in with the password, the authentication process will concatenate the password with the salt and then generate the
    hash to verify with the hash inthe system. The salt is also stored in plain sight along with the hash. 
-<br><br>
+</p>
+<p>
    So, if the hash is compromised the hacker would have to generate all the hashes for the rainbow table with the new salt to
    find the password. So, If there are a million common passwords in the rainbow table and if the compromised system has 1000 users,
    then there would be 1000 salts, which means per user, the hacker has to generate new hash value with salt for a entry in the
    rainbow table.
-<br><br>
+</p>
+<p>
    And if this user does not have common password, this effort is anyway wasted.
 </p>
 
