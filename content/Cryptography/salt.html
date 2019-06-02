@@ -32,12 +32,14 @@
    salt, which is then concatenated to the password string and then the hash is generated and stored. So, when ever the user
    logins in with the password, the authentication process will concatenate the password with the salt and then generate the
    hash to verify with the hash inthe system. The salt is also stored in plain sight along with the hash. 
-   <br />
+</p>
+<p>
    So, if the hash is compromised the hacker would have to generate all the hashes for the rainbow table with the new salt to
    find the password. So, If there are a million common passwords in the rainbow table and if the compromised system has 1000 users,
    then there would be 1000 salts, which means per user, the hacker has to generate new hash value with salt for a entry in the
    rainbow table.
-   
+</p>
+<p>
    And if this user does not have common password, this effort is anyway wasted.
 </p>
 
