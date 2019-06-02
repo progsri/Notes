@@ -9,15 +9,25 @@
  </p>  
  <p>Generally to store passwords let say in a database, we do not store them as it is, but we generate
    a hash and store that. So, when the user logins in we regenerate the hash for the user provided password and compare the
-   hash with the hash in our system to authenticate. Know if the database which has these hashes is compromised, then hacker can 
-   uses these hashes to find the password strings.
+   hash with the hash in our system to authenticate. Know if the database which has these hashes is compromised, then hacker
+    can uses these hashes to find the password strings. Lets see how <mark>Salt technique </mark> would make it slower to find 
+    the passwrod strings.
 </p>
 
 <hr>
 <h4>How to get password from the compromised hashes</h4>
+<h5>Rainbow tables</h5>
 <p>
-  
+    Hacker maintain a list of all common passwords and their hashes, so if you have a hash and you get the password string,
+   if it is a common password only.
+    
 </p>
+
+<h5>Ditionary attack</h5>
+
+
+
+<h5>Bruteforce Attack</h5>
 
 
 <hr>
