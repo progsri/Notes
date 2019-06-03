@@ -1,0 +1,54 @@
+<div class="badge badge-secondary notes-status">incomplete</div>
+
+<h2><strong>Docker commands</strong></h2>
+<hr>
+
+<h4>RUN vs CMD </h4>
+</hr>
+<p>
+  <code> RUN sleep 100 </code>, while docker is building this image <code> RUN </code> actually runs the command and
+  if this command creates any files they would be present in the new image.
+</p>
+
+Dockerfile
+<pre class="language-dockerfile line-numbers"><code>
+FROM openjdk
+RUN sleep 10
+</code></pre>
+
+output of <code> docker build -t java-sleep-100-run . </code>
+<pre class="language-dockerfile line-numbers"><code>
+Sending build context to Docker daemon  2.048kB
+Step 1/2 : FROM openjdk
+ ---> ef36deb98f03
+Step 2/2 : RUN sleep 100 .    ( This line actually takes 100 secs to execute )
+ ---> Running in 0743bb044e77
+Removing intermediate container 0743bb044e77
+ ---> 852a8a29a7f8
+Successfully built 852a8a29a7f8
+Successfully tagged java-sleep-10-run:latest
+</code></pre>
+
+<p>
+  <code> CMD sleep 100 </code>, while docker is building this image <code> RUN </code> actually runs the command and
+  if this command creates any files they would be present in the new image.
+</p>
+
+Dockerfile
+<pre class="language-dockerfile line-numbers"><code>
+FROM openjdk
+CMD sleep 10
+</code></pre>
+
+output of <code>   docker build -t java-sleep-100-cmd .</code>
+<pre class="language-dockerfile line-numbers"><code>
+Sending build context to Docker daemon  2.048kB
+Step 1/2 : FROM openjdk
+ ---> ef36deb98f03
+Step 2/2 : CMD sleep 10
+ ---> Running in a80d4e1f1f18
+Removing intermediate container a80d4e1f1f18
+ ---> 8e0e34d63eb0
+Successfully built 8e0e34d63eb0
+Successfully tagged java-sleep-100-cmd:latest
+</code></pre>
