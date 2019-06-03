@@ -7,7 +7,7 @@
 </hr>
 <p>
   <code> RUN sleep 100 </code>, while docker is building this image <code> RUN </code> actually runs the command and
-  if this command creates any files they would be present in the new image.
+  if this command creates any files they would be present in the new image. so, use this to run the command while building.
 </p>
 
 Dockerfile
@@ -30,8 +30,8 @@ Successfully tagged java-sleep-10-run:latest
 </code></pre>
 
 <p>
-  <code> CMD sleep 100 </code>, while docker is building this image <code> RUN </code> actually runs the command and
-  if this command creates any files they would be present in the new image.
+  <code> CMD sleep 100 </code>, while docker is building this image <code> CMD </code> is just a place holder, these would
+  not run at the time of building the image, these commands will run when the container has started.
 </p>
 
 Dockerfile
