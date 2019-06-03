@@ -24,14 +24,14 @@
    for the matching hash,if it is a common password only. This is called a <mark>rainbow table</mark> which is a very long list.
 </p>
 <p>
-   Which means if the compromised password string is let say abc123. Then the md5sum hash for it would be 2c6c8ab6ba8b9c98a1939450eb4089ed.
+   Which means if the compromised password string is let say abc123. Then the shasum hash for it would be 61ee8b5601a84d5154387578466c8998848ba089.
 </p>
 <pre class="language-bash line-numbers"><code>
-echo abc123 | md5sum
-2c6c8ab6ba8b9c98a1939450eb4089ed  - 
+echo abc123 | shasum
+61ee8b5601a84d5154387578466c8998848ba089  - 
 </code></pre>
 <p>
-   The chance of having the hash 2c6c8ab6ba8b9c98a1939450eb4089ed in the rainbow table is very high as it is the hash of the
+   The chance of having the hash 61ee8b5601a84d5154387578466c8998848ba089 in the rainbow table is very high as it is the hash of the
    common password abc123.But if the password is let say abc123!@#R&* , which is a rare password, then it would not be in the rainbow table.
    This is the concept that <mark>salt technique</mark> uses.
 <p>
