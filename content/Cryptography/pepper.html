@@ -22,6 +22,7 @@ eval $cmd .                #output 61ee8b5601a84d5154387578466c8998848ba089
 <p>
    At the time of user registration, the registration process will concatenate a random character let say between a to z 
    and A to Z, which means there can be 52 random characters, and then hash is generated  which is stored in the database.
-   This random character <mark>pepper</mark> is not stored in the system like the <mark> salt </mark>
-   So, if the user logins in again the authenticat
+   This random character <mark>pepper</mark> is not stored in the system like the <mark> salt </mark>.
+   So, if the user logins in again the authentication process would have to generate 52 hashes as it does not store the <mark>
+   pepper </mark> ( this would not take much time ).
 </p>
