@@ -21,7 +21,7 @@
 <h5>Rainbow tables</h5>
 <p>
     Hacker maintain a list of all common passwords and their hashes, so if you have a compromised hash and password string can be obtained
-   for the matching hash,if it is a common password only. This is called a rainbow table which is a very long list.
+   for the matching hash,if it is a common password only. This is called a <mark>rainbow table</mark> which is a very long list.
 </p>
 <p>
    Which means if the compromised password string is let say abc123. Then the md5sum hash for it would be 2c6c8ab6ba8b9c98a1939450eb4089ed.
@@ -32,7 +32,7 @@ echo abc123 | md5sum
 </code></pre>
 <p>
    The chance of having the hash 2c6c8ab6ba8b9c98a1939450eb4089ed in the rainbow table is very high as it is the hash of the
-   common password abc123.But if the password is let say "abc123!@#R&*" , which is a rare password, then it would not be in the rainbow table.
+   common password abc123.But if the password is let say abc123!@#R&* , which is a rare password, then it would not be in the rainbow table.
    This is the concept that <mark>salt technique</mark> uses.
 <p>
    In salt, a random generated string is generated at the time of user registration for every user, this random generated string is called
@@ -52,12 +52,19 @@ echo abc123 | md5sum
 
 <br>
 <h5>Ditionary attack</h5>
+<hr>
 <p> 
+   Here is the hacker uses the dictionary word to generate the hash, similar to concept mentioned rainbow table section, adding
+   a salt would slow down the cracking process. Again if the user does not use the dictionay word as a password , all the
+   effort to generate hash for the dictionary words with the salt is wasted.
 </p>
 
 <br>
 <h5>Bruteforce Attack</h5>
+<hr>
 <p>
+   Here the user uses a very complicated password let say abc123!@#R&* which is neither a common password nor a dictionary 
+   word which means the hacker has to use bruteforce which would take very large time or would never be able to crack. 
 </p>
 
 
