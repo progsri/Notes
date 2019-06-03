@@ -36,12 +36,29 @@ echo abc123 | md5sum
    This is the concept that <mark>salt technique</mark> uses.
 <p>
    In salt, a random generated string is generated at the time of user registration for every user, this random generated string is called
-   salt, which is then concatenated to the password string and then the hash for it is generated and stored in the database. So, 
-   when ever the user logins in with the password, the authentication process will concatenate the password with the salt and then generate the
+   salt <strong>1ju831</strong> , which is then concatenated to the password string and then the hash a10e5a763eecda2353867ce864498610449a5312 
+   for it is generated and stored in the database. So, when ever the user logins in with the password, the authentication process will concatenate the password with the salt and then generate the
    hash to verify with the existing hash in the system. The salt is also stored in plain sight along with the hash. 
 </p>
+
+Before salt
+<pre class="language-bash line-numbers"><code>
+echo abc123 | md5sum
+2c6c8ab6ba8b9c98a1939450eb4089ed  - 
+</code></pre>
+
+After salt
+<pre class="language-bash line-numbers"><code>
+password="abc123"
+salt="1ju831"
+after_concatenate=$password$salt
+cmd="echo $after_concatenate | shasum"
+eval $cmd .                #output a10e5a763eecda2353867ce864498610449a5312
+</code></pre>
+
+
 <p>
-   So, if the hash is compromised the hacker would have to generate all the hashes for the rainbow table with the new salt to
+   So, if the hash is compromised the hacker (if he figured out that salt is used ) would have to generate all the hashes for the rainbow table with the new salt to
    find the password for every user. So, If there are a million common passwords in the rainbow table and if the compromised system
    has 1000 users, then there would be 1000 salts, which means per user, the hacker has to generate new hash value with salt for a entry in the
    rainbow table which slows down the cracking process.
