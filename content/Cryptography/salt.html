@@ -4,6 +4,7 @@
 <hr>
 
 <h4>Definition</h4>
+<hr>
 <p>
    It is encryption technique which increase the time taken to crack the password.
  </p>  
@@ -14,19 +15,23 @@
     the passwrod strings.
 </p>
 
-<br>
+
 <h4>How to get password from the compromised hashes</h4>
+<hr>
 <h5>Rainbow tables</h5>
 <p>
-    Hacker maintain a list of all common passwords and their hashes, so if you have a hash and you get the password string,
-   if it is a common password only. This is called a rainbow table which is a very long list.
+    Hacker maintain a list of all common passwords and their hashes, so if you have a compromised hash and password string can be obtained
+   for the matching hash,if it is a common password only. This is called a rainbow table which is a very long list.
 </p>
 <p>
    Which means if the compromised password string is let say abc123. Then the md5sum hash for it would be 2c6c8ab6ba8b9c98a1939450eb4089ed.
+</p>
+
+<p>
    The chance of having the hash 2c6c8ab6ba8b9c98a1939450eb4089ed in the rainbow table is very high as it is a common one.
    But if the password is let say "abc123!@#R&*" , which is a rare password, then it would not be in the rainbow table.
    This is the concept that <mark>salt technique</mark> uses.
-</p>
+
 <p>
    In salt, a random generated string is generated at the time of user registration for every user, this random generated string is called
    salt, which is then concatenated to the password string and then the hash is generated and stored. So, when ever the user
@@ -53,6 +58,7 @@
 <p>
 </p>
 
-<hr>
+
 <h4>References</h4>
+<hr>
 <a href="https://www.youtube.com/watch?v=--tnZMuoK3E">Salt</a>
