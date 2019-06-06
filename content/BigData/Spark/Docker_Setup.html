@@ -15,6 +15,7 @@ EXPOSE 8080 7077
 
 ENTRYPOINT ["/opt/spark-2.4.3-bin-hadoop2.7/sbin/start-master.sh"]
 
+docker run -p 8080:8080 -p 7077:7077 spark-master
 
 -Worker
 FROM artifactory.cloud.capitalone.com/cof-onelake/ubuntu-c1-base
