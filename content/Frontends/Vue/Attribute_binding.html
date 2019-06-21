@@ -1,0 +1,40 @@
+<h2><strong>Attribute binding</strong></h2>
+<hr>
+
+<h4><strong>v-bind</strong></h4>
+<p>
+    Binds a attribute in this case <code>src</code> of <code>img</code> to the data key
+    <code>baseImage</code> in vue, so if the value of the baseImage changes vue automatically
+    updates the image as well.
+</p>
+<p>
+    shorthand for v-bind is <code>:</code>
+</p>
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+
+        &lt;div id="app"&gt;
+        
+    &lt;img v-bind:src="baseImage" width="10%"&gt;&lt;/img&gt;
+    &lt;h3&gt;{{product}}&lt;/h3&gt;
+    
+    &lt;/div&gt;
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                product: 'socks',
+                baseImage: './grey-sock.jpeg'
+            }
+        }
+        )
+</code></pre>
+
+<p>on Browser </p>
+<img src="./images/attributeBinding.png" class="img-responsive" width="100%"></img>
