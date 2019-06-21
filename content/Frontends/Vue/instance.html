@@ -5,5 +5,29 @@
 
 <h4> index.html </h4>
 <pre class="language-markup line-numbers"><code>
-        { name: 'test', place: 'place', type: 'type' }
+        <html>
+
+                <body>
+                    <div id="app">
+                        {{product}}
+                    </div>
+                
+                    <!-- The dom has to be loaded first -->
+                    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+                    <script src="main.js"></script>
+                </body>
+                
+                </html>
+</code></pre>
+
+
+
+<pre class="language-markup line-numbers"><code>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                product: "socks"
+            }
+        }
+        )
 </code></pre>
