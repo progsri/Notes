@@ -1,0 +1,90 @@
+<div class="badge badge-warning notes-status">done</div>
+
+<h2><strong>Salt</strong></h2>
+<hr>
+
+<h4>Definition</h4>
+<hr>
+<p>
+   It is encryption technique which increase the time taken to crack the password.
+ </p>  
+ <p>Generally to store passwords let say in a database, we do not store them as it is, but we generate
+   a hash and store that. So, when the user logins in we regenerate the hash for the user provided password and compare the
+   hash with the hash in our system to authenticate. Know if the database which has these hashes is compromised, then hacker
+    can uses these hashes to find the password strings. Lets see how <mark>Salt technique </mark> would make it slower to find 
+    the passwrod strings.
+</p>
+
+
+<h4>How to get password from the compromised hashes</h4>
+<hr>
+<h5>Rainbow tables</h5>
+<p>
+    Hacker maintain a list of all common passwords and their hashes for each algorithm (MD5, SHA-1, SHA-2, SHA-256 etc ), so if
+   you have a compromised hash and password string can be obtained for the matching hash,if it is a common password only. This is called a <mark>rainbow table</mark> which is a very long list.
+</p>
+<p>
+   Which means if the compromised password string is let say abc123. Then the shasum hash for it would be 61ee8b5601a84d5154387578466c8998848ba089.
+</p>
+<pre class="language-bash line-numbers"><code>
+echo abc123 | shasum
+61ee8b5601a84d5154387578466c8998848ba089  - 
+</code></pre>
+<p>
+   The chance of having the hash 61ee8b5601a84d5154387578466c8998848ba089 in the rainbow table is very high as it is the hash of the
+   common password abc123.But if the password is let say abc123!@#R&* , which is a rare password, then it would not be in the rainbow table.
+   This is the concept that <mark>salt technique</mark> uses.
+<p>
+   In salt, a random generated string is generated at the time of user registration for every user, this random generated string is called
+   salt <strong>1ju831</strong> , which is then concatenated to the password string and then the hash a10e5a763eecda2353867ce864498610449a5312 
+   for it is generated and stored in the database. So, when ever the user logins in with the password, the authentication process will concatenate the password with the salt and then generate the
+   hash to verify with the existing hash in the system. The salt is also stored in plain sight along with the hash. 
+</p>
+
+Before salt
+<pre class="language-bash line-numbers"><code>
+echo abc123 | md5sum
+2c6c8ab6ba8b9c98a1939450eb4089ed  - 
+</code></pre>
+
+After salt
+<pre class="language-bash line-numbers"><code>
+password="abc123"
+salt="1ju831"
+after_concatenate=$password$salt
+cmd="echo $after_concatenate | shasum"
+eval $cmd .                #output a10e5a763eecda2353867ce864498610449a5312
+</code></pre>
+
+
+<p>
+   So, if the hash is compromised the hacker (if he figured out that salt is used ) would have to generate all the hashes for the rainbow table with the new salt to
+   find the password for every user. So, If there are a million common passwords in the rainbow table and if the compromised system
+   has 1000 users, then there would be 1000 salts, which means per user, the hacker has to generate new hash value with salt for a entry in the
+   rainbow table which slows down the cracking process.
+</p>
+<p>
+   And if this user does not use common password, this effort is anyway wasted.
+</p>
+
+<br>
+<h5>Ditionary attack</h5>
+<hr>
+<p> 
+   Here is the hacker uses the dictionary word to generate the hash, similar to concept mentioned rainbow table section, adding
+   a salt would slow down the cracking process. Again if the user does not use the dictionay word as a password , all the
+   effort to generate hash for the dictionary words with the salt is wasted.
+</p>
+
+<br>
+<h5>Bruteforce Attack</h5>
+<hr>
+<p>
+   Here the user uses a very complicated password let say abc123!@#R&* which is neither a common password nor a dictionary 
+   word which means the hacker has to use bruteforce which would take very large time or would never be able to crack. 
+</p>
+
+
+<h4>References</h4>
+<hr>
+<a href="https://www.youtube.com/watch?v=--tnZMuoK3E">Salt</a>

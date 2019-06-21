@@ -1,0 +1,67 @@
+
+-Master
+bpu219@9801a7a49f9f:~|⇒  cd ~/Desktop/compose/spark
+FROM artifactory.cloud.capitalone.com/cof-onelake/ubuntu-c1-base
+
+WORKDIR /opt
+
+COPY OpenJDK8U-jdk_x64_linux_hotspot_8u212b03.tar.gz /opt
+RUN tar -xvzf /opt/OpenJDK8U-jdk_x64_linux_hotspot_8u212b03.tar.gz
+ENV PATH=$PATH:/opt/jdk8u212-b03/bin
+ENV JAVA_HOME=/opt/jdk8u212-b03
+
+COPY spark-2.4.3-bin-hadoop2.7 /opt/spark-2.4.3-bin-hadoop2.7
+EXPOSE 8080 7077
+
+ENTRYPOINT ["/opt/spark-2.4.3-bin-hadoop2.7/sbin/start-master.sh"]
+
+docker run -p 8080:8080 -p 7077:7077 spark-master
+
+-Worker
+FROM artifactory.cloud.capitalone.com/cof-onelake/ubuntu-c1-base
+
+WORKDIR /opt
+
+COPY OpenJDK8U-jdk_x64_linux_hotspot_8u212b03.tar.gz /opt
+RUN tar -xvzf /opt/OpenJDK8U-jdk_x64_linux_hotspot_8u212b03.tar.gz
+ENV PATH=$PATH:/opt/jdk8u212-b03/bin
+ENV JAVA_HOME=/opt/jdk8u212-b03
+
+COPY spark-2.4.3-bin-hadoop2.7 /opt/spark-2.4.3-bin-hadoop2.7
+
+ENTRYPOINT ["/opt/spark-2.4.3-bin-hadoop2.7/sbin/start-slave.sh","192.168.1.64:7077"]
+
+
+-Spark submit
+
+package com.ninjashore.sparkcluster;
+
+import org.apache.spark.sql.SparkSession;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Local Data" );
+//        SparkSession spark = SparkSession
+//                .builder()
+//                .appName("JavaWordCount")
+//                .getOrCreate();
+    }
+}
+
+ <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.12</artifactId>
+      <version>2.4.3</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql_2.12</artifactId>
+      <version>2.4.3</version>
+    </dependency>
+
+
+   ~/Desktop/compose/spark/spare/spark-2.4.3-bin-hadoop2.7/bin/spark-submit --class com.ninjashore.sparkcluster.App 
+--master spark://192.168.1.64:7077  --deploy-mode cluster  ./target/sparkcluster-1.0-SNAPSHOT.jar
