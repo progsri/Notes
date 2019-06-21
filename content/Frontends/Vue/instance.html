@@ -3,26 +3,21 @@
 <h2><strong>Vue Instance</strong></h2>
 <hr>
 
-<h4> index.html </h4>
-<pre class="language-html line-numbers"><code class="language-html">
-    <p>
-        <html>
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
 
-                <body>
-                    <div id="app">
-                        {{product}}
-                    </div>
-                
-                    <!-- The dom has to be loaded first -->
-                    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
-                    <script src="main.js"></script> -->
-                </body>
-                
-                </html>
-</code></pre>
+    &lt;div id="app"&gt;
+        {{product}}
+    &lt;/div&gt;
 
+            &lt;!-- The dom has to be loaded first --&gt;
+            &lt;script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"&gt;&lt;/script&gt;
+            &lt;script src="main.js"&gt;&lt;/script&gt;
+     </code>
+</pre>
 
-<h4> main.js </h4>
+main.js
 <pre class="language-javascript line-numbers"><code>
         var app = new Vue({
             el: '#app',
@@ -33,4 +28,8 @@
         )
 </code></pre>
 
-<img src="./images/instance.png" alt="Mountain View" class="img-responsive"></img>
+<p>on Browser </p>
+<img src="./images/instance.png" class="img-responsive"></img>
+
+<p> on vue console </p>
+<img src="./images/instance-vue.png" class="img-responsive"></img>
