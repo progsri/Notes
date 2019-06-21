@@ -1,0 +1,43 @@
+<h2><strong>Conditional rendering</strong></h2>
+<hr>
+
+<h4><strong>v-if</strong></h4>
+<p>
+    <code>v-if</code> manipulates the dom so that based on the expression outcome it can
+    add or remove the entire html element, It is not a good option in terms of performance
+    to add or element many times, in such cases prefer <code>v-show</code>
+</p>
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+            &lt;div id="app"&gt;
+
+            &lt;img v-bind:src="baseImage" width="10%"&gt;&lt;/img&gt;
+    
+            &lt;h3&gt;{{product}}&lt;/h3&gt;
+    
+            &lt;div v-if="stockQuantity &gt; 10 "&gt;In stock&lt;/div&gt;
+            &lt;div v-else-if="stockQuantity &gt; 0 && stockQuantity &lt; 10 "&gt;out of stock soon&lt;/div&gt;
+            &lt;div v-else&gt;Out of stock&lt;/div&gt;
+    
+        &lt;/div&gt;
+
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                product: 'socks',
+                baseImage: './grey-sock.jpeg',
+                stockQuantity: 9
+            }
+        }
+        )
+</code></pre>
+
+<p>on Browser </p>
+<img src="./images/conditionalRendering.png" class="img-responsive" width="100%"></img>
