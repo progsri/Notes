@@ -56,27 +56,32 @@ function isValid(path) {
 }
 
 function pullNewchanges() {
-  const ls = spawn("git", ["pull"]);
+  try{
+    const ls = spawn("git", ["pull"]);
 
-  ls.stdout.on("data", data => {
-    console.log("GIT stdout " + data);
-    if (data.includes("Already up to date.")) {
-      //console.log("Continue with code");
-      afterGitPull();
-    } else {
-      ///console.log("call again pullNewchanges " + data);
+    ls.stdout.on("data", data => {
+      console.log("GIT stdout " + data);
+      if (data.includes("Already up to date.")) {
+        //console.log("Continue with code");
+        afterGitPull();
+      } else {
+        ///console.log("call again pullNewchanges " + data);
+        c
+      }
+    });
+
+    ls.stderr.on("data", data => {
+      console.log(`GIT stderr: ${data}`);
       pullNewchanges();
-    }
-  });
+    });
 
-  ls.stderr.on("data", data => {
-    console.log(`GIT stderr: ${data}`);
+    ls.on("close", code => {
+      console.log(`Git pull child process exited with code ${code}`);
+    });
+  }catch(err){
     pullNewchanges();
-  });
+  }
 
-  ls.on("close", code => {
-    console.log(`Git pull child process exited with code ${code}`);
-  });
 }
 
 function geMetadata(path, resource) {
