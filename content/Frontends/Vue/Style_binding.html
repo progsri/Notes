@@ -1,0 +1,53 @@
+<h2><strong>Style Binding</strong></h2>
+<hr>
+
+<h4><strong>v-on:style or :style</strong></h4>
+<p>
+    Binds the style attribute of the html element to the data object property  of the vue, in this 
+    case  <mark>baseClass</mark>. Comparing to <mark>:class</mark> which uses static css, with
+    <code>:style</code> we can you json to add or remove the css properties.    
+</p>
+
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+        &lt;div id="app"&gt;
+        &lt;button v-on:click="changeClass"&gt;Change&lt;/button&gt;
+        &lt;div :style="baseClass"&gt;Content&lt;/div&gt;
+        &lt;/div&gt;
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                baseClass: {
+                    width: '320px',
+                    padding: '10px',
+                    border: '50px solid blue',
+                    margin: '0'
+                },
+                styleGray: {
+                    width: '320px',
+                    padding: '10px',
+                    border: '50px solid gray',
+                    margin: '0'
+                }
+            },
+            methods: {
+                changeClass: function () {
+                    this.baseClass = this.styleGray
+                }
+            }
+        }
+        )
+</code></pre>
+
+<p>on Browser </p>
+<img src="./images/styleBinding1.png" class="img-responsive" width="100%"></img>
+
+<p>click on the change button changes color</p>
+<img src="./images/styleBinding2.png" class="img-responsive" width="100%"></img>
