@@ -1,0 +1,50 @@
+<h2><strong>Event Handling</strong></h2>
+<hr>
+
+<h4><strong>v-on</strong></h4>
+<p>
+    Binds to a event handler method. When a event (click / hover / keypress etc ) is trigger on the dom, we attach
+    a method to process that event, in vue that method is under the <code>methods</code>.
+</p>
+<p>
+    In order to access <code>data</code> from the event method, we need to use <code>this</code> as keys under
+    <code>data</code> are registered as instance variables.
+</p>
+<p>
+    shorthand for v-on: is <code>@</code>
+</p>
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+
+        &lt;div id="app"&gt;
+        
+    &lt;img v-bind:src="baseImage" width="10%"&gt;&lt;/img&gt;
+    &lt;h3&gt;{{product}}&lt;/h3&gt;
+    
+    &lt;/div&gt;
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                product: 'socks',
+                baseImage: './grey-sock.jpeg',
+                cart: 0
+            },
+            methods: {
+                add: function () {
+                    this.cart = this.cart + 1  //this refers to the instance value of the app object which has data and that 
+                                                //has cart
+                }
+            }
+        }
+        )
+</code></pre>
+
+<p>on Browser </p>
+<img src="./images/eventHandling.png" class="img-responsive" width="100%"></img>
