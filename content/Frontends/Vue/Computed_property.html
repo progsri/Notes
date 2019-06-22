@@ -1,0 +1,39 @@
+<h2><strong>Computed property</strong></h2>
+<hr>
+
+<p>
+    Adding a property to <code>computed</code> object of vue, it gives the same effect as
+    adding to <code>data</code> except that it would be cached. so if the properties on
+    which computed property does not change then vue pulls it from cache.
+</p>
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+
+    &lt;div id="app"&gt;
+    &lt;div &gt; {{cachedProperty}} &lt;/div &gt;
+    &lt;/div&gt;
+
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                product: "socks",
+                company: "Universal"
+            },
+            computed: {
+                cachedProperty() {
+                    return this.company + " " + this.product
+                }
+            }
+        }
+        )
+</code></pre>
+
+<p>on Browser </p>
+<img src="./images/computedProperty.png" class="img-responsive" width="100%"></img>
