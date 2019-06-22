@@ -1,0 +1,46 @@
+<h2><strong>List rendering</strong></h2>
+<hr>
+
+<h4><strong>v-for</strong></h4>
+<p>
+    <code>v-for</code> used to iterate over a list and display the corresponding html
+    elements and content accordingly.
+</p>
+<p>
+    <code>:key</code> is used by vue to track the elements in the list, I think it uses it to see
+    if a element which is already in the dom needs to be updated.
+ </p>
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+            &lt;div id="app"&gt;
+
+            &lt;div v-for="detail in details" :key="detail.id"&gt;
+                &lt;p&gt;{{detail.feature}}&lt;/p&gt;
+            &lt;/div&gt;
+    
+        &lt;/div&gt;
+
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                product: 'socks',
+                baseImage: './grey-sock.jpeg',
+                stockQuantity: 4,
+                details: [
+                    {id: 1, feature: "all size"},{id:2, feature: "cotton rich"},
+                    {id:3, feature: "machine washable"}
+                ]
+            }
+        }
+        )
+</code></pre>
+
+<p>on Browser </p>
+<img src="./images/listRendering.png" class="img-responsive" width="100%"></img>
