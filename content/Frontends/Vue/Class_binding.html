@@ -1,0 +1,56 @@
+<h2><strong>Class Handling</strong></h2>
+<hr>
+
+<h4><strong>v-on:class or :class</strong></h4>
+<p>
+    Binds the css class selector of the element to the data object property in this case  <mark>baseClass</mark>
+</p>
+
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+
+            .class-gray {
+                width: 320px;
+                padding: 10px;
+                border: 50px solid gray;
+                margin: 0;
+            }
+        
+            .class-blue {
+                width: 320px;
+                padding: 10px;
+                border: 50px solid blue;
+                margin: 0;
+            }
+
+        &lt;div id="app"&gt;
+        &lt;button v-on:click="changeClass"&gt;Change&lt;/button&gt;
+        &lt;div :class="baseClass"&gt;Content&lt;/div&gt;
+        &lt;/div&gt;
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                baseClass: 'class-gray'
+            },
+            methods: {
+                changeClass: function () {
+                    if (this.baseClass === 'class-gray') {
+                        this.baseClass = 'class-blue'
+                    } else {
+                        this.baseClass = 'class-gray'
+                    }
+                }
+            }
+        }
+        )
+</code></pre>
+
+<p>on Browser </p>
+<img src="./images/classBinding.png" class="img-responsive" width="100%"></img>
