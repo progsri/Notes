@@ -1,0 +1,40 @@
+<h2><strong>Two way binding</strong></h2>
+<hr>
+
+<h4><strong>v-model</strong></h4>
+<p>
+    <code>v-model</code> binds the data object property to the user input of the input element and also binds the user
+    input to the vue's data object property.
+</p>
+
+
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+
+    &lt;div id="app"&gt;
+    &lt;input v-model="userInput" type="text"&gt;
+    &lt;br&gt;
+    {{userInput}}
+    &lt;/div&gt;
+
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            userInput: "initial value"
+        }
+    }
+    )
+</code></pre>
+
+<p>on Browser </p>
+<video width="800" controls>
+    <source src="./images/twoWayBinding.webm" type="video/webm">
+    Your browser does not support HTML5 video.
+</video>
