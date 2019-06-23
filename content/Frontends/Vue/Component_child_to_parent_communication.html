@@ -1,0 +1,75 @@
+<h2><strong>Component</strong></h2>
+<hr>
+
+<h4><strong>Child to parent communication</strong></h4>
+<p>
+    <code>$emit</code> is used to emit a event from child component to parent component. Which
+    takes the mandatory first argument as the name of the emit, in this case <mark>name-of-the-emit
+    </mark> and additional arguments are optional.
+</p>
+<p>
+    <mark>@name-of-the-emit</mark> tells what event to expect from  the child  sometimes there are multiple
+    events coming from the child and what method to call on the parent component if that event occured. 
+</p>
+
+
+
+index.html
+<pre class="language-html line-numbers">
+    <code class="language-html">
+
+    &lt;div id="app"&gt;
+    &lt;div&gt;{{fromParent}}&lt;/div&gt;
+    &lt;product @name-of-the-emit="handleEmit"&gt;&lt;/product&gt;
+
+    &lt;/div&gt;
+
+     </code>
+</pre>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+    
+
+Vue.component('product', {
+    template: `
+    &lt;div&gt;
+    &lt;button @click="emitSignal"&gt; Signal Parent&lt;/button&gt;
+&lt;/div&gt;
+    `,
+    data() {
+        return {
+            fromComponent: "child component data"
+        }
+    },
+    methods: {
+        emitSignal() {
+            this.$emit("name-of-the-emit", "data to be sent to parent")
+        }
+    },
+    computed: {
+
+    }
+})
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        fromParent: "parent component data"
+    },
+    methods: {
+        handleEmit(value) {
+            this.fromParent = value
+        }
+    }
+}
+)
+
+
+</code></pre>
+
+<p>on Browser </p>
+<video width="800" controls>
+    <source src="./images/childToParentCommunication.webm" type="video/webm">
+    Your browser does not support HTML5 video.
+</video>
