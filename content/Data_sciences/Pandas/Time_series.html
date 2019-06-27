@@ -1,7 +1,9 @@
 <h2><strong>Time Series</strong></h2>
 <hr>
 
-<h4><strong>Timestamp type</strong></h4>
+<h4><strong>Timestamp</strong></h4>
+
+One of the data structure for representing <mark>single value</mark> time-series data 
 <pre class="language-python line-numbers"><code>
 import pandas as pd
 a = pd.to_datetime('2019-01-15 3:45pm')
@@ -23,4 +25,19 @@ print(type(c))  # Type of c
 2019-12-01 00:00:00
 
 class 'pandas._libs.tslibs.timestamps.Timestamp'
+</code></pre>
+
+<h4><strong>DatetimeIndex</strong></h4>
+One of the data structure for representing <mark>lists</mark> time-series data 
+<pre class="language-python line-numbers"><code>
+import pandas as pd
+
+a = pd.to_datetime(['2018-01-05', '7/8/1952', 'Oct 10, 1995'])
+print(a)
+print(type(a))
+</code></pre>
+
+<pre class="language-shell line-numbers"><code>
+DatetimeIndex(['2018-01-05', '1952-07-08', '1995-10-10'], dtype='datetime64[ns]', freq=None)
+class 'pandas.core.indexes.datetimes.DatetimeIndex'
 </code></pre>
