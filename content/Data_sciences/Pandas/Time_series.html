@@ -1,1 +1,26 @@
-A
+<h2><strong>Time Series</strong></h2>
+<hr>
+
+<h4><strong>Timestamp type</strong></h4>
+<pre class="language-python line-numbers"><code>
+import pandas as pd
+a = pd.to_datetime('2019-01-15 3:45pm')
+print(a)
+
+b = pd.to_datetime('2019/01/12')
+print(b)
+
+c = pd.to_datetime('01/12/2019', dayfirst=True)
+print(c)
+
+print(type(c))  # Type of c
+</code></pre>
+
+
+<pre class="language-shell line-numbers"><code>
+2019-01-15 15:45:00
+2019-01-12 00:00:00
+2019-12-01 00:00:00
+
+<class 'pandas._libs.tslibs.timestamps.Timestamp'>
+</code></pre>
