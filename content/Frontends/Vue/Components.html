@@ -20,10 +20,13 @@
     <mark>tochild</mark>, then child component can access the value sent from parent using <code>{{tochild}}</code>
 </p>
 
+<h4><strong>Why in child component the data object should be a function</strong></h4>
+<p>
+    So that the data object would be in local scope for each component.
+</p>
 
 <pre>
 <p class="text-danger">
-Why in child component the data object should be a function.
 Always <code>Vue.component</code> should be called before creating vue instance.
 </p>
 </pre>
