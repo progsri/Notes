@@ -1,0 +1,79 @@
+<h4><strong>Slots</strong></h4>
+<hr>
+
+<p>
+  Slots can used to pass specific html elements from the parent.
+</p>
+
+<p>
+ Style can be changed/ added from the child component. ( Might be changing )
+</p>
+
+<p>
+ If slot is not passed, we can have the default content to display in the child template.
+</p>
+
+<pre class="language-javascript line-numbers"><code>
+import Vue from 'vue'
+import App from './App.vue'
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+
+</code></pre>
+
+App.vue
+<pre class="language-javascript line-numbers"><code>
+<template>
+  <div>
+    <child>
+      <p slot="slot-one">Slot one replaced</p>
+      <p slot="slot-three">Slot three replaced</p>
+    </child>
+  </div>
+</template>
+
+<script>
+import Child from "./Child";
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    child: Child
+  }
+};
+</script>
+
+<style>
+</style>
+</code></pre>
+
+Child.vue
+<pre class="language-javascript line-numbers"><code>
+<template>
+  <div>
+    <p>This is first line</p>
+    <slot name="slot-one"></slot>Before default slot
+    <slot name="slot-two">This is the content if the named slot was not passed.</slot>
+    <p>This is another line</p>
+    <slot name="slot-three"></slot>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {};
+  }
+};
+</script>
+
+<style>
+</style>
+</code></pre>
+
+on Browser
+<imge src="./images/slots.png"></img>
