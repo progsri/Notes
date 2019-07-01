@@ -16,14 +16,14 @@ new Vue({
 
 App.vue
 <pre class="language-javascript line-numbers"><code>
-<template>
-  <div>
+&lt;template&gt;
+  &lt;div&gt;
     {{parent}}
-    <child :pass1="parent"></child>
-  </div>
-</template>
+    &lt;child :pass1="parent"&gt;&lt;/child&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<script>
+&lt;script&gt;
 import Child from "./Child";
 
 export default {
@@ -36,26 +36,26 @@ export default {
     child: Child
   }
 };
-</script>
+&lt;/script&gt;
 
-<style>
-</style>
+&lt;style&gt;
+&lt;/style&gt;
 </code></pre>
 
 Child.vue
 <pre class="language-javascript line-numbers"><code>
-<template>
-  <div>
-    <hr>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;hr&gt;
     {{child}}
-    <br>
+    &lt;br&gt;
     {{pass1}}
-    <br>
-    <button @click="changeParent">change parent</button>
-  </div>
-</template>
+    &lt;br&gt;
+    &lt;button @click="changeParent"&gt;change parent&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<script>
+&lt;script&gt;
 export default {
   props: ["pass1"],
   data() {
@@ -69,10 +69,11 @@ export default {
     }
   }
 };
-</script>
+&lt;/script&gt;
 
-<style>
-</style>
+&lt;style&gt;
+&lt;/style&gt;
+
 
 </code></pre>
 
