@@ -26,16 +26,16 @@ new Vue({
 
 App.vue
 <pre class="language-javascript line-numbers"><code>
-<template>
-  <div>
-    <child>
-      <p slot="slot-one">Slot one replaced</p>
-      <p slot="slot-three">Slot three replaced</p>
-    </child>
-  </div>
-</template>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;child&gt;
+      &lt;p slot="slot-one"&gt;Slot one replaced&lt;/p&gt;
+      &lt;p slot="slot-three"&gt;Slot three replaced&lt;/p&gt;
+    &lt;/child&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<script>
+&lt;script&gt;
 import Child from "./Child";
 export default {
   data() {
@@ -45,34 +45,34 @@ export default {
     child: Child
   }
 };
-</script>
+&lt;/script&gt;
 
-<style>
-</style>
+&lt;style&gt;
+&lt;/style&gt;
 </code></pre>
 
 Child.vue
 <pre class="language-javascript line-numbers"><code>
-<template>
-  <div>
-    <p>This is first line</p>
-    <slot name="slot-one"></slot>Before default slot
-    <slot name="slot-two">This is the content if the named slot was not passed.</slot>
-    <p>This is another line</p>
-    <slot name="slot-three"></slot>
-  </div>
-</template>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;This is first line&lt;/p&gt;
+    &lt;slot name="slot-one"&gt;&lt;/slot&gt;Before default slot
+    &lt;slot name="slot-two"&gt;This is the content if the named slot was not passed.&lt;/slot&gt;
+    &lt;p&gt;This is another line&lt;/p&gt;
+    &lt;slot name="slot-three"&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<script>
+&lt;script&gt;
 export default {
   data() {
     return {};
   }
 };
-</script>
+&lt;/script&gt;
 
-<style>
-</style>
+&lt;style&gt;
+&lt;/style&gt;
 </code></pre>
 
 on Browser
