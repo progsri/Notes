@@ -95,16 +95,15 @@ new Vue({
 
 App.vue
 <pre class="language-javascript line-numbers"><code>
-<template>
-  <div>
+&lt;template&gt;
+  &lt;div&gt;
     {{parent}}
-    <child :change="changeCallback"></child>
-  </div>
-</template>
+    &lt;child :change="changeCallback"&gt;&lt;/child&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<script>
+&lt;script&gt;
 import Child from "./Child";
-
 export default {
   data() {
     return {
@@ -120,25 +119,25 @@ export default {
     }
   }
 };
-</script>
+&lt;/script&gt;
 
-<style>
-</style>
+&lt;style&gt;
+&lt;/style&gt;
 
 </code></pre>
 
 Child.vue
 <pre class="language-javascript line-numbers"><code>
-<template>
-  <div>
-    <hr>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;hr&gt;
     {{child}}
-    <br>
-    <button @click="changeParent">change parent</button>
-  </div>
-</template>
+    &lt;br&gt;
+    &lt;button @click="changeParent"&gt;change parent&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<script>
+&lt;script&gt;
 export default {
   props: {
     change: Function
@@ -154,10 +153,10 @@ export default {
     }
   }
 };
-</script>
+&lt;/script&gt;
 
-<style>
-</style>
+&lt;style&gt;
+&lt;/style&gt;
 
 </code></pre>
 
