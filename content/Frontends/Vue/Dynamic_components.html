@@ -18,6 +18,40 @@
 
 App.vue
 <pre class="language-javascript line-numbers><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click="selected = 'comp1'"&gt;Component 1 button&lt;/button&gt;
+    &lt;button @click="selected = 'comp2'"&gt;Component 2 button&lt;/button&gt;
+    &lt;button @click="selected = 'comp3'"&gt;Component 3 button&lt;/button&gt;
+
+    &lt;br&gt;
+    &lt;br&gt;
+    selected :: {{selected}}
+    &lt;component :is="selected"&gt;&lt;/component&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import Component1 from "./Component1";
+import Component2 from "./Component2";
+import Component3 from "./Component3";
+
+export default {
+  data() {
+    return {
+      selected: "comp1"
+    };
+  },
+  components: {
+    comp1: Component1,
+    comp2: Component2,
+    comp3: Component3
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
 
 
 </code></pre>
@@ -25,17 +59,91 @@ App.vue
 Component1.vue
 <pre class="language-javascript line-numbers><code>
 
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;Component 1 is being displayed&lt;/h3&gt;
+    &lt;button @click="counter = counter + 1"&gt;Increment&lt;/button&gt;
+    {{counter}}
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      counter: 0
+    };
+  },
+  created() {
+    console.log("Component 1 is created");
+  },
+  destroyed() {
+    console.log("Component 1 is destroyed");
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
 
 </code></pre>
 
 Component2.vue
 <pre class="language-javascript line-numbers><code>
+&lt;template&gt;
+  &lt;div &gt;
+       &lt;h3&gt;Component 2 is being displayed&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+
+  data () {
+    return {
+     
+    }
+  },
+  created() {
+    console.log('Component 2 is created')
+  },
+  destroyed() {
+    console.log('Component 2 is destroyed')
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
 
 
 </code></pre>
 
 Component3.vue
 <pre class="language-javascript line-numbers><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;Component 3 is being displayed&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {};
+  },
+  created() {
+    console.log("Component 3 is created");
+  },
+  destroyed() {
+    console.log("Component 3 is destroyed");
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
 
 
 </code></pre>
