@@ -1,0 +1,41 @@
+<h2></strong>Dynamic Components</strong></h2>
+<hr>
+
+<p>
+  These are used to display components only when required instead of displaying all the components.
+</p>
+
+<p>
+  <code> &lt;component :is=""&gt; &lt;component&gt; </code> is used to create dynamic components. <code> :is </code>
+  takes the string which is the naeme of the component to display. This string is the key in the <code>components</code>
+<p>
+
+<p>
+  Each time when we move to a new component, the old component gets destroyed and a new component is created, this can be 
+  observed using the components life cycle methods <mark>created</mark> and <mark>destroyed</mark>. This is the <mark> default
+  </mark> behaviour, which can be replaced using <code> keep-alive </code>
+</p>
+
+App.vue
+<pre class="language-javascript line-numbers><code>
+
+
+</code></pre>
+
+Component1.vue
+<pre class="language-javascript line-numbers><code>
+
+
+</code></pre>
+
+Component2.vue
+<pre class="language-javascript line-numbers><code>
+
+
+</code></pre>
+
+Component3.vue
+<pre class="language-javascript line-numbers><code>
+
+
+</code></pre>
