@@ -1,6 +1,10 @@
 <h2><strong>Custom Directive</strong></h2>
 
 <h4><strong>Basic global custom component</strong></h4>
+<p><code>Vue.directive</code> registers the directive globally.</p>
+<p><code>bind</code> is the one of the life cycle hook, where <mark>el</mark> gives access to the root id in this case
+ <mark>#app</mark></p>
+<p>Here color-background is a custom directive that changes the background color. </p>
 
 main.js
  <pre class="language-javascript line-numbers"><code>
@@ -21,3 +25,26 @@ new Vue({
 
  
  </pre></code>
+
+App.vue
+<pre class="language-javascript line-numbers"><code>
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p v-color-background&gt;In Component&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {};
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+
+</pre></code>
