@@ -1,0 +1,23 @@
+<h2><strong>Custom Directive</strong></h2>
+
+<h4><strong>Basic global custom component</strong></h4>
+
+main.js
+ <pre class="language-javascript line-numbers"><code>
+ 
+ import Vue from 'vue'
+import App from './App.vue'
+
+Vue.directive("color-background", {
+  bind(el, binding, vnode) {
+    el.style.background = "red";
+  }
+});
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+
+ 
+ </pre></code>
