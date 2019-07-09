@@ -135,3 +135,40 @@ On Browser
 
 On Browser
 <img src="./images/customDirectiveModifier.png" class="img-responsive" width="100%"></img>
+</hr>
+
+<h4><strong>Local custom directive </strong></h4>
+<p> To make the component custom, do not use <mark>Vue.directive</mark>, instead use <mark>directives</mark>
+  property in the component as seen below.
+</p>
+
+ <pre class="language-javascript line-numbers"><code>
+ &lt;template&gt;
+  &lt;div&gt;
+    &lt;p v-color-background&gt;In Component&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {};
+  },
+  directives:{
+    'color-background': {
+      bind(el, binding, vnode) {
+      el.style.background = binding.arg;
+
+      if (binding.modifiers['yellow']){
+        el.style.color = 'yellow';
+      }
+    }
+    }
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+ </code></pre>
