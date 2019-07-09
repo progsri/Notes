@@ -55,7 +55,7 @@ On Browser
 </hr>
 
 <h4><strong>Passing simple values</strong></h4>
-<p>You can pass simple values to the directive using the <code>binding</code>, observe the usage of <mark>"'blue'"
+<p>You can pass simple values to the directive using the <code>binding.value</code>, observe the usage of <mark>"'blue'"
 single and double quotes, as we want to pass a string with out the single quotes, vue would starting looking for
 key called blue.
 </mark></p>
@@ -92,5 +92,22 @@ On Browser
 
 On Browser
 <img src="./images/customDirectivesComplexValue.png" class="img-responsive" width="100%"></img>
+</hr>
 
+<h4><strong>Passing arguments</strong></h4>
+<p><code>binding.arg</code> gets the custom directive's argument value as a string</p>
+
+ <pre class="language-javascript line-numbers"><code>
+   bind(el, binding, vnode) {
+    el.style.background = binding.arg;
+  }
+ </code></pre>
+
+ <pre class="language-javascript line-numbers"><code>
+  &lt;p v-color-background:grey&gt;In Component&lt;/p&gt;
+ </code></pre>
+
+
+On Browser
+<img src="./images/customDirectiveArgument.png" class="img-responsive" width="100%"></img>
 
