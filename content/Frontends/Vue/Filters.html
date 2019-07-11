@@ -1,0 +1,51 @@
+<h2><strong>Filters</strong></h2>
+<hr>
+
+<p> Lets you apply a function to the value. </p>
+
+<h4><strong> Local Filter </strong></h4>
+<p> This is only visible to that component the filter is defined at </p>
+
+<pre class="language-javascript line-numbers"><code>
+
+import Vue from 'vue'
+import App from './App.vue'
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+</code></pre>
+
+App.vue
+<pre class="language-javascript line-numbers"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    Value
+    &lt;input v-model="value" type="text" /&gt;
+    &lt;p&gt;After filter :: {{value |  upper}}  &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      value: ""
+    };
+  },
+  filters:{
+    upper: function(entry) {
+      return entry.toUpperCase();
+    }
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+</code></pre>
+
+on Browser
+<img src="./images/filterLocal.png">
