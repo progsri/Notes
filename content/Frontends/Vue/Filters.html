@@ -96,3 +96,41 @@ export default {
 
 on Browser
 <img src="./images/filterGlobal.png">
+
+<h4><strong> Using computed property instead of filter </strong></h4>
+<p> <mark>computed</mark> property can also be used instead of filters.</p>
+<p> In the below only if <mark>this.value</mark> changes then the computed property will be recalculated</p>
+
+App.vue
+<pre class="language-javascript line-numbers"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    Value
+    &lt;input v-model="value" type="text" /&gt;
+    &lt;p&gt;After filter :: {{upper}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      value: ""
+    };
+  },
+  computed: {
+    upper: function() {
+      return this.value.toUpperCase();
+    }
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+
+</code></pre>
+
+on Browser
+<img src="./images/nofilterComputed.png">
