@@ -1,0 +1,86 @@
+<h2><strong> Mixins </strong></h2>
+<hr>
+
+<p> Mixins helps to elimiate code duplication</p>
+<p> we can have all the properties for the components (data, computed, methods, filters etc ) in the mixin</p>
+<p> Effects from one component does effect other components...so mixins are locally scoped.</p>
+<p> It is possible to have global mixin, however they should be used only for plugins to integrated with thrid party</p>
+
+main.js
+<pre class="language-javascript line-numbers"><code>
+import Vue from 'vue'
+import App from './App.vue'
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+
+</code></pre>
+
+App.vue
+<pre class="language-javascript line-numbers"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;sample&gt;&lt;/sample&gt;
+    &lt;sample&gt;&lt;/sample&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import Sample from "./Sample.vue";
+
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    sample: Sample
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre>
+
+Sample.vue
+<pre class="language-javascript line-numbers"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    {{text}}
+    &lt;input v-model="text"&gt;
+    &lt;hr&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import {genMixin} from "./generalMixin"
+
+export default {
+  mixins: [genMixin],
+  data() {
+    return {};
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+&lt;/style&gt;
+</code></pre>
+
+generalMixin.js
+<pre class="language-javascript line-numbers"><code>
+export const genMixin = {
+    data(){
+        return {
+            text: "from mixin"
+        }
+    }
+};
+
+</code></pre>
+
+on Browser
+<img src="./images/generalMixin.png">
