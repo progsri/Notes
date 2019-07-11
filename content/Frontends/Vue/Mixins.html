@@ -86,3 +86,58 @@ export const genMixin = {
 
 on Browser
 <img src="./images/generalMixin.png">
+
+
+<h4><strong>Order of execution</strong></h4>
+<p> we have add the <code>created()</code> lifecycfle hook both in the mixin and the component. Observe that 
+  it first gets executed in the mixin and then the component. since we have 2 components there will be 4 console.log 
+  statements
+</p>
+
+Sample.vue
+<pre class="language-javascript line-numbers"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    {{text}}
+    &lt;input v-model="text"&gt;
+    &lt;hr&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import {genMixin} from "./generalMixin"
+
+export default {
+  mixins: [genMixin],
+  data() {
+    return {};
+  },
+  created() {
+    console.log("life cycle - created - from sample component");
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+&lt;/style&gt;
+</code></pre>
+
+generalMixin.js
+<pre class="language-javascript line-numbers"><code>
+export const genMixin = {
+    data(){
+        return {
+            text: "from mixin"
+        }
+    },
+  created() {
+    console.log("life cycle - created - from sample component");
+  }
+};
+
+</code></pre>
+
+on Browser
+<img src="./images/orderMixin.png">
+
