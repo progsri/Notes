@@ -1,6 +1,43 @@
 <h2><strong>Static behavior</strong></h2>
+<hr>
 
+<h4><strong> Wrapper static variables </strong></h4>
 <p>
-  static variables that declared before the static blocks are initialized before static block gets executed, the order of
-  instantiation of these static variables ( memory allocation ) happens at the time where <code> new </code> gets executed.
+  Wrapper static variables that declared after the static blocks are initialized before static block gets executed, the order of
+  instantiation of these Wrapper static variables ( memory allocation ) happens at the time where <code> new </code> gets executed.
 </p>
+
+<h4><strong> Primitive static variables </strong></h4>
+<p>
+  Primitive static variables that declared before the static blocks are initialized before static block gets executed, the order of
+  instantiation of these Wrapper static variables ( memory allocation ) happens at the time where <code> new </code> gets executed.
+</p>
+
+<pre class="language-java line-numbers"><class>
+
+public class App {
+
+    public static  String staticVarBeforeblock = "Static Variable"; // initialized and instantiated
+
+    static{
+        System.out.println("");
+    }
+
+    public static  String staticVarAfterBlock = "Static Variable"; // only initialized
+
+    public static Integer wrapperValue = new Integer(2);     // only initialized
+
+    public static final Integer finalWrapperValue = new Integer(10);     // only initialized
+
+    public static int primitiveValue = 44; // initialized and instantiated with default value 0
+
+    public static final int finalPrimitiveValue = 22;  // initialized and instantiated with final  value 22
+
+    public static void main(String[] args){
+
+    }
+
+}
+
+
+</class></pre>
