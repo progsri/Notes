@@ -7,5 +7,28 @@
 <h4></strong>java.util.function.Supplier<T> </h4></strong>
 <p> 
 This is a one of the function interface, <mark> Supplier<T> </mark> takes no arguments and always returns a value. To get
-the return value use <mark>get()</mark>, this would return value of Type <mark>T</mark>.  
+the return value use <mark>get()</mark>, this would return value of type <mark>T</mark>.  
 </p>
+<p>
+  The lambda expression such as <code> () -> customMethod() </code> does not take any argument and return a value of type T.
+  So it always return a Supplier<T>.
+</p>
+
+<pre class="language-java line-numbers"><code>
+
+ static String test(String a){
+        return a;
+ }
+ 
+  static String test(){
+        return new Date().toString();
+ }
+
+ Supplier<String> s1 = () -> test("some value");
+ s1.get(); // a
+ 
+ Supplier<String> s2 = () -> test("some value");
+ s2.get(); // return date in string format
+ 
+ 
+</code></pre>
