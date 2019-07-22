@@ -1,0 +1,41 @@
+<h2><strong>Exit Codes </strong> </h2>
+<hr>
+
+signal	shutdown	runs hook	exit code	comment
+default (15)	yes	yes	143	SIGTERM is the default unix kill signal
+0	no	-	-	
+1 (SIGHUP)	yes	yes	129	
+2 (SIGINT)	yes	yes	130	SIGINT is the signal sent on ^C
+3 (SIGQUIT)	no	-	-	Makes the JVM dump threads / stack-traces
+4 (SIGILL)	yes	no	134	Makes the JVM write a core dump and abort on trap 6
+5	yes	no	133	Makes the JVM exit with "Trace/BPT trap: 5"
+6 (SIGABRT)	yes	no	134	Makes the JVM exit with "Abort trap: 6"
+7	yes	no	135	Makes the JVM exit with "EMT trap: 7"
+8 (SIGFPE)	yes	no	134	Makes the JVM write a core dump and abort on trap 6
+9 (SIGKILL)	yes	no	137	The JVM is forcibly killed (exits with "Killed: 9")
+10 (SIGBUS)	yes	no	134	Emulates a "Bus Error"
+11 (SIGSEGV)	yes	no	134	Emulates a "Segmentation fault"
+12	yes	no	140	Makes the JVM exit with "Bad system call: 12"
+13	no	-	-	
+14	yes	no	142	Makes the JVM exit with "Alarm clock: 14"
+15 (SIGTERM)	yes	yes	143	This is the default unix kill signal
+16	no	-	-	
+17	no	-	145	Stops the application (sends it to the background), same as ^Z
+18	no	-	146	Stops the application (sends it to the background), same as ^Z
+19	no	-	-	
+20	no	-	-	
+21	no	-	149	Stops the application (sends it to the background), same as ^Z
+22	no	-	150	Stops the application (sends it to the background), same as ^Z
+23	no	-	-	
+24	yes	no	152	Makes the JVM exit with "Cputime limit exceeded: 24"
+25	no	-	-	
+26	yes	no	154	Makes the JVM exit with "Virtual timer expired: 26"
+27	yes	no	155	Makes the JVM exit with "Profiling timer expired: 27"
+28	no	-	-	
+29	no	-	-	
+30	yes	no	158	Makes the JVM exit with "User defined signal 1: 30"
+31	yes	no	134	Makes the JVM exit on Segmentation fault
+
+<hr>
+<h2><strong> References </strong> </h2>
+<a href="http://journal.thobe.org/2013/02/jvms-and-kill-signals.html">http://journal.thobe.org/2013/02/jvms-and-kill-signals.html</a>
