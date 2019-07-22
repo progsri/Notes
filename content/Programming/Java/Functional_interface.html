@@ -38,6 +38,9 @@ the return value use <mark>get()</mark>, this would return value of type <mark>T
 <p>
    In the below code <code> ConsumerFunction::test </code> automatically creates the Supplier Function.
 </p>
+<p>
+  <code>::</code> works for both instance ans static methods.
+</p>
 
 <pre class="language-java line-numbers"><code>
 public class SupplierFunction {
@@ -55,7 +58,25 @@ public class SupplierFunction {
 }
 </code></pre>
 
-<h4></strong>java.util.function.Consumber </h4></strong>
+<h4></strong>java.util.function.Consumer<T> </h4></strong>
 <p> 
-
+  <code>Consumer</code> takes a argument and does not return any value. Type T is the type of argument it takes.
+  To pass an argument use <code> accept </code> method
 </p>
+
+<pre class="language-java line-numbers"><code>
+public class ConsumerFunction {
+
+    static void test(String value){
+        System.out.println(new Date().toString());
+    }
+
+    public static void main(String args[])
+    {
+       Consumer<String> c1 = ConsumerFunction::test;
+       c1.accept("something"); // Calls the test method at this point, when it takes the argument
+    }
+
+}
+
+</code></pre>
