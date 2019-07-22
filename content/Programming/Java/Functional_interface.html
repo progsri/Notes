@@ -40,7 +40,7 @@ the return value use <mark>get()</mark>, this would return value of type <mark>T
 </p>
 
 <pre class="language-java line-numbers"><code>
-public class ConsumerFunction {
+public class SupplierFunction {
 
     static String test(){
         return new Date().toString();
@@ -48,9 +48,14 @@ public class ConsumerFunction {
 
     public static void main(String args[])
     {
-       Supplier<String> s1 = ConsumerFunction::test;
+       Supplier<String> s1 = SupplierFunction::test;
        s1.get();
     }
 
 }
 </code></pre>
+
+<h4></strong>java.util.function.Consumber </h4></strong>
+<p> 
+
+</p>
