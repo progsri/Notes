@@ -4,7 +4,7 @@
 <p> Found in <code>  java.util.function; </code> java package.
 
 
-<h4></strong>java.util.function.Supplier<T> </h4></strong>
+<h4></strong>java.util.function.Supplier<T> using lambda expression </h4></strong>
 <p> 
 This is a one of the functional interface, <mark> Supplier<T> </mark> takes no arguments and always returns a value. To get
 the return value use <mark>get()</mark>, this would return value of type <mark>T</mark>.  
@@ -31,4 +31,26 @@ the return value use <mark>get()</mark>, this would return value of type <mark>T
  s2.get(); // return date in string format
  
  
+</code></pre>
+<hr>
+
+<h4></strong>java.util.function.Supplier<T> using method reference operator ( :: ) </h4></strong>
+<p>
+   In the below code <code> ConsumerFunction::test </code> automatically creates the Supplier Function.
+</p>
+
+<pre class="language-java line-numbers"><code>
+public class ConsumerFunction {
+
+    static String test(){
+        return new Date().toString();
+    }
+
+    public static void main(String args[])
+    {
+       Supplier<String> s1 = ConsumerFunction::test;
+       s1.get();
+    }
+
+}
 </code></pre>
