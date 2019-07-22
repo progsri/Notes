@@ -13,6 +13,9 @@ the return value use <mark>get()</mark>, this would return value of type <mark>T
   The lambda expression such as <code> () -> customMethod() </code> does not take any argument and return a value of type T.
   So it always return a Supplier<T>.
 </p>
+<p>
+  Call to the method <mark> test </mark> actually happens when <code>get()</code> is called.   
+</p>
 
 <pre class="language-java line-numbers"><code>
 
@@ -62,6 +65,9 @@ public class SupplierFunction {
 <p> 
   <code>Consumer</code> takes a argument and does not return any value. Type T is the type of argument it takes.
   To pass an argument use <code> accept </code> method
+</p>
+<p>
+  Call to the method <mark> test </mark> actually happens when <code>get()</code> is called.   
 </p>
 
 <pre class="language-java line-numbers"><code>
