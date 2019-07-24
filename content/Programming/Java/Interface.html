@@ -5,7 +5,7 @@ package com.ninjashore.defaultInterface;
 
 public interface InterfaceType {
 
-    public void m1();  // can be overridden
+    public void m1();  // has to be implemented / overridden
                        // needs a instance to access this
 
     public  String value = "initial"; // always static ( can be see only by the interface static method )
@@ -43,7 +43,7 @@ public class ClassType implements InterfaceType {
     }
 
     @Override
-    public void m2() {   //if not defined ... call the interface default method
+    public void m2() {   //if not defined ... calls the interface default method
         System.out.println("in c1 m2");
     }
 
