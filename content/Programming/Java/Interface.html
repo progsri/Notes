@@ -1,33 +1,44 @@
 <h2><strong>Interface</strong></h2>
 
+<p class="text-danger">
+all the fields and methods are public in terms of access modifier..why ??
+</p>
+
 <pre class="language-java line-numbers"><code>
 package com.ninjashore.defaultInterface;
 
 public interface InterfaceType {
 
-    public void m1();  // has to be implemented / overridden
+    // Observe that all the fields and methods are public in terms of access modifier
+
+    void m1();  // can be overridden
                        // needs a instance to access this
 
-    public  String value = "initial"; // always static ( can be see only by the interface static method )
+    String value = "interface varibale that is always static and final";
+                                       // always static ( can be see only by the interface static method )
                                       // always final  ( cannot be modified by any one )
                                       // Interface cannot have non static variable or instance variable as it cannot be instantiated.
+                                      // can be accessed by the default method declared in the interface
 
-    public static void sm2(){  // cannot be overridden
+    static void sm2(){  // cannot be overridden
                                // Does not need a instance to access, can be accessed as InterfaceType.sm2()
                                // new in java 8
-        System.out.println("in sm2");
+        System.out.println("in interface static method sm2");
         //value = "modified"; //would not work as this is a final variable
     }
 
     default void m2(){  // can be overridden
                         // needs a instance to access this
-                        // new in Java 8
-        System.out.println("interface m2");
+                        // new in Java 8 called a default method
+        System.out.println("in interface m2");
+    }
+
+    default void m3(){
+        System.out.println("in interface m3");
+        System.out.println( value); // To show interface variable can be accessed by the default methods
 
     }
 }
-
-
 
 </code></pre>
 
@@ -39,31 +50,38 @@ public class ClassType implements InterfaceType {
 
     @Override
     public void m1() {
-        System.out.println("m1");
+        System.out.println("in class m1");
     }
 
     @Override
-    public void m2() {   //if not defined ... calls the interface default method
-        System.out.println("in c1 m2");
+    public void m2() {   //if not defined ... call the interface default method
+        System.out.println("in class m2");
     }
 
     public static void main(String[] args){
 
         InterfaceType c1 = new ClassType();
         c1.m1();
+
         InterfaceType.sm2();
+
         System.out.println(InterfaceType.value);
+
+
         c1.m2();
+
+        c1.m3();
 
     }
 }
 
-
 </code></pre>
 
 <pre class="language-shell line-numbers"><code>
-m1
-in sm2
-initial
-in c1 m2
+in class m1
+in interface static method sm2
+interface varibale that is always static and final
+in class m2
+in interface m3
+interface varibale that is always static and final
 </code></pre>
