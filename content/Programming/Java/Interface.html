@@ -1,0 +1,69 @@
+<h2><strong>Interface</strong></h2>
+
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.defaultInterface;
+
+public interface InterfaceType {
+
+    public void m1();  // can be overridden
+                       // needs a instance to access this
+
+    public  String value = "initial"; // always static ( can be see only by the interface static method )
+                                      // always final  ( cannot be modified by any one )
+                                      // Interface cannot have non static variable or instance variable as it cannot be instantiated.
+
+    public static void sm2(){  // cannot be overridden
+                               // Does not need a instance to access, can be accessed as InterfaceType.sm2()
+                               // new in java 8
+        System.out.println("in sm2");
+        //value = "modified"; //would not work as this is a final variable
+    }
+
+    default void m2(){  // can be overridden
+                        // needs a instance to access this
+                        // new in Java 8
+        System.out.println("interface m2");
+
+    }
+}
+
+
+
+</code></pre>
+
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.defaultInterface;
+
+public class ClassType implements InterfaceType {
+
+
+    @Override
+    public void m1() {
+        System.out.println("m1");
+    }
+
+    @Override
+    public void m2() {   //if not defined ... call the interface default method
+        System.out.println("in c1 m2");
+    }
+
+    public static void main(String[] args){
+
+        InterfaceType c1 = new ClassType();
+        c1.m1();
+        InterfaceType.sm2();
+        System.out.println(InterfaceType.value);
+        c1.m2();
+
+    }
+}
+
+
+</code></pre>
+
+<pre class="language-shell line-numbers"><code>
+m1
+in sm2
+initial
+in c1 m2
+</code></pre>
