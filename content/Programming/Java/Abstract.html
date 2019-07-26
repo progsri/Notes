@@ -98,6 +98,9 @@ public class SubClass extends AbstractClass {
         System.out.println("in SubClass static method m2 ");
     }
 
+     /*
+        1. Implementing the abstract method
+     */
     public void m3(){
         System.out.println("in SubClass m3");
     }
@@ -107,11 +110,11 @@ public class SubClass extends AbstractClass {
         SubClass s1 = new SubClass();
         System.out.println(s1.var1);
 
-        s1.m1();
+        s1.m1(); //calling the ovverridden instance method
 
-        AbstractClass.m2();
+        AbstractClass.m2(); //calling the static method of the abstract class
 
-        m2();
+        m2();  //calling the ovverridden static method
 
         s1.m3(); //implementing abstract method m3
     }
