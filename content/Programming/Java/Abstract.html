@@ -41,7 +41,7 @@ public abstract class AbstractClass {
     }
 
     /*
-      1. This instance method can be overridden by the subclass
+      1. if sub class defines this static method with same signature then the object would refer to the subclass method.
     */
     public static void m2(){
         System.out.println("in abstractClass static method m2 :: accessing static field :: " + var2);
@@ -55,7 +55,7 @@ public abstract class AbstractClass {
     /*
         1. why cannot abstract method be static ...why ???
      */
-     //abstract static void m4(); 
+     //abstract static void m4();
 
     /*
     1. abstract class can have main method
@@ -65,6 +65,7 @@ public abstract class AbstractClass {
     }
 
 }
+
 
 </code></pre>
 
@@ -91,14 +92,14 @@ public class SubClass extends AbstractClass {
     }
 
     /*
-        1. Overridding the concrete static method in abstract class
-        2. Cannot use  @Override for overriding static methods
+        1. For static methods overriding does not apply, however if you define the a static method with same
+         signature then the sub class method is called
     */
     public static void m2(){
         System.out.println("in SubClass static method m2 ");
     }
 
-     /*
+    /*
         1. Implementing the abstract method
      */
     public void m3(){
@@ -110,11 +111,11 @@ public class SubClass extends AbstractClass {
         SubClass s1 = new SubClass();
         System.out.println(s1.var1);
 
-        s1.m1(); //calling the ovverridden instance method
+        s1.m1();
 
-        AbstractClass.m2(); //calling the static method of the abstract class
+        AbstractClass.m2();
 
-        m2();  //calling the ovverridden static method
+        m2();
 
         s1.m3(); //implementing abstract method m3
     }
