@@ -1,0 +1,130 @@
+<h2><strong>Abstract keyword </strong></h4>
+
+<p class="text-danger">
+ why cannot abstract method be static ...why ???
+</p>
+
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.abstractClasses;
+
+/*
+  1. Avoid abstract classes if possible as java supports only single inheritance, Use interface instead
+  ( Item 20 in Effective Java )
+ */
+
+/*
+1. cannot be instantiated
+2. should be extended
+ */
+public abstract class AbstractClass {
+
+    /*
+    1. can be non static or static
+    2. can be final or non final
+    3. can have private, public, implicit default, protected access modifier
+     */
+    public String var1 = "var1 from AbstractClass";
+    private static String var2 = "var2 from AbstractClass";
+
+    /*
+    1. Though abstract class cannot be instantiated, they still have constructor to initialize the instance variables.
+     */
+    public AbstractClass(){
+        System.out.println("Abstract class constructor");
+    }
+
+    /*
+       1. This instance method can be overridden by the subclass
+     */
+    public void m1(){
+        System.out.println("in abstractClass instance method m1 :: accessing instance field :: " + var1);
+    }
+
+    /*
+      1. This instance method can be overridden by the subclass
+    */
+    public static void m2(){
+        System.out.println("in abstractClass static method m2 :: accessing static field :: " + var2);
+    }
+
+    /*
+        1. can have private, public, implicit default, protected access modifier.
+     */
+    public abstract void m3();
+
+    /*
+        1. why cannot abstract method be static ...why ???
+     */
+     //abstract static void m4(); 
+
+    /*
+    1. abstract class can have main method
+     */
+    public static void main(String[] args){
+        System.out.println("main of AbstractClass");
+    }
+
+}
+
+</code></pre>
+
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.abstractClasses;
+
+public class SubClass extends AbstractClass {
+
+    /*
+        1. Though AbstractClass has var1, var1 of SubClass takes precedence
+     */
+    public String var1 = "var1 from SubClass";
+
+    public SubClass(){
+        System.out.println("SubClass constructor");
+    }
+
+    /*
+        1. Overridding the concrete method in abstract class
+     */
+    @Override
+    public void m1(){
+        System.out.println("in SubClass instance method m1 :: accessing instance field :: " + var1);
+    }
+
+    /*
+        1. Overridding the concrete method in abstract class
+        2. Cannot use  @Override for overriding static methods
+    */
+    public static void m2(){
+        System.out.println("in SubClass static method m2 ");
+    }
+
+    public void m3(){
+        System.out.println("in SubClass m3");
+    }
+
+    public static void main(String[] args){
+
+        SubClass s1 = new SubClass();
+        System.out.println(s1.var1);
+
+        s1.m1();
+
+        AbstractClass.m2();
+
+        m2();
+
+        s1.m3(); //implementing abstract method m3
+    }
+}
+
+</code></pre>
+
+<pre class="language-shell line-numbers"><code>
+Abstract class constructor
+SubClass constructor
+var1 from SubClass
+in SubClass instance method m1 :: accessing instance field :: var1 from SubClass
+in abstractClass static method m2 :: accessing static field :: var2 from AbstractClass
+in SubClass static method m2 
+in SubClass m3
+</code></pre>
