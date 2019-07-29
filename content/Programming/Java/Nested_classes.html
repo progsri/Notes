@@ -1,5 +1,5 @@
 <h2><strong>Nested Class</strong></h2>
-
+<hr>
 
 <h4><strong>Nested Inner class </strong> </h4>
    <table border = "1">
@@ -44,18 +44,232 @@
          </tr>
       </table>
 
+<h4><strong>Static Nested Inner class </strong> </h4>
+      <table border = "1">
+         <tr>
+           <th></th>
+           <th>Outer class instance fields/methods </th>
+           <th>Outer class static fields/methods </th>
+           <th>Inner class instance fields/methods</th>
+           <th>Inner class static fields/methods</th>
+         </tr>
+         
+         <tr>
+            <td>can Outer class instance fields/methods access </td>
+            <td>YES</td>
+            <td>YES</td>
+            <td>YES</td>
+            <td>YES</td>
+         </tr>
+
+          <tr>
+            <td>can Outer class static fields/methods access </td>
+           <td>YES</td>
+            <td>YES</td>
+            <td>YES</td>
+            <td>YES</td>
+         </tr>
+
+          <tr>
+            <td>can Inner class instance fields/methods access </td>
+              <td>YES</td>
+            <td>YES</td>
+            <td>YES</td>
+            <td>YES</td>
+         </tr>
+
+          <tr>
+            <td>can Inner class static fields/methods access</td>
+              <td>YES</td>
+            <td>YES</td>
+            <td>YES</td>
+            <td>YES</td>
+         </tr>
+      </table>
+
 
 <pre class="language-java line-numbers"><code>
+package com.ninjashore.nested.staticNested;
+
+public class OuterClass {
+
+    private String instanceVar1 = "instanceVar1";
+    private static String staticVar2= "staticVar2";;
+
+    private void instanceM1(){
+        System.out.println("in OuterClass instanceM1 " + instanceVar1);
+
+        //accessing static inner class static field and method
+        System.out.println(NestedStaticInnerClass.staticVar4);
+        NestedStaticInnerClass.staticM4();
+
+        //accessing static inner class instance
+        NestedStaticInnerClass a = new NestedStaticInnerClass();
+        a.instanceM3();
+
+        //accessing inner class static field and method would not work as inner class cannot have static fields
+        //System.out.println(NestedInnerClass.staticVar4); // ERROR
+        //NestedInnerClass.staticM4(); //ERROR
+
+        //accessing inner class instance
+        NestedInnerClass b = new NestedInnerClass();
+        b.instanceM5();
+    }
+
+    private static void staticM2(){
+        System.out.println("in OuterClass staticM2 " + staticVar2);
+
+        //accessing static inner class static field and method
+        System.out.println(NestedStaticInnerClass.staticVar4);
+        NestedStaticInnerClass.staticM4();
+
+        //accessing staticinner class instance
+        NestedStaticInnerClass a = new NestedStaticInnerClass();
+        a.instanceM3();
+
+        //accessing inner class static field and method would not work as inner class cannot have static fields
+        //System.out.println(NestedInnerClass.staticVar4); // ERROR
+        //NestedInnerClass.staticM4(); //ERROR
+
+        //accessing inner class instance does not work as OuterClass.this cannot be reference ??????
+        //NestedInnerClass b = new NestedInnerClass(); // ERROR
+        //b.instanceM5(); // ERROR
+    }
+
+    /*
+       1. static keyword can be used only along with nested classes.
+     */
+    public static class NestedStaticInnerClass {
+
+        private String instanceVar3 = "instanceVar3";
+        private static String staticVar4 = "staticVar4";
+
+        private void instanceM3(){
+            System.out.println("in NestedParentClass instanceM3 " + instanceVar3);
+            System.out.println("in NestedParentClass instanceM3 :: outer static field " + staticVar2);
+            System.out.println("in NestedParentClass instanceM3 :: inner static field " + staticVar4);
+
+            OuterClass o = new OuterClass();
+            System.out.println(o.instanceVar1);
+            System.out.println(OuterClass.staticVar2);
+        }
+
+        private static void staticM4(){
+            System.out.println("in NestedStaticInnerClass staticM4 " + staticVar4);
+            System.out.println("in NestedStaticInnerClass staticM4 accessing OuterClass  " + staticVar2);
+
+            OuterClass o = new OuterClass();
+            System.out.println(o.instanceVar1);
+            System.out.println(OuterClass.staticVar2);
+        }
+
+    }
+
+    public class NestedInnerClass {
+
+        private String instanceVar5 = "instanceVar5";
+
+        /*
+         1. Non static inner classes cannot have static fields
+         */
+        //private static String staticVar4;
+
+        /*
+            1. Can access outer class instance variable
+         */
+        private void instanceM5(){
+            System.out.println("in NestedInnerClass instanceM5 " + instanceVar5);
+            System.out.println("in NestedInnerClass instanceM5 " + instanceVar1);
+            System.out.println("in NestedInnerClass instanceM5 " + OuterClass.staticVar2);
+
+            OuterClass o = new OuterClass();
+            System.out.println(o.instanceVar1);
+            System.out.println(OuterClass.staticVar2);
+        }
+
+        /*
+         1. Non static inner classes cannot have static methods
+        */
+        //private static void staticM4(){
+        //}
+
+    }
+
+    public static void main(String[] args){
+
+        // static Nested to Parent
+        System.out.println(" ---------------- static Nested to Parent ---------------------");
+        OuterClass.NestedStaticInnerClass.staticM4();
+
+        OuterClass.NestedStaticInnerClass n1 = new OuterClass.NestedStaticInnerClass();
+        n1.instanceM3();
+
+        //  Nested to parent
+        System.out.println("\n ----------------  Nested to parent ---------------------");
+        OuterClass outer = new OuterClass();
+        OuterClass.NestedInnerClass n2 = outer.new NestedInnerClass();
+        n2.instanceM5();
+
+        // Parent to Nested
+        System.out.println("\n ----------------  Parent to Nested ---------------------");
+        OuterClass o1 = new OuterClass();
+        o1.instanceM1();
+        OuterClass.staticM2();
+
+
+    }
+}
 
 
 </code></pre>
 
-<pre class="language-java line-numbers"><code>
-
-
-</code></pre>
 
 <pre class="language-shell line-numbers"><code>
+ ---------------- static Nested to Parent ---------------------
+in NestedStaticInnerClass staticM4 staticVar4
+in NestedStaticInnerClass staticM4 accessing OuterClass  staticVar2
+instanceVar1
+staticVar2
+in NestedParentClass instanceM3 instanceVar3
+in NestedParentClass instanceM3 :: outer static field staticVar2
+in NestedParentClass instanceM3 :: inner static field staticVar4
+instanceVar1
+staticVar2
 
+ ----------------  Nested to parent ---------------------
+in NestedInnerClass instanceM5 instanceVar5
+in NestedInnerClass instanceM5 instanceVar1
+in NestedInnerClass instanceM5 staticVar2
+instanceVar1
+staticVar2
+
+ ----------------  Parent to Nested ---------------------
+in OuterClass instanceM1 instanceVar1
+staticVar4
+in NestedStaticInnerClass staticM4 staticVar4
+in NestedStaticInnerClass staticM4 accessing OuterClass  staticVar2
+instanceVar1
+staticVar2
+in NestedParentClass instanceM3 instanceVar3
+in NestedParentClass instanceM3 :: outer static field staticVar2
+in NestedParentClass instanceM3 :: inner static field staticVar4
+instanceVar1
+staticVar2
+in NestedInnerClass instanceM5 instanceVar5
+in NestedInnerClass instanceM5 instanceVar1
+in NestedInnerClass instanceM5 staticVar2
+instanceVar1
+staticVar2
+in OuterClass staticM2 staticVar2
+staticVar4
+in NestedStaticInnerClass staticM4 staticVar4
+in NestedStaticInnerClass staticM4 accessing OuterClass  staticVar2
+instanceVar1
+staticVar2
+in NestedParentClass instanceM3 instanceVar3
+in NestedParentClass instanceM3 :: outer static field staticVar2
+in NestedParentClass instanceM3 :: inner static field staticVar4
+instanceVar1
+staticVar2
 
 </code></pre>
