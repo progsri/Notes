@@ -15,7 +15,7 @@
             <td>can Outer class instance fields/methods access </td>
             <td>YES</td>
             <td>YES</td>
-            <td>YES</td>
+            <td>NO</td>
             <td>NO <p class="text-danger"> Why ??</p> </td>
          </tr>
 
@@ -29,7 +29,7 @@
 
           <tr>
             <td>can Inner class instance fields/methods access </td>
-            <td>YES</td>
+            <td>NO</td>
             <td>YES</td>
             <td>YES</td>
             <td>NO <p class="text-danger"> Why ??</p></td>
@@ -195,8 +195,8 @@ public class OuterClass {
         //}
 
     }
-
-    public static void main(String[] args){
+    
+  public static void main(String[] args){
 
         // static Nested to Parent
         System.out.println(" ---------------- static Nested to Parent ---------------------");
@@ -204,12 +204,15 @@ public class OuterClass {
 
         OuterClass.NestedStaticInnerClass n1 = new OuterClass.NestedStaticInnerClass();
         n1.instanceM3();
+        //n1.instanceVar1; // inner instance cannot access outer instance fields
 
         //  Nested to parent
         System.out.println("\n ----------------  Nested to parent ---------------------");
         OuterClass outer = new OuterClass();
         OuterClass.NestedInnerClass n2 = outer.new NestedInnerClass();
         n2.instanceM5();
+        //outer.instanceVar3; // Outer instance cannot access inner instance fields
+        // n2.instanceVar1; // inner instance cannot access outer instance fields
 
         // Parent to Nested
         System.out.println("\n ----------------  Parent to Nested ---------------------");
