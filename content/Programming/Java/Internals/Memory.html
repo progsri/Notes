@@ -29,5 +29,10 @@ called as Metaspace which dynamically grows in size.</p>
 
 
 <h4><strong> Stack </strong> </h4>
-<p> Temporary memory used per method call including constructor as it is a method call as well.</p>
+<p> Temporary memory called <mark> stack frame </mark> is used per method call including constructor as it is a method call 
+  as well. These stack frames are created before the method execution and then deleted after the method execution.</p>
+<p>
+  The code in the methods has access to local variables, <code> this </code> and <code> static fields/methods ( Non Heap ) 
+  </code>, However as the stack frame are deleted, anything created locally are deleted as well. 
+</p>
 <hr>
