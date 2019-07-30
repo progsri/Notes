@@ -2,6 +2,9 @@
 <hr>
 
 <h4><strong>Non Static Nested class also called as Inner class </strong> </h4>
+<p>
+   Non static nested classes ( inner class ) cannot have static fields
+</p>
    <table border = "1">
          <tr>
            <th></th>
@@ -14,7 +17,7 @@
          <tr>
             <td>can Outer class instance fields/methods access </td>
             <td>YES</td>
-            <td>YES</td>
+            <td>YES via instance method </td>
             <td>NO</td>
             <td>NO <p class="text-danger"> Why ??</p> </td>
          </tr>
@@ -30,7 +33,7 @@
           <tr>
             <td>can Inner class instance fields/methods access </td>
             <td>NO</td>
-            <td>YES</td>
+            <td>YES  via instance method</td>
             <td>YES</td>
             <td>NO <p class="text-danger"> Why ??</p></td>
          </tr>
