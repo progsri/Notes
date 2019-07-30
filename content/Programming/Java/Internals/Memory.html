@@ -12,6 +12,9 @@
 
 <h4><strong> Heap </strong> </h4>
 <p> All the objects are created here. </p>
+<p>
+    Minimum heap size can be set using -Xms and maxium heap size is set using -Xmx
+</p>
 <hr>
 
 
@@ -34,5 +37,8 @@ called as Metaspace which dynamically grows in size.</p>
 <p>
   The code in the methods has access to local variables, <code> this </code> and <code> static fields/methods ( Non Heap ) 
   </code>, However as the stack frame are deleted, anything created locally are deleted as well. 
+</p>
+<p>
+  Each Thread gets it own Stack.
 </p>
 <hr>
