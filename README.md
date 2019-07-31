@@ -11,6 +11,7 @@
  * Search bar to search the articles if title and content using elastic search.
  * Each articles to have it's topics on the top of the article on home page.
  * Delete operation
+ * Order of notes should depend on the latest git log commit date
  * auto restart mongo and app when server restarts or app crashes (DONE)
 
 ## pm2
