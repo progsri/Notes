@@ -175,7 +175,7 @@ function afterGitPull() {
           }
           
           //delete the key so that the remaining ones can be deleted ( these are present in mongo but not in file system )
-          resourceToHashMap.delete(metadata[constants.RESOURCE])
+          resourceToHashMap.delete(metadata[constants.RESOURCE]);
         }
       }
 
@@ -204,6 +204,11 @@ function afterGitPull() {
       }
      
       console.log("deleteMetadata ");
+      for (const k of m.keys()) {
+        if (resourceToIdMap.has(k)){
+         mongo.deleteRecord(resourceToIdMap.get(k));
+        }
+      }
 
       // How does node still keep this metadatas value still in mmemory
     })
