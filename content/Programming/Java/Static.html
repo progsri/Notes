@@ -1,7 +1,6 @@
 <h2><strong>Static behavior</strong></h2>
 <hr>
 
-<h4><strong> Wrapper static variables </strong></h4>
 <p>
    static field located in metaspace can have reference to a object in heap.
 </p>
@@ -13,6 +12,8 @@
 <p>
   At the first line of executing the code in <code> main(String[] args) </code>, all the static fields and methods are execute.
 </p>
+
+<h4><strong> Wrapper static variables </strong></h4>
 <p>
   Wrapper static variables that declared after the static blocks are initialized before static block gets executed, the order of
   instantiation of these Wrapper static variables ( memory allocation ) happens at the time when their <code> new </code> gets 
