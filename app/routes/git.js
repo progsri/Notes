@@ -8,6 +8,7 @@ const util = require("util");
 const mongo = require("./mongo.js");
 const md5File = require("md5-file");
 const process = require("process");
+const { spawnSync } = require("child_process")
 
 var getFiles = function (path) {
   console.log("PWD " + process.cwd());
@@ -120,8 +121,24 @@ function geMetadata(path, resource) {
   const hash = md5File.sync(path + "/" + resource);
   metadata[constants.HASH] = hash;
 
+  metadata[constants.UPDATEDON] = lastModifiedDateOnGit(path,resource);
+  
   return metadata;
 }
+
+function lastModifiedDateOnGit(path, resource){
+dateGitFormat = spawnSync("git", [
+                    "log",
+                    "-1",
+                    '--format="%ad"',
+                    path + resource
+                ]);
+                //console.log(dateGitFormat.stdout.toString());
+                let date = new Date(dateGitFormat.stdout.toString());
+                //console.log(date);
+return date;
+}
+
 
 function afterGitPull() {
   console.log("Updated git repo");
@@ -157,7 +174,7 @@ function afterGitPull() {
         if (resourceToHashMap.get(metadata[constants.RESOURCE]) == undefined) {
           console.log(metadata[constants.RESOURCE] + " INSERT ");
           metadata[constants.CREATEDON] = new Date();
-          metadata[constants.UPDATEDON] = new Date();
+          //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
           insertMetadata.push(metadata);
         } else {
           if (
@@ -167,7 +184,7 @@ function afterGitPull() {
             console.log(metadata[constants.RESOURCE] + " NO Need to update");
           } else {
             console.log(metadata[constants.RESOURCE] + " UPDATE ");
-            metadata[constants.UPDATEDON] = new Date();
+            //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
             metadata[constants.ID] = resourceToIdMap.get(
               metadata[constants.RESOURCE]
             );
