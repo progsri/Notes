@@ -131,7 +131,7 @@ dateGitFormat = spawnSync("git", [
                     "log",
                     "-1",
                     '--format="%ad"',
-                    path + resource
+                    path + '/' + resource
                 ]);
                 //console.log(dateGitFormat.stdout.toString());
                 let date = new Date(dateGitFormat.stdout.toString());
