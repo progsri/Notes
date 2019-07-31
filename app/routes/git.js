@@ -168,26 +168,22 @@ function afterGitPull() {
 
       let insertMetadata = [];
       let updateMetadata = [];
+      let deleteMetadata = [];
       for (index in metadatas) {
         let metadata = metadatas[index];
 
         if (resourceToHashMap.get(metadata[constants.RESOURCE]) == undefined) {
-          console.log(metadata[constants.RESOURCE] + " INSERT ");
+          // Resource does not exist in mongo.
+          console.log(metadata[constants.RESOURCE] + " to INSERT ");
           metadata[constants.CREATEDON] = new Date();
           //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
           insertMetadata.push(metadata);
         } else {
-          if (
-            resourceToHashMap.get(metadata[constants.RESOURCE]) ==
-            metadata[constants.HASH]
-          ) {
+           // Resource exist in mongo.
+          if (resourceToHashMap.get(metadata[constants.RESOURCE]) == metadata[constants.HASH]) {
             console.log(metadata[constants.RESOURCE] + " NO Need to update");
-             metadata[constants.ID] = resourceToIdMap.get(
-              metadata[constants.RESOURCE]
-            );
-            updateMetadata.push(metadata);
           } else {
-            console.log(metadata[constants.RESOURCE] + " UPDATE ");
+            console.log(metadata[constants.RESOURCE] + " to UPDATE ");
             //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
             metadata[constants.ID] = resourceToIdMap.get(
               metadata[constants.RESOURCE]
