@@ -67,7 +67,7 @@ function pullNewchanges() {
         afterGitPull();
       } else {
         ///console.log("call again pullNewchanges " + data);
-        c
+       
       }
     });
 
