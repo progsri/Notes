@@ -92,7 +92,7 @@ function updateRecords(
   });
 }
 
-function deleteRecords(id) {
+function deleteRecord(id) {
   client.connect(function(err) {
     const db = client.db(dbName);
     const collection = db.collection("Notes");
