@@ -221,9 +221,10 @@ function afterGitPull() {
       }
      
       console.log("deleteMetadata ");
-      for (const k of m.keys()) {
+      for (const k of resourceToHashMap.keys()) {
         if (resourceToIdMap.has(k)){
-         //mongo.deleteRecord(resourceToIdMap.get(k));
+          console.log( k + " to delete ");
+         mongo.deleteRecord(resourceToIdMap.get(k));
         }
       }
 
