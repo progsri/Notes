@@ -127,7 +127,7 @@ function geMetadata(path, resource) {
 }
 
 function lastModifiedDateOnGit(path, resource){
-dateGitFormat = spawnSync("git", [
+        dateGitFormat = spawnSync("git", [
                     "log",
                     "-1",
                     '--format="%ad"',
@@ -136,7 +136,7 @@ dateGitFormat = spawnSync("git", [
                 //console.log(dateGitFormat.stdout.toString());
                 let date = new Date(dateGitFormat.stdout.toString());
                 //console.log(date);
-return date;
+          return date;
 }
 
 
@@ -182,6 +182,10 @@ function afterGitPull() {
            // Resource exist in mongo.
           if (resourceToHashMap.get(metadata[constants.RESOURCE]) == metadata[constants.HASH]) {
             console.log(metadata[constants.RESOURCE] + " NO Need to update");
+            metadata[constants.ID] = resourceToIdMap.get(
+              metadata[constants.RESOURCE]
+            );
+            updateMetadata.push(metadata);
           } else {
             console.log(metadata[constants.RESOURCE] + " to UPDATE ");
             //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
