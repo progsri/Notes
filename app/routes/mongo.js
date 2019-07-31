@@ -92,6 +92,22 @@ function updateRecords(
   });
 }
 
+function deleteRecords(id) {
+  client.connect(function(err) {
+    const db = client.db(dbName);
+    const collection = db.collection("Notes");
+    let filter = { _id: id };
+    collection.deleteOne(filter, { upsert: true }, function(
+      err,r
+    ) {
+      assert.equal(err, null);
+      console.log("after delete " + util.inspect(r.result));
+      //client.close();
+    });
+  });
+}
+
+
 exports.getRecords = getRecords;
 exports.insertRecords = insertRecords;
 exports.updateRecords = updateRecords;
