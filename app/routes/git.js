@@ -182,6 +182,10 @@ function afterGitPull() {
             metadata[constants.HASH]
           ) {
             console.log(metadata[constants.RESOURCE] + " NO Need to update");
+             metadata[constants.ID] = resourceToIdMap.get(
+              metadata[constants.RESOURCE]
+            );
+            updateMetadata.push(metadata);
           } else {
             console.log(metadata[constants.RESOURCE] + " UPDATE ");
             //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
