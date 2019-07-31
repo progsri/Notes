@@ -41,7 +41,8 @@ router.get("/", function (req, res, next) {
             data[index][constants.RESOURCE],
           resource: data[index][constants.RESOURCE].replace(".html", "").replace(/_/g, " ") + "   ",
           status: status,
-          color: color
+          color: color,
+          UPDATEDON: data[index][constants.UPDATEDON]
         });
       }
 
