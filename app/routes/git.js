@@ -127,7 +127,7 @@ function geMetadata(path, resource) {
 }
 
 function lastModifiedDateOnGit(path, resource){
-        dateGitFormat = spawnSync("git", [
+        let dateGitFormat = spawnSync("git", [
                     "log",
                     "-1",
                     '--format="%ad"',
