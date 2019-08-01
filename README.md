@@ -19,8 +19,8 @@
  * pm2 start mongodb-linux-x86_64-ubuntu1804-4.1.9/bin/start-mongo.sh 
  
  ## Mongo
-  * Dump :: 
+  * Dump  
     bin/mongodump --db Ninjashore  
     This creates a directory dump/Ninjashore with 2 files Notes.metadata.json and notes.bson
-  * Restore ::  
+  * Restore    
     bin/mongorestore --db Notes dump/Ninjashore
