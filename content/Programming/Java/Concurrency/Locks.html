@@ -1,1 +1,66 @@
-<h2><strong> </strong></h2>
+<h2><strong> Concurrency via locks </strong></h2>
+
+<h2><strong> With out locks </strong></h2>
+
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.locks;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Counter implements Runnable {
+
+    private static Integer value = 0; // This is stored in the metaspace which every object can access
+
+    private  static void increment() throws Exception{
+        value = value + 1;
+        System.out.println(Thread.currentThread().getName() + " :: " + value);
+    }
+
+    @Override
+    public void run() {  // This is method of instance access a static method .
+        try {
+            Counter.increment();  // instance method can access static methods as they are available to all
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static void main(String[] args) throws Exception  // runs in a stack frame
+    {
+        List<Thread> listOfThreads = new ArrayList<>();
+        int n = 2000;
+        for (int i=0; i<n; i++)
+        {
+            Counter counter = new Counter();
+            Thread thread = new Thread(counter);  // Each thread will have their own stack memory
+            listOfThreads.add(thread);
+            thread.start();
+        }
+
+        for(Thread thread : listOfThreads){
+            thread.join();
+        }
+
+        System.out.println("Final value :: " + value); // value is not as expected due to concurrency.
+    }
+}
+
+</code></pre>
+
+<pre class="language-java line-numbers"><code>
+Thread-1987 :: 1984
+Thread-1988 :: 1985
+Thread-1989 :: 1986
+Thread-1990 :: 1987
+Thread-1991 :: 1988
+Thread-1992 :: 1989
+Thread-1993 :: 1990
+Thread-1994 :: 1991
+Thread-1995 :: 1992
+Thread-1996 :: 1993
+Thread-1997 :: 1994
+Thread-1998 :: 1995
+Thread-1999 :: 1996
+Final value :: 1996
+</code></pre>
