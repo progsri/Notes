@@ -42,7 +42,7 @@ router.get("/", function (req, res, next) {
           resource: data[index][constants.RESOURCE].replace(".html", "").replace(/_/g, " ") + "   ",
           status: status,
           color: color,
-          UPDATEDON: data[index][constants.UPDATEDON]
+          UPDATEDON: "aaa"
         });
       }
 
