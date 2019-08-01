@@ -3,6 +3,7 @@ var router = express.Router();
 const fs = require("fs");
 const mongo = require("./mongo.js");
 const constants = require("./constants.js");
+const util = require('util');
 
 router.get("/", function (req, res, next) {
   let selectPromise = mongo.getRecords();
@@ -41,11 +42,10 @@ router.get("/", function (req, res, next) {
             data[index][constants.RESOURCE],
           resource: data[index][constants.RESOURCE].replace(".html", "").replace(/_/g, " ") + "   ",
           status: status,
-          color: color,
-          UPDATEDON: "aaa"
+          color: color
         });
       }
-
+      console.log(data);
       res.render("index", {
         title: "Notes by Srikanth & Sirisha",
         resources: ui

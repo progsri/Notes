@@ -81,7 +81,7 @@ function updateRecords(
         updatedon: updatedon
       }
     };
-    collection.updateMany(filter, operation, { upsert: true }, function(
+    collection.updateMany(filter, operation, { upsert: false }, function(
       err,
       r
     ) {
@@ -111,3 +111,4 @@ function deleteRecord(id) {
 exports.getRecords = getRecords;
 exports.insertRecords = insertRecords;
 exports.updateRecords = updateRecords;
+exports.deleteRecord = deleteRecord;

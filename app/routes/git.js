@@ -133,9 +133,10 @@ function lastModifiedDateOnGit(path, resource){
                     '--format="%ad"',
                     path + '/' + resource
                 ]);
-                //console.log(dateGitFormat.stdout.toString());
+                console.log("lastModifiedDateOnGit " + path  + " " + resource +
+                dateGitFormat.stdout.toString());
                 let date = new Date(dateGitFormat.stdout.toString());
-                //console.log(date);
+                console.log(date);
           return date;
 }
 
@@ -155,11 +156,11 @@ function afterGitPull() {
       let resourceToIdMap = new Map();
       for (index in data) {
         resourceToHashMap.set(
-          data[index][constants.RESOURCE],
+          data[index][constants.PATH] + "-" + data[index][constants.RESOURCE],
           data[index][constants.HASH]
         );
         resourceToIdMap.set(
-          data[index][constants.RESOURCE],
+          data[index][constants.PATH] + "-" + data[index][constants.RESOURCE],
           data[index][constants.ID]
         );
       }
@@ -171,23 +172,23 @@ function afterGitPull() {
       let deleteMetadata = [];
       for (index in metadatas) {
         let metadata = metadatas[index];
-
-        if (resourceToHashMap.get(metadata[constants.RESOURCE]) == undefined) {
+        let unique = metadata[constants.PATH] + "-" + metadata[constants.RESOURCE];
+        if (resourceToHashMap.get(unique) == undefined) {
           // Resource does not exist in mongo.
-          console.log(metadata[constants.RESOURCE] + " to INSERT ");
+          console.log(unique + " to INSERT ");
           metadata[constants.CREATEDON] = new Date();
           //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
           insertMetadata.push(metadata);
         } else {
            // Resource exist in mongo.
-          if (resourceToHashMap.get(metadata[constants.RESOURCE]) == metadata[constants.HASH]) {
-            console.log(metadata[constants.RESOURCE] + " NO Need to update");
+          if (resourceToIdMap.get(unique) == metadata[constants.HASH]) {
+            console.log(unique + " NO Need to update");
             metadata[constants.ID] = resourceToIdMap.get(
               metadata[constants.RESOURCE]
             );
             updateMetadata.push(metadata);
           } else {
-            console.log(metadata[constants.RESOURCE] + " to UPDATE ");
+            console.log(unique + " to UPDATE ");
             //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
             metadata[constants.ID] = resourceToIdMap.get(
               metadata[constants.RESOURCE]
@@ -196,7 +197,7 @@ function afterGitPull() {
           }
           
           //delete the key so that the remaining ones can be deleted ( these are present in mongo but not in file system )
-          resourceToHashMap.delete(metadata[constants.RESOURCE]);
+          resourceToHashMap.delete(unique);
         }
       }
 
@@ -218,7 +219,7 @@ function afterGitPull() {
             record[constants.TAGS],
             record[constants.TOPIC],
             record[constants.HASH],
-            new Date(),
+            record[constants.UPDATEDON],
             id
           );
         }
