@@ -1,6 +1,12 @@
 <h2><strong> Concurrency via locks </strong></h2>
 
 <h2><strong> With out locks </strong></h2>
+<p> 
+    With out any concurrency techniques the expected final value would not occur as the value of the static variable,
+    which is accessible to all threads, there is fair chance that 2 threads would be seeing the same value and both 
+    would increment it at the same time, this is what happens in the below example, as a result the final value is 
+    1996 rather than 1999.
+</p>
 
 <pre class="language-java line-numbers"><code>
 package com.ninjashore.locks;
