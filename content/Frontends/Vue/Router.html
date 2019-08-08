@@ -114,6 +114,58 @@ new Vue({
     Your browser does not support HTML5 video.
 </video>
 
+<hr>
+
+<h4><strong> $router </strong></h4>
+<p> access <code>$router</code> via <code> this</code> </p>
+<p> <code>$router</code> has the below 3 functionalities: </p>
+<ul>
+ <li>push</li>
+  <li>push</li>
+  <li>go</li>
+</ul>
+
+<p>
+ The below <code> this.$router.push </code> calls the Login component as it invokes component linked to /login via the router 
+ as soon as Home component gets loaded.
+</p>
+<pre class="language-html line-numbers"><code>
+
+&lt;template&gt;
+  &lt;div id="home"&gt;Home&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  mounted() {
+    console.log(
+      " Home Component - This is  executed each time the component is mounted or loaded."
+    );
+
+    // This would load the login component via the vue router
+    this.$router.push("/login");
+  },
+  data() {
+    return {
+      msg: ""
+    };
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+
+</code></pre>
+
+<video width="800" controls>
+    <source src="./images/routerNavigation.webm" type="video/webm">
+    Your browser does not support HTML5 video.
+</video>
+
+<hr>
+
 <h4><strong> References </strong></h4>
 <a href="https://flaviocopes.com/vue-router/"> vue router </a>
          
