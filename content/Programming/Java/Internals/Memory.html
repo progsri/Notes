@@ -15,17 +15,25 @@
 <p>
     Minimum heap size can be set using -Xms and maxium heap size is set using -Xmx
 </p>
+<p>
+  This region is garbage collected. Which means unused data structures would be deleted.
+</p>
 <hr>
 
 
 <h4><strong> Non Heap ( Method Area ) </strong> </h4>
-<p> Prioir to Java 8 it is called as Permanent generation ( where size is can be varied but fixed ), In java 8 it is
+<p> 
+  Prioir to Java 8 it is called as Permanent generation ( where size is can be varied but fixed ), In java 8 it is
 called as Metaspace which dynamically grows in size.</p>
 
 <p> <code>static</code> fields and methods are stored here </p>
 
 <p> <code> static User user = new User() ; </code> user object is stored her with the reference to the actual object 
   but the actual object is stored in <mark> heap </mark>
+</p>
+<p>
+  This regions is not garbage collected,so data structures or object referred from this region to heap would never be
+  deleted until the JVM goes down.
 </p>
 
 <hr>
