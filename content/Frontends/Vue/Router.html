@@ -10,3 +10,124 @@ to go to the server for every request by <code>mode:'history' </code>, otherwise
 
 <h4><strong>Installation</strong></h4>
 <p> Router does not come by default, it has to be installed using <code>npm install vue-router</code>.
+
+  
+<pre class="language-javascript line-numbers">
+import Vue from "vue";
+import VueRouter from "vue-router";
+import App from "./App.vue";
+import Home from "./views/Home.vue";
+import Login from "./views/Login.vue";
+
+Vue.use(VueRouter); //  add vue router module to vue framework
+
+const router = new VueRouter({
+  routes: [{ path: "/", component: Home }, { path: "/login", component: Login }]
+});
+
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount("#app");
+
+</code></pre>
+
+<pre class="language-html line-numbers">
+&lt;template&gt;
+  &lt;div id="home"&gt;
+     Home
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      msg: ""
+    };
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+
+</code></pre>
+
+<pre class="language-html line-numbers">
+&lt;template&gt;
+  &lt;div id="app"&gt;
+    &lt;nav&gt;
+      &lt;router-link to="/"&gt;Home&lt;/router-link&gt;
+      &lt;router-link to="/login"&gt;Login&lt;/router-link&gt;
+    &lt;/nav&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: "app",
+  data() {
+    return {
+      msg: "Welcome to Your Vue.js App"
+    };
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+
+</code></pre>
+
+<pre class="language-html line-numbers">
+&lt;template&gt;
+  &lt;div id="home"&gt;
+     Home
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      msg: ""
+    };
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+
+</code></pre>
+
+<pre class="language-html line-numbers">
+&lt;template&gt;
+  &lt;div id="login"&gt;
+     Login
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      msg: ""
+    };
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+
+</code></pre>
+
+<a href="https://flaviocopes.com/vue-router/"> vue router </a>
+         
