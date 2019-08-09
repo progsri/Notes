@@ -1,5 +1,29 @@
 <h2><strong> Predicts if the rating is good or bad </strong> </h2>
 
+<h4><strong> Get data </strong></h4>
+<p>
+    As the data <a href="https://www.yelp.com/dataset/download"> yelp data </a> is very big, I had to split the file using
+    <code> split -l 300000 dataset </code> and use threads to concurrently process.
+</p>
+
+<p class="text-danger">
+    In Production or QA, How do your process very very big files ( 50 GB )?
+</p>
+
+<p class="text-danger">
+    Where do you store the classifier ( learned model )... in DB or file system ???
+</p>
+
+
+<p class="text-danger">
+   What libraries are used to serialize the classifier in industry, anything better than pickle or sci-kit joblib
+</p>
+
+<p class="text-danger">
+    If Apache spark is used to process the huge data and also train the model...then how do models in each spark node,
+    merge to a single trained model ??
+</p>
+
 <pre class="language-python line-numbers"><code>
 import json
 from collections import Counter
