@@ -40,7 +40,7 @@ import App from "./App.vue";
 import { store } from "./store";
 
 new Vue({
-  store,
+  store,    //this makes the store available to components via this.$store
   render: h => h(App)
 }).$mount("#app");
 
