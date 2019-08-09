@@ -1,6 +1,7 @@
 <h2><strong> Vuex get state</strong></h2>
 <hr>
 
+<h4><strong> via this.$store.state </strong></h4>
 <pre class="language-javascript line-numbers"><code>
 import Vue from "vue";
 import Vuex from "vuex";
@@ -51,6 +52,59 @@ Output
 
 { "count": 0 }
 
+</code></pre>
+
+
+<h4><strong> via this.$store.getters </strong></h4>
+
+<pre class="language-javascript line-numbers"><code>
+import Vue from "vue";
+import Vuex from "vuex";
+
+Vue.use(Vuex); // Should be called before creating the below store object
+export const store = new Vuex.Store({
+  state: {
+    count: 1
+  },
+  getters: {
+    getTheValue: function(state) {  // getters recieve state as first argument
+                                    // array of getters as second argument
+      return "The present value is " + state.count;
+    }
+  }
+});
+
+</code></pre>
+
+<pre class="language-html line-numbers"><code>
+&lt;template&gt;
+  &lt;div id="app"&gt;{{presentValue()}}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      count: 1
+    };
+  },
+  methods: {
+    presentValue() {
+      // this.$store.getters gives you access to the getters in the store.
+      return this.$store.getters.getTheValue; //do not call like function
+    }
+  }
+};
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+</code></pre>
+
+Output
+<pre class="language-shell line-numbers"><code>
+The present value is 1
 </code></pre>
 
 <h4><strong> References</strong></h2>
