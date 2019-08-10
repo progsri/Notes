@@ -11,7 +11,10 @@
 
 <p>
   At the first line of executing the code in <code> main(String[] args) </code>, all the static fields and methods are 
-   executed.
+   executed. What happens is when the code is compiled and run, all fields marked as static are created in the metaspace.
+   They may or may not be initialized with values. So if in the running code if these fields are accessed they are lookedup
+   in the metaspace but not created at the moment, as told they are created when the code started to run.Of course, if you are
+   updating their values then that happens at the exact moment the in the code.
 </p>
 
 <p>
