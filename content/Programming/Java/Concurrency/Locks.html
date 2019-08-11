@@ -35,9 +35,9 @@ public class Counter implements Runnable {
 
     public static void main(String[] args) throws Exception  // runs in a stack frame
     {
-        List<Thread> listOfThreads = new ArrayList<>();
+        List<Thread> listOfThreads = new ArrayList&lt;&gt;();
         int n = 2000;
-        for (int i=0; i<n; i++)
+        for (int i=0; i;&lt;n; i++)
         {
             Counter counter = new Counter();
             Thread thread = new Thread(counter);  // Each thread will have their own stack memory
