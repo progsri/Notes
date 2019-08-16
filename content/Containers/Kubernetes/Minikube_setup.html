@@ -1,4 +1,5 @@
 <h2><strong> minikube setup for runnning  kubernetes locally</strong> </h2>
+<hr>
 
 <h4><strong> Install kvm2 driver </strong> <h4>
 <pre class="language-shell line-numbers"><code>
@@ -9,10 +10,37 @@ chmod +x /usr/local/bin/docker-machine-driver-kvm2
 rm docker-machine-driver-kvm2
 </code></pre>
 
+<hr>
 <h4><strong> Install minikube </strong> <h4>
 <pre class="language-shell line-numbers"><code>
 Download https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 cp minikube-linux-amd64 minikube
 sudo install minikube /usr/local/bin
 </code></pre>
-
+ 
+<hr>
+<h4><strong> Start minikube </strong> <h4>
+ <p> <code> minikube start --vm-driver kvm2 </code> . if any issue <code>rm -rf ~/.minikube</code> </p>
+<pre class="language-shell line-numbers"><code>
+😄  minikube v1.3.1 on Ubuntu 19.04
+🔥  Creating kvm2 VM (CPUs=2, Memory=2000MB, Disk=20000MB) ...
+🐳  Preparing Kubernetes v1.15.2 on Docker 18.09.8 ...
+💾  Downloading kubeadm v1.15.2
+💾  Downloading kubelet v1.15.2
+🚜  Pulling images ...
+🚀  Launching Kubernetes ... 
+⌛  Waiting for: apiserver proxy etcd scheduler controller dns
+🏄  Done! kubectl is now configured to use "minikube"
+</code></pre>
+  
+<hr>
+<h4><strong> Status of minikube </strong> <h4>  
+<pre class="language-shell line-numbers"><code>
+host: Running
+kubelet: Running
+apiserver: Running
+kubectl: Correctly Configured: pointing to minikube-vm at 192.168.39.32
+ </code></pre>
+  
+<h4><strong> References </strong> <h4>
+  <a href=""></a>
