@@ -1,0 +1,18 @@
+<h2><strong> minikube setup for runnning  kubernetes locally</strong> </h2>
+
+<h4><strong> Install kvm2 driver </strong> <h4>
+<pre class="language-shell line-numbers"><code>
+Download https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 
+chmod +x docker-machine-driver-kvm2 
+sudo cp docker-machine-driver-kvm2 /usr/local/bin/ 
+chmod +x /usr/local/bin/docker-machine-driver-kvm2
+rm docker-machine-driver-kvm2
+</code></pre>
+
+<h4><strong> Install minikube </strong> <h4>
+<pre class="language-shell line-numbers"><code>
+Download https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+cp minikube-linux-amd64 minikube
+sudo install minikube /usr/local/bin
+</code></pre>
+
