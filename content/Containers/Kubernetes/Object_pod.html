@@ -33,15 +33,68 @@ spec:
 
 </code></pre>
 
-<p> Applying the configuration <mark> kubectl apply -f client-pod.yaml </mark> </p>
+<p> Applying the configuration <code> kubectl apply -f client-pod.yaml </code> </p>
 <pre class="language-shell line-numbers"><code>
 pod/client-pod created
 </code></pre>
 
-<p> Get pods <mark> kubectl get pods </mark> </p>
+<p> Get pods <code> kubectl get pods </code> </p>
 <pre class="language-shell line-numbers"><code>
 NAME         READY   STATUS    RESTARTS   AGE
 client-pod   1/1     Running   0          2m52s
 </code></pre>
 
 <p> RESTARTS 0 indicate the pod was never restarted </p>
+
+<p> Descrive a pod in detail <code> kubectl describe pod client-pod </code> </p>
+<pre class="language-shell line-numbers"><code>
+Name:               client-pod
+Namespace:          default
+Priority:           0
+PriorityClassName:  <none>
+Node:               minikube/192.168.122.34
+Start Time:         Sat, 17 Aug 2019 16:40:51 -0500
+Labels:             component=web
+Annotations:        kubectl.kubernetes.io/last-applied-configuration:
+                      {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"component":"web"},"name":"client-pod","namespace":"default"},"spec...
+Status:             Running
+IP:                 172.17.0.4
+Containers:
+  client:
+    Container ID:   docker://6f093413ece81c3214732be85890b005fd6786e63d290078da386012ed3445b0
+    Image:          stephengrider/multi-client
+    Image ID:       docker-pullable://stephengrider/multi-client@sha256:855452509d6d9f13dbe1cd34fa3a21d7f6e7d1f0fafb38d1e715dda8e3d17f46
+    Port:           3000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sat, 17 Aug 2019 16:41:08 -0500
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-pbdgp (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-pbdgp:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-pbdgp
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  30m   default-scheduler  Successfully assigned default/client-pod to minikube
+  Normal  Pulling    29m   kubelet, minikube  Pulling image "stephengrider/multi-client"
+  Normal  Pulled     29m   kubelet, minikube  Successfully pulled image "stephengrider/multi-client"
+  Normal  Created    29m   kubelet, minikube  Created container client
+  Normal  Started    29m   kubelet, minikube  Started container client
+</code></pre>
+<mark> Events </mark> indicates the events that occured w.r.t this pod. 
