@@ -1,6 +1,32 @@
 <h2><strong> object service </strong><h2>
 <hr>
 
-
+<p> this object is used for networking.There are different type of services:</p> 
+  <ul>
+    <li> Cluster Ip</li>
+    <li> NodePort : used only in local and never in production </li>
+    <li> Load balancer </li>  
+    <li> Ingress </li>
+  </ul>
 <hr>
-<h4><strong> object service </strong><h4>
+<h4><strong> Configuration </strong><h4>
+<p>
+ 
+</p>
+  
+<pre class="language-yaml line-numbers"><code>
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort
+  ports:
+    - port: 3050
+      targetPort: 3000
+      nodePort: 31515
+  selector:
+    component: web
+ </pre></code>
+  
+  
