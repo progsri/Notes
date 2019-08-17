@@ -1,0 +1,13 @@
+<h2><strong> Kafka concepts </strong> </h2>
+
+<h4><strong> Topic </strong> </h4>
+<p>
+ each topic has to be divided into mulitple partitions, each partion is stored in different kafka broker. Which means to get
+ all the data for a topic, we have to go to each broker and read the topic partition.
+</p>
+<p>
+  What happens if a broker with a partion dies, we will loose the data. In order to prevent that each partition is replicated
+  to othere brokers. To do this we use <mark> replication-factor </mark>. <mark> replication-factor </mark> of 1 indicates 
+  there is only one copy of the data ( so ..it is not replicated ). <mark> replication-factor </mark> of 2 indicates 2 copies
+  of data, one copy is the original and other is replicated copy also call <mark> ISR In Sync Replica</mark>
+</p>
