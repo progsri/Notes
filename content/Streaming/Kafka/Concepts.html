@@ -90,3 +90,18 @@
  partitions but a partition cannot be read by multiple consumers in a consumer group. A partition can  be read by multiple
  consumer if each consumer belongs to different consumber group.
 </p>
+
+<hr>
+<h4><strong> Consumer offset </strong> </h4>
+<p>
+ Consumer offset tells the broker or cluster which offset in a partition a consumer has read. These are recorded in a topic
+ called <b> _consumer_offset </b>
+</p>
+<p>
+ consumer tells the broker the read offset by 3 modes:
+<ul>
+ <li> at most once ... when it receives the message but if it dies while processing, this would be not considered for reprocessing</li>
+  <li> at least once ... when it received and processed .... this is the safest.</li>
+ <li> <span class="text-danger">Exactly once </span> </li>
+</ul>
+</p>
