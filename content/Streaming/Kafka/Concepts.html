@@ -46,7 +46,7 @@
 <p>
    Producer sends messages to a topic to any broker.They do not choose a particular broker or partition. <mark> Broker discovery
  </mark> is the way any broker would know any other broker info and the metadata such as topics and which broker they are present,
- topics etc.
+ topics etc. So, the broker which the producer is connected would now the reqquired information by broker discovery.
 </p>
 <p>
  When producer writes to a topic, it can set acknowledgement for the write.
@@ -62,3 +62,14 @@
  <span class="text-danger">Producer can write to the same partition by using a key </span>, otherwise writes go to different partitions using round
  robin algorithm
 </p>
+
+<hr>
+<h4><strong> Consumer </strong> </h4>
+<p>
+   Consumer gets messages from a topic from any broker it is connected to.They do not choose a particular broker or partition. <mark> Broker discovery
+ </mark> is the way any broker would know any other broker info and the metadata such as topics and which broker they are present,
+ topics etc. So, the broker which the consumer is connected would now the reqquired information by broker discovery.
+</p>
+
+<hr>
+<h4><strong> Consumer Groups</strong> </h4>
