@@ -70,6 +70,15 @@
  </mark> is the way any broker would know any other broker info and the metadata such as topics and which broker they are present,
  topics etc. So, the broker which the consumer is connected would now the reqquired information by broker discovery.
 </p>
+<p>
+ For a particular partition, order of messages is gauranteed.
+</p>
+<p>
+ Lets say we hava topic that has 3 partitions, how would one consumber read from 3 partitions at the same time.
+ <span class="text-danger">Can it ? </span>. For this we use consumer groups which contains of group of consumers, each consumer
+ can read from one or mode partitions, but never will a partition be read by 2 or more consumers in a consumber group, this 
+ way the partitions can be consumer in parallel ( balancing the load ).
+</p>
 
 <hr>
 <h4><strong> Consumer Groups</strong> </h4>
