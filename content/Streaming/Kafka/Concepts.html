@@ -44,7 +44,7 @@
 <hr>
 <h4><strong> Producer </strong> </h4>
 <p>
-   Producer sends messages to a topic to any broker.They do not choose a particular broker or partition. <mark> Broker discoery
+   Producer sends messages to a topic to any broker.They do not choose a particular broker or partition. <mark> Broker discovery
  </mark> is the way any broker would know any other broker info and the metadata such as topics and which broker they are present,
  topics etc.
 </p>
@@ -57,4 +57,8 @@
   </li> 
   <li>ack = 2 or all indicatea the producer will wait for the ack from leader and replicas, this would of course be slow.</li> 
  </ul>
+</p>
+<p>
+ <span class="text-danger">Producer can write to the same partition by using a key </span>, otherwise writes go to different partitions using round
+ robin algorithm
 </p>
