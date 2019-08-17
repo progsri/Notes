@@ -11,9 +11,20 @@
 <hr>
 <h4><strong> Configuration </strong><h4>
 <p>
- 
+  <li> <b> Kind </b> indicates the type of Object, it can be a service, pod , replicaController etc. </li>
+  <li> <b> name </b> indicates the name of the service </li>
+  <li> <b> selector </b> are key value pair that are used by other objects such as pod to relate their config to the pod.  </li>
+  <li> <b> type </b> indicate the type of service </li>
+  <li> <b> port </b> is used by other pods to communicate with this pod </li>
+  <li> <b> port </b> is the target port of the container </li>
+  <li> <b> port </b> is the port that is exposed to the public which is of the range 30000-32767, if not used kubernetes
+    would assign randomly in this range. As you if these ports are used then the client would have to explicitly mention them.
+    Imagine http://google.com:31515 instead of http://google.com, this is the reason Nodeport is only used in local and not
+    in production.
+  </li>
 </p>
   
+Config file for Service <mark> client-node-port.yaml </mark>
 <pre class="language-yaml line-numbers"><code>
 apiVersion: v1
 kind: Service
@@ -29,4 +40,16 @@ spec:
     component: web
  </pre></code>
   
+  <p> To apply the configuraton <mark> kubectl apply -f client-node-port.yaml  </mark> </p>
+  <pre class="language-shell line-numbers"><code>
+  service/client-node-port created
+  </code></pre>
   
+  <p> to et list of all services <mark> kubectl get services </mark> </p>
+    <pre class="language-shell line-numbers"><code>
+NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+client-node-port   NodePort    10.101.194.88   <none>        3050:31515/TCP   2s
+kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          42h
+                     
+    </code></pre>
+    <p class="text-danger">  ClusterIP  what is this </p>
