@@ -1,4 +1,5 @@
 <h2><strong> Kafka concepts </strong> </h2>
+<hr>
 
 <h4><strong> Topic </strong> </h4>
 <p>
@@ -11,3 +12,11 @@
   there is only one copy of the data ( so ..it is not replicated ). <mark> replication-factor </mark> of 2 indicates 2 copies
   of data, one copy is the original and other is replicated copy also call <mark> ISR In Sync Replica</mark>
 </p>
+<p>
+ The order of messages in each partion is maintained. Each message is given a <mark> offset </mark>, Offset is just an ID in a
+ partition. As all the data of a topic can be in different partition, order of message between 2 partition is <b>not</b>
+ maintained.
+</p>
+<p>
+ All the messages are persisten for a short time. <p class="text-danger"> which can be configured ?</p> 
+<p>
