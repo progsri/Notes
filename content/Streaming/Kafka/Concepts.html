@@ -3,11 +3,11 @@
 
 <h4><strong> Topic </strong> </h4>
 <p>
- Kafka needs <b> zookeeper </b>, Zookeeper does the below.
+ Kafka needs <b> zookeeper </b>, Zookeeper does the below.  <span class="text-danger"> what else does  zookeeper do </span>
  <ul>
   <li> Leader election for the partition copy. see below</li>
 </ul>
- <span class="text-danger"> what else does  zookeeper do </span>
+
 <p>
  Each topic has to be divided into mulitple partitions, each partion is stored in different kafka broker. Which means to get
  all the data for a topic, we have to go to each broker and read the topic partition.
