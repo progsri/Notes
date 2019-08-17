@@ -1,0 +1,46 @@
+<h2><strong> object pod </strong></h2>
+<hr>
+
+<p>
+  pod is the smallest unit of kubernetes, It can have one ore more containers. Generally related containers are groupe together
+  as pod.
+</p>
+
+<hr>
+<h2><strong> configuration </strong></h2>
+<p>
+<b> Kind </b> indicates the type of Object, it can be a service, pod , replicaController etc.
+<b> name </b> indicates the name of the pod
+<b> lables </b> are key value pair that are used by other objects such as service to relate their config to the pod. 
+<b> containers </b> as the pod is made of container(s), has the name of the container, image and the port the container needs.
+</p>
+
+Config file <mark> client-pod.yaml </mark> to create a pod.
+<pre class="language-yaml line-numbers"><code>
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    component: web
+spec:
+  containers:
+    - name: client
+      image: stephengrider/multi-client
+      ports:
+        - containerPort: 3000
+
+</code></pre>
+
+<p> Applying the configuration <mark> kubectl apply -f client-pod.yaml </mark> </p>
+<pre class="language-shell line-numbers"><code>
+pod/client-pod created
+</code></pre>
+
+<p> Get pods <mark> kubectl get pods </mark> </p>
+<pre class="language-shell line-numbers"><code>
+NAME         READY   STATUS    RESTARTS   AGE
+client-pod   1/1     Running   0          2m52s
+</code></pre>
+
+<p> RESTARTS 0 indicate the pod was never restarted </p>
