@@ -3,6 +3,12 @@
 
 <h4><strong> Topic </strong> </h4>
 <p>
+ Kafka needs <b> zookeeper </p>, Zookeeper does the below.
+ <ul>
+  <li> Leader election for the partition copy. see below</li>
+</ul>
+ <span class="text-danger"> what else does  zookeeper do </span>
+<p>
  Each topic has to be divided into mulitple partitions, each partion is stored in different kafka broker. Which means to get
  all the data for a topic, we have to go to each broker and read the topic partition.
 </p>
@@ -10,7 +16,9 @@
   What happens if a broker with a partion dies, we will loose the data. In order to prevent that each partition is replicated
   to othere brokers. To do this we use <mark> replication-factor </mark>. <mark> replication-factor </mark> of 1 indicates 
   there is only one copy of the data ( so ..it is not replicated ). <mark> replication-factor </mark> of 2 indicates 2 copies
-  of data, one copy is the original and other is replicated copy also call <mark> ISR In Sync Replica</mark>
+  of data, one copy is the original and other is replicated copy also call <mark> ISR In Sync Replica</mark>. Now that a partiton 
+  has 2 copies only one copy should be the active/master/leader and the other one whould be ISR, this is called <b> leader election
+ </b> which is perforemd by <b>zookeeper</b>
 </p>
 <p>
  The order of messages in each partion is maintained. Each message is given a <mark> offset </mark>, Offset is just an ID in a
@@ -27,3 +35,8 @@
  Each message sent to a topic would end up to a different partiton based on round robin algorithm, <span class="text-danger">
  however to always force to a particular partion key has to  be used. </span>
 </p>
+<p>
+ Group of kafka broker form a cluster. Connecting to a a single broker gives access to entire cluster. 
+ <span class="text-danger"> How is the cluster formed... how does one broker know about another broker</span>
+</p>
+
