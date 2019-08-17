@@ -3,7 +3,9 @@
 
 <h4><strong> Topic </strong> </h4>
 <p>
- Kafka needs <b> zookeeper </b>, Zookeeper does the below.  <span class="text-danger"> what else does  zookeeper do </span>
+ Kafka needs <b> zookeeper </b>, Zookeeper does the below. Each broker is always connected to one zookeeper. To maintain a 
+ kafka cluster, we need to maintain a zookeeper cluster as well. 
+ <span class="text-danger"> what else does  zookeeper do </span>
  <ul>
   <li> Leader election for the partition copy. see below</li>
 </ul>
@@ -37,7 +39,8 @@
 </p>
 <p>
  Group of kafka broker form a cluster. Connecting to a a single broker gives access to entire cluster. which means each broker
- is a <b>master</b> just like rabbitmq but unlike redis when using sentinel.
+ is a <b>master</b> just like rabbitmq but unlike redis when using sentinel. However partitions/data are <b>master/slave</b>,
+ it is master/leader and slaves where master is the orginal copy and slaves are ISR.
  <span class="text-danger"> How is the cluster formed... how does one broker know about another broker</span>
 </p>
 
@@ -68,7 +71,7 @@
 <p>
    Consumer gets messages from a topic from any broker it is connected to.They do not choose a particular broker or partition. <mark> Broker discovery
  </mark> is the way any broker would know any other broker info and the metadata such as topics and which broker they are present,
- topics etc. So, the broker which the consumer is connected would now the reqquired information by broker discovery.
+ topics etc. So, the broker which the consumer is connected would now the required information by broker discovery.
 </p>
 <p>
  For a particular partition, order of messages is gauranteed.
