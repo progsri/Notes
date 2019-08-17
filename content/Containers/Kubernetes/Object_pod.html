@@ -8,12 +8,13 @@
 
 <hr>
 <h2><strong> configuration </strong></h2>
-<p>
-<b> Kind </b> indicates the type of Object, it can be a service, pod , replicaController etc.
-<b> name </b> indicates the name of the pod
-<b> lables </b> are key value pair that are used by other objects such as service to relate their config to the pod. 
-<b> containers </b> as the pod is made of container(s), has the name of the container, image and the port the container needs.
-</p>
+<ul>
+<li> <b> Kind </b> indicates the type of Object, it can be a service, pod , replicaController etc. </li>
+<li> <b> name </b> indicates the name of the pod </li>
+<li> <b> lables </b> are key value pair that are used by other objects such as service to relate their config to the pod.  </li>
+<li> <b> containers </b> as the pod is made of container(s), has the name of the container, image and the port the 
+  container needs.</li>
+</ul>
 
 Config file <mark> client-pod.yaml </mark> to create a pod.
 <pre class="language-yaml line-numbers"><code>
