@@ -47,15 +47,35 @@ spec:
   </code></pre>
   
   <p> to et list of all services <mark> kubectl get services </mark> </p>
-    <pre class="language-shell line-numbers"><code>
+<pre class="language-shell line-numbers"><code>
 NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 client-node-port   NodePort    10.101.194.88   <none>        3050:31515/TCP   2s
 kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          42h
                      
-    </code></pre>
+</code></pre>    
 <p class="text-danger">  ClusterIP  what is this </p>
 <p> This tells that pods communicate on port 3050 and that request  goes to port 31515 and that request goes to container 
 port 3000 </p>
 <p> port 3050 is not publicly exposed</p>
 <p> port 31515 exposes the application</p>
 <p> This service is applied to any pod when the service selector key value pair matches with pod's label key value pair.</p>
+
+<p> To get detailed info about a service use <code> kubectl describe service client-node-port </code> </p>
+<pre class="language-shell line-numbers"><code>
+Name:                     client-node-port
+Namespace:                default
+Labels:                   <none>
+Annotations:              kubectl.kubernetes.io/last-applied-configuration:
+                            {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"client-node-port","namespace":"default"},"spec":{"ports":[{"nodeP...
+Selector:                 component=web
+Type:                     NodePort
+IP:                       10.101.194.88
+Port:                     <unset>  3050/TCP
+TargetPort:               3000/TCP
+NodePort:                 <unset>  31515/TCP
+Endpoints:                172.17.0.2:3000
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+</code></pr
