@@ -1,6 +1,7 @@
-<h2><strong> object service </strong></h2>
+<h2><strong> object service :: NodePort </strong></h2>
 <hr>
 
+<p><b> Used only in dev.</b></p>
 <p> This object is used for networking.There are different type of services:</p> 
   <ul>
     <li> Cluster Ip</li>
@@ -58,8 +59,14 @@ kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          42
 </p>
 <p> This tells that pods communicate on port 3050 and that request  goes to port 31515 and that request goes to container 
 port 3000 </p>
-<p> port 3050 is not publicly exposed</p>
-<p> port 31515 exposes the application</p>
+<p>
+ port 3050 is not publicly exposed, would not be found via netstat as it is not a linux port and  is manged by the 
+ kubernetes networking
+ </p>
+<p> 
+port 31515 exposes the application as it is a linux port and accepting any incoming requests which get forwarded to the
+containerPort.
+</p>
 <p> This service is applied to any pod when the service selector key value pair matches with pod's label key value pair.</p>
 
 <p> To get detailed info about a service use <code> kubectl describe service client-node-port </code> </p>
