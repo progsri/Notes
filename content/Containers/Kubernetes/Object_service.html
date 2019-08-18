@@ -83,8 +83,9 @@ Events:                   <none>
 </code></pre>
 
 <p> To see the listening ports in the VM on which minikube is running: <code> minikube ssh; netstat -ltn; </code>. 
-  Notice we can only see <mark> 31515 </mark> and not 3050. <span class="text-danger"> Then is 3050 on the regular 
-  linux port ?? </span>
+  Notice we can only see <mark> 31515 </mark> and not 3050. <span class="text-danger"> Then is 3050 not the regular 
+  linux port ??, which might make sense as it is not supposed to exposed to public other wise there is no way for 
+  kubernetes to get control over the port.</span>
 </p>.
 <pre class="language-shell line-numbers"><code>
 $ netstat -ltn
