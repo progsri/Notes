@@ -32,6 +32,9 @@ spec:
         - containerPort: 3000
 
 </code></pre>
+<p> <b>containerPort </b> is not a linux port but a port which is only understood by docker networoking. This is reason why
+  netstat would not show this port as listening and also docker can have multiple containers listening on the same port.
+</p>
 
 <p> Applying the configuration <code> kubectl apply -f client-pod.yaml </code> </p>
 <pre class="language-shell line-numbers"><code>
