@@ -46,14 +46,16 @@ spec:
   service/client-node-port created
   </code></pre>
   
-  <p> to et list of all services <mark> kubectl get services </mark> </p>
+<p> To get list of all services <mark> kubectl get services </mark> </p>
 <pre class="language-shell line-numbers"><code>
 NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 client-node-port   NodePort    10.101.194.88   <none>        3050:31515/TCP   2s
 kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          42h
                      
 </code></pre>    
-<p class="text-danger">  ClusterIP  what is this </p>
+<p>  <b>ClusterIP</p> is the type of serivce object used by other pods to communicate with each other, it is not accessible
+ from public like NodePort. It also has to be configured.
+</p>
 <p> This tells that pods communicate on port 3050 and that request  goes to port 31515 and that request goes to container 
 port 3000 </p>
 <p> port 3050 is not publicly exposed</p>
@@ -78,4 +80,44 @@ Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
 
-</code></pr
+</code></pre>
+
+<p> To see the listening ports in the VM on which minikube is running: <code> minikube ssh; netstat -ltn; </code>. 
+  Notice we can only see <mark> 31515 </mark> and not 3050. <span class="text-danger"> Then is 3050 on the regular 
+  linux port ?? </span>
+</p>.
+<pre class="language-shell line-numbers"><code>
+$ netstat -ltn
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       
+tcp        0      0 127.0.0.1:10248         0.0.0.0:*               LISTEN      
+tcp        0      0 127.0.0.1:10249         0.0.0.0:*               LISTEN      
+tcp        0      0 192.168.39.32:2379      0.0.0.0:*               LISTEN      
+tcp        0      0 127.0.0.1:2379          0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      
+tcp        0      0 192.168.39.32:2380      0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:55535           0.0.0.0:*               LISTEN      
+tcp        0      0 127.0.0.1:10257         0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:44721           0.0.0.0:*               LISTEN      
+tcp        0      0 127.0.0.1:10259         0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:34365           0.0.0.0:*               LISTEN      
+tcp        0      0 127.0.0.1:34431         0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:39521           0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:2049            0.0.0.0:*               LISTEN      
+tcp        0      0 :::2376                 :::*                    LISTEN      
+tcp        0      0 :::10250                :::*                    LISTEN      
+tcp        0      0 :::10251                :::*                    LISTEN      
+tcp        0      0 :::5355                 :::*                    LISTEN      
+tcp        0      0 :::10252                :::*                    LISTEN      
+tcp        0      0 :::10255                :::*                    LISTEN      
+tcp        0      0 :::111                  :::*                    LISTEN      
+tcp        0      0 :::10256                :::*                    LISTEN      
+tcp        0      0 :::22                   :::*                    LISTEN      
+tcp        0      0 :::40407                :::*                    LISTEN      
+tcp        0      0 :::31515                :::*                    LISTEN      
+tcp        0      0 :::8443                 :::*                    LISTEN 
+</code></pre>
+
+
