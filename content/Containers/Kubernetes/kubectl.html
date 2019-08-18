@@ -11,4 +11,8 @@ KubeDNS is running at https://192.168.39.32:8443/api/v1/namespaces/kube-system/s
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 </code></pre>
 
+<p> kubectl communicates to apiserver which is in master that in turn talks to kubelet in the node, kubelet in turn talks to the
+  docker. kubelet and docker are present in the node.
+</p>
+
 <h4><strong> Reference </strong></h4>
