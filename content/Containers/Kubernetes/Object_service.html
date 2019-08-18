@@ -53,7 +53,7 @@ client-node-port   NodePort    10.101.194.88   <none>        3050:31515/TCP   2s
 kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          42h
                      
 </code></pre>    
-<p>  <b>ClusterIP</p> is the type of serivce object used by other pods to communicate with each other, it is not accessible
+<p>  <b>ClusterIP</b> is the type of serivce object used by other pods to communicate with each other, it is not accessible
  from public like NodePort. It also has to be configured.
 </p>
 <p> This tells that pods communicate on port 3050 and that request  goes to port 31515 and that request goes to container 
