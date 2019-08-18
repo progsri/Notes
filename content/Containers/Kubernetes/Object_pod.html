@@ -7,7 +7,7 @@
 </p>
 
 <hr>
-<h2><strong> configuration </strong></h2>
+<h4><strong> configuration </strong></h4>
 <ul>
 <li> <b> Kind </b> indicates the type of Object, it can be a service, pod , replicaController etc. </li>
 <li> <b> name </b> indicates the name of the pod </li>
@@ -98,3 +98,11 @@ Events:
   Normal  Started    29m   kubelet, minikube  Started container client
 </code></pre>
 <p><mark> Events </mark> indicates the events that occured w.r.t this pod. </p>
+
+<hr>
+<h4><strong> Update configuration </strong></h4>
+<p> We can update pod configuration such as change to different image and run <code> kubectl apply</code>, however we cannot
+ update he containerPort, for that we need another kind of object <b> Deployment </b>
+
+</p>
+
