@@ -1,7 +1,7 @@
 <h2><strong> object service </strong></h2>
 <hr>
 
-<p> this object is used for networking.There are different type of services:</p> 
+<p> This object is used for networking.There are different type of services:</p> 
   <ul>
     <li> Cluster Ip</li>
     <li> NodePort : used only in local and never in production </li>
@@ -16,7 +16,7 @@
   <li> <b> name </b> indicates the name of the service </li>
   <li> <b> selector </b> are key value pair that are used by other objects such as pod to relate their config to the pod.  </li>
   <li> <b> type </b> indicate the type of service </li>
-  <li> <b> port </b> is used by other pods to communicate with this pod </li>
+  <li> <b class="text-danger"> port </b> is used by other pods to communicate with this pod </li>
   <li> <b> port </b> is the target port of the container </li>
   <li> <b> port </b> is the port that is exposed to the public which is of the range 30000-32767, if not used kubernetes
     would assign randomly in this range. As you if these ports are used then the client would have to explicitly mention them.
@@ -53,4 +53,6 @@ client-node-port   NodePort    10.101.194.88   <none>        3050:31515/TCP   2s
 kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          42h
                      
     </code></pre>
-    <p class="text-danger">  ClusterIP  what is this </p>
+<p class="text-danger">  ClusterIP  what is this </p>
+<p> This tells that pods communicate on port 3050 and that request  goes to port 31515 and that request goes to container 
+port 3000 </p>
