@@ -71,5 +71,10 @@ Topic:first_topic	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=107
 [2019-08-20 06:14:39,211] WARN [Producer clientId=console-producer] Error while fetching metadata with correlation id 3 : {non_existing_topic=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
 >still writing to it
 </code> </pre>
-<p> We get a WARN as the topic was just created and the leader election for its partiton is not done yet. 
+<p> We get a WARN as the topic was just created and the leader election for its partiton is not done yet. </p>
+<p class="text-danger"> What is the default producer ack, may be producer is waiting for leader to ack. </p>
+<p> Each producer can choose what level of ack it should wait for.. See concepts for details.
+<code> ./kafka-console-producer.sh --broker-list localhost:9092 --topic topic_2 --producer-property acks=all </code>
 </p>
+	
+	
