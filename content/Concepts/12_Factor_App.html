@@ -1,0 +1,22 @@
+<h2><strong> 12 Factor App </strong></h2>
+<hr>
+
+<h4><strong> Dependencies </strong></h4>
+<ul>
+  <li>
+    All the libraries required by the application should be packaged with the application instead of relying on a central 
+    location for libraries. For example in Java we need to use <b> maven </b> to download jar to place them in <b> .m2 </b>
+    central location, but we should also not depend on pulling these jar at runtime from .m2 instead we should package these
+    dependent jar from .m2 into the app. Using maven also has an added advantage to fetch the dependencies quickly in case of
+    new environment or new developer joining the team.
+  </li>
+  <li>
+    If the app is dependent on system binaries such as <b> curl </b>, <b> netstat </b>, then app should not be relying on these
+    binaries as new updated might remove these binaries such netstat being replaced by ss eventually. Always package these
+    binaries with the application
+  </li>
+</ul>
+
+<hr>
+<h4><strong> References </strong></h4>
+<a href="https://12factor.net"> 12 factor App </a>
