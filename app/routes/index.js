@@ -3,47 +3,56 @@ var router = express.Router();
 const fs = require("fs");
 const mongo = require("./mongo.js");
 const constants = require("./constants.js");
-const util = require('util');
+const util = require("util");
 
-router.get("/", function (req, res, next) {
+router.get("/", function(req, res, next) {
   let selectPromise = mongo.getRecords();
   selectPromise
     .then(data => {
       let ui = [];
       for (index in data) {
-        let color = "";
-        let status = "";
-        if (data[index][constants.STATUS] != undefined) {
-          if (data[index][constants.STATUS].includes("ongoing")) {
-            color = "badge badge-warning";
-            status = data[index][constants.STATUS];
+        if (index === "tmp" || index === "temp") {
+          let color = "";
+          let status = "";
+          if (data[index][constants.STATUS] != undefined) {
+            if (data[index][constants.STATUS].includes("ongoing")) {
+              color = "badge badge-warning";
+              status = data[index][constants.STATUS];
+            }
+
+            if (data[index][constants.STATUS].includes("incomplete")) {
+              color = "badge badge-secondary";
+              status = data[index][constants.STATUS];
+            }
+
+            if (data[index][constants.STATUS].includes("backlog")) {
+              color = "badge badge-primary";
+              status = data[index][constants.STATUS];
+            }
+
+            if (data[index][constants.STATUS].includes("done")) {
+              color = "badge badge-success";
+              status = data[index][constants.STATUS];
+            }
           }
 
-          if (data[index][constants.STATUS].includes("incomplete")) {
-            color = "badge badge-secondary";
-            status = data[index][constants.STATUS];
-          }
-
-          if (data[index][constants.STATUS].includes("backlog")) {
-            color = "badge badge-primary";
-            status = data[index][constants.STATUS];
-          }
-
-          if (data[index][constants.STATUS].includes("done")) {
-            color = "badge badge-success";
-            status = data[index][constants.STATUS];
-          }
+          ui.push({
+            path:
+              constants.RESOURCE +
+              "/" +
+              data[index][constants.PATH]
+                .replace("../", "")
+                .replace("../", "") +
+              "/" +
+              data[index][constants.RESOURCE],
+            resource:
+              data[index][constants.RESOURCE]
+                .replace(".html", "")
+                .replace(/_/g, " ") + "   ",
+            status: status,
+            color: color
+          });
         }
-
-        ui.push({
-          path:
-            constants.RESOURCE + "/" +
-            data[index][constants.PATH].replace("../", "").replace("../", "") + "/" +
-            data[index][constants.RESOURCE],
-          resource: data[index][constants.RESOURCE].replace(".html", "").replace(/_/g, " ") + "   ",
-          status: status,
-          color: color
-        });
       }
       console.log(data);
       res.render("index", {
@@ -55,6 +64,5 @@ router.get("/", function (req, res, next) {
       console.log("Index  " + util.inspect(err));
     });
 });
-
 
 module.exports = router;
