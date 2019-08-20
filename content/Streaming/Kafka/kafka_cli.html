@@ -100,6 +100,13 @@ Topic:first_topic	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=107
 consumers and 3 partitions then 1 consumer will be in active ( would never consume )
 </mark>
 </p>
+<p> <mark>
+  The advantage of having consumer groups is that 2 applications can consume from the same topic as kafka can diffrentiate 
+between consumers at consumer group level. If we take rabbitmq we cannot diffrentiate one consumer from another, so if there
+are 6 consumbers on rabbitmq from 2 different applications listening on a single topic then if a message is acknowledged by
+a consumer other consumer would not see that message again, you would have to have 2 topics in this case for 2 applications.
+With Kafka we can have 1 topic and different consumer groups.
+</mark> </p>
 
 
 
