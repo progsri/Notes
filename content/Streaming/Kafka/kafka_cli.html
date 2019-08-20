@@ -4,20 +4,24 @@
 <h4><strong> Installation </strong></h4>
 <p> Kafka depends on zookeeper </p>
 
-<mark>zookeeper</mark> opens port on 8080,2181 and random port.
+<p><mark>zookeeper</mark> opens port on 8080,2181 and random port.</p>
+<p class="text-danger"> What is port 8080 used for </p>
+<p class="text-danger"> What is port 2181 used for </p>
+<p class="text-danger"> What is random port used for </p>
+
 <pre class="language-shell line-number"><code>
 cp ./conf/zoo_sample.cfg ./conf/zoo.cfg
 ./bin/zkServer.sh start
 ZooKeeper JMX enabled by default
 Using config: /home/progsri/ProgSri/ENGINE/ZooKeeper/apache-zookeeper-3.5.5-bin/bin/../conf/zoo.cfg
 Starting zookeeper ... STARTED
-
 </code></pre>
 
-<mark> Kafka </mark> opens port on 9092 and a random port
+<p> <mark> Kafka </mark> opens port on 9092 and a random port </p>
+<p class="text-danger"> What is port 9092 used for </p>
+<p class="text-danger"> What is random port used for </p>
 <pre class="language-shell line-number"><code>
- ./kafka-server-start.sh ../config/server.properties
-
+ ./bin/kafka-server-start.sh ./config/server.properties
 </code></pre>
 
 
