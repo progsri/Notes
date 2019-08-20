@@ -62,7 +62,7 @@ Topic:first_topic	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=107
 <hr>
 <h3><strong> - Producer </strong></h3>
 <hr>
-<h4><strong> Send/writing a message to the topic that is not created yet </strong></h4>
+<p> Send/writing a message to the topic that is not created yet would create the topic </p>
 <code>
 	 ./kafka-console-producer.sh --broker-list localhost:9092 --topic non_existing_topic
 </code>
@@ -93,6 +93,9 @@ Topic:first_topic	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=107
 
 <hr>
 <h3><strong> - Consumer Group </strong></h3>
+<p> Each group gets a group id. </p>
+<code>  ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic_2 --group group-name </code>
+<p> All the consumers in the group share the load of reading, so each message would end up to a different consumber.</p>
 
 
 
