@@ -95,7 +95,11 @@ Topic:first_topic	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=107
 <h3><strong> - Consumer Group </strong></h3>
 <p> Each group gets a group id. </p>
 <code>  ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic_2 --group group-name </code>
-<p> All the consumers in the group share the load of reading, so each message would end up to a different consumber.</p>
+<p> All the consumers in the group share the load of reading, so each message would end up to a different consumber.
+<mark> However never will a partition be consumed by 2 or more consumers in the consumber group. So if there are 4 
+consumers and 3 partitions then 1 consumer will be in active ( would never consume )
+</mark>
+</p>
 
 
 
