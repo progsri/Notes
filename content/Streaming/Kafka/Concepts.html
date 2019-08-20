@@ -58,7 +58,7 @@
   <li>ack = 1 indicates the producer  will only wait for the ack from leader, does not gaurantee if the message is replicated,
     so, the broker of the leader copy dies before the message is the replicated, then there is a chance of losing that data.
   </li> 
-  <li>ack = all indicatea the producer will wait for the ack from leader and replicas, this would of course be slow.</li> 
+  <li>ack = all or -1 indicatea the producer will wait for the ack from leader and replicas, this would of course be slow.</li> 
  </ul>
 </p>
 <p>
