@@ -1,7 +1,7 @@
 <h2><strong> cli </strong></h2>
 <hr>
 
-<h3><strong> Installation </strong></h3>
+<h3><strong> - Installation </strong></h3>
 <p> Kafka depends on zookeeper </p>
 
 <p><mark>zookeeper</mark> opens port on 8080,2181 and random port.</p>
@@ -25,7 +25,7 @@ Starting zookeeper ... STARTED
 </code></pre>
 
 <hr>
-<h3><strong> Topic </strong></h3>
+<h3><strong> - Topic </strong></h3>
 
 <hr>
 <h4><strong> Create a topic </strong></h4>
@@ -60,9 +60,9 @@ Topic:first_topic	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=107
 </code>
 
 <hr>
-<h3><strong> Producer </strong></h3>
+<h3><strong> - Producer </strong></h3>
 <hr>
-<h4><strong> Send a message to the topic that is not created yet </strong></h4>
+<h4><strong> Send/writing a message to the topic that is not created yet </strong></h4>
 <code>
 	 ./kafka-console-producer.sh --broker-list localhost:9092 --topic non_existing_topic
 </code>
@@ -76,5 +76,37 @@ Topic:first_topic	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=107
 <p> Each producer can choose what level of ack it should wait for.. See concepts for details.
 <code> ./kafka-console-producer.sh --broker-list localhost:9092 --topic topic_2 --producer-property acks=all </code>
 </p>
-	
-	
+
+<hr>
+<h3><strong> - Consumer </strong></h3>
+<hr>
+<h4><strong> consuming/reading a message in real time </strong></h4>
+<p> By default you will be only able to consume if the producer is writing in real time. </p>
+<code> ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic_2  </code>
+
+<p> To consumer message from the beginning </p>
+<code>  ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic_2 --from-beginning
+ </code>
+
+<p class="text-danger"> To consumer message from the a different location  </p>
+<code></code>
+
+<hr>
+<h3><strong> - Consumer Group </strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
