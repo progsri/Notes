@@ -9,8 +9,8 @@
   The custom JSX element(component) we write can export other custom /in built JSX elements such as h4 span etc.   
 </p>
 <p>
-  Using props we can pass data to the child components as attributes. If props get update to a new value only then react 
-  re-renders. It would not re-render if the updated to the existing value.
+  Using props we can pass data from parent component to the child components as attributes. If props get update to a new 
+  value only then react re-renders. It would not re-render if the updated to the existing value.
 </p>
 <p>
   At class level we can store state locally ( this is not redux which is a global state ). The values of this state can only
@@ -21,6 +21,9 @@
   When possible use stateless components which is just a function or arrow function, when using stateful component i.e class
   it becomes diffcult to manage.
 </p>
-
+<p>
+  Using props we can pass functions which have access to Parent state  from parent component to the child components as
+  attributes. 
+</p>
 
 
