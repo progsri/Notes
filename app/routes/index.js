@@ -11,7 +11,7 @@ router.get("/", function(req, res, next) {
     .then(data => {
       let ui = [];
       for (index in data) {
-        if (index == "tmp" || index == "temp") {
+        if (data[index][constants.RESOURCE] === "tmp" || data[index][constants.RESOURCE] === "temp") {
         }else{
           let color = "";
           let status = "";
