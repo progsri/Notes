@@ -12,6 +12,7 @@ router.get("/", function(req, res, next) {
       let ui = [];
       for (index in data) {
         if (index === "tmp" || index === "temp") {
+        }else{
           let color = "";
           let status = "";
           if (data[index][constants.STATUS] != undefined) {
