@@ -107,8 +107,21 @@ are 6 consumbers on rabbitmq from 2 different applications listening on a single
 a consumer other consumer would not see that message again, you would have to have 2 topics in this case for 2 applications.
 With Kafka we can have 1 topic and different consumer groups.
 </mark> </p>
+<p> To list all the consumber groups <code> ./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list </code> </p>
+<p> To describe a consumer group in detail <code> ./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe 
+--group group-2 </code> </p>
+<pre class="language-shell line-number"><code>
 
+GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+group-2         topic_3         0          21              21              0               consumer-1-c9aea476-87c3-4b70-8fb4-3931c96a4ff2 /192.168.1.93   consumer-1
+group-2         topic_3         1          22              22              0               consumer-1-c9aea476-87c3-4b70-8fb4-3931c96a4ff2 /192.168.1.93   consumer-1
+group-2         topic_3         2          22              22              0               consumer-1-c9aea476-87c3-4b70-8fb4-3931c96a4ff2 /192.168.1.93   consumer-1
+</code></pre>
+<p> This tells which topic-partition this consumer group is consuming from. The present offset(CURRENT-OFFSET) is consumed 
+	from.  LOG-END-OFFSET  indicate the max offset for th partiton. LAG is  LOG-END-OFFSET  - CURRENT-OFFSET.
+	IP of the consumer.
 
+</p>
 
 
 
