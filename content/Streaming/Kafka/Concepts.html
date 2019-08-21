@@ -108,3 +108,9 @@
  <li> <span class="text-danger">Exactly once </span> </li>
 </ul>
 </p>
+<p>
+ Consumer offset is just a way to telling the broker that a consumer is done reading that message from a particular partion.
+ so that when this consumer needs another message or a new consumer is starting to read from the same partion, kafka would
+ know where to start from. Whether it is a single consumer in default group assigned by kafka or group of consumer in a 
+ consumer group, offsets can be reset for a particular topic in the group or all topics in the group.
+</p>
