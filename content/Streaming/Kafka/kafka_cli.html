@@ -81,12 +81,14 @@ Topic:first_topic	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=107
 <h3><strong> - Consumer </strong></h3>
 <hr>
 <h4><strong> consuming/reading a message in real time </strong></h4>
-<p> By default you will be only able to consume if the producer is writing in real time. </p>
+<p> By default you will be only able to consume if the producer is writing in real time.
 <code> ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic_2  </code>
+ </p>
 
-<p> To consumer message from the beginning </p>
+<p> To consumer message from the beginning 
 <code>  ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic_2 --from-beginning
  </code>
+</p>
 
 <p class="text-danger"> To consumer message from the a different location  </p>
 <code></code>
