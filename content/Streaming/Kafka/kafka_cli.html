@@ -137,8 +137,43 @@ group-2         topic_2         0          6               6               0    
 
 </p>
 
+<h4><strong> Resetting the offset of a partiton in consumer group </strong></h4>
+<p> The reset is not for a consumer, consumer can come and go and each time the consumer starts in consumer group it get
+ a new id, however the consumer is the one who tells the kafka that a particular offset is read for partition which the 
+kafka stores in the __consumer_offset topic.
+</p>
+<p> To reset offset in a consumber group, we need to stop the consumers.
+</p>
+<p> In a consumer group, we can reset the offset of the partion of all the topics involved in the consumer group or just one
+ particular topic, so that the new consumer when they start to consume they can start from the new offsets.
+</p>
+<p> To reset offsets to start of the messages <code> ./kafka-consumer-groups.sh --bootstrap-server localhost:9092
+	--group trail-group --reset-offsets --to-earliest --execute --topic exp-topic-1
+	</code>
+</p>
+<p> Before reset </p>
+<pre class="language-shell line-number"><code>
+./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group trail-group
 
+GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+trail-group     exp-topic-1     2          12              12              0               consumer-1-b81bce4e-c7e0-4e5e-b120-03eed2f74c87 /192.168.1.93   consumer-1
+trail-group     exp-topic-1     0          12              12              0               consumer-1-186c1b16-9373-4b92-b736-8a85b18d92ff /192.168.1.93   consumer-1
+trail-group     exp-topic-1     1          12              12              0               consumer-1-b05cb3a9-96b3-4bea-9462-89758edc48c6 /192.168.1.93   consumer-1
 
+</code></pre>
+<p> After reset (does not have active consumer as they need to be turned off while resetting.</p>
+<pre class="language-shell line-number"><code>
+./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group trail-group                                                 
+
+Consumer group 'trail-group' has no active members.
+
+GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+trail-group     exp-topic-1     0          0               12              12              -               -               -
+trail-group     exp-topic-1     1          0               12              12              -               -               -
+trail-group     exp-topic-1     2          0               12              12              -               -               -
+
+</code></pre>
+<p> Observe the CURRENT-OFFSET </p>
 
 
 
