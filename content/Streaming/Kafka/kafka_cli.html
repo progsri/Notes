@@ -116,12 +116,14 @@ consumer group has 3 consumers then kafka might use 2 consumers only to read fro
 <p> To list all the consumber groups <code> ./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list </code> </p>
 <p> To describe a consumer group in detail <code> ./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe 
 --group group-2 </code> </p>
-<pre class="language-shell line-number"><code>
+<p><b> consumer group can read from many topics </b></p>
+<pre class="language-shell line-number"GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
+group-2         topic_3         0          24              24              0               consumer-1-548e96b7-d720-4076-a00e-42634e7dfbfc /192.168.1.93   consumer-1
+group-2         topic_3         1          25              25              0               consumer-1-548e96b7-d720-4076-a00e-42634e7dfbfc /192.168.1.93   consumer-1
+group-2         topic_3         2          25              25              0               consumer-1-91d05875-6318-4b74-9bfa-a23c6b1c231f /192.168.1.93   consumer-1
+group-2         topic_2         0          6               6               0               consumer-1-740358fe-3cda-4080-b2d0-8499b013ac9d /192.168.1.93   consumer-1
+><code>
 
-GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                     HOST            CLIENT-ID
-group-2         topic_3         0          21              21              0               consumer-1-c9aea476-87c3-4b70-8fb4-3931c96a4ff2 /192.168.1.93   consumer-1
-group-2         topic_3         1          22              22              0               consumer-1-c9aea476-87c3-4b70-8fb4-3931c96a4ff2 /192.168.1.93   consumer-1
-group-2         topic_3         2          22              22              0               consumer-1-c9aea476-87c3-4b70-8fb4-3931c96a4ff2 /192.168.1.93   consumer-1
 </code></pre>
 <p> This tells which topic-partition this consumer group is consuming from. The present offset(CURRENT-OFFSET) is consumed 
 	from.  LOG-END-OFFSET  indicate the max offset for th partiton. LAG is  LOG-END-OFFSET  - CURRENT-OFFSET.
