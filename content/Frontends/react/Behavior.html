@@ -57,7 +57,7 @@
   Use <b> Radium </b> for react styling especially for pseudo selector
 </p>
 <p>
-  Life cycle hooks to create component in the order below: There are other life cycle hooks but rarely used.
+  Life cycle hooks to create component(only for class based components) in the order below: There are other life cycle hooks but rarely used.
   <ol>
     <li> Class constructor(props) </li>
     <li> getDerivedStateFromProps(props,state) : Very rarely used</li>
@@ -65,7 +65,7 @@
     <li> render() of child components</li>
     <li> componentDidMount() </li>
   </ol>
-   Life cycle hooks to update component in the order below: 
+   Life cycle hooks to update component(only for class based components)  in the order below: 
   <ol>
      <li> getDreivedStateFromProps(props, state) </li>  
      <li> shouldComponentUpdate(nextProps, nextState) : we can use ths.props or this.state to compare nextProps nd nextState 
