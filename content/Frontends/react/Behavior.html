@@ -69,7 +69,9 @@
    Life cycle hooks to update component in the order below: 
   <ol>
      <li> getDreivedStateFromProps(props, state) </li>  
-     <li> shouldComponentUpdate(nextProps, nextState) </li>  
+     <li> shouldComponentUpdate(nextProps, nextState) : we can use ths.props or this.state to compare nextProps nd nextState 
+          and return true or false based on which the component will update ( next steps in the cycle )   
+    </li>  
      <li> render()</li>  
      <li> render of child components </li>  
      <li> getsnapshotBeforeUpdate(prevProps, prevState) </li>
