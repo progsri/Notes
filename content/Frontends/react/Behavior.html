@@ -15,6 +15,10 @@
   value only then react re-renders. It would not re-render if the updated to the existing value.
 </p>
 <p>
+  At function level component props is local variable, so just use props.xy. At class level component props is a class field,
+  so use as this.props.xy.
+</p>
+<p>
   At class level we can store state locally ( this is not redux which is a global state ). The values of this state can only
   be accessed from the class ( of course as it is a class field ), if this state is used to render and the state is update to
   a new value only then react would re-render.It would not re-render if the updated to the existing value.
