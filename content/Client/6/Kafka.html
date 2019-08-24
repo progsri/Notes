@@ -3,5 +3,11 @@
 
 
 - AS a Consumer
-  Certain system such as for sms, emails, single place content holder for mobile data give us the ability to call them using APIs,
-  so that at real time we can can call them. So our clients as we are the interface between clients and these systems.
+  Certain system such as for sms, emails, single place content holder for mobile data give us the ability to call them using
+APIs,  so that at real time we can can call them. So our clients as we are the interface between clients and these systems 
+call us in real time, we have API to take their input and drop it to kafka cluster. We have topics based on the clients,
+these clients sometimes need to interact with multiple system, this is reason why we have topics, if the client make a 
+http call and we forward to end system in some cases multiple systems then most likely the calls will timeout .
+ We have consumers to pull the messages from these systems and make the http call to the end systems andin some cases if it
+errors out, we call the client api for error handling with the error andthe original message id, this way the client would 
+now if there is an error.
