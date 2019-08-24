@@ -129,12 +129,17 @@ partition 0
 </code></pre>
 
 
-
+<hr>
 <h4><strong> Using key </strong></h4>
 <p>
   First time when a message is written to kafka with a key, kafka remembers the random partion it has the written that msg to.
   So, for next message with the same key, kafka writes to the same partition, as the order of message is maintained in a
   partition, this can be made use of.
+</p>
+<p>
+  In case of failures, kafka retries for a very high value which can be configured for every <mark> retry.backoff.ms </mark>
+ secs till a timeout of <mark> delivery.timeout.ms </mark>. However the order of message gets effected, if we are based on 
+ key based writes then  this woul be a issue.
 </p>
 <pre class="language-java line-numbers"><code>
 package com.ninjashore.kafka.producer;
@@ -194,3 +199,11 @@ public class ProducerWithCallbacks {
 }
 
 </code></pre>
+
+<hr>
+<h4><strong> Retries </strong></h4>
+<p>
+  In case of failures, kafka retries for a very high value which can be configured for every <mark> retry.backoff.ms </mark>
+ secs till a timeout of <mark> delivery.timeout.ms </mark>. However the order of message gets effected, if we are based on 
+ key based writes then  this woul be a issue.
+</p>
