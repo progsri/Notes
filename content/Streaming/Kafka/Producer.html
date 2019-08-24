@@ -118,3 +118,69 @@ public class ProducerWithCallbacks {
 offset 8
 partition 0
 </code></pre>
+
+
+
+<h4><strong> Using key </strong></h4>
+<p>
+  First time when a message is written to kafka with a key, kafka remembers the random partion it has the written that msg to.
+  So, for next message with the same key, kafka writes to the same partition, as the order of message is maintained in a
+  partition, this can be made use of.
+</p>
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.kafka.producer;
+
+import org.apache.kafka.clients.producer.*;
+import org.apache.kafka.common.serialization.StringSerializer;
+
+import java.util.Properties;
+
+public class ProducerWithCallbacks {
+
+    public static void main(String[] args){
+
+        String bootStrapServers = "127.0.0.1:9092";
+        Properties properties = new Properties();
+        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,bootStrapServers);
+        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
+        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        properties.setProperty(ProducerConfig.TRANSACTIONAL_ID_CONFIG,"id-1");  //????
+
+        // one String for property key and antoher string for property value
+        KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
+
+        // record to produce which takes topic and the message
+        ProducerRecord<String, String> record = new ProducerRecord<>("topic-6","key-2","value1");
+
+        try{
+            producer.initTransactions(); /// ???
+            producer.beginTransaction();
+
+            // This is async
+            // Call back gives you more control , if the msg is produced then we get the other metadata, if it fails
+            // also we would know that and accordingly we can take steps..may be logged the error and retry later.
+            producer.send((record), new Callback() {
+                @Override
+                public void onCompletion(RecordMetadata metadata, Exception exception) {
+                   if(exception == null){
+                       System.out.println("offset " +  metadata.offset());
+                       System.out.println("partition " + metadata.partition());
+                   }else{
+                       System.out.println("Message was not produced");
+                   }
+                }
+            });
+
+            producer.commitTransaction();
+        }catch(Exception ex){
+            System.out.println("Error " + ex.getMessage());
+            producer.abortTransaction();
+        }finally{
+            System.out.println("Flushing... ");
+            producer.flush(); //As send is async ..this would force to flush the data to kafka
+            producer.close();
+        }
+    }
+}
+
+</code></pre>
