@@ -89,7 +89,10 @@
    Consumer can process a single message or group of messages(batch) at a time. This <u> <a href="https://kafka.apache.org/23/javadoc/index.html?org/apache/kafka/clients/consumer/KafkaConsumer.html">
  Diferent approaches </a> </u>
 </p>
-
+<p> This is a pull based i.e the broker does not give us the message until the consumer asks for one. consumer is supposed to
+ keep polling.
+</p>
+ 
 <hr>
 <h4><strong> Consumer Groups</strong> </h4>
 <p>
