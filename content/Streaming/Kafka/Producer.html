@@ -1,0 +1,49 @@
+<h2><strong> Producer </strong></h2>
+
+<p class="Text-danger"> What is the need and usage of giving a ProducerConfig.TRANSACTIONAL_ID_CONFIG </p>
+
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.kafka.producer;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+
+import org.apache.kafka.common.serialization.StringSerializer;
+
+import java.util.Properties;
+
+public class Producer {
+
+    public static void main(String[] args){
+
+        String bootStrapServers = "127.0.0.1:9092";
+        Properties properties = new Properties();
+        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,bootStrapServers);
+        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
+        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        properties.setProperty(ProducerConfig.TRANSACTIONAL_ID_CONFIG,"id-1");  //????
+
+        // one String for property key and antoher string for property value
+        KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
+
+        // record to produce which takes topic and the message
+        ProducerRecord<String, String> record = new ProducerRecord<>("topic-4","value1");
+
+        try{
+            producer.initTransactions(); /// ???
+            producer.beginTransaction();
+
+            producer.send((record)); // This is async
+
+            producer.commitTransaction();
+        }catch(Exception ex){
+            System.out.println("Error " + ex.getMessage());
+            producer.abortTransaction();
+        }finally{
+            producer.flush(); //As send is async ..this would force to flush the data to kafka
+            producer.close();
+        }
+    }
+}
+</code></pre>
