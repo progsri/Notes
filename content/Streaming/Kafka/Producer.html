@@ -150,6 +150,7 @@ public class ProducerWithCallbacks {
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
 
         // record to produce which takes topic and the message
+        // key ensure the message is always written to the same partition
         ProducerRecord<String, String> record = new ProducerRecord<>("topic-6","key-2","value1");
 
         try{
