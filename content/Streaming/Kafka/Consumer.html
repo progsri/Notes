@@ -1,13 +1,27 @@
 <h2><strong> Consumer </strong></h2>
 <hr>
 
+<p>
+  consumers are listeners, in other messaging system a consumer or listenser is subscribed to the broker on a topic, 
+    if a msg is written to that topic, the broker would send to the listener if it is avaialable, in case the listener is not
+    available then the message is lost unless we have storage mechanism <span class="text-danger"> even in this case how do 
+    they get back the lost messages </span>. In case of kafka, the broker doest not send, it is the cuty of the consumer to
+    pool the messages.
+</p>
+
 <h4><strong> Connection Pooling </strong></h4>
 <p> The library provided by kafka itself takes care of connection pool just like <b> jedis library  </b> takes care for redis.
 </p>
 
 <h4><strong> Simple </strong></h4>
-<p class="text-danger"> Is not polling inefficient ?
+<p class="text-danger"> Is not polling inefficient ? </p>
+<p>
+    In the below code we are not subscribing to the broker, in kafka broker does not entertain such things like other
+messaging systems, we are subscribing to the consumer library code ( imagine like Rxjava )
 </p>
+<p>
+  we can also subscribe to multiple topics. 
+ </p>
 <pre class="language-java line-numbers"><code>
 package com.ninjashore.kafka.producer;
 
