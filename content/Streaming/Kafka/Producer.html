@@ -1,6 +1,15 @@
 <h2><strong> Producer </strong></h2>
 <hr>
 
+
+<h4><strong> Connection Pooling </strong></h4>
+<p> The library provided by kafka itself takes care of connection pool just like <b> jedis library  </b> takes care for redis.
+</p>
+<p class="text-danger">
+  The producer instance is thread safe, which means the same instance can be used across multiple sends.
+</p>
+
+<hr>
 <h4><strong> Simple </strong></h4>
 <p class="text-danger"> What is the need and usage of giving a ProducerConfig.TRANSACTIONAL_ID_CONFIG </p>
 
