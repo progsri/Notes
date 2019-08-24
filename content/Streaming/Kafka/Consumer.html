@@ -6,7 +6,8 @@
 </p>
 
 <h4><strong> Simple </strong></h4>
-
+<p class="text-danger"> Is not polling inefficient ?
+</p>
 <pre class="language-java line-numbers"><code>
 package com.ninjashore.kafka.producer;
 
@@ -41,7 +42,7 @@ public class Consumer {
         consumer.subscribe(Arrays.asList("topic-6"));
 
         while(true){
-            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100)); // polling is inefficient ??
 
             for (ConsumerRecord<String,String> consumerRecord : records){
                 System.out.println("key " + consumerRecord.key());
