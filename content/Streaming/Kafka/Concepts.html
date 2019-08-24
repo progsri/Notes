@@ -65,11 +65,16 @@
  </ul>
 </p>
 <p>
- <span class="text-danger">Producer can write to the same partition by using a key </span>, otherwise writes go to different partitions using round
+ Producer can write to the same partition by using a key, otherwise writes go to different partitions using round
  robin algorithm
 </p>
 <p>
  using <b> transactions </b> we can either rollback or commit the transaction, this is useful when writing to multiple topics.
+</p>
+<p>
+  In case of failures, kafka retries for a very high value which can be configured for every <mark> retry.backoff.ms </mark>
+ secs till a timeout of <mark> delivery.timeout.ms </mark>. However the order of message gets effected, if we are based on 
+ key based writes then  this woul be a issue.
 </p>
 
 <hr>
@@ -80,7 +85,8 @@
  topics etc. So, the broker which the consumer is connected would now the required information by broker discovery.
 </p>
 <p>
- For a particular partition, order of messages is gauranteed.
+ For a particular partition, order of messages is gauranteed but there can always be producer retries or complete failures to
+ write.
 </p>
 <p>
  Lets say we hava topic that has 3 partitions, how would one consumber read from 3 partitions at the same time or
