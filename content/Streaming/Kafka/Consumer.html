@@ -1,6 +1,7 @@
 <h2><strong> Consumer </strong></h2>
 <hr>
 
+<h4><strong> Observations </strong></h4>
 <p>
   consumers are listeners, in other messaging system a consumer or listenser is subscribed to the broker on a topic, 
     if a msg is written to that topic, the broker would send to the listener if it is avaialable, in case the listener is not
@@ -13,6 +14,7 @@
 <p> The library provided by kafka itself takes care of connection pool just like <b> jedis library  </b> takes care for redis.
 </p>
 
+<hr>
 <h4><strong> Simple </strong></h4>
 <p class="text-danger"> Is not polling inefficient ? </p>
 <p>
@@ -72,3 +74,24 @@ public class Consumer {
 }
 
 </code></pre>
+
+<hr>
+<h4><strong> Rebalancing </strong></h4>
+<p>
+  When ever a consumer joins or leaves a consumer group, kafka automatically rebalancing the load. 
+  For example take a topic with 3 partitons. When the first consumer joins kafka assigns all the 3 partitions to this 
+  consumer, when the second consumer joins this group  then kafka rebalances the partitions, it takes away one or more
+  partitions from the consumer one and assigns to second consumer. Similarly when a consumer leaves the partitions it was
+  assigned would be assigned to other existing consumers in that group.
+</p>
+<p>
+  when rebalancing happens the existing or new consumer would be slow.
+</p>
+
+<hr>
+<h4><strong> assign and seek  </strong></h4>
+<p>
+  assign and seek go in combination. assign is about the partitions it should read from and seek is the offset in the 
+  partition. When the consumer polls it would pool from this partition and offset.
+</p>
+
