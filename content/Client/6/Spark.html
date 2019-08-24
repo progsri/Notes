@@ -5,4 +5,16 @@ Can use single node of spark to download and calculate the checksum
 
 <p>
 How is the spark cluster created at runtime.
+<ol>
+  <li> Http call to Kubernetes api-server withte custom configuration </li>
+  <li> <span class="text-danger"> How does api-serve know to create a spark driver where are the deployment.yaml stored
+    </span></li>
+  <li>  <span class="text-danger"> Spark Master is configured to interact with kubernetes as resource manager </span> </li>
+   <li> Spark Driver uses the same image to spin up 5 executors providing the dns name of the driver to connect, this dns name
+       is provided by kubernetes by default
+  </li>
+   <li> All spark executors connect to driver/li>
+   <li> Spark cluster is ready </li>
+   <li> Driver starts executing the program is was passed i.e the custom library and the configuration.</li>
+</ol>
  </p>
