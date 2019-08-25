@@ -215,7 +215,7 @@ public class ProducerWithCallbacks {
     Let say the producer sends the message to kafka, kafka when trying to send ack bakc gets network failure. Producer 
     thinks the message failed and if retires is enabled tries to send again, so we get duplicate messages. In order to 
     avoid this we need to set <b>enable.idempotence </b> property
-</p>.
+</p>
 
 
 <hr>
