@@ -220,3 +220,11 @@ public class ProducerWithCallbacks {
 
 <hr>
 <h4><strong> Compression </strong></h4>
+<p>
+ When we compress using Gzip, snappy or lz4 we reduce the size of the data being transmitted from producer to kafka and 
+ between replicas as well. Also use less space to store the message. But it might slightly increase the time to send or 
+ receive msg as at the client it has to compress or decompress. Can be set as a property. 
+</p>
+
+<hr>
+<h4><strong> Batching </strong></h4>
