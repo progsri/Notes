@@ -141,6 +141,11 @@ partition 0
  secs till a timeout of <mark> delivery.timeout.ms </mark>. However the order of message gets effected, if we are based on 
  key based writes then  this woul be a issue.
 </p>
+<p>
+ When partions are added or removed the key will no longer guarantee that it would go to the same partitions as the 
+ partition to send the msg for a key is determined by <code> Utils.abs(Utils.murmur2(record.Key())) % num of partitions</code>.
+ murmur2 is the hashing alogorithm.
+</p>
 <pre class="language-java line-numbers"><code>
 package com.ninjashore.kafka.producer;
 
