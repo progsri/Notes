@@ -78,6 +78,9 @@
  secs till a timeout of <mark> delivery.timeout.ms </mark>. However the order of message gets effected, if we are based on 
  key based writes then  this woul be a issue.
 </p>
+<p>
+  When done programmatically library sends messages in batch, see Producer page. 
+</p>
 
 <hr>
 <h4><strong> Consumer </strong> </h4>
@@ -103,7 +106,10 @@
 <p> This is a pull based i.e the broker does not give us the message until the consumer asks for one. consumer is supposed to
  keep polling. <span class="text-danger"> Polling is inefficient...then why is kafka entertainging this</span>
 </p>
- 
+<p>
+  When done programmatically library receives messages in batch, see Consumer page. 
+</p> 
+
 <hr>
 <h4><strong> Consumer Groups</strong> </h4>
 <p>
