@@ -14,4 +14,5 @@ now if there is an error.
  2. Each consumer is deployed as a container. we have 5 partions, so we have 5 consumers which means we have 5 containers. These
 containers are deployed in the kubernetes. So in case if a consumer is dead, kubernetes takes care of bringing another
 consumer. Consumer logs go to log files on the EC2 which are pushed to kibana using a agent on the EC2 itself. since the 
-topics are fixed, the information about which topic to poll from is already baked in the image.
+topics are fixed, the information about which topic to poll from is already baked in the image. To create a new image and 
+upload to artifactory we have jenkins job. 
