@@ -117,9 +117,21 @@ public class Consumer {
 </p>
 <p>
   Manual commit is done by disabling auto commit via property and then we can set the number of records to receive when
-  pooling via property. Only once done we would commit the batch.
+  pooling via property  <b> MAX_POOL_RECORD_CONFIG </b>. Only once done we would commit the batch.
 </p>
 
 
+<hr>
+<h4><strong> Detecting consumer alive or dead  </strong></h4>
+<p>
+  all the consumers interact with consumer group coordinator which keeps looking for heartbeats from consumber, a consumer 
+  sends heartbead every <b> hearbeat.interval.ms </b>. If the consumber does not send heart beat after <b> session.timeout.ms 
+  </b> it is considered as dead and rebalancing of consumers takes place.
+</p>
+<p>
+  if a consumer does not poll every <b> max.poll.interval.ms </b> they it is considered a dead. This tells that a consumer 
+  had got choked while processing a batch of messages, for example in big data apps. It is better to process less number of 
+  messages for evry poll this can be set using the property <b> MAX_POOL_RECORD_CONFIG </b>.
+</p>
 
 
