@@ -251,6 +251,14 @@ public class ProducerWithCallbacks {
   does not reach and linger.ms has reached then the batch will sent out. <mark> batch.size is per partition </mark>
 </p>
 
-
+<hr>
+<h4><strong> Very high sends or not responsive broker </strong></h4>
+<p>
+  when Producer sends very high messages to kafka and kafka could not keep up with the volume or if kafka is not responding
+  and Producer keeps sending messages, all these messages are sent asynchronously which means they end up in a batch at 
+  Producer whose size is <b> buffer.memory </b>, so if kafka is not responding or is not able to keep up with the send 
+  rate then after <b> max.block.ms </b> time the Producer would throw an exception or if the buffer.memory is reached before 
+  max.block.ms is reached then also Producer would throw an exception.
+</p>
 
 
