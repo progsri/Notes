@@ -207,3 +207,11 @@ public class ProducerWithCallbacks {
  secs till a timeout of <mark> delivery.timeout.ms </mark>. However the order of message gets effected, if we are based on 
  key based writes then  this woul be a issue.
 </p>
+
+
+<hr>
+<h4><strong> Idempotent </strong></h4>
+<p>
+    Let say the producer sends the message to kafka, kafka when trying to send ack bakc gets network failure. Producer 
+    thinks the message failed and if retires is enabled tries to send again, so we get duplicate messages.
+</p>.
