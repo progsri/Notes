@@ -1,7 +1,30 @@
-<h2><strong> Consumer </strong></h2>
 <hr>
-
-<h4><strong> Observations </strong></h4>
+<h4><strong> Consumer </strong> </h4>
+<p>
+   Consumer gets messages from a topic from any broker it is connected to.They do not choose a particular broker or partition. <mark> Broker discovery
+ </mark> is the way any broker would know any other broker info and the metadata such as topics and which broker they are present,
+ topics etc. So, the broker which the consumer is connected would now the required information by broker discovery.
+</p>
+<p>
+ For a particular partition, order of messages is gauranteed but there can always be producer retries or complete failures to
+ write.
+</p>
+<p>
+ Lets say we hava topic that has 3 partitions, how would one consumber read from 3 partitions at the same time or
+ <span class="text-danger">Can it ? </span>. For this we use consumer groups which contains of group of consumers, each consumer
+ can read from one or mode partitions, but never will a partition be read by 2 or more consumers in a consumber group, this 
+ way the partitions can be consumer in parallel ( balancing the load ).
+</p>
+<p>
+   Consumer can process a single message or group of messages(batch) at a time. This <u> <a href="https://kafka.apache.org/23/javadoc/index.html?org/apache/kafka/clients/consumer/KafkaConsumer.html">
+ Diferent approaches </a> </u>
+</p>
+<p> This is a pull based i.e the broker does not give us the message until the consumer asks for one. consumer is supposed to
+ keep polling. <span class="text-danger"> Polling is inefficient...then why is kafka entertainging this</span>
+</p>
+<p>
+  When done programmatically library receives messages in batch, see Consumer page. 
+</p> 
 <p>
   consumers are listeners, in other messaging system a consumer or listenser is subscribed to the broker on a topic, 
     if a msg is written to that topic, the broker would send to the listener if it is avaialable, in case the listener is not
@@ -9,6 +32,47 @@
     they get back the lost messages </span>. In case of kafka, the broker doest not send, it is the cuty of the consumer to
     pool the messages.
 </p>
+
+<hr>
+<h4><strong> Consumer Groups</strong> </h4>
+<p>
+  Helps to load balance the reads. Consumer can have consumber that are not active( they are not reading )
+</p>
+<p>
+  Consists of consumers that read data of topic from multiple partitions parallely. a consumer can read from multiple 
+ partitions but a partition cannot be read by multiple consumers in a consumer group. A partition can  be read by multiple
+ consumer if each consumer belongs to different consumber group.
+</p>
+
+<hr>
+<h4><strong> Consumer offset </strong> </h4>
+<p>
+ Consumer offset tells the broker or cluster which offset in a partition a consumer has read. These are recorded in a topic
+ called <b> _consumer_offset </b>
+</p>
+<p>
+ consumer tells the broker the read offset by 3 modes:
+<ul>
+ <li> at most once ... when it receives the message but if it dies while processing, this would be not considered for reprocessing</li>
+  <li> at least once ... when it received and processed .... this is the safest.</li>
+ <li> <span class="text-danger">Exactly once </span> </li>
+</ul>
+</p>
+<p>
+ Consumer offset is just a way to telling the broker that a consumer is done reading that message from a particular partion.
+ so that when this consumer needs another message or a new consumer is starting to read from the same partion, kafka would
+ know where to start from. Whether it is a single consumer in default group assigned by kafka or group of consumer in a 
+ consumer group, offsets can be reset for a particular topic in the group or all topics in the group.
+</p>
+<p>
+  To display error message if a sub component fails, use <ErrorBoundary> and ComponentDidCatch lifecycle, this will display
+ a default error html page instead of react's error page.
+</p>
+ <p>
+  <b> Reading from a partition </b> assign and seek go in combination. assign is about the partitions it should read from and seek is the offset in the 
+  partition. When the consumer polls it would pool from this partition and offset.
+</p>
+
 
 <h4><strong> Connection Pooling </strong></h4>
 <p> The library provided by kafka itself takes care of connection pool just like <b> jedis library  </b> takes care for redis.
