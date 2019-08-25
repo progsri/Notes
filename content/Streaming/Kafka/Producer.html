@@ -228,3 +228,21 @@ public class ProducerWithCallbacks {
 
 <hr>
 <h4><strong> Batching </strong></h4>
+<p>
+  By default producer does <b> smart batching </b>. As send is assync in nature it always be default tries to batch the 
+  messages, it waits for the before batch ack and once it receives them sends the next batch. We can control this behavour
+  with <b> linger.ms </b> nd <b> batch.size </b>
+</p>
+<p>
+  linger.ms = 0 by default which means smart batching happens it only waits for the ack., but if you want to wait more time
+  before sending the batch out we can control with this property.Having a little linger is good might be better sometimes,
+  it can to be cacluated based on the application. It would not have an effected if the batch reaches batch.size.
+</p>
+<p>
+  batch.size is default to 16 KB, this is the size of the batch we can wait before sending the batch out. if batch.size
+  does not reach and linger.ms has reached then the batch will sent out. <mark> batch.size is per partition </mark>
+</p>
+
+
+
+
