@@ -115,6 +115,10 @@ public class Consumer {
   By default Producer is in auto commit mode, which means after <b> auto.commit.interval.ms </b> it would be commited even if 
   the consumer is till processing. So not a good option.
 </p>
+<p>
+  Manual commit is done by disabling auto commit via property and then we can set the number of records to receive when
+  pooling via property. Only once done we would commit the batch.
+</p>
 
 
 
