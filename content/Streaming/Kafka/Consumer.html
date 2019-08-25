@@ -24,6 +24,9 @@ messaging systems, we are subscribing to the consumer library code ( imagine lik
 <p>
   we can also subscribe to multiple topics. 
  </p>
+<p>
+  Observe that the library gives messages in batch ( group of messages )
+</p>
 <pre class="language-java line-numbers"><code>
 package com.ninjashore.kafka.producer;
 
@@ -94,4 +97,24 @@ public class Consumer {
     <b> Reading from a partition </b> assign and seek go in combination. assign is about the partitions it should read from and seek is the offset in the 
   partition. When the consumer polls it would pool from this partition and offset.
 </p>
+
+
+<hr>
+<h4><strong> Idempotence  </strong></h4>
+<p>
+  Sometimes when the consumer processes group of messages and just before acknowleging kafka dies, then the next consumber 
+  will reporcess all the messages again. This would cause duplicates on the end system consumer is writing to. So it is always 
+  better to use an ID which would help the end systems to know it is a duplicate. One such ID would be combination of topic,
+  partition, offset. In case of mongo we can use upsert where if record does not exist it will insert otherwise it would
+  update... perfect for idempotence. but <span class="text-danger"> how do we do this for RDBMS ( postgres ) </span>
+</p>
+
+<hr>
+<h4><strong> Commit strategy  </strong></h4>
+<p>
+  by default Producer is in auto commit mode.
+</p>
+
+
+
 
