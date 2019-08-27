@@ -42,7 +42,7 @@
 <p>
   All the css elements in .CSS files are global and these files have to be imported. To make them local, do npm run eject
   and add <b> modules and localIntentfile </b> to webpack. One you do that we can use all the classes ( .<class-names> )
-  in the local css files by importing and using in the <b> className <b>. <span> if each component has local css then how
+  in the local css files by importing and using in the <b> className </b>. <span> if each component has local css then how
   to apply bootstrap which is a global component.</span>
 </p>
 <p>
@@ -101,7 +101,12 @@
    props to the child component, if nothing is passed thenchild component will use it's own css and javascript.
    Remember that to make css local to each component use npm run eject
  </p>
-  
+<p>
+  To improve performance, looks for areas where rendering ( render() ) should not happen, if there is a component which 
+  renders ( for debugging just use console.log or add life cycle hook componentWillUpdate()  but you feel that should not 
+  happen use life cycle hook shouldComponentUpdate() to control the behavior, this component returns true or false based on
+  our validations.
+</p>
 
 
 
