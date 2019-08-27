@@ -1,7 +1,13 @@
 <h2><strong> Intercept a request </strong></h2>
+<hr>
+
+<p> 
+   we can intercept both the request and response.
+</p>
 
 <h4><strong> Block a request </strong></h4>
-<pre class="language-java line-numbers"<code>
+
+<pre class="language-javascript line-numbers"<code>
 import axios from 'axios';
 
 axios.interceptors.requesst.use(request => {
@@ -10,5 +16,21 @@ axios.interceptors.requesst.use(request => {
 
 </code></pre>
 
+<hr>
+<h4><strong> Failed requests </strong></h4>
+<p> if a request fails it would end up in the second callback. We can then do what is necessary like logging or pop up a
+   screen. In this case we are rejecting so that the call code will get the request and there we can specifically handle it
+   via the catch part of the Promise axios call has.
+</p>
+<pre class="language-javascript line-numbers"<code>
+import axios from 'axios';
 
+axios.interceptors.requesst.use(request => {
+   return request; // if we do not return anything, this request would be blocked.
+}, error =>{
+   new Promise.reject(error);
+});
+
+</code></pre>
+<hr>
 <h4><strong> Modifying a request </strong></h4>
