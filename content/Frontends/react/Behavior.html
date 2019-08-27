@@ -69,7 +69,7 @@
     <li> render() </li>
     <li> render() of child components</li>
     <li> componentDidMount() :: do not update state as the component is mounted, update state would make react think 
-    there are state changes and cause react to render again.</li>
+    there are state changes and cause react to render again</li>
   </ol>
    Life cycle hooks to update component(only for class based components)  in the order below: 
     <a href="https://reactjs.org/docs/react-component.html"> Updating a component </a>
@@ -81,7 +81,8 @@
      <li> render()</li>  
      <li> render of child components </li>  
      <li> getsnapshotBeforeUpdate(prevProps, prevState) </li>
-    <li>  componentDidUpdate() </li>
+    <li>  componentDidUpdate() :: do not update state as the component is mounted, update state would make react think 
+    there are state changes and cause react to render again</li>
   </ol>
  componentwillUnmount hook is called when the class based component is removed/destroyed/unmounted
     <a href="https://reactjs.org/docs/react-component.html"> Unmounting a component </a>.
