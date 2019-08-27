@@ -61,16 +61,18 @@
 </p>
 <p>
   Life cycle hooks to create component(only for class based components) in the order below: There are other life cycle hooks but rarely used.
+  <a href="https://reactjs.org/docs/react-component.html"> Mounting/creating a component </a>
   <ol>
     <li> Class constructor(props) </li>
     <li> getDerivedStateFromProps(props,state) : Very rarely used</li>
-    <li> componentWillMount()  : good place to update state</li>
+    <li> (legacy) componentWillMount()  : good place to update state</li>
     <li> render() </li>
     <li> render() of child components</li>
     <li> componentDidMount() :: do not update state as the component is mounted, update state would make react think 
     there are state changes and cause react to render again.</li>
   </ol>
    Life cycle hooks to update component(only for class based components)  in the order below: 
+    <a href="https://reactjs.org/docs/react-component.html"> Updating a component </a>
   <ol>
      <li> getDreivedStateFromProps(props, state) </li>  
      <li> shouldComponentUpdate(nextProps, nextState) : we can use ths.props or this.state to compare nextProps nd nextState 
@@ -81,7 +83,9 @@
      <li> getsnapshotBeforeUpdate(prevProps, prevState) </li>
     <li>  componentDidUpdate() </li>
   </ol>
- componentwillUnmount hook is called when the class based component is removed/destroyed/unmounted.
+ componentwillUnmount hook is called when the class based component is removed/destroyed/unmounted
+    <a href="https://reactjs.org/docs/react-component.html"> Updating a component </a>.
+
 </p>
 <p>
   We can use <b> useEffects() </b> as a way to do life cycle hooks for  functional components i.e functions which have
