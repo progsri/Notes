@@ -111,7 +111,11 @@
   <b> PureComponent </b> is exactly same as component except that in component to know if the state and props change we would
   have to manually check in shouldComponentUpdate(), PureComponent would do a shallow check for state and props for us.
 </p>
-
+<p>
+  Browser DOM is different from the DOM react uses, it is calle virtual DOM. React uses virtual DOM to compare all the changes
+  that occur or needed and then only update the browser DOM with just the changes. React uses virtual DOM as operations on
+  browser are slow.
+</p>
 
 
 
