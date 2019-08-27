@@ -46,5 +46,21 @@ axios.interceptors.request.use(request => {
 });
 
 </code></pre>
+
 <hr>
-<h4><strong> Modifying a request </strong></h4>
+<h4><strong> To remove a interceptor </strong></h4>
+<p> call eject </p> 
+<pre class="language-js line-numbers"<code>
+import axios from 'axios';
+
+let interceptorVariable = axios.interceptors.request.use(request => {
+   return request; // if we do not return anything, this request would be blocked.
+}, error =>{
+   new Promise.reject(error);
+});
+
+.... somewhere in the code
+axios.interceptors.request.eject(interceptorVariable);
+
+</code></pre>
+
