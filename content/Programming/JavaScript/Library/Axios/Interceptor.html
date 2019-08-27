@@ -64,3 +64,33 @@ axios.interceptors.request.eject(interceptorVariable);
 
 </code></pre>
 
+<hr>
+<h4><strong> Gloabal configuration </strong></h4>
+<p> These are the built ins : 
+axios.defaults.baseURL = 'https://api.example.com';
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+</p>
+<p> To use custom, this overries baseURL. <b>  This effects the interceptor which was created using default object, to make
+   the interceptors to work create interceptor with the new object
+   </b>
+</p>
+<pre class="language-javascript line-numbers"><code>
+const instance = axios.create({
+  baseURL: 'https://api.example.com' . // axios looks for baseURL
+});
+
+// Alter defaults after instance has been created
+instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+
+//adding the interceptors
+
+instance.interceptors.request.use(request => {
+   return request; 
+});
+
+</code></pre>
+
+
+
+
