@@ -5,13 +5,27 @@
    we can intercept both the request and response.
 </p>
 
+<hr>
 <h4><strong> Block a request </strong></h4>
 
-<pre class="language-javascript line-numbers"<code>
+<pre class="language-js line-numbers"<code>
 import axios from 'axios';
 
-axios.interceptors.requesst.use(request => {
+axios.interceptors.request.use(request => {
    return request; // if we do not return anything, this request would be blocked.
+});
+
+</code></pre>
+
+<hr>
+<h4><strong> Block a response </strong></h4>
+<p> We can use this to add a header may be :) </p>
+
+<pre class="language-js line-numbers"<code>
+import axios from 'axios';
+
+axios.interceptors.response.use(response => {
+   return response; // if we do not return anything, this request would be blocked.
 });
 
 </code></pre>
@@ -22,10 +36,10 @@ axios.interceptors.requesst.use(request => {
    screen. In this case we are rejecting so that the call code will get the request and there we can specifically handle it
    via the catch part of the Promise axios call has.
 </p>
-<pre class="language-javascript line-numbers"<code>
+<pre class="language-js line-numbers"<code>
 import axios from 'axios';
 
-axios.interceptors.requesst.use(request => {
+axios.interceptors.request.use(request => {
    return request; // if we do not return anything, this request would be blocked.
 }, error =>{
    new Promise.reject(error);
