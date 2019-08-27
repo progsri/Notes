@@ -1,6 +1,14 @@
 <h2><strong> Intercept a request </strong></h2>
 
 <h4><strong> Block a request </strong></h4>
+<pre class="language-java line-numbers"<code>
+import axios from 'axios';
+
+axios.interceptors.requesst.use(request => {
+   return request; // if we do not return anything, this request would be blocked.
+});
+
+</code></pre>
 
 
 <h4><strong> Modifying a request </strong></h4>
