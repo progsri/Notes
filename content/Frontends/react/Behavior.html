@@ -64,9 +64,11 @@
   <ol>
     <li> Class constructor(props) </li>
     <li> getDerivedStateFromProps(props,state) : Very rarely used</li>
+    <li> componentWillMount()  : good place to update state</li>
     <li> render() </li>
     <li> render() of child components</li>
-    <li> componentDidMount() </li>
+    <li> componentDidMount() :: do not update state as the component is mounted, update state would make react think 
+    there are state changes and cause react to render again.</li>
   </ol>
    Life cycle hooks to update component(only for class based components)  in the order below: 
   <ol>
