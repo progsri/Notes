@@ -1,4 +1,5 @@
 <h2><strong> Routing </strong> </h2>
+<hr>
 
 <p>
   Not part of react, need to install module react-router and react-router-dom
@@ -17,11 +18,16 @@
 </p>
 <p>
    To actual make the route happen, we need links which can be done via anchor tags but they cause the reload ( browser 
-  spinning ) to avoid that we need to use <code> LINK <code> which hash attribute <b>to </b> that can take these:
+  spinning ) to avoid that we need to use <code> LINK </code> which hash attribute <b>to </b> that can take these:
    <ul>
      <li> pathname : is the url  </li>
      <li> hash : is the html hash </li>
      <li> query : is the query string </li>
   </ul>
   Link calls Route and that calls the component which has the page content.
+</p>
+<p>
+  When Route routes to a component it adds extra properties <b> props.match </b> to the props of the component, these 
+  are not passed to the child component we have to explicity pass them to child components if they need like the regular
+  props.
 </p>
