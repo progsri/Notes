@@ -15,3 +15,13 @@
     <li> component : calls the component </li>
    </ul>
 </p>
+<p>
+   To actual make the route happen, we need links which can be done via anchor tags but they cause the reload ( browser 
+  spinning ) to avoid that we need to use <code> LINK <code> which hash attribute <b>to </b> that can take these:
+   <ul>
+     <li> pathname : is the url  </li>
+     <li> hash : is the html hash </li>
+     <li> query : is the query string </li>
+  </ul>
+  Link calls Route and that calls the component which has the page content.
+</p>
