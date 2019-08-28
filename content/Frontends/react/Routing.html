@@ -48,12 +48,26 @@
   element.
 </p>
 <p>
-  To programmatically go to a path o <code> props.history.push("/") </code>. All the navigation is store in th stack
+  To programmatically go to a path o <code> props.history.push("path") </code>. All the navigation is store in th stack
   <code> props.history </code> thru which we can do back and forward operations as well.
 </p>
 <p class="text-danger">
   Nested routes
 </p>
+<p>
+  To redirect use component <code> Redirect from="" to="" </code> or can control the Redirect component based on conditions
+  or <code> props.history.push("path") </code>
+</p>
+<p>
+  By using <code> Route component="" </code>, any url which does not have a configured path would fall here and we can use
+  a component to show a Error or 404 page Not found.
+</p>
+<p>
+  In case the basepath is http://example.com/appname instead of the regular http://example.com then do <code>
+  BrowserRouter basename= "appname"</code>
+</p>
+
+
 
 
 
