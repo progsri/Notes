@@ -32,5 +32,30 @@
   <code> WithRouter</code>.
 </p>
 <p>
-  
+  Instead of Link if <code> NavLink </code> is used then it would work as Link and also provide css classes automatically,
+  we can the add specific behavior to such classes in our local css. By default it added class='active' instead of active we
+  can have our own custom class names, once we have custom classnames we can control the presentation via css.
 </p>
+<p>
+  using <code> props.match.params.id </code> we can get the dynamic value of the path /:id 
+</p>
+<p>
+  Order of routes in Route is important, With <code> Switch </code> component all the matching component would be applied.
+  With Switch only the first matched component would be applied.
+</p>
+<p>
+  use <code> props.location.search</code> to see the query string and <code> props.location.hash </code> to see the hash
+  element.
+</p>
+<p>
+  To programmatically go to a path o <code> props.history.push("/") </code>. All the navigation is store in th stack
+  <code> props.history </code> thru which we can do back and forward operations as well.
+</p>
+<p class="text-danger">
+  Nested routes
+</p>
+
+
+
+
+
