@@ -1,0 +1,15 @@
+<h2><strong> Deployment </strong></h2>
+
+<p>
+  <code> yarn build </code> or <code> npm run build </code> creates a directoy dist which has all the files required for 
+  deployment.
+</p>
+
+<p>
+   Copy the dist directoy to Nginx. Since the dist has  <b> index.html </b> Nginx automatically picks it up and since index.htm
+   has path to other files, when it lands at the browser, the browser will then fetch other files.
+</p>
+
+<p>
+   Start Nginx and call the url.
+</p>
