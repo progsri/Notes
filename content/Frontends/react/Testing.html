@@ -5,6 +5,42 @@
 <p>
    Given a framework to test any javascript code.
 </p>
+<pre class="language-javascript line-number"><code>
+import reducer from './auth';
+import * as actionTypes from '../actions/actionTypes';
+
+describe('auth reducer', () =&gt; {
+    it('should return the initial state', () =&gt; {
+        expect(reducer(undefined, {})).toEqual({
+            token: null,
+            userId: null,
+            error: null,
+            loading: false,
+            authRedirectPath: '/'
+        });
+    });
+
+    it('should store the token upon login', () =&gt; {
+        expect(reducer({
+            token: null,
+            userId: null,
+            error: null,
+            loading: false,
+            authRedirectPath: '/'
+        }, { 
+            type: actionTypes.AUTH_SUCCESS,
+            idToken: 'some-token',
+            userId: 'some-user-id'
+         })).toEqual({
+            token: 'some-token',
+            userId: 'some-user-id',
+            error: null,
+            loading: false,
+            authRedirectPath: '/'
+        });
+    })
+});
+</code></pre>
 
 <hr>
 <h4><strong> Tool - Enzyme </strong> </h4>
