@@ -10,10 +10,12 @@
 <hr>
 <h4><strong> Authentication for subsequent requests </strong></h4>
 <ul>
-  <li> use local</li>
-    <li> </li>
-      <li> </li>
-        <li> </li>
+  <li> Let's say the user opens the app</li>
+  <li> use localStorage to retreive the token and expiration  from the browser </li>
+  <li> if expired then use <code> Redirect </code> or <code> props.history </code> to redirect to sign in page. </li>
+  <li> if not expired then mark the authorized flag in redux as true and set a timeout <code> settimeout </code>
+    for remaining time in expiration and then  <code> Redirect </code> or <code> props.history </code> to Home page.
+   </li>
 </ul>
 
 <hr>
