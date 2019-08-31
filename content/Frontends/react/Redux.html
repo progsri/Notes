@@ -39,7 +39,9 @@ registerServiceWorker();
   <span class="text-danger"> How does it work </span>
  
 <pre class="language-javascript line-numbers"><code>
-const mapStateToProps = state => {
+
+// These can be accessed as props.
+const mapStateToProps = state => {  
     return {
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalPrice,
@@ -48,6 +50,7 @@ const mapStateToProps = state => {
     };
 }
 
+// These can be accessed as props.
 const mapDispatchToProps = dispatch => {
     return {
         onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
