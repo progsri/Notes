@@ -8,11 +8,8 @@
 </p>
 
 <p>
-  use <b> Redux devtools </b> by remotedevio in browser for debugging, it has excellent features including time travel.
-</p>
-
-<p>
   Needs module <b> redux </b> to create redux store and <b> react-redux </b> to connect react to redux store.
+ <code>const store = createStore(rootReducer) </code> rootReducer is just a function.
 </p>
 <p>
  Component ( stateful or stateless ) dispatches actions &#8594; Reducer updates the state &#8594;  connect updates the props 
@@ -100,6 +97,17 @@ export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler( Bu
  Component ( stateful or stateless ) dispatches actions &#8594; Middleware &#8594;Reducer updates the state.
  It can be used to modify the state or action before sending to the reducer, generally used as a common place to do things
  such as logging.
+</p>
+
+<p>
+  use <b> Redux devtools </b> by remotedevio in browser for debugging, it has excellent features including time travel.
+ Use the below code to active the devtools 
+<pre class="language-javascript line-numbers"><code>
+ const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+const store = createStore(rootReducer, composeEnhancers(
+    applyMiddleware(thunk)
+)); 
+ </code> </pre>
 </p>
 
 <p class="text-danger">
