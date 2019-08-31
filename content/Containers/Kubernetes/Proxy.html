@@ -1,2 +1,18 @@
 <h2><strong> Proxy </strong> </h2>
 <hr>
+
+<p>
+  <code> kubectl proxy </code>  gives connection to your kubernetes cluster,it creates tunnel to the configured cluster and 
+  opens the access over the 8081 port thru which we can call the <b> Kubernetes Rest API </b>. Some of the endpoints are. 
+  This connection is only between the system on which the kubectl proxy is running and the cluster.
+  <ul>
+    <li> http://127.0.0.1:8001/api </li>
+    <li> http://127.0.0.1:8001/api/v1 </li>
+    <li> http://127.0.0.1:8001/api/v1/pods </li>
+    <li> http://127.0.0.1:8001/api/v1/namespaces </li>
+  </ul>
+</p>
+<p>
+  The ApI provides the information which the command line binary <b> kubectl provides </b> or the web interface provides thru
+  UI.
+</p>
