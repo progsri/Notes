@@ -51,32 +51,32 @@ class App extends Component {
 
   render () {
     let routes = (
-      <Switch>
-        <Route path="/auth" component={asyncAuth} />
-        <Route path="/" exact component={BurgerBuilder} />
-        <Redirect to="/" />
-      </Switch>
+      &lt;Switch&gt;
+        &lt;Route path="/auth" component={asyncAuth} /&gt;
+        &lt;Route path="/" exact component={BurgerBuilder} /&gt;
+        &lt;Redirect to="/" /&gt;
+      &lt;/Switch&gt;
     );
 
     if ( this.props.isAuthenticated ) {
       routes = (
-        <Switch>
-          <Route path="/checkout" component={asyncCheckout} />
-          <Route path="/orders" component={asyncOrders} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/auth" component={asyncAuth} />
-          <Route path="/" exact component={BurgerBuilder} />
-          <Redirect to="/" />
-        </Switch>
+        &lt;Switch&gt;
+          &lt;Route path="/checkout" component={asyncCheckout} /&gt;
+          &lt;Route path="/orders" component={asyncOrders} /&gt;
+          &lt;Route path="/logout" component={Logout} /&gt;
+          &lt;Route path="/auth" component={asyncAuth} /&gt;
+          &lt;Route path="/" exact component={BurgerBuilder} /&gt;
+          &lt;Redirect to="/" /&gt;
+        &lt;/Switch&gt;
       );
     }
 
     return (
-      <div>
-        <Layout>
+      &lt;div&gt;
+        &lt;Layout&gt;
           {routes}
-        </Layout>
-      </div>
+        &lt;/Layout&gt;
+      &lt;/div&gt;
     );
   }
 }
