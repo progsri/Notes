@@ -25,12 +25,65 @@
   </ul>
   Link calls Route and that calls the component which has the page content.
 </p>
+
 <p>
   When Route routes to a component it adds extra properties <b> props.match </b> to the props of the component, these 
   are not passed to the child component we have to explicity pass them to child components if they need like the regular
   props. In case if you need to pass to child components as well wrap child component with Higher order component
   <code> WithRouter</code>.
 </p>
+<p>
+  <pre class="language-javascript line-numbers"><code>
+const app = (
+        &lt;BrowserRouter&gt;
+            &lt;App /&gt;
+        &lt;/BrowserRouter&gt;
+);
+
+ReactDOM.render( app, document.getElementById( 'root' ) );
+
+--------------
+import React, { Component } from 'react';
+import { Route, Switch, withRouter, Redirect } from 'react-router-d
+
+class App extends Component {
+
+
+  render () {
+    let routes = (
+      <Switch>
+        <Route path="/auth" component={asyncAuth} />
+        <Route path="/" exact component={BurgerBuilder} />
+        <Redirect to="/" />
+      </Switch>
+    );
+
+    if ( this.props.isAuthenticated ) {
+      routes = (
+        <Switch>
+          <Route path="/checkout" component={asyncCheckout} />
+          <Route path="/orders" component={asyncOrders} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/auth" component={asyncAuth} />
+          <Route path="/" exact component={BurgerBuilder} />
+          <Redirect to="/" />
+        </Switch>
+      );
+    }
+
+    return (
+      <div>
+        <Layout>
+          {routes}
+        </Layout>
+      </div>
+    );
+  }
+}
+export default withRouter(( App ) );
+</code></pre>
+</p>
+
 <p>
   Instead of Link if <code> NavLink </code> is used then it would work as Link and also provide css classes automatically,
   we can the add specific behavior to such classes in our local css. By default it added class='active' instead of active we
