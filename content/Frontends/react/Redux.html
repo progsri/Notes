@@ -10,7 +10,9 @@
   component.
 </p>
 <p>
-   <b> Reducer </b> this is just a javascript function which gets present state and the action information.
+   <b> Reducer </b> this is just a javascript function which gets present state and the action information. It always returns 
+  a new state, it does not do the mrge like <b> setState() </b>. As a best practice aslways copy the present state and do the
+  operations on the new state <b> kind o immutability </b>
 </p>
   <b> connect </b> wrap the component, it takes 2 parameter , the first parameter restricts the reduc state the component can
   see and the second parameter restricts the dispatches ( actions ) it can see. Basically it will only give access to the 
