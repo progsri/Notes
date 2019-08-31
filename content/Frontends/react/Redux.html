@@ -1,6 +1,11 @@
 <h2><strong> Redux </strong><h2>
 <hr>
-  
+
+<p>
+ Is use to maintain gloabl state in the application, all the data is lost as soon as you do a browser refresh so make sure
+  router handles all the routes. so if the app is opened in 2 tabs then to show the same data for say checkout items, we have
+  to sync to localStorage or save to backend.
+</p>
 <p>
   Needs module <b> redux </b> to create redux store and <b> react-redux </b> to connect react to redux store.
 </p>
@@ -17,4 +22,33 @@
   <b> connect </b> wrap the component, it takes 2 parameter , the first parameter restricts the reduc state the component can
   see and the second parameter restricts the dispatches ( actions ) it can see. Basically it will only give access to the 
   state/action that component requires. Both the state and actions are available to component via <b> props  </b>.
+  <span class="text-danger"> How does it work </span>
+</p>
+<p>
+<table>
+  <tr>
+    <th>When</th>
+    <th>Local State in component</th>
+    <th>Gloabl State in the app</th>
+    <th>Backend</th>
+  </tr>
+  <tr>
+    <td>Modal/backdrop trigger variable</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+   <tr>
+    <td>Persistent the data</td>
+    <td>NO</td>
+    <td>MAY BE but only partial data as a buffer</td>
+    <td>YES</td>
+  </tr>
+    <tr>
+    <td>CLient State ( Authentication, user email )</td>
+    <td>NO</td>
+    <td>YES</td>
+    <td>NO</td>
+  </tr>
+</table>
 </p>
