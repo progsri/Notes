@@ -13,6 +13,29 @@
  Component ( stateful or stateless ) dispatches actions &#8594; Reducer updates the state &#8594;  connect updates the props 
   in the all the components that state is dependent on &#8594; as the props are updated this cause react to re render the 
   component.
+ 
+<pre class="language-javascript line-numbers"><code>
+const mapStateToProps = state => {
+    return {
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        error: state.burgerBuilder.error,
+        isAuthenticated: state.auth.token !== null
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
+        onInitIngredients: () => dispatch(actions.initIngredients()),
+        onInitPurchase: () => dispatch(actions.purchaseInit()),
+        onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler( BurgerBuilder, axios ));
+ </code> </pre>
 </p>
 <p>
    <b> Reducer </b> this is just a javascript function which gets present state and the action information. It always returns 
@@ -55,7 +78,16 @@
 
 <p>
  <b>combine multiple reducers  </b> for easy maintainence and readability we can have multiple reducers, to combine them use
- 
+ <code> combineReducers </code> and pass in a object,  have a key for each reducer value. We will have to use this key 
+ as reference in the <b>connect </b> accordingly.
+
+ <pre class="language-javascript line-numbers"><code>
+ const rootReducer = combineReducers({
+    burgerBuilder: burgerBuilderReducer,
+    order: orderReducer,
+    auth: authReducer
+});
+</code> </pre>
 </p>
 
 
