@@ -6,6 +6,11 @@
   router handles all the routes. so if the app is opened in 2 tabs then to show the same data for say checkout items, we have
   to sync to localStorage or save to backend.
 </p>
+
+<p>
+  use <b> Redux devtools </b> by remotedevio in browser for debugging, it has excellent features including time travel.
+</p>
+
 <p>
   Needs module <b> redux </b> to create redux store and <b> react-redux </b> to connect react to redux store.
 </p>
@@ -90,8 +95,20 @@ export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler( Bu
 </code> </pre>
 </p>
 
+<p>
+ <b> Middleware </b> comes in between components dispatching action and the reducer.  
+ Component ( stateful or stateless ) dispatches actions &#8594; Middleware &#8594;Reducer updates the state.
+ It can be used to modify the state or action before sending to the reducer, generally used as a common place to do things
+ such as logging.
+</p>
 
+<p class="text-danger">
+  Action creator
+</p>
 
+<p class="text-danger">
+  Async code
+</p>
 
 
 
