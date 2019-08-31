@@ -5,14 +5,14 @@
 <ul>
   <li> When the user enters the login information when clicked on sign in modal </li>
   <li> Show the spinner </li>
-  <li> Make a Promise call </li>
-  <li> if this is success then add the token and expiration in the localStorage via the redux <b> middleware </b> function and 
+  <li> Make a http call via axios which returns a promise </li>
+  <li> if axios promise is success then add the token and expiration in the localStorage via the redux <b> middleware </b> function and 
     enable the authentication in the redux via <b> dispatching a action to the reducer </b> , this is the flag rest of the app
     depends on for authentication check and then set a timeout <code> settimeout </code> for remaining time in expiration
     and then  <code> Redirect </code> or <code> props.history </code> to Home page. 
   </li>
   <li>
-     if failure show error in the sign in page.
+     if axios promise is failure show error in the sign in page.
   </li>
 </ul>
 
