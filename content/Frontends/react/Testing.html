@@ -12,6 +12,40 @@
  To test components i.e JSX and to pass prop fields and prop methods before and after creating a component. This tool is 
  for react only.
 </p>
+<pre class="language-javascript line-number"><code>
+import React from 'react';
+
+import { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+import NavigationItems from './NavigationItems';
+import NavigationItem from './NavigationItem/NavigationItem';
+
+configure({adapter: new Adapter()});
+
+describe('&lt;NavigationItems /&gt;', () =&gt; {
+    let wrapper;
+
+    beforeEach(() =&gt; {
+        wrapper = shallow(&lt;NavigationItems /&gt;);
+    });
+
+    it('should render two &lt;NavigationItem /&gt; elements if not authenticated', () =&gt; {
+        expect(wrapper.find(NavigationItem)).toHaveLength(2);
+    });
+
+    it('should render three &lt;NavigationItem /&gt; elements if authenticated', () =&gt; {
+        // wrapper = shallow(&lt;NavigationItems isAuthenticated /&gt;);
+        wrapper.setProps({isAuthenticated: true});
+        expect(wrapper.find(NavigationItem)).toHaveLength(3);
+    });
+
+    it('should an exact logout button', () =&gt; {
+        wrapper.setProps({isAuthenticated: true});
+        expect(wrapper.contains(&lt;NavigationItem link="/logout"&gt;Logout&lt;/NavigationItem&gt;)).toEqual(true);
+    });
+});
+</code></pre>
 
 <hr>
 <h4><strong> Testing a function ( non state component ) </strong> </h4>
