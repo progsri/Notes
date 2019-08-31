@@ -9,7 +9,19 @@
 
 <p>
   Needs module <b> redux </b> to create redux store and <b> react-redux </b> to connect react to redux store.
- <code>const store = createStore(rootReducer) </code> rootReducer is just a function.
+
+<pre class="language-javascript line-numbers"><code> 
+const store = createStore(rootReducer) //rootReducer is just a function
+const app = (
+    &lt;Provider store={store}&gt;
+            &lt;App /&gt;
+    &lt;/Provider&gt;
+);
+
+ReactDOM.render( app, document.getElementById( 'root' ) );
+registerServiceWorker();
+</code?></pre>
+ 
 </p>
 <p>
  Component ( stateful or stateless ) dispatches actions &#8594; Reducer updates the state &#8594;  connect updates the props 
