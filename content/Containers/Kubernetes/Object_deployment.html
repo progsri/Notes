@@ -7,7 +7,7 @@
 </p>
 
 <p>
-  To create a deployment
+  To create a deployment client-deployment.yaml
   <pre class="language-yaml line-numbers"><code>
 apiVersion: apps/v1
 kind: Deployment
@@ -30,7 +30,12 @@ spec:
       	   - containerPort: 3000
   
   </code></pre>
-<p> Creates 3(based on mentioned replicas) containers(pod) and assign a label web so that it can be linked to the
-    networking layer via service object. </p>
-  
+</p>
+<p> 
+    Creates 3(based on mentioned replicas) containers(pods) and assign a label web so that it can be linked to the
+    networking layer via service object.
+</p>
+<p>
+    <code> kubectl apply -f  client-deployment.yaml </code> then kubernetes will start maintaining the desired state as
+    mentioned in the yaml configuration, this can be see via <code> kubectl gt deployments </code>
 </p>
