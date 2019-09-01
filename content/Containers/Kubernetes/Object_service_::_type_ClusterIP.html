@@ -1,6 +1,36 @@
 <h2><strong> Object service :: type cluster IP </strong></h2>
 
-<p class="text-danger">
+<p>
+  Does not take external traffic
+</p>
+
+configuration of ClusterIP object
+<pre class="language-yaml line-numbers"><code>
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-ClusterIP
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3050
+      targetPort: 8080
+  selector:
+    component: web
+</code></pre>
+<p>
+  external traffic  &rarr; Does not work for this.
+</p>
+<p>
+  internal traffic on port &rarr; service on the port  &rarr; find the pod by selector - label
+  &rarr; targetPort of one of the container
+</p>
+<p>
+   Used internally for pods to communicate with one another. we can use Ingress to expose to public and connect Ingress to
+ ClusterIP to give public access to the pods connected to ClusterIP
+</p>
+
+<p class="text-danger"> when to use
 <a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0">
 when to use
 </a>
