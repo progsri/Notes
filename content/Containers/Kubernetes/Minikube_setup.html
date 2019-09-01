@@ -58,6 +58,24 @@ kubectl: Correctly Configured: pointing to minikube-vm at 192.168.39.32
 
 $ 
  </code></pre>
- 
+
+ <hr>
+<h4><strong> Minikube's docker </strong> <h4>  
+<p>
+  minikube comes with it's own docker, it does not use your local machine docker daemon. So to see the images or containers
+  inside the minikube docker you need to point to it by running <code> eval $(minikube docker-env) </code>, this simply
+  exports the below variables to your present terminal, this is temporary  and has to be run in all the terminals.
+</p>
+ <pre class="language-shell line-numbers"><code>
+⇒  minikube docker-env                                     
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.39.32:2376"
+export DOCKER_CERT_PATH="/home/progsri/.minikube/certs"
+# Run this command to configure your shell:
+# eval $(minikube docker-env)
+ </code></pre>
+
+
+
 <h4><strong> References </strong> <h4>
-  <a href=""></a>
+<a href=""></a>
