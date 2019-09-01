@@ -61,13 +61,14 @@ kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP          42
 port 3000 </p>
 <p>
  port 3050 is not publicly exposed, would not be found via netstat as it is not a linux port and  is manged by the 
- kubernetes networking
+ kubernetes networking. Calls to port 3050 are forwarded to targetPort 3000.
  </p>
 <p> 
 port 31515 exposes the application as it is a linux port and accepting any incoming requests which get forwarded to the
-containerPort.
+containerPort.  Calls to nodePort 31515 are forwarded to targetPort 3000.
 </p>
-<p> This service is applied to any pod when the service selector key value pair matches with pod's label key value pair.</p>
+<p> This service is applied to any pod when the service <b>selector</b> key value pair matches with pod's <b>label</b>
+key value pair.</p>
 
 <p> To get detailed info about a service use <code> kubectl describe service client-node-port </code> </p>
 <pre class="language-shell line-numbers"><code>
