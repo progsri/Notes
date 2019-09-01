@@ -142,8 +142,18 @@ tcp        0      0 :::8443                 :::*                    LISTEN
     </span>
 </p>
 
-<p>
+<p class="text-danger">
 <a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0">
 when to use
 </a>
+</p>
+
+<p class="text-danger">
+ what is  CLUSTER-IP
+<pre class="language-shell line-numbers"><code>
+ kubectl get services -o wide
+NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE    SELECTOR
+client-node-port        NodePort       10.103.66.119   <none>        3050:31515/TCP   102m   component=web
+</code></pre>
+
 </p>
