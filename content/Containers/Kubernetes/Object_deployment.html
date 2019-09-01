@@ -40,7 +40,19 @@ spec:
     mentioned in the yaml configuration, this can be see via <code> kubectl gt deployments </code>
 </p>
 <p>
-    Every pod created gets private ip address, to see ip <code> kubectl get pods -o wide </code>   
+    Every pod created gets private ip address, to see ip <code> kubectl get pods -o wide </code> , if pod is terminated
+    and recreated then it gets new ip address, this is exactly why we need service object so that when ever a request comes
+    to the publicly exposed port via the nodePort on the service object, service would find all the matching pods with that
+    match the selector key value pair of service to the label key value pair of pod and then forward the request to one of 
+    the pod. <span class="text-danger"> It looks like in the background all pods when they are up they register to 
+    a client discovery server that keeps the active pod, their ip address and their label information and servie simply would 
+    look up this client discovery for the label it needs and gets their ip address to forward to that ip, but ip is private 
+    to that node then  how does it work in a cluster ... is it possible that kubernetes makes sure that in a cluster no 2 
+    nodes get the same private address and also has mapping of private adress to the node on which this pod is located.
+    </span>
+</p>
+<p>
+    we can increase the replicas by updating the config file then applying it or can be done via the dashboard as well.
 </p>
 
 
