@@ -1,1 +1,23 @@
 <h2> <strong> DNS and service discovery </strong> </h2>
+<hr>
+
+<p>
+  We have already seen that each service object gets it's own ip ( see below CLUSTER-IP ). So if within the cluster let's say
+  a pod tries to do a http://client-node-port it gets resolved to http://10.103.66.119, which is the dns concept.
+</p>
+
+<pre class="language-shell line-numbers"><code>
+⇒  kubectl get services            
+NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+client-cluster-ip       ClusterIP      10.96.13.79     <none>        3050/TCP         61m
+client-node-port        NodePort       10.103.66.119   <none>        3050:31515/TCP   7h16m
+client-node-port-node   NodePort       10.106.228.68   <none>        3050:31516/TCP   7h14m
+exampleservice          LoadBalancer   10.106.154.33   <pending>     8081:30002/TCP   7h3m
+kubernetes              ClusterIP      10.96.0.1       <none>        443/TCP          16d
+ </code> </pre>
+  
+<hr>
+<p class="text-danger">
+service discovery
+</p>
+  
