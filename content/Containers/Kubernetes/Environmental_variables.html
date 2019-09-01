@@ -1,1 +1,39 @@
 <h2><strong> Environmental variables </strong></h2>
+
+<p>
+  We can pass environmental variables to the pod, which can be picked up as any environmental variable in regular process.
+  In node to fetch env variable we do <code> process.env.KEYOFTHEVARIABLE </code>.
+</p>
+
+Here we can see how to pass environmental variable in the deployment config.
+<pre class="language-yaml line-numbers"><code>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec :
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: slankapalli/node-hostname
+          ports:
+           - containerPort: 8080
+          env:
+            - name: NODEPORTIP
+              value: client-node-port
+</code></pre>
+
+<p>
+  Here we are passing environmental variable to the pods that are being created using deployment config. NODEPORTIP is the key
+   client-node-port is the value. Now here as we learned that a service object gets its own ip, here we have created a service
+  with name client-node-port, so if resolved client-node-port it would be resolved to the ip of the servie created with name
+  client-node-port.
+</p>
