@@ -1,0 +1,38 @@
+<h2> <strong> Volumes </strong></h2>
+<hr>
+
+<p>
+  A pod stores data internally, so if a pod is terminated or destroyed we will loose data. <span class="text-danger">
+  if a new pod is created it would be able to read that data but how can it do that if the pod is created in a completely
+  different node.
+  </span>
+</p>
+<p>
+  To persist data we can use either <b> Persistent volume </b> or <b> Persistent volume claims </b>
+</p>
+
+<hr>
+<h4> <strong> Persisten Volumes </strong></h4>
+<p>
+  Data will be stored outside of the pod rather than internal to the pod.
+</p>
+<p class="text-danger">
+ What if the node on which the data resides dies ?
+</p>
+
+<hr>
+<h4> <strong> Persistent Volume claims </strong></h4>
+<p>
+  Not a real volume.
+</p>
+<p>
+ Indicates list of possible volumes.
+</p>
+<p>
+  Access modes:
+  <ul>
+    <li> ReadWriteOnce : read and write on single node </li>
+    <li> ReadOnlyMany : read on multiple nodes </li>
+    <li> ReadWriteMany : read and write on multiple nodes </li>
+  </ul>
+</p>
