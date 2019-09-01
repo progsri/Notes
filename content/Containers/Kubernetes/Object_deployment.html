@@ -7,9 +7,30 @@
 </p>
 
 <p>
-  to create a deployment
+  To create a deployment
   <pre class="language-yaml line-numbers"><code>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 3
+  selector:
+  	matchLabels:
+  	  component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+      	-name: client
+      	 image: stephengrider/multi-client
+      	 ports:
+      	   - containerPort: 3000
   
   </code></pre>
+<p> Creates 3(based on mentioned replicas) containers(pod) and assign a label web so that it can be linked to the
+    networking layer via service object. </p>
   
 </p>
