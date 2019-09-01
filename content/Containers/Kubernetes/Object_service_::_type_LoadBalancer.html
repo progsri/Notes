@@ -48,8 +48,18 @@ spec:
   type: LoadBalancer
 </code></pre>
 
-<p>
+<p class="text-danger">
 <a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0">
 when to use
 </a>
+</p>
+
+<p class="text-danger">
+ what is  CLUSTER-IP
+<pre class="language-shell line-numbers"><code>
+ kubectl get services -o wide
+NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE    SELECTOR
+exampleservice          LoadBalancer   10.106.154.33   <pending>     8081:30002/TCP   90m    app=sri-node
+</code></pre>
+
 </p>
