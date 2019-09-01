@@ -1,7 +1,17 @@
 <h2><strong> Object service :: type cluster IP </strong></h2>
 
-<p>
+<p class="text-danger">
 <a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0">
 when to use
 </a>
+</p>
+
+<p class="text-danger">
+ what is  CLUSTER-IP
+<pre class="language-shell line-numbers"><code>
+ kubectl get services -o wide
+NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE    SELECTOR
+kubernetes              ClusterIP      10.96.0.1       <none>        443/TCP          16d    <none>
+</code></pre>
+
 </p>
