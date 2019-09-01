@@ -54,8 +54,10 @@ when to use
 </a>
 </p>
 
-<p class="text-danger">
- what is  CLUSTER-IP
+<hr>
+<p>
+   <b>CLUSTER-IP</b> is the ip assigned to this service LoadBalancer.Internally in the kubernetes cluster this service 
+   is given the below ip  10.106.154.33. So to reach any pod that is under a LoadBalancer, we would be using this ip.
 <pre class="language-shell line-numbers"><code>
  kubectl get services -o wide
 NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE    SELECTOR
