@@ -15,14 +15,15 @@
 <p>
   <li> <b> Kind </b> indicates the type of Object, it can be a service, pod , replicaController etc. </li>
   <li> <b> name </b> indicates the name of the service </li>
-  <li> <b> selector </b> are key value pair that are used by other objects such as pod to relate their config to the pod.  </li>
-  <li> <b> type </b> indicate the type of service </li>
+  <li> <b> selector </b> are key value pair that are used by other objects such as pod to relate their config to the pod.  
+  </li>
+  <li> <b> type </b> indicate the type of service <b> NodePort </b></li>
   <li> <b class="text-danger"> port </b> is used by other pods to communicate with this pod </li>
-  <li> <b> port </b> is the target port of the container </li>
-  <li> <b> port </b> is the port that is exposed to the public which is of the range 30000-32767, if not used kubernetes
-    would assign randomly in this range. As you if these ports are used then the client would have to explicitly mention them.
-    Imagine http://google.com:31515 instead of http://google.com, this is the reason Nodeport is only used in local and not
-    in production.
+  <li> <b> targetPort </b> is the target port of the container </li>
+  <li> <b> nodePort </b> is the port that is exposed to the public which is of the range 30000-32767, if not used kubernetes
+    would assign randomly in this range. As you see if these ports are used then the client would have to explicitly mention
+    them. Imagine http://google.com:31515 instead of http://google.com, this is the reason Nodeport is only used in local and
+    not in production.
   </li>
 </p>
   
