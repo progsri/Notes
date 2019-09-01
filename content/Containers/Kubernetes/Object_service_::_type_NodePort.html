@@ -158,8 +158,10 @@ when to use
 </a>
 </p>
 
-<p class="text-danger">
- what is  CLUSTER-IP
+<hr>
+<p>
+   <b>CLUSTER-IP</b> is the ip assigned to this service NodePort.Internally in the kubernetes cluster this service 
+   is given the below ip  10.103.66.119. So to reach any pod that is under a NodePort, we would be using this ip.
 <pre class="language-shell line-numbers"><code>
  kubectl get services -o wide
 NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE    SELECTOR
