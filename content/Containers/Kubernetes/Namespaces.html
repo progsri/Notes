@@ -56,4 +56,9 @@ spec:
           limits:
             cpu: "200m"
 </code></pre>
+<p> 
+  The above namespace puts hard limit of 400m on the pods that are deployed in this namespace. Let's say if there is a
+  deployment request for 200m cpu for 3 replicas in this namespace then none of the pods will be deployed as it crosses the
+  max allocation, so it all or none.
+</p>
 </p>
