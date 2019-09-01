@@ -1,0 +1,49 @@
+<h2><strong> Object service :: type Load Balancer </strong> </h2>
+
+<b> This is legacy use ingress instead </b>
+
+
+<p> This object is used for networking.There are different type of services:</p> 
+  <ul>
+    <li> Cluster Ip</li>
+    <li> NodePort : used only in local and never in production </li>
+    <li> Load balancer </li>  
+    <li> Ingress </li>
+  </ul>
+
+<hr>
+<h4><strong> Configuration </strong></h4>
+<p>
+  <li> <b> Kind </b> indicates the type of Object, it can be a service, pod , replicaController etc. </li>
+  <li> <b> name </b> indicates the name of the service </li>
+  <li> <b> selector </b> are key value pair that are used by other objects such as pod to relate their config to the pod.  
+  </li>
+  <li> <b> type </b> indicate the type of service here it <b> LoadBalancer </b> </li>
+  <li> <b class="text-danger"> port </b> is used by other pods to communicate with this pod, this port is not exposed to
+  public, requests to this port get forwarded to targetPort.
+  </li>
+  <li> <b> targetPort </b> is the target port of the container </li>
+  <li> <b> nodePort </b> is the port that is exposed to the public. clients can make requests to this port which gets 
+  forwarded to targetPort.
+  </li>
+</p>
+
+This is the configure for Load Balancer type service object
+<pre class="language-yaml line-numbers"><code>
+kind: Service
+apiVersion: v1
+metadata:
+  name: exampleservice
+spec:
+  selector:
+    app: sri-node
+  ports:
+    - protocol: "TCP"
+      # Port accessible inside cluster
+      port: 8081
+      # Port to forward to inside the pod
+      targetPort: 8080
+      # Port accessible outside cluster
+      nodePort: 30002
+  type: LoadBalancer
+</code></pre>
