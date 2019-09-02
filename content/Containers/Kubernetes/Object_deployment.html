@@ -28,6 +28,18 @@ spec:
       	 image: stephengrider/multi-client
       	 ports:
       	   - containerPort: 3000
+         livenessProbe:
+           httpGet:
+             path: /
+             port: 8080
+           initialDelaySeconds: 30
+           periodSeconds: 30
+         readinessProbe:
+           httpGet:
+             path: /
+             port: 8080
+           initialDelaySeconds: 15
+           periodSeconds: 3
   
   </code></pre>
 </p>
@@ -55,6 +67,14 @@ spec:
     we can increase the replicas by updating the config file then applying it or can be done via the dashboard as well.
 </p>
 
-
+<hr>
+<h4><strong> Health check </strong></h4>
+<p>
+</p>
+<p>
+</p>
+    
+    
+    
 
 
