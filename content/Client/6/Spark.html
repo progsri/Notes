@@ -3,20 +3,20 @@
 Can use single node of spark to download and calculate the checksum
 </p>
 
+<hr> 
 <p>
-How is the spark cluster created at runtime.
+ spark cluster created at runtime using kubernetes.
 <ol>
-  <li> Http call to Kubernetes api-server withte custom configuration </li>
-  <li> <span class="text-danger"> How does api-server 
-    <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#deploymentspec-v1-apps"> APIS </a>  
-    know to create a spark driver where are the deployment.yaml stored
-    </span></li>
-    <li>  <span class="text-danger"> Spark Master is configured to interact with kubernetes as resource manager </span> </li>
+  <li> From lambda we call http service ( Spring Boot ) say S-1 with the required data ( image to use, namespace, resources needed etc)
+    in the form of json </li>
+  <li> The above service(S-1) has access to all the config files needed ( ClusterIP, deployment.yaml ) </li>
+  <li> Using either kubetcl or API's, the above service(S-1) sends the config files. </li>
+  <li>  <span class="text-danger"> Spark Master is configured to interact with kubernetes as resource manager </span> </li>
     <ol>
-       <li span class="text-danger"> May be  Spark Driver uses the same image to spin up 5 executors providing the dns name 
+       <li> Spark Driver uses the same image to spin up 5 executors providing the dns name 
          of the driver to connect, this dns name  is provided by kubernetes by default
       </li>
-      <li span class="text-danger"> May be there is ClusterIP config linked to the deployment config of the driver and there 
+      <li> May be there is ClusterIP config linked to the deployment config of the driver and there 
         is a ClusterIP config linked to the deployment config of the worker, worker do not talk to the driver but instead 
         they talk to driver's clusterIP which would not change it's dns name even if the underlying pods are recreated. </li>
     </ol>
@@ -25,3 +25,6 @@ How is the spark cluster created at runtime.
    <li> Driver starts executing the program is was passed i.e the custom library and the configuration.</li>
 </ol>
  </p>
+
+<hr>
+ <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#deploymentspec-v1-apps"> Kubernetes APIS </a>  
