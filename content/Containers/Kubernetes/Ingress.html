@@ -13,13 +13,37 @@
 </p>
 <p> 
   
- We have to provide the routes as config.
+ We have to provide the routes as config. The below config sends the "/" to a diffrent service and "/api/" to a different
+  service. <span class="text-danger"> how to load balance the traffic to the pods from the service if it is a ClusterIP, 
+  may be LoadBalancer service can be used for this.
+  </span>
   
 <pre class="language-yaml line-numbers"><code>
-  
+apiVersion: extensions/v1beta1
+kind: Ingress
+metdata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
+          - path: /api/
+            backend:
+              serviceName: service-cluster-ip-service
+              servicePort: 5000
 </code></pre>  
 </p>
 
+<p>
+  Typically in a cloud environment,   
+</p>
 
 <hr>
 <a href="https://www.joyfulbikeshedding.com/blog/2018-03-26-studying-the-kubernetes-ingress-system.html">Ingress system</a>
