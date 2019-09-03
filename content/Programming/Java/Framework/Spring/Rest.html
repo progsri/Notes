@@ -96,6 +96,18 @@ public class Api{
 </code></pre>
 
 <hr>
+<h4><strong> @ResponseBody </strong></h4>
+<p>
+ @ResponseBody let's you create custom response using ResponseEntity.
+ <pre class="language-java line-numbers"><code> 
+ @GetMapping("/get")
+  public @ResponseBody ResponseEntity<String> get() { return new ResponseEntity<String>("GET Response", HttpStatus.OK); }
+  </code></pre>
+}
+  
+</p>
+
+<hr>
 <h4><strong> ResponseEntity </strong></h4>
 <p>
   <code> ResponseEntity </code> tells you pass the custom Response. use <code> new ResponseEntity&lt;&gt;(object, code)
