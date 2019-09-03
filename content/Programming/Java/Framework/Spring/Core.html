@@ -19,5 +19,22 @@
    autowires B object into C object by constructor or setter.
 </p>
 <p>
+   Each object created is called bean or spring bean or spring object.
+</p>
+<p>
    use ${} to read keys from properties file, you need to configure <context:property-placeholderlocation="" />
 </p>
+
+<hr>
+<h4><strong> Scop of beans </strong></h>
+<p>
+   <ul>
+      <li> singleton : default same object every request </li>
+      <li> prototype : new object every request </li>
+      <li> request : new object for every new http request ( web only ) </li>
+      <li> session : new object for every new http session (web only) </li>
+      <li> global-session : <span class="text-danger"> global session </span> </li>
+  </ul>
+<p>
+   
+ 
