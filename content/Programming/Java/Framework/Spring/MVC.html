@@ -83,7 +83,12 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
   <code> @Controller </code> used to indicate this is a Controller Class, Comes similar to @Component. 	
 </p>
 <p>
-  <code> @RequestMapping("/path",  </code>	
+	<code> @RequestMapping("/path") </code> can be at class level and method level, if at class level it is the 
+	start path and then comes the method level to form the url.
+</p>
+<p>
+  <code> @RequestParam("paramName") </code> in the method signature gives the parameter value for query param 
+	?paramName=paramValue 
 </p>
 <p>
    To retrieve parameters.
@@ -92,6 +97,14 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
    @RequestMapping("/path")
    public string methodName(HttpServletRequet request, Model model) {
    	String paramName = request.getParameter("paramValue");
+	mode.setAttribute("",""); //set model
+	return "view-name";
+   }
+   
+   //----------- using @RequestParam
+   
+   @RequestMapping("/path")
+   public string methodName(@RequestParam("paramValue") String paramName, Model model) {
 	mode.setAttribute("",""); //set model
 	return "view-name";
    }
