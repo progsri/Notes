@@ -96,6 +96,12 @@ public class Api{
 </code></pre>
 
 <hr>
+<h4><strong> @RequestParam </strong></h4>
+<p>
+@RequestParam("paramName") in the method signature gives the parameter value for query param ?paramName=paramValue
+</p>
+
+<hr>
 <h4><strong> @ResponseBody </strong></h4>
 <p>
  @ResponseBody let's you create custom response using ResponseEntity.
@@ -114,6 +120,22 @@ public class Api{
   </code> where object is the custom POJO you want to send out as response and code is the HTTP Status code. 
 </p>
 
+<hr>
+<h4><strong> @ResponseStatus </strong></h4>
+<p> @ResponseStatus(HttpStatus.BAD_REQUEST) 
+</p>
+
+<hr>
+<h4><strong> @ModelAttribute </strong></h4>
+<p><span class="text-danger">Lets you access a part of information in the body </span>.
+  we can get the entire body using @Requestbody </p>
+
+  <pre class="language-java line-numbers"><code>
+  @PostMapping("/userInformation")
+  void method(@ModelAttribute("vehicle") Vehicle vehicleInModel) {
+
+  }
+  </code></pre>
 
 <hr>
 <h4><strong> Controller Specific Exception Handling - @ExceptionHandler </strong></h4>
