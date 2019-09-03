@@ -1,1 +1,33 @@
 <h2><strong> Rest </strong></h2>
+<hr>
+
+<p>
+  Spring simply extend Spring MVC API for REST.
+</p>
+<p>
+  use <code> @RestController </code> to mark the class that can handle REST calls. This will automatically map the json to the
+  POJO if Jackson is on the classpath.
+</p>
+<p>
+  <code> @RequestMapping("path") </code>
+</p>
+<p>
+  <code> @GetMapping("path") </code> only allows GET calls
+</p>
+
+<hr>
+<h4><strong> @PathVariable </strong></h4>
+In the below code id is the pathvariable
+
+<pre class="language-java line-numbers"><code>
+
+@RestController
+@RequestMapping("/api")
+public class Api{
+
+ @GetMapping("/student/{id}")
+  public String getValue(@PathVariable int id)
+
+}
+
+</code></pre>
