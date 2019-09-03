@@ -129,7 +129,10 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
 <p>
    <b> Lifecycle of a bean </b>
    <code> @PostConstruct  </code>  on a method to add custom logic to the bean/object after it is created by spring.
-   <code> @PreDestroy </code> on a method to add custom logic before it is being destroyed by spring.
+   <code> @PreDestroy </code> on a method to add custom logic before it is being destroyed by spring. This is not called 
+   for bean with a @Scope("prototype"). If you need control over it look at <code> <span class="text-danger"> 
+   BeanPostProcessor </span> </code>. 
+   Both the above methods can have any access modifier but <b> should not </b> have any arguments.
 </p>
 
 
