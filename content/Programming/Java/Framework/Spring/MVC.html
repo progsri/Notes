@@ -29,7 +29,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
  
 @Configuration
-@EnableWebMvc    // Activate Spring MV annotations
+@EnableWebMvc    // Activate Spring MVC annotations
 @ComponentScan(basePackages="package-name")
 public class DemoAppConfig {
  
@@ -53,7 +53,8 @@ public class DemoAppConfig {
 package com.ninjashore.mvc.config;
  
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
- 
+
+// This is used to call the DispatcherServlet.
 public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
  
 	@Override
@@ -64,7 +65,7 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
  
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { DemoAppConfig.class };   
+		return new Class[] { DemoAppConfig.class };   // custom configuration sent to the DispatchServlet.
 	}
  
 	@Override
@@ -75,3 +76,46 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 }
 
 </code></pre>
+
+<hr>
+<h4><strong> Annotations used </strong></h4>
+<p>
+  <code> @Controller </code> used to indicate this is a Controller Class, Comes similar to @Component. 	
+</p>
+<p>
+  <code> @RequestMapping("/path",  </code>	
+</p>
+<p>
+   To retrieve parameters.
+   <pre class="language-java line-numbers"><code>
+   
+   @RequestMapping("/path")
+   public string methodName(HttpServletRequet request, Model model) {
+   	String paramName = request.getParameter("paramValue");
+	mode.setAttribute("",""); //set model
+	return "view-name";
+   }
+   
+   </code></pre>
+</p>
+
+<hr>
+<h4><strong> View </strong></h4>
+<p> Setup </p>
+
+<p> To retreive a model attribute that is set use <code> ${attribute-key} </code> </p>
+
+<h6><strong> Forms </strong></h6>
+
+
+
+
+
+
+
+	
+
+
+
+
+
