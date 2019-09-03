@@ -37,7 +37,7 @@
 public class Api{
 
   @PostMapping("/student/")
-  public String getValue(@RequestBody CustomObject obj) {
+  public String postValue(@RequestBody CustomObject obj) {
   }
 
 }
@@ -54,7 +54,24 @@ public class Api{
 public class Api{
 
   @PutMapping("/student/")
-  public String getValue(@RequestBody CustomObject obj) {
+  public String putValue(@RequestBody CustomObject obj) {
+  }
+
+}
+
+</code></pre>
+</p>
+
+<hr>
+<h4><strong> @DeleteMapping - @RequestBody </strong></h4>
+<p>
+  <code> @DeleteMapping("path") </code> only allows DELETE calls (delete), DELETE HTTP method does not take body.
+@RestController
+@RequestMapping("/api")
+public class Api{
+
+  @DeleteMapping("/student/{id}")
+  public String deleteValue(@PathVariable int id) {
   }
 
 }
