@@ -41,7 +41,7 @@ public class Api{
 <hr>
 <h4><strong> ResponseEntity </strong></h4>
 <p>
-  <code> ResponseEntity </code> tells you pass the custom Response. use <code> new ResponsEntity&lt;&gt;(object, code)
+  <code> ResponseEntity </code> tells you pass the custom Response. use <code> new ResponseEntity&lt;&gt;(object, code)
   </code> where object is the custom POJO you want to send out as response and code is the HTTP Status code. 
 </p>
 
@@ -59,7 +59,7 @@ public class Api{
       
       //set the CustomError fields
       
-      return new ResponsEntity<>(err, HttpStatusCode);
+      return new ResponseEntity<>(err, HttpStatusCode);
  }
   
 </code></pre>
