@@ -19,14 +19,14 @@
    autowires B object into C object by constructor or setter.
 </p>
 <p>
-   Each object created is called bean or spring bean or spring object.
-</p>
-<p>
    use ${} to read keys from properties file, you need to configure <context:property-placeholderlocation="" />
 </p>
 
 <hr>
 <h4><strong> Scope of beans </strong></h>
+<p>
+   Each object created is called bean or spring bean or spring object.
+</p>
 <p>
    <ul>
       <li> singleton : default same object every request </li>
@@ -36,7 +36,7 @@
       <li> global-session : <span class="text-danger"> global session </span> </li>
   </ul>
 <p>
-   e
+   
 <hr>
 <h4><strong> Lifecycle of beans </strong></h>
 <p>
@@ -45,4 +45,20 @@
 <p>
    destroy-method for annotation based ... called when bean is destroyed
 </p>
+
+   
+<hr>
+<h4><strong> Annotations </strong></h>
+<p>
+   scan for packages which has the <code> @component </code> or  <code> @controller </code> or  <code> @service </code> or
+    <code> @repository </code> on classes to create beans using <code> <context:component-scan base-package="" /> </code> in
+   the xml configuration
+</p>  
+<p>
+   To explicity give a bean id do @component("nameofthebean") if you do not give a bean id then spring creates one with the 
+   first letter as small case. i.e Class SmartPhone with @Component is given a bean id as smartPhone.
+</p>
+   
+   
+
  
