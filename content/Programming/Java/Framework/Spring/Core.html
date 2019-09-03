@@ -40,10 +40,10 @@
 <hr>
 <h4><strong> Lifecycle of beans </strong></h4>
 <p>
-   init-method for annotation based ...called when bean is created
+   init-method called when bean is created in the xml configuration.
 </p>
 <p>
-   destroy-method for annotation based ... called when bean is destroyed
+   destroy-method called when bean is destroyed in the xml conofiguration.
 </p>
 
    
@@ -96,7 +96,6 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
 
 </code></pre>
 </p>
-   
 <p>
    Here spring will autowire a bean which is of type ClassName.class instead of a bean with beanid fieldName.
    
@@ -117,8 +116,21 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
 
 `  </code></pre>
 <p>
-
-
+<p>
+   <code> @Scope </code> to mention the scope of the bean.
+    <ul>
+      <li> singleton : default same object every request </li>
+      <li> prototype : new object every request </li>
+      <li> request : new object for every new http request ( web only ) </li>
+      <li> session : new object for every new http session (web only) </li>
+      <li> global-session : <span class="text-danger"> global session </span> </li>
+  </ul>
+</p>
+<p>
+   <b> Lifecycle of a bean </b>
+   <code> @PostConstruct  </code>  on a method to add custom logic to the bean/object after it is created by spring.
+   <code> @PreDestroy </code> on a method to add custom logic before it is being destroyed by spring.
+</p>
 
 
 
