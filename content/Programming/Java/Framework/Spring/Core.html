@@ -50,15 +50,43 @@
 <hr>
 <h4><strong> Annotations </strong></h>
 <p>
-   scan for packages which has the <code> @component </code> or  <code> @controller </code> or  <code> @service </code> or
-    <code> @repository </code> on classes to create beans using <code> <context:component-scan base-package="" /> </code> in
-   the xml configuration
+   scan for packages which has the <code> @Component </code> or  <code> @Controller </code> or  <code> @Service </code> or
+    <code> @Repository </code> on classes to create beans using <code> <context:component-scan base-package="" /> </code> in
+   the xml configuration. This is the <b> Inversion of control </b>
 </p>  
 <p>
    To explicity give a bean id do @component("nameofthebean") if you do not give a bean id then spring creates one with the 
    first letter as small case. i.e Class SmartPhone with @Component is given a bean id as smartPhone.
 </p>
+<p>
+   Classes that need a bean would mention <code> @Autowired </code> at the following places. Autowiring is the <b> dependency
+   injection </b>.
+   <ul>
+      <li> class field : works on private field also and there is no need for constructor or setters </li>
+      <li> constructor </li>
+      <li> setter </li>
+      <li> <span class="text-danger" > Any method </span> </li>
+   </ul>
+</p>
+<p>
+   If a class has @Autowried on it's constructor and the constructor takes a Interface type rather than the class type then
+   spring would find the bean which implements that intrface and has the @Component on it, it if finds mulitple we can use
+   <code> @Qualifier </code> to explicity tell which bean you want to autowire
+</p>
    
+
+
+
+
+
+
+
+
+
+
+
+
+
    
 
  
