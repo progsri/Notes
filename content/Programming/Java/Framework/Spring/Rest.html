@@ -32,6 +32,9 @@
 <h4><strong> @PostMapping - @RequestBody </strong></h4>
 <p>
   <code> @PostMapping("path") </code> only allows POST calls (insert), <code> @RequestBody  </code> gves the post body
+
+<pre class="language-java line-numbers"><code>
+  
 @RestController
 @RequestMapping("/api")
 public class Api{
@@ -49,6 +52,8 @@ public class Api{
 <h4><strong> @PutMapping - @RequestBody </strong></h4>
 <p>
   <code> @PutMapping("path") </code> only allows PUT calls (update), <code> @RequestBody  </code> gves the post body
+
+<pre class="language-java line-numbers"><code>  
 @RestController
 @RequestMapping("/api")
 public class Api{
@@ -66,6 +71,9 @@ public class Api{
 <h4><strong> @DeleteMapping - @RequestBody </strong></h4>
 <p>
   <code> @DeleteMapping("path") </code> only allows DELETE calls (delete), DELETE HTTP method does not take body.
+
+<pre class="language-java line-numbers"><code>
+
 @RestController
 @RequestMapping("/api")
 public class Api{
