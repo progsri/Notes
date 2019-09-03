@@ -107,8 +107,10 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
    </code></pre>
 </p>
 
+<hr>
 <p>
-   To inject the value for a key from the properties file use <code> @Value </code>
+   To inject the value for a key from the properties file use <code> @Value </code> .To read the properties file use
+   <code> @PropertySource("classpath:file.properties") </code> with <code> @Configuration </code>
    <pre class="language-java line-numbers"><code>
   
   @Value("${key}")
@@ -116,6 +118,8 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
 
 `  </code></pre>
 <p>
+   
+<hr>
 <p>
    <code> @Scope </code> to mention the scope of the bean.
     <ul>
@@ -135,8 +139,10 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
    Both the above methods can have any access modifier but <b> should not </b> have any arguments.
 </p>
 
-
-
+<hr>
+<p>
+   <code> @Configuration </code> is used to provide spring configuration.
+</p>
 
 
 
