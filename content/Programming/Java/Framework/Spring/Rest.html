@@ -39,4 +39,32 @@ public class Api{
 </code></pre>
 
 <hr>
-<h4><strong> Exception Handling </strong></h4>
+<h4><strong> ResponseEntity </strong></h4>
+<p>
+  <code> ResponseEntity </code> tells you pass the custom Response. use <code> new ResponsEntity&lt;&gt;(object, code)
+  </code> where object is the custom POJO you want to send out as response and code is the HTTP Status code. 
+</p>
+
+
+<hr>
+<h4><strong> Exception Handling - @ExceptionHandler </strong></h4>
+<p>
+  This works for general  <code> Exception.class </code> or custom exception.
+</p>
+<pre class="language-java line-numbers"><code>
+ 
+ @ExceptionHandler
+ public ResponseEntity<CustomError> method(Exception exp){
+      CustomError err = new CustomError()
+      
+      //set the CustomError fields
+      
+      return new ResponsEntity<>(err, HttpStatusCode);
+ }
+  
+</code></pre>
+
+
+
+
+
