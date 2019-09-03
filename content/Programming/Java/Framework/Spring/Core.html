@@ -48,7 +48,11 @@
 
    
 <hr>
-<h4><strong> Annotations </strong></h4>
+<h4><strong> Annotations based IoC and DI </strong></h4>
+<p>
+   <code> @Configuration </code> is used to provide spring configuration.
+</p>
+
 <p>
    scan for packages which has the <code> @Component </code> or  <code> @Controller </code> or  <code> @Service </code> or
     <code> @Repository </code> on classes to create beans using <code> @Configuration 
@@ -108,6 +112,7 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
 </p>
 
 <hr>
+<h4><strong> Properties file </strong></h4>
 <p>
    To inject the value for a key from the properties file use <code> @Value </code> .To read the properties file use
    <code> @PropertySource("classpath:file.properties") </code> with <code> @Configuration </code>
@@ -116,10 +121,11 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
   @Value("${key}")
    private String email;
 
-`  </code></pre>
+  </code></pre>
 <p>
    
 <hr>
+<h4><strong> Bean scope and lifecycle </strong></h4>
 <p>
    <code> @Scope </code> to mention the scope of the bean.
     <ul>
@@ -140,8 +146,23 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
 </p>
 
 <hr>
+<h4><strong> Creating beans without component scan and @Component</strong></h4>
 <p>
-   <code> @Configuration </code> is used to provide spring configuration.
+   <code> @Bean </code> is used to create bean ( IoC ) without usingcomponent scan  and then use @Autowired as
+   regular to inject.For scope use <code>  @Bean(scope=DefaultScopes.PROTOTYPE) </code>. <span class="text-danger"> when to
+   use this </span>
+   
+   <pre class="language-java line-numbers"><code>
+    @Configuration
+    public Class Name{
+        @Bean
+        public Coach createSomeBean() {
+            SomeType type = new SomeType("arg1","arg2");
+            return type;
+        }
+    }
+   </code></pre>
+      
 </p>
 
 
