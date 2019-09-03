@@ -67,10 +67,48 @@ The below gets executed whenever there is any Exception.
 </code></pre>
 
 <hr>
-<h4><strong> Global Exception Handling -  </strong></h4>
+<h4><strong> Global Exception Handling -   @ControllerAdvice  </strong></h4>
+<p>
+  We are are using <b> AOP </b> based <code> @ControllerAdvice </code> to add global exceptions.
+</p>
+<pre class="language-java line-numbers"><code>
+ 
+ @ControllerAdvice
+ public class Utility {
+ 
+   @ExceptionHandler
+   public ResponseEntity<CustomError> method(Exception exp){
+        CustomError err = new CustomError()
+
+        //set the CustomError fields
+
+        return new ResponseEntity<>(err, HttpStatusCode);
+   }
+   
+    
+   @ExceptionHandler
+   public ResponseEntity<CustomError> method(CustomException exp){
+        CustomError err = new CustomError()
+
+        //set the CustomError fields
+
+        return new ResponseEntity<>(err, HttpStatusCode);
+   }
+ }
+  
+</code></pre>
 
 <hr>
 <h4><strong> @ControllerAdvice  </strong></h4>
+<p class="text-danger">
+  Preprocess the requests.
+</p>
+<p class="text-danger">
+  Postprocess the requests.
+</p>
+
+
+
 
 
 
