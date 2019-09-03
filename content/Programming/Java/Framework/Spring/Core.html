@@ -14,5 +14,10 @@
  Spring container will inject the dependency objects that are required by our class.
 </p>
 <p>
-  Can do it either thru constructor or setter. Imagine a class C which depend on class B which internally 
+  Can do it either thru constructor or setter. Imagine a class C which depend on class B which internally depends on A.
+   Then spring container creates A object and autowires the A object into B object by constructor or setter and then
+   autowires B object into C object by constructor or setter.
+</p>
+<p>
+   use ${} to read keys from properties file, you need to configure <context:property-placeholderlocation="" />
 </p>
