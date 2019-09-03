@@ -29,6 +29,40 @@
 </p>
 
 <hr>
+<h4><strong> @PostMapping - @RequestBody </strong></h4>
+<p>
+  <code> @PostMapping("path") </code> only allows POST calls (insert), <code> @RequestBody  </code> gves the post body
+@RestController
+@RequestMapping("/api")
+public class Api{
+
+  @PostMapping("/student/")
+  public String getValue(@RequestBody CustomObject obj) {
+  }
+
+}
+
+</code></pre>
+</p>
+
+<hr>
+<h4><strong> @PutMapping - @RequestBody </strong></h4>
+<p>
+  <code> @PutMapping("path") </code> only allows PUT calls (update), <code> @RequestBody  </code> gves the post body
+@RestController
+@RequestMapping("/api")
+public class Api{
+
+  @PutMapping("/student/")
+  public String getValue(@RequestBody CustomObject obj) {
+  }
+
+}
+
+</code></pre>
+</p>
+
+<hr>
 <h4><strong> @PathVariable </strong></h4>
 In the below code id is the pathvariable
 
@@ -39,10 +73,9 @@ In the below code id is the pathvariable
 public class Api{
 
  @GetMapping("/student/{id}")
-  public String getValue(@PathVariable int id)
+  public String getValue(@PathVariable int id){}
 
 }
-
 </code></pre>
 
 <hr>
