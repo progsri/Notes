@@ -1,1 +1,77 @@
+<h2><strong> MVC </strong></h2>
 
+<p>
+  Use Front controller pattern via <code> DispatcherServlet </code> to forward requests.
+ </p>
+
+<hr>
+<h4><strong> Basic request - response </strong> </h4>
+<p>
+  <ul>
+    <li> Requests comes from browser to App server.</li>
+    <li> Calls go to the DispatcherServlet as configured in the web.xml</li>
+    <li> DispatcherServlet puts the request in a model and sends it to the handling class </li>
+    <li> Handling class is the controller which processes the model and sends modified model to a template </li>
+    <li> Template is generally JSP + JSTL that can interpolate with the model </li>
+    <li> One the the web page is created with the template, the response is sent out to browser.</li>
+  </ul>
+</p>
+
+Web.xml replacement
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.mvc.config;
+ 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+ 
+@Configuration
+@EnableWebMvc    // Activate Spring MV annotations
+@ComponentScan(basePackages="package-name")
+public class DemoAppConfig {
+ 
+	// define a bean for ViewResolver
+ 
+	@Bean
+	public ViewResolver viewResolver() {
+		
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		
+		viewResolver.setPrefix("/WEB-INF/view/");
+		viewResolver.setSuffix(".jsp");
+		
+		return viewResolver;
+	}
+	
+}
+
+//------------------------------------
+
+package com.ninjashore.mvc.config;
+ 
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+ 
+public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+ 
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+ 
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return new Class[] { DemoAppConfig.class };   
+	}
+ 
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] { "/" };   // Request path to DispatcherServlet mapping
+	}
+ 
+}
+
+</code></pre>
