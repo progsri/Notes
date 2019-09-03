@@ -19,8 +19,7 @@
    autowires B object into C object by constructor or setter.
 </p>
 <p>
-   use ${} to read keys from properties file, you need to configure <code> <!-- <context:property-placeholderlocation="" /> 
- --> </code>
+   use ${} to read keys from properties file, you need to configure <code> context:property-placeholderlocation="" </code>
 </p>
 
 <hr>
@@ -99,11 +98,25 @@ public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldNa
 </p>
    
 <p>
-<pre class="language-java line-numbers"><code>
+   Here spring will autowire a bean which is of type ClassName.class instead of a bean with beanid fieldName.
+   
+   <pre class="language-java line-numbers"><code>
 
-</code></pre>
+   @Autowired(type = ClassName.class)
+   private Type fieldName;
+
+   </code></pre>
 </p>
 
+<p>
+   To inject the value for a key from the properties file use <code> @Value </code>
+   <pre class="language-java line-numbers"><code>
+  
+  @Value("${key}")
+   private String email;
+
+`  </code></pre>
+<p>
 
 
 
