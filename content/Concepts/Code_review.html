@@ -1,0 +1,15 @@
+<h2><strong> Code Review </strong></h2>
+
+<p>
+  Look if @Deprecated is placed, if it is then the comment should mention what is the new method/class
+</p>
+<p>
+  No long calls when @Transactional is used. do not make http calls when transaction is under the opened in the RDBMS , under
+  large volume traffic these cause deadlocks.
+</p>
+<p>
+  Do write continous large logic, break it into small chunks.
+</p>
+<p>
+  when possible to boost the response time use threads or executor service.
+</p>
