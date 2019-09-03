@@ -1,0 +1,30 @@
+<h2><strong> Rest </strong></h2>
+
+
+
+
+<h4><strong> Best practices </strong></h4>
+<p>
+  Send back appropriate HTTP codes.
+  <ul>
+    <li> 200 : all success </li>
+    <li> 400 : If validation fails </li>
+    <li> 500 : If backend has issues, lets say exception </li>
+  </ul>
+</p>
+
+<p>
+  Always send a response, both sucess and failure scenarios.
+  <pre class="language-json line-numbers"> <code>
+  {
+    data:{} //has data if success
+    hasErrors: true or false 
+    errors: [] // list of errors
+    timestamp: timestamp
+  }
+  </code> </pre>
+</p>
+
+<p>
+  Document the service using swagger or similar tools, make sure that api can called to interact with the service.
+</p>
