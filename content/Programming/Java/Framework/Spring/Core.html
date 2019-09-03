@@ -1,7 +1,7 @@
 <h2><strong> Core </strong></h2>
 <hr>
 
-<h4><strong> Inversion of control </strong></h2>
+<h4><strong> Inversion of control </strong></h4>
 <p>
    Instead of the we defining explicitly the objects and their behavior, we can ask Sprin container  to create the object and
    provide us that object via the applicationContext. Spring container can provide the same object( singleton ) or different
@@ -9,7 +9,7 @@
 </p>
 
 <hr>
-<h4><strong> Dependency injection </strong></h>
+<h4><strong> Dependency injection </strong></h4>
 <p>
  Spring container will inject the dependency objects that are required by our class.
 </p>
@@ -19,11 +19,12 @@
    autowires B object into C object by constructor or setter.
 </p>
 <p>
-   use ${} to read keys from properties file, you need to configure <context:property-placeholderlocation="" />
+   use ${} to read keys from properties file, you need to configure <code> <!-- <context:property-placeholderlocation="" /> 
+ --> </code>
 </p>
 
 <hr>
-<h4><strong> Scope of beans </strong></h>
+<h4><strong> Scope of beans </strong></h4>
 <p>
    Each object created is called bean or spring bean or spring object.
 </p>
@@ -38,7 +39,7 @@
 <p>
    
 <hr>
-<h4><strong> Lifecycle of beans </strong></h>
+<h4><strong> Lifecycle of beans </strong></h4>
 <p>
    init-method for annotation based ...called when bean is created
 </p>
@@ -48,15 +49,17 @@
 
    
 <hr>
-<h4><strong> Annotations </strong></h>
+<h4><strong> Annotations </strong></h4>
 <p>
    scan for packages which has the <code> @Component </code> or  <code> @Controller </code> or  <code> @Service </code> or
-    <code> @Repository </code> on classes to create beans using <code> <context:component-scan base-package="" /> </code> in
-   the xml configuration. This is the <b> Inversion of control </b>
+    <code> @Repository </code> on classes to create beans using <code> @Configuration 
+   @ComponentScan(basePackages = "package name") </code>. This is the <b> Inversion of control </b>
 </p>  
 <p>
-   To explicity give a bean id do @component("nameofthebean") if you do not give a bean id then spring creates one with the 
-   first letter as small case. i.e Class SmartPhone with @Component is given a bean id as smartPhone.
+   To explicity give a bean id do @component("nameofthebean") if you do not give a bean id then spring creates a <b> default
+   </b> one with the  first letter as small case. i.e Class SmartPhone with @Component is given a bean id as smartPhone.Also,
+   default bean id is not created if the first 2 characters are Capitals in that case class name will be the default id i.e.
+   SMartPhone will be given SMartPhone itself as bean id.
 </p>
 <p>
    Classes that need a bean would mention <code> @Autowired </code> at the following places. Autowiring is the <b> dependency
@@ -69,13 +72,37 @@
    </ul>
 </p>
 <p>
-   If a class has @Autowried on it's constructor and the constructor takes a Interface type rather than the class type then
-   spring would find the bean which implements that intrface and has the @Component on it, it if finds mulitple we can use
-   <code> @Qualifier </code> to explicity tell which bean you want to autowire
+   <code> @Autowired </code> or <code> @Resource </code>
+   If a class has <code>@Autowired</code> on it's constructor and the constructor takes a Interface type rather than the 
+   class type then spring would find the bean which implements that intrface and has the @Component on it, it if finds 
+   mulitple we can use <code> @Qualifier("beanid") </code> to explicity tell which bean you want to autowire with beanid
+   beening the default name or the name you have given to the bean.
+   
+<pre class="language-java line-numbers"><code>
+
+// on the field
+@Autowired
+@qualifier("beanid")
+private Type fieldName;
+
+---------------------
+
+// constructor
+
+private Type fieldName1;
+private Type fieldName2;
+
+@Autowired
+public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldName1 )
+
+</code></pre>
 </p>
    
+<p>
+<pre class="language-java line-numbers"><code>
 
-
+</code></pre>
+</p>
 
 
 
