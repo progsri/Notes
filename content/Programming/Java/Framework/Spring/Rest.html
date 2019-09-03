@@ -47,10 +47,12 @@ public class Api{
 
 
 <hr>
-<h4><strong> Exception Handling - @ExceptionHandler </strong></h4>
+<h4><strong> Controller Specific Exception Handling - @ExceptionHandler </strong></h4>
 <p>
-  This works for general  <code> Exception.class </code> or custom exception.
+  This works for general  <code> Exception.class </code> or custom exception. <b> This only works for a Controller only </b>
 </p>
+
+The below gets executed whenever there is any Exception.
 <pre class="language-java line-numbers"><code>
  
  @ExceptionHandler
@@ -64,6 +66,11 @@ public class Api{
   
 </code></pre>
 
+<hr>
+<h4><strong> Global Exception Handling -  </strong></h4>
+
+<hr>
+<h4><strong> @ControllerAdvice  </strong></h4>
 
 
 
