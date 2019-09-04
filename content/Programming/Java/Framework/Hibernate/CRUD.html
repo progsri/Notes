@@ -1,0 +1,35 @@
+<h2><strong> CRUD operations </strong></h2>
+<hr>
+
+
+<h4><strong> Select </strong></h4>
+<p>
+<code> session.createQuery("from tableName  where columnName =''").getResultList(); </code> where tableName and columnName 
+  should match with the Entity class.
+</p>
+<p>
+  <code> session.get(Class.class, Obj.getId()); </code>
+</p>
+
+<hr>
+<h4><strong> Insert </strong></h4>
+<p>
+  <code> session.save(obj); </code> This obj is the object of the Entity class
+</p>
+
+<hr>
+<h4><strong> Update </strong></h4>
+<p>
+<code> 	session.createQuery("update tableName set columnName=''").executeUpdate(); </code> where tableName and columnName 
+  should match with the Entity class.
+</p>
+<p>
+    <code> session.update(obj); </code> set something on obj before calling the update.
+</p>
+
+<hr>
+<h4><strong> Delete </strong></h4>
+<p>
+<code> 	session.createQuery("delete from tableName set columnName=''").executeUpdate(); </code> where tableName and columnName 
+  should match with the Entity class.
+</p>
