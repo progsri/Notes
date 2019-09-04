@@ -112,7 +112,10 @@ TABLE: Hibernate uses a database table to simulate a sequence.
 
 <hr>
 <h4><strong> Entity Manager </strong></h4>
-
+In Hibernate, the persistence context is represented by org.hibernate.Session instance. For JPA, it is the 
+javax.persistence.EntityManager. When we use Hibernate as a JPA provider and operate via EntityManager interface,
+the implementation of this interface basically wraps the underlying Session object. However, Hibernate Session
+provides a richer interface with more possibilities so sometimes it is useful to work with Session directly.
 
 
 
