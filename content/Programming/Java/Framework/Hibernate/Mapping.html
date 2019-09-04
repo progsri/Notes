@@ -18,10 +18,57 @@
 <hr>
 <h2><strong>One to One Mapping</strong></h2>
 <p>
-  <code> @OnetoOne(cascade=CasadeType.ALL) </code> and <code> @JoinColumn(name="nameOftheColumnInThisTable")</code>
-</p>
-<p>
-  <code> @OnetoOne(cascade=CasadeType.ALL) </code> </code>
+
+  <pre class="language-java line-number"><code>
+  @Entity
+  @Table(name="instructor_detail")
+  public class InstructorDetail {
+	
+      @Id
+      @GeneratedValue(strategy=GenerationType.IDENTITY)
+      @Column(name="id")
+      private int id;
+
+      @Column(name="youtube_channel")
+      private String youtubeChannel;
+
+      @Column(name="hobby")
+      private String hobby;
+
+      @OneToOne(mappedBy="instructorDetail", 
+          cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+                CascadeType.REFRESH}) // This cascade the changes on InstructorDetail to  Instructor
+      private Instructor instructor;
+      
+      public InstructorDetail() { }
+   
+   //----------------
+   
+   @Entity
+   @Table(name="instructor")
+  public class Instructor {
+      @Id
+      @GeneratedValue(strategy=GenerationType.IDENTITY)
+      @Column(name="id")
+      private int id;
+
+      @Column(name="first_name")
+      private String firstName;
+
+      @Column(name="last_name")
+      private String lastName;
+
+      @Column(name="email")
+      private String email;
+
+      @OneToOne(cascade=CascadeType.ALL)
+      @JoinColumn(name="instructor_detail_id")       // This cascade the changes on Instructor to  InstructorDetail
+      private InstructorDetail instructorDetail;
+
+      public Instructor() {}
+  }
+   
+  </code></pre>
 </p>
 
 
