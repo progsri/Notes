@@ -1,0 +1,19 @@
+- This is the backend for react app which is used only internally.
+- All calls to this backend comes via Nginx which has the 
+-------------------------------------
+- Security is implemented using Spring security
+scenario 1:
+  1. For the first the user hits the url of the react app. The react app loads from a nginx server. It makes a call to backend
+  for authentication with all the token in the cookie, in fact any call made to backend will be checked for authentication token.
+  2. Backend sends that
+  
+  
+  
+ -Reference
+ https://developer.okta.com/blog/2018/07/19/simple-crud-react-and-spring-boot
+ https://developer.okta.com/blog/2017/11/20/add-sso-spring-boot-15-min
+ https://www.baeldung.com/sso-spring-security-oauth2
+ 
+ or
+ 
+ https://docs.aws.amazon.com/elasticloadbalancing/latest/application/tutorial-load-balancer-routing.html
