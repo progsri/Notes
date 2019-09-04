@@ -7,7 +7,8 @@
  Can be deployed as a jar or war.
 </p>
 <p>
- Main method class
+<p>
+Use <a href="https://start.spring.io/"> Spring starter </a> to create a Spring boot.
 <pre class="language-java line-numbers"><code>
  @SpringBootApplication
     public class Application {
@@ -27,13 +28,40 @@
     </ul>
 </p>
 
+<hr>
+<h4><strong> Package scanning or Component scanning </strong></h4>
+
+<hr>
 <h4><strong> Properties </strong></h4>
 <p>
   By default Spring looks into <code> /main/resources/application.properties </code> , to read or inject just use
   <code> @Value(${keyFromPropertiesFile}) </code>
 </p>
 
+<hr>
 <h4><strong> Static files </strong></h4>
 <p>
    These are served from  <code> /main/resources/static </code>.
 </p>
+
+<hr>
+<h4><strong> Dependenices </strong></h4>
+<p>
+  Use <a href="https://start.spring.io/"> Spring starter </a> to create a Spring boot or find dependencies, these are 
+  spring boot starter which help in finding compatible one. We will always need <b> spring-boot-starter-parent </b> and 
+  then comes spring-boot-starter-web,  spring-boot-starter-seurity, spring-boot-starter-jpa.
+</p>
+  
+<hr>
+<h4><strong> Maven Plugin </strong></h4>  
+<p>
+  Use spring-boot-maven-plugin. This gives <code> mvn spring-boot:run </code>
+</p>
+  
+<hr>
+<h4><strong> Tools </strong></h4>  
+</p>
+In development, having <b> spring-boot-devtools </b> as maven dependency will auto reload when there is a code change.
+</p>
+
+
