@@ -18,3 +18,22 @@
     }
 </code></pre>
 </p>
+<p>
+    @SpringBootApplication is composed of :
+    <ul> 
+      <li> @EnableAutoConfiguration </li>
+       <li> @ComponentScan </li>
+       <li> @Configuration </li>
+    </ul>
+</p>
+
+<h4><strong> Properties </strong></h4>
+<p>
+  By default Spring looks into <code> /main/resources/application.properties </code> , to read or inject just use
+  <code> @Value(${keyFromPropertiesFile}) </code>
+</p>
+
+<h4><strong> Static files </strong></h4>
+<p>
+   These are served from  <code> /main/resources/static </code>.
+</p>
