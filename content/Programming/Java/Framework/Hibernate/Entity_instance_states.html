@@ -1,1 +1,53 @@
-https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate
+<h2><strong> Entity States and the operations </strong></h2>
+
+<hr>
+<h4><strong> Persistence Context </strong></h4>
+
+<hr>
+<h4><strong> State </strong></h4>
+<ul>
+  <li> Transient : When this is processed by hibernated </li>
+  <li> Persistent : When it is processed by hibernate and is in the Hibenrate session </li>
+  <li> Detached : It was once in hibernate session but not anymore </li>
+<ul>
+  
+<hr>
+<h4><strong> persist </strong></h4>
+  
+  
+<hr>
+<h4><strong> save </strong></h4>
+  
+  
+<hr>
+<h4><strong> merge </strong></h4>
+<p>
+  Hibernate identifies a entity based on id, in a session lets an instance was fetched(get()) then the instance is in
+  persistent state, we then update it and flush the instance then it would be in detached state. Know in the same session
+  if the same instance not another instance is updated then it would throw exception, in that case we call merge which
+  puts the instance from detached to persistent state and when we flush it the object would be updated.
+</p>
+  
+<hr>
+<h4><strong> saveOrUpdate </strong></h4>
+
+<hr>
+<h4><strong> evict </strong></h4>
+ 
+<hr>
+<h4><strong> delete </strong></h4>
+  
+<hr>
+<h4><strong> get </strong></h4>
+  
+  
+  <hr>
+<h4><strong> load </strong></h4>
+  
+  <hr>
+<h4><strong> lock </strong></h4>
+  
+  
+<hr>
+<h4><strong> Reference </strong></h4>  
+<a href="https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate"> Entity State </a>
