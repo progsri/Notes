@@ -2,6 +2,11 @@
 <hr>
 
 <p> All the below createQuery is HQL </p>
+<p>
+  <b> t is important to understand from the beginning that all of the methods (persist, save, update, merge, saveOrUpdate) 
+    do not immediately result in the corresponding SQL UPDATE or INSERT statements. The actual saving of data to the 
+    database occurs on committing the transaction or flushing the Session. </b>
+</p>
 
 <h4><strong> Select </strong></h4>
 <p>
