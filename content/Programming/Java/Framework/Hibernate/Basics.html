@@ -2,42 +2,42 @@
 <hr>
 
 <p>
-  HIbenrate uses JDBC internally
+  HIbenrate uses JDBC internally. 
 </p>
 
 <h4><strong> Configuration </strong> </h4>
 <pre class="language-xml line-numbers"><code>
-<!--
-<!DOCTYPE hibernate-configuration PUBLIC
+
+&lt;!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;
 
-<hibernate-configuration>
+&lt;hibernate-configuration&gt;
 
-    <session-factory>
+    &lt;session-factory&gt;
 
-        <!-- JDBC Database connection settings -->
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false&amp;serverTimezone=UTC</property>
-        <property name="connection.username">hbstudent</property>
-        <property name="connection.password">hbstudent</property>
+        &lt;!-- JDBC Database connection settings --&gt;
+        &lt;property name="connection.driver_class"&gt;com.mysql.cj.jdbc.Driver&lt;/property&gt;
+        &lt;property name="connection.url"&gt;jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false&amp;serverTimezone=UTC&lt;/property&gt;
+        &lt;property name="connection.username"&gt;hbstudent&lt;/property&gt;
+        &lt;property name="connection.password"&gt;hbstudent&lt;/property&gt;
 
-        <!-- JDBC connection pool settings ... using built-in test pool -->
-        <property name="connection.pool_size">1</property>
+        &lt;!-- JDBC connection pool settings ... using built-in test pool --&gt;
+        &lt;property name="connection.pool_size"&gt;1&lt;/property&gt;
 
-        <!-- Select our SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        &lt;!-- Select our SQL dialect --&gt;
+        &lt;property name="dialect"&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
 
-        <!-- Echo the SQL to stdout -->
-        <property name="show_sql">true</property>
+        &lt;!-- Echo the SQL to stdout --&gt;
+        &lt;property name="show_sql"&gt;true&lt;/property&gt;
 
-		<!-- Set the current session context -->
-		<property name="current_session_context_class">thread</property>
+		&lt;!-- Set the current session context --&gt;
+		&lt;property name="current_session_context_class"&gt;thread&lt;/property&gt;
  
-    </session-factory>
+    &lt;/session-factory&gt;
 
-</hibernate-configuration>
--->
+&lt;/hibernate-configuration&gt;
+
 </code></pre>
 
 <hr>
@@ -65,6 +65,43 @@
 	@Column(name="columnName") is a class field level annotation that maps to a column
 </p>
 
+
+<hr>
+<h4><strong> @Column </strong></h4>
+<p>
+	In spring session factory is under it's control. <code> session </code> which is short lived is fetche from 
+	the session factory.
+</p>
+<pre class="language-java line-numbers"><code>
+		SessionFactory factory = new Configuration()
+								.configure("hibernate.cfg.xml")
+								.addAnnotatedClass(Student.class)
+								.buildSessionFactory();
+		
+		// create session
+		Session session = factory.getCurrentSession();
+		
+		try {			
+			// create a student object
+			System.out.println("Creating new student object...");
+			Student tempStudent = new Student("Paul", "Doe", "paul@luv2code.com");
+			
+			// start a transaction
+			session.beginTransaction();
+			
+			// save the student object
+			System.out.println("Saving the student...");
+			session.save(tempStudent);
+			
+			// commit transaction
+			session.getTransaction().commit();
+			
+			System.out.println("Done!");
+		}
+		finally {
+			factory.close();
+		}
+</code></pre>
 
 
 
