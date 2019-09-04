@@ -5,6 +5,8 @@
   Cascading operations.
   <a href="https://www.baeldung.com/jpa-cascade-types"> Refer here </a>
 </p>
+
+<hr>
 <p>
   Lazer and Eager fetching. Below are the default types.
   <ul>
@@ -15,8 +17,19 @@
  </ul>
 </p>
 <p>
+	For Lazy to work later when we fetch the data we need a session, other wise <code> LazyInitializationException
+	</code> would occur, to fix this we need to open the session again use <code> JOIN FETCH </code> in this way the
+	data already fetch for the other table can be used without refetching and only fetch the other table data that
+	failed. 
+	<a href="https://vladmihalcea.com/the-best-way-to-handle-the-lazyinitializationexception/"> 
+		Refer this for JOIN FETCH and  LazyInitializationException </a>
+</p>
+<hr>
+<p>
   Uni and Bi directional
 </p>
+
+<hr>
 <p>
   Entity instance states
 </p>
