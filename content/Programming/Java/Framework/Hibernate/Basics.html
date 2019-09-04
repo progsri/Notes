@@ -56,7 +56,13 @@
 <hr>
 <h4><strong> @Id </strong></h4>
 <p>
-
+AUTO: Hibernate selects the generation strategy based on the used dialect,
+IDENTITY: Hibernate relies on an auto-incremented database column to generate the primary key,
+SEQUENCE: Hibernate requests the primary key value from a database sequence,
+TABLE: Hibernate uses a database table to simulate a sequence.
+</p>
+<p>
+ We can also have custom id generated such as UUID.	
 </p>
 
 <hr>
