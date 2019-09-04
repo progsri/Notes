@@ -1,3 +1,39 @@
 <h2><strong> Actuator </strong></h2>  
 <hr>
+<p> 
+  To get actuator we need dependency <code> spring-boot-started-actuator </code>, just by adding this we need all the endpoints
+  automatically, these endpoints start with <b> /actuator </b>
+</p>
 
+<h4><strong> Monitor the application </strong></h4>  
+
+
+<hr>
+<h4><strong> Health check  </strong></h4>  
+<p>
+  <b> /actuator/health </b> returns a json <code> {"status":"UP" }</code> which can be modified to our application.
+  Let say we can make a call to DB and if we get the response then we can send a diffrent json back.
+</p>
+
+<hr>
+<h4><strong> Metrics of the application </strong></h4>  
+<p>
+   <b> /actuator/info </b> reads the application.properties and anything that starts with info such  info.app.name or
+  info.app.version would be picked up
+</p>
+
+<hr>
+<h4><strong> Other </strong></h4>  
+<p>
+  By default only /health and /info are exposed, to expose all of them add this
+  <code> management.endpoints.web.exposur.einclude=* </code> to activate all of them.
+</p>
+<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html"> list of all 
+  endpoints </a>
+
+<hr>
+<h4><strong> Security for endpoints </strong></h4>  
+<p>
+  By default all end points are secured by spring security, We can apply spring security knowledge to use single sigon or
+  Oauth for security
+</p>
