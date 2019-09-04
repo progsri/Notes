@@ -1,0 +1,17 @@
+<h2><strong> HQL <strong></h2>
+<hr>
+
+
+<h4><strong> Parameter <strong></h4>
+
+<pre class="language-java line-numbers"><code>
+comments = entityManager.createQuery(
+    "select pc " +
+    "from PostComment pc " +
+    "join fetch pc.post " +
+    "where pc.review = :review", PostComment.class)
+.setParameter("review", review)
+.getResultList();
+
+<code></pre>
+
