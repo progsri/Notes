@@ -27,10 +27,16 @@
 <p>
     <code> session.update(obj); </code> set something on obj before calling the update.
 </p>
+<p>
+   Just retrieve the object using get and call the setter on the object and commit the transaction, no need to call update
+</p>
 
 <hr>
 <h4><strong> Delete </strong></h4>
 <p>
 <code> 	session.createQuery("delete from tableName set columnName=''").executeUpdate(); </code> where tableName and columnName 
   should match with the Entity class.
+</p>
+<p>
+  <code> session.delete(obj) </code> assuming this is a obj which hibernate is aware ( transient ).
 </p>
