@@ -59,7 +59,7 @@ run
             "desiredCount": 1,
             "role": "ecsServiceRole"
         }
-    <code></pre>
+    </code></pre>
 </p>
 <p>    
 Step 6 : Confirm everything is running. By verifying that the target group has the container instance. SSH to the EC2 instance
@@ -83,7 +83,21 @@ If you need to need to scale up the service, just go to the UI and update the co
 
 <hr>
 <h4><strong> AutoScaling </strong></h4>
-
+<p>
+   Step1: Create launch configuarion using from the Ec2 page, this basically has information about the instane type, AMI,
+    number of them needed.
+</p>
+<p>
+  Step 2: Based on the alarm set on the metric for cpu and memory, create scaling policy to bring more EC2 instances.
+<p>
+<p>
+   Step 3: Using the same alarm create scaling policy this time for containers on the service using the AutoScaling tab
+    on the ECS serice page.
+</p>
+<p class="text-danger">
+    lets say the alarm is triggered, at the same time EC2 and ECS is scaling then ECS would not find any readily available
+    EC2 instances to deploy... Does ECS wait forever or is there a time limit.
+</p>
 
 
 <h4><strong> References </strong></h4>
