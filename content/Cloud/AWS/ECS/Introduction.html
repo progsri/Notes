@@ -5,7 +5,8 @@
 <p> 
 Step 1:  Cluster : Create cluster by defining the number of ec2 nodes, type of instance, EBS volume, VPC, subnets, security 
     group. This would create the VM and install ecs-agent on them.
-  
+</p>
+<p>
 Step 2: Create a Task Definition that tells the image to use and all the other information that image(container) needs such
    as memory, ports, cpu etc.
    <pre class="language-json line-numbers"><code>
@@ -30,14 +31,17 @@ Step 2: Create a Task Definition that tells the image to use and all the other i
         }
       ]
     }
-    <code></pre>
-    
+    </code></pre>
+</p>
+<p>  
 Step 3: Register the above task definition to ECS.
-
+</p>
+<p>
 Step 4: Create ELB with a empty target group as ECS will map the constainer instances(not EC2 ) itself, assign a security 
 group with traffic to allow the port needed. Also make sure that the EC2 cluster's security group allows traffic to the
 port needed.
-
+</p>
+<p>
 Step 5: Create a service with the below definition. It maps the task definition, ELB , target groups, number of instances to
 run
    <pre class="language-json line-numbers"><code>
@@ -56,15 +60,26 @@ run
             "role": "ecsServiceRole"
         }
     <code></pre>
-    
+</p>
+<p>    
 Step 6 : Confirm everything is running. By verifying that the target group has the container instance. SSH to the EC2 instance
 and run docker commands. Service page in the ECS UI should show the containers as healthy.
-
-Step 7:  By curl to the DNS name of th ELB we should be able to hit our container.
-
-If you need to need to scale up the service, just go to the UI and update the count.
-
 </p>
+<p>
+Step 7:  By curl to the DNS name of th ELB we should be able to hit our container.
+</p>
+<p>
+If you need to need to scale up the service, just go to the UI and update the count.
+</p>
+
+
+<hr>
+<h4><strong> Metrics and Alarms </strong></h4>
+<p>
+    The metrics tab on the Service page has information about the CPU and memory, which goes to the cloudwatch, we can
+    then set alarms on the cloudwatch.
+</p>
+
 
 <hr>
 <h4><strong> AutoScaling </strong></h4>
