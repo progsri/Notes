@@ -1,4 +1,42 @@
 <h2><strong> ECS </strong></h2>
+<hr>
+
+<h4><strong> Steps to form a cluster </strong></h4>
+<p> 
+Step 1:  Cluster : Create cluster by defining the number of ec2 nodes, type of instance, EBS volume, VPC, subnets. This would 
+    create the VM and install ecs-agent on them.
+  
+Step 2: Create a Task Definition that tells the image to use and all the other information that image(container) needs such
+   as memory, ports, cpu etc.
+   <pre class="language-json line-numbers"><code>
+       {
+      "family": "sinatra-hi",
+      "containerDefinitions": [
+        {
+          "name": "web",
+          "image": "tongueroo/sinatra:latest",
+          "cpu": 128,
+          "memoryReservation": 128,
+          "portMappings": [
+            {
+              "containerPort": 4567,
+              "protocol": "tcp"
+            }
+          ],
+          "command": [
+            "ruby", "hi.rb"
+          ],
+          "essential": true
+        }
+      ]
+    }
+    <code></pre>
+    
+Step 3: Register the above task definition to ECS.
+
+Step 4: 
+   
+</ul>
 
 
 <h4><strong> Load Balancer </strong></h4>
