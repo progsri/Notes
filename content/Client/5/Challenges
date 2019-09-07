@@ -20,3 +20,7 @@ Resolved # Bringing down the Transaction  window time ...solved this issue.
     7. Design # Tracing a http calls which goes thru all  micro services. 
     8. Design # Custom token ..without refresh token
     9. Redis upgrade
+    10. For high volume of interactions jndi based connection pooling died.. it turns out the connection pool does not 
+    out the connection make in the pool until it reaches a idle state, so if all the connections are used up in a short 
+    period of time there would not any more connections to give which clogs the system as more connections keep coming
+    and the system slows down.
