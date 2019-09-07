@@ -1,0 +1,21 @@
+
+1.Issue # old and new update at same time 
+Using epoch ids to decide which is the latest event ..this issue occurs due to network latency.( shared catalog  when both ps and member change the content )
+
+
+2.Design# 
+Caching … AOP Using AOP certain and custom annotation ..certain methods can look into the cache rather than DB.
+3. Issue #  100% cpu by email process
+A legacy server which acts as a gateway … stopped responding …. It was that the application was not running …. But then top command reviled that the mail process were showing 100% processing all the time. Looks like the application was sending certain alerts using email however the email server was changed and all the email were getting accumulated and the email process was continously trying to send them out…. 
+Resolved # Cleaning the backlog and provided the right SMTP server details.
+     4. Issue #  new application with time makes the postgresql server hang. 
+It is with a different team and it was relatively new application.
+Observation # using netstat on the application server and postgresql server, we observed that 25 connections to DB are being created for every request.
+Hinted to the team to check their connection pool which was in the spring configuration.
+    5. Issue # Deadlock in the postgresql
+Observation # Deadlocks were being created occasionally in the postgresql.
+Issue # The call starts a transaction and then makes http call to get the data, when this data is being updated, another http call starts a transaction, there happens to be a time when 2 transactions require resources …… ( you know how dead lock happens )
+Resolved # Bringing down the Transaction  window time ...solved this issue.
+    6. Design # Tailable Cursor
+    7. Design # Tracing a http calls which goes thru all  micro services. 
+    8. Design # Custom token ..without refresh token
