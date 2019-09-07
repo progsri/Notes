@@ -1,28 +1,62 @@
 - ** JPMC
-- What is seriliazation, why is there no implementation of serialization interface, what is the use of SerialVerisonUID.
-- How to do implement serilization (Hint Externalizable)
+- What is seriliazation, why is there no implementation of serialization interface, what is the use of SerialVerisonUID?
+  seriliazation is the interface whose implementation lies insdie the JVM, it simple serializes  all the datfields, we do not
+  have the choice which might not be goos sometime especially when the object is very big. To pick and choose what to 
+  serialize and deserialize we need to implement Externalizable
+  SerialVersionUID is used to identity the class to associate with the serialized data at the receiving side at the time of
+  deserialization.
+  
+- How to do implement serilization (Hint Externalizable) ?
+  Look at Serializable, it has 2 methods writeExternal and readExternal.
+
 - What does the spark job do
+
 - Explain how to create a spring boot application from scratch
-- Explain al the annotations w.r.t to spring Framework and spring REST
+
+- Explain all the annotations w.r.t to spring Framework and spring REST
+
 - What is the difference betweem @Controller nad @RestController
+  @controller is for MVC which default ot a view layer but @RestController send out mostly JSON.
+  
 - Kafka concepts and what does Zookeeper do and what is heart beat and what happens when one consumer dies
+
 - React explain from scratch what to build
+
 - Spring boot application development from scratch
+
 - list vs stream what is the difference
+  list is used to store data and stream is used to do computation on the list or the storage. some of the computation is
+  map, filter, count, distinct.
+  
 - difference between map and flap map
+
 - What are function interface and what is Biconsumer
+
 - Testing static methods
+
 - What is @MVCMock
+
 - Session factory vs session and is session threadsafe, what happens if 2 same object comes in a session and one of the 
-  object is detached.
-- Exception handlind in Spring REST
+  object is detached. What is dirty reads , read uncommited.
+  
+- Exception handling in Spring REST
+  @ExceptionHandler to handle at service level and @Controlleradvice to handle for all the services.
+  
 - in Spark when deals ing with database what issues you have faced.
 - What to test full kafka flow ( produce and consume ) using embeded kafka
 - How to test if call to API actually reaches the desired method ( this is not about the response )
 - What is @Optional
 - What do you validate the REST API .. @valid
-- Async - future.get() is what if the thread fails.
-= Async -Difference between Future and CompletableFuture
+- Async - future.get() is what if the thread stops due to a exception .
+    if you do not catch the exception in the Thread as the Executor service is handing the thread, the exception comes back 
+    to the furture.get call, so it would not be null it would be a exception, which means Future.get should handle in the 
+    try/catch block or there should be a try/catch block in the thread class itself and return a empty value indicating a 
+    failure.
+- Async -Difference between Future and CompletableFuture
+
+- @Transient
+
+- Difference between @RequestParam and @PathParam
 
 - Tech used internally  are kafka, cassandra, PCF, Angular or React, Spring boot.
 
