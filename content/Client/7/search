@@ -43,15 +43,21 @@
   @ExceptionHandler to handle at service level and @Controlleradvice to handle for all the services.
   
 - in Spark when deals ing with database what issues you have faced.
+
 - What to test full kafka flow ( produce and consume ) using embeded kafka
+
 - How to test if call to API actually reaches the desired method ( this is not about the response )
+
 - What is @Optional
+
 - What do you validate the REST API .. @valid
+
 - Async - future.get() is what if the thread stops due to a exception .
     if you do not catch the exception in the Thread as the Executor service is handing the thread, the exception comes back 
     to the furture.get call, so it would not be null it would be a exception, which means Future.get should handle in the 
     try/catch block or there should be a try/catch block in the thread class itself and return a empty value indicating a 
     failure.
+    
 - Async -Difference between Future and CompletableFuture
 
 - @Transient
