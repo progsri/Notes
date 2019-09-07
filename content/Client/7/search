@@ -21,6 +21,7 @@
 - How to test if call to API actually reaches the desired method ( this is not about the response )
 - What is @Optional
 - What do you validate the REST API .. @valid
+- Async - future.get() is what if the thread fails.
 
 - Tech used internally  are kafka, cassandra, PCF, Angular or React, Spring boot.
 
