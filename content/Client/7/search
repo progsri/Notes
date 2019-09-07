@@ -1,0 +1,25 @@
+- ** JPMC
+- What is seriliazation, why is there no implementation of serialization interface, what is the use of SerialVerisonUID.
+- How to do implement serilization (Hint Externalizable)
+- What does the spark job do
+- Explain how to create a spring boot application from scratch
+- Explain al the annotations w.r.t to spring Framework and spring REST
+- What is the difference betweem @Controller nad @RestController
+- Kafka concepts and what does Zookeeper do and what is heart beat and what happens when one consumer dies
+- React explain from scratch what to build
+- Spring boot application development from scratch
+- list vs stream what is the difference
+- difference between map and flap map
+- What are function interface and what is Biconsumer
+- Testing static methods
+- What is @MVCMock
+- Session factory vs session and is session threadsafe, what happens if 2 same object comes in a session and one of the 
+  object is detached.
+- Exception handlind in Spring REST
+- in Spark when deals ing with database what issues you have faced.
+- What to test full kafka flow ( produce and consume ) using embeded kafka
+- How to test if call to API actually reaches the desired method ( this is not about the response )
+
+- Tech used internally  are kafka, cassandra, PCF, Angular or React, Spring boot.
+
+-------------------------------------------------------------------------------------
