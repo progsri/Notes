@@ -1,0 +1,131 @@
+Analysis of Task
+DR Review
+
+Rest
+Http verbs to actions on the resources
+GET
+POST
+PUT
+DELETE
+PATCH
+     2. Security details in header
+     3. Calls HTTPS
+     4. Which parser to use comes from the content-type ..put that in header
+    5. Sub resources are mentioned as path variables
+    6. Version the API ..start with v1 ….
+    7. HTTP status appropriately.
+   8. Compress your payload GZip
+   9. Validate at controller.
+   10. Filtering stuff in query parameters
+  11 . Error codes and Error messages
+
+Documentation
+Use Swagger
+
+Project
+Controller layer
+Service layer
+Dao layer
+Utilities as a seperate JAR, in its own repo.
+Client calls ( micro services ) as a seperate JAR, in its own repo
+Constants
+Common place
+Group them
+
+Java
+Collection ...do not return null ...return empty collections
+Use Executor service with a pool when possible ( limit threads )
+Use different executors for different kind of jobs. ( as they might end up in queue )
+Where necessary use future calls to reduce response time.
+Method Names should clearly convey
+Use DB Connection pool.
+Group the constants.
+
+
+
+Microservices
+Tracing :
+ adding X_Request_ID as header at the web proxy
+Getting the X_Request_ID from header and putting it in the Thread Context ( MDC )
+While making other HTTP calls ( micro service call ) get the X_REQUEST_ID from thread and put it in the header
+repeat
+    2. For data that is commonly used ...cache and add Rest layer on top ..so that all services can use it.
+   3. Make use of webhooks… if services are down Queue them
+
+
+
+
+
+
+DB Connections
+Use pool at Application server layer
+Use JNDI at  application layer 
+
+Security
+
+
+
+
+Production 
+Use Token for each feature / functionality and tie them to your alert system.
+Run reports on slave. 
+
+
+Continuous Integration
+1.
+
+
+GIT ( Production release )
+Beta servers
+Hot Stand By
+Tag the release
+
+Caching
+Cache frequently used
+Set a timeout for unused data.
+
+
+SQL
+Index
+Record all SQL, DDL in a file in your repo.
+Explain plan complex queries
+
+
+Servers
+Always distribute your load …. While scheduling jobs ..to do this we a external tool like chronus which call API
+
+
+
+
+
+
+ Testing
+Unit Test
+Integration Test
+Load Test
+Api Test ( Run scope )
+
+
+
+
+
+
+
+
+ Monitoring
+Xpolog for logs of web server, App server 
+Zabbix for infrastructure
+Linux server
+SQL server
+Connections
+NoSQL Server
+Caching
+Memory
+
+
+
+Questions
+Orchestration tools
+ How do you manage Spring boot for load.
+If selected
+			Ubuntu Laptop works ?
