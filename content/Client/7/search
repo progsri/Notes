@@ -19,6 +19,8 @@
 - in Spark when deals ing with database what issues you have faced.
 - What to test full kafka flow ( produce and consume ) using embeded kafka
 - How to test if call to API actually reaches the desired method ( this is not about the response )
+- What is @Optional
+- What do you validate the REST API .. @valid
 
 - Tech used internally  are kafka, cassandra, PCF, Angular or React, Spring boot.
 
