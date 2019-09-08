@@ -60,7 +60,8 @@
     
 - Async -Difference between Future and CompletableFuture
 
-- @Transient
+- transient keyword
+  to ignore/avoid a field member when serialization.
 
 - Difference between @RequestParam and @PathParam
 
