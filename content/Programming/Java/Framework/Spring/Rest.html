@@ -213,7 +213,10 @@ The below gets executed whenever there is any Exception.
 </code></pre>
 
 <hr>
-<h4><strong> @ControllerAdvice  </strong></h4>
+<h4><strong> @ControllerAdvice or @RestControllerAdvice </strong></h4>
+<p>
+  In case of handling a specific exception use <code> @ExceptionHandler({InvalidRequestException.class}) </code> 
+</p>
 <p class="text-danger">
   Preprocess the requests.
 </p>
