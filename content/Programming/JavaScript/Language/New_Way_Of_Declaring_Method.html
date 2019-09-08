@@ -1,0 +1,34 @@
+
+            <h2> New Way of Declaring a Method </h2>
+            <hr>
+
+            <p>
+                The below code is the old fashioned way of declaring a method.
+            </p>
+            <pre class="language-javascript line-numbers"><code>
+               function todosOld(state = [] , action){
+                    console.log("old way of declaration");
+                }
+
+                todosOld();
+            </code></pre>
+            <p> Output </p>
+            <pre class="language-javascript line-numbers"><code>
+                 old way of declaration
+            </code></pre>
+
+            <p>
+                The below code is the new  way of declaring a method.
+            </p>
+            <pre class="language-javascript line-numbers"><code>
+               const todosNew = ( state = [] , action) => {
+                    console.log("new way of declaration");
+                };
+
+                todosNew();
+            </code></pre>
+            <p> Output </p>
+            <pre class="language-javascript line-numbers"><code>
+                 new way of declaration
+            </code></pre>
+            <hr>
