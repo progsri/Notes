@@ -9,6 +9,7 @@ as usual can verify if the mock service call was done.
 <p>
   Instead of loading the entire app as spring boot as in the case of <code> @SpringBootTest </code>, we can just test the web
   layer using <code> @WebMVCTest </code> and we can still get access to <code> MockMvc </code> instance to perform http calls.
+  In case you need other class use @Import to add multiple classes to the application context.
 </p>
 
 <a href="https://spring.io/guides/gs/testing-web/"> Spring boot testing </a>
