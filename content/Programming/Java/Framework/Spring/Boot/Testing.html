@@ -1,0 +1,16 @@
+<h2><strong Testing a Spring boot application </strong></h2>
+
+<p>
+<code> @SpringBootTest </code> reads the @SpringBootApplication and loads the entire app. Then we can use <code>
+@AutoconfigureMockMVC </code> which gives <code>  MockMVC </code> instance to perform real http calls and see the
+excepted result, if this http calls has a dependency on  service then we can mock that servicevia Mockito and then 
+as usual can verify if the mock service call was done.
+</p>
+<p>
+  Instead of loading the entire app as spring boot as in the case of <code> @SpringBootTest </code>, we can just test the web
+  layer using <code> @WebMVCTest </code> and we can still get access to <code> MockMvc </code> instance to perform http calls.
+</p>
+
+<a href="https://spring.io/guides/gs/testing-web/"> Spring boot testing </a>
+<br>
+<a href="https://www.vogella.com/tutorials/Mockito/article.html"> Mockito </a>
