@@ -10,12 +10,13 @@
   Look at Serializable, it has 2 methods writeExternal and readExternal.
 
 - What does the spark job do
+  https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html
 
 - Explain how to create a spring boot application from scratch
 
 - Explain all the annotations w.r.t to spring Framework and spring REST
 
-- What is the difference betweem @Controller nad @RestController
+- What is the difference betweem @Controller and @RestController
   @controller is for MVC which default ot a view layer but @RestController send out mostly JSON.
   
 - Kafka concepts and what does Zookeeper do and what is heart beat and what happens when one consumer dies
@@ -38,6 +39,7 @@
 
 - Session factory vs session and is session threadsafe, what happens if 2 same object comes in a session and one of the 
   object is detached. What is dirty reads , read uncommited.
+  https://www.geeksforgeeks.org/transaction-isolation-levels-dbms/
   
 - Exception handling in Spring REST
   @ExceptionHandler to handle at service level and @Controlleradvice to handle for all the services.
