@@ -1,1 +1,15 @@
+- Deployment
+  a. React dist is in Nginx
+  b. Nginx is configured to always send react file if it recevies any request
+  c. 3 container based Spring boot servers.
+  d. ALB with routing enabled .... /api goes to Spring boot target group and anything else goes to nginx container.
 
+- Security
+  1. If no token present in window.localStorage then show login page for authentication other send a authorization to Spring 
+    boot server, the boot server send this token to the authentication server and verifies it, if the token is good then
+    respond with {'authenticated': true} otherwise respond with {'authenticated':false} in that case react would show login
+    page.
+  2. Agents at the time of on boarding get credentials via  a different process, they cannot use single sign on.
+  3. At login page, the agent sign in, we send the username and sha256 encrpyted password to the boot server that in turn
+   sends it to authentication server, if credentials are right, react drops a token in the localStorage and shows the home   
+   page.
