@@ -43,4 +43,16 @@ Exploring <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.ht
          int value = Arrays.binarySearch(arrayOfStrings, "cassandra");  // returns -1 instead of the index 
 </code></pre>
 
-
+<hr>
+<p>
+   Creates a new Array with increase capacity, we need to provide the new capacity. All the elements between existing 
+  capacity to new capacity wil be null.
+</p>
+<pre class="language-java line-numbers"><code>
+    String[] arrayOfStrings = new String[3];
+        arrayOfStrings[0] = "kafka";
+        arrayOfStrings[1] = "kubernetes";
+        arrayOfStrings[2] = "cassandra";
+        
+        String[] newArray = Arrays.copyOf(arrayOfStrings,10); // creates a new array, elements between 3 to 9 will be null
+</code></pre>
