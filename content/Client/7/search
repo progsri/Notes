@@ -91,6 +91,7 @@
 - Redis caching
 - Async call ( Executor service )
 - cloudwatch and Autoscaling
+- is production deployment automated..what is the process
 
 ---------------------------------------------------
 
