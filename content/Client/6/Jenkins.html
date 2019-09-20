@@ -1,3 +1,19 @@
 - Pipeline has stages which has steps
-- Jenkinfile is groovy file and can invoke shell
-- 
+- Jenkinfile is groovy file and can invoke shell.
+Step 1 : Compile code using maven binary via shell
+Step 2 : Run code coverage report typically using a maven plugin/goal via shell
+Step 3 : Upload the coverage report to Sonal via Grovy HTTP call or using curl binary on shell
+Step 4 : upload zipped code with dependencies to erota code for library scanning
+Step 5 : Upload jars to S3 via aws S3 cp binary using sheel
+Step 6 : Deploy Lambda code via terraform using teraaform binary
+Step 7 : Add replication for s3 vis aws s3api
+Step 8 : Add S3 Triggers using aws s3api
+Step 9 : Run ATDD
+Step 10 : Upload ATDD results
+
+- to find out
+  a. What happens if the Junit tests fails
+  b. What happens if the ATDD tests fail and the code is alreay deployed in that case how do we undeploy, revert replication
+ triggers.
+    
+
