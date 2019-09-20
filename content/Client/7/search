@@ -90,6 +90,7 @@
 - Generics
 - Redis caching
 - Async call ( Executor service )
+- cloudwatch and Autoscaling
 
 ---------------------------------------------------
 
