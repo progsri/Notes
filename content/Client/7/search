@@ -70,3 +70,28 @@
 - Tech used internally  are kafka, cassandra, PCF, Angular or React, Spring boot.
 
 -------------------------------------------------------------------------------------
+
+-- ** JPMC second round
+- Agile flow in detail
+- code review
+- React fragment
+
+---------------------------------------------------
+-- ** Allstate
+- Rest in detail using the existing application
+- Microservices
+- Creteria
+- spring JPA
+- Build Process ( jenkins )
+- CFT 
+- AWS products used
+- Data storage policies HIPPA
+- Java 8 new features
+- Generics
+- Redis caching
+- Async call ( Executor service )
+
+---------------------------------------------------
+
+
+
