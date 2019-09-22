@@ -5,3 +5,22 @@ Step 2 : Spring boot server then talks to Kubernetes
 Step 3: Kubernetes then creates teh pods we need.
 
 We can talk to the Spring boot server via Jenkins or Lambda using http calls.
+
+
+----------------
+This is hypothetical.
+To create Spring boot cluster.
+1. Create namespace which has info on limits such as ( cpu, memory, storage, counts);
+2. Inside the namespace, deploy the Deployment object which has the info about the image/container and also the selector info
+   which is later used by service object for networking.
+3. Inside the namespace, deploy the ClusterIP service object with the same selector as the Deployment object.
+   ClusterIP object cannot be accessed externally.
+4. Inside the namespace, deploy the ingress object with the path pointing to the ClusterIP service object.
+5. Route external traffice to ingress.
+
+Note: you might need a configure persiste volumes, secrets, configuration maps accordingly.
+Environmental variables or configuration map can be used to send db info or redis info or specific properties.
+
+
+
+----------------
