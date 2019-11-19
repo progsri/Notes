@@ -1,0 +1,15 @@
+
+
+-- Fixes no manifest file for the spring boot jar.
+https://docs.spring.io/spring-boot/docs/current/maven-plugin/usage.html
+	<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
