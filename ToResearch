@@ -13,3 +13,4 @@
 12. How does @Transactional work..does it get transaction id from the DB when executed.
 13. How can L4 Load Balancer maintain session affinity when the session info is in the L7 layer of the packet.
 14. What exactly does reverse proxy mean.
+15. <bean class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">  what is lazy-init ?
