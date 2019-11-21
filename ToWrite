@@ -1,1 +1,2 @@
 1. @ImportResource
+2. Property resolver <property (old way )  to @Value ( new way )
