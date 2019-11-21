@@ -15,3 +15,5 @@
 14. What exactly does reverse proxy mean.
 15. <bean class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true" init-method="" destroy-method="" depends-on="">  
 what is lazy-init, init-method, destroy-method, depends-on?
+16.How does siteminder work ?
+17. @Nullable https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#null-safety
