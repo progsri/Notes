@@ -1,4 +1,5 @@
-<h2><strong> Core </strong></h2>
+<h2><strong> Inversion of Control  </strong></h2>
+<!----------------- Antoher Topic ------------------->
 <hr>
 
 <h4><strong> Inversion of control </strong></h4>
@@ -7,7 +8,7 @@
    provide us that object via the applicationContext. Spring container can provide the same object( singleton ) or different
    object( prototype ) each time we request.
 </p>
-
+<!----------------- Antoher Topic ------------------->
 <hr>
 <h4><strong> Dependency injection </strong></h4>
 <p>
@@ -17,152 +18,6 @@
   Can do it either thru constructor or setter. Imagine a class C which depend on class B which internally depends on A.
    Then spring container creates A object and autowires the A object into B object by constructor or setter and then
    autowires B object into C object by constructor or setter.
-</p>
-<p>
-   use ${} to read keys from properties file, you need to configure <code> context:property-placeholderlocation="" </code>
-</p>
-
-<hr>
-<h4><strong> Scope of beans </strong></h4>
-<p>
-   Each object created is called bean or spring bean or spring object.
-</p>
-<p>
-   <ul>
-      <li> singleton : default same object every request </li>
-      <li> prototype : new object every request </li>
-      <li> request : new object for every new http request ( web only ) </li>
-      <li> session : new object for every new http session (web only) </li>
-      <li> global-session : <span class="text-danger"> global session </span> </li>
-  </ul>
-<p>
-   
-<hr>
-<h4><strong> Lifecycle of beans </strong></h4>
-<p>
-   init-method called when bean is created in the xml configuration.
-</p>
-<p>
-   destroy-method called when bean is destroyed in the xml conofiguration.
-</p>
-
-   
-<hr>
-<h4><strong> Annotations based IoC and DI </strong></h4>
-<p>
-   <code> @Configuration </code> is used to provide spring configuration.
-</p>
-
-<p>
-   scan for packages which has the <code> @Component </code> or  <code> @Controller </code> or  <code> @Service </code> or
-    <code> @Repository </code> on classes to create beans using <code> @Configuration 
-   @ComponentScan(basePackages = "package name") </code>. This is the <b> Inversion of control </b>
-</p>  
-<p>
-   To explicity give a bean id do @component("nameofthebean") if you do not give a bean id then spring creates a <b> default
-   </b> one with the  first letter as small case. i.e Class SmartPhone with @Component is given a bean id as smartPhone.Also,
-   default bean id is not created if the first 2 characters are Capitals in that case class name will be the default id i.e.
-   SMartPhone will be given SMartPhone itself as bean id.
-</p>
-<p>
-   Classes that need a bean would mention <code> @Autowired </code> at the following places. Autowiring is the <b> dependency
-   injection </b>.
-   <ul>
-      <li> class field : works on private field also and there is no need for constructor or setters </li>
-      <li> constructor </li>
-      <li> setter </li>
-      <li> <span class="text-danger" > Any method </span> </li>
-   </ul>
-</p>
-<p>
-   <code> @Autowired </code> or <code> @Resource </code>
-   If a class has <code>@Autowired</code> on it's constructor and the constructor takes a Interface type rather than the 
-   class type then spring would find the bean which implements that intrface and has the @Component on it, it if finds 
-   mulitple we can use <code> @Qualifier("beanid") </code> to explicity tell which bean you want to autowire with beanid
-   beening the default name or the name you have given to the bean.
-   
-<pre class="language-java line-numbers"><code>
-
-// on the field
-@Autowired
-@qualifier("beanid")
-private Type fieldName;
-
----------------------
-
-// constructor
-
-private Type fieldName1;
-private Type fieldName2;
-
-@Autowired
-public classname(@qualifier("beanid1") fieldName1, @qualifier("beanid2") fieldName1 )
-
-</code></pre>
-</p>
-<p>
-   Here spring will autowire a bean which is of type ClassName.class instead of a bean with beanid fieldName.
-   
-   <pre class="language-java line-numbers"><code>
-
-   @Autowired(type = ClassName.class)
-   private Type fieldName;
-
-   </code></pre>
-</p>
-
-<hr>
-<h4><strong> Properties file </strong></h4>
-<p>
-   To inject the value for a key from the properties file use <code> @Value </code> .To read the properties file use
-   <code> @PropertySource("classpath:file.properties") </code> with <code> @Configuration </code>
-   <pre class="language-java line-numbers"><code>
-  
-  @Value("${key}")
-   private String email;
-
-  </code></pre>
-<p>
-   
-<hr>
-<h4><strong> Bean scope and lifecycle </strong></h4>
-<p>
-   <code> @Scope </code> to mention the scope of the bean.
-    <ul>
-      <li> singleton : default same object every request </li>
-      <li> prototype : new object every request </li>
-      <li> request : new object for every new http request ( web only ) </li>
-      <li> session : new object for every new http session (web only) </li>
-      <li> global-session : <span class="text-danger"> global session </span> </li>
-  </ul>
-</p>
-<p>
-   <b> Lifecycle of a bean </b>
-   <code> @PostConstruct  </code>  on a method to add custom logic to the bean/object after it is created by spring.
-   <code> @PreDestroy </code> on a method to add custom logic before it is being destroyed by spring. This is not called 
-   for bean with a @Scope("prototype"). If you need control over it look at <code> <span class="text-danger"> 
-   BeanPostProcessor </span> </code>. 
-   Both the above methods can have any access modifier but <b> should not </b> have any arguments.
-</p>
-
-<hr>
-<h4><strong> Creating beans without component scan and @Component</strong></h4>
-<p>
-   <code> @Bean </code> is used to create bean ( IoC ) without usingcomponent scan  and then use @Autowired as
-   regular to inject.For scope use <code>  @Bean(scope=DefaultScopes.PROTOTYPE) </code>. <span class="text-danger"> when to
-   use this </span>
-   
-   <pre class="language-java line-numbers"><code>
-    @Configuration
-    public Class Name{
-        @Bean
-        public Coach createSomeBean() {
-            SomeType type = new SomeType("arg1","arg2");
-            return type;
-        }
-    }
-   </code></pre>
-      
 </p>
 
 
