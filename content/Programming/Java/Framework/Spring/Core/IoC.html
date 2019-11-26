@@ -30,8 +30,22 @@
 <p>
    To be all th beans created in the IoC, we need to Inject or Autowire <code> ApplicationContext </code>, it can be autowired to any 
    class as below
-   <pre><code>
-   
+   <pre class="language-java line-numbers"><code>
+   @RestController
+   public class Api {
+
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @GetMapping(value = "/api")
+    public String getCities() {
+        StringBuilder result = new StringBuilder();
+        for ( String bean : applicationContext.getBeanDefinitionNames() ){
+            result.append(bean).append("\n").append("\n");
+        }
+        return result.toString();
+    }
+}
    </code></pre>
 </p>
 
