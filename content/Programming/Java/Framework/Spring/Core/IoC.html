@@ -49,9 +49,31 @@
    </code></pre>
 </p>
 
-
-
-
+<!----------------- Another Topic ------------------->
+<hr>
+<h4><strong> Creating Beans </strong></h4>
+<h6><strong> Method 1 </strong></h6>
+<p>
+   By annotation <code>@Component</code> and it's variances, Spring would create the objects/beans.This is used when developer has
+   control over the source code where can annotate with appropriate @Autowire/@Component/@Controller/@Service.
+</p>
+<h6><strong> Method 2 </strong></h6>
+<p>
+   By annotation <code>@Configuration/@Bean</code>, the developer would return the object created under the method annotated with
+   @Bean, this is used when we do not have source code but we have to create beans with specific properties such as datasource,
+   connection pool config etc.
+</p>
+<h6><strong> Method 3 </strong></h6>
+<p>
+   We can provide Spring with a static factory method, it has to be a static method otherwise spring cannot call it. Then this method
+   is responsbile for creating the bean.  <span class="text-danger"> When is this used </span>
+</p>
+<h6><strong> Method 4 </strong></h6>
+<p>
+   We can also provide spring with a instance factory method, for that w first have to create a bean either by @Component or @Bean and 
+   then provide a method in that bean which would create the necessary beans.  <span class="text-danger"> When is this used </span>
+</p>
+   
    
 
  
