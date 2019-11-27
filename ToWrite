@@ -10,3 +10,5 @@
     private Environment env;
     ...
     dataSource.setUrl(env.getProperty("jdbc.url"));
+5. Servlet - Filter
+6. Servlet - context param and init param
