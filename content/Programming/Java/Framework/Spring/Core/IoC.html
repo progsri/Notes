@@ -70,6 +70,8 @@
          private BeanA beanA;
          
       }
+      // Here spring would first create BeanA as BeanB is dependent on it and then create BeanB and inject/autowire BeanA.
+      
     </code></pre>
 </p>
 <h6><strong> Method 2 </strong></h6>
@@ -79,7 +81,9 @@
    connection pool config etc.
    
    <pre class="language-java line-numbers"><code>
-      @Configuration
+      // Make sure this class is in the component scan of Spring. Once spring see @Configuration, it will start
+      // creating the beans.
+      @Configuration 
       public class Config {
       
          @Bean
