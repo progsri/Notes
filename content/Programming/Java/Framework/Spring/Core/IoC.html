@@ -4,7 +4,7 @@
 
 <h4><strong> Inversion of control </strong></h4>
 <p>
-   Instead of the we defining explicitly the objects and their behavior, we can ask Sprin container  to create the object and
+   Instead of the we defining explicitly the objects and their behavior, we can ask Spring container  to create the object and
    provide us that object via the applicationContext. Spring container can provide the same object( singleton ) or different
    object( prototype ) each time we request.
 </p>
@@ -56,12 +56,40 @@
 <p>
    By annotation <code>@Component</code> and it's variances, Spring would create the objects/beans.This is used when developer has
    control over the source code where can annotate with appropriate @Autowire/@Component/@Controller/@Service.
+   
+   <pre class="language-java line-numbers"><code>
+      @Component
+      public class BeanA {
+
+      }
+      
+      @Component
+      public class BeanB {
+      
+         @Autowire
+         private BeanA beanA;
+         
+      }
+    </code></pre>
 </p>
 <h6><strong> Method 2 </strong></h6>
 <p>
    By annotation <code>@Configuration/@Bean</code>, the developer would return the object created under the method annotated with
    @Bean, this is used when we do not have source code but we have to create beans with specific properties such as datasource,
    connection pool config etc.
+   
+   <pre class="language-java line-numbers"><code>
+      @Configuration
+      public class Config {
+      
+         @Bean
+         public BeanA createBeanA(){
+            return new BeanA();
+         }
+
+      }
+   </code></pre>
+   
 </p>
 <h6><strong> Method 3 </strong></h6>
 <p>
