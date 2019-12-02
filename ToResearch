@@ -22,3 +22,7 @@ what is lazy-init, init-method, destroy-method, depends-on?
 19. 	@PersistenceContext
 20. Spring @ConstructorProperties
 21. Spring boot Filters and custom filters
+22. Best praactice:
+   at https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#beans-dependencies
+   a large number of constructor arguments is a bad code smell, implying that the class likely has too many responsibilities and
+   should be refactored to better address proper separation of concerns.
