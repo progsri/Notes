@@ -21,3 +21,4 @@ what is lazy-init, init-method, destroy-method, depends-on?
 18. HOW SSL works, capture the HTTPS packet in wireshark and capture the key and decrypt it
 19. 	@PersistenceContext
 20. Spring @ConstructorProperties
+21. Spring boot Filters and custom filters
