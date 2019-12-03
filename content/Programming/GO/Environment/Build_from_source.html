@@ -1,0 +1,452 @@
+
+
+progsri@machine:~/Desktop/go_build|⇒  git clone https://go.googlesource.com/go goroot
+Cloning into 'goroot'...
+remote: Sending approximately 286.21 MiB ...
+remote: Counting objects: 50, done
+remote: Finding sources: 100% (28/28)
+remote: Total 402150 (delta 299116), reused 402137 (delta 299116)
+Receiving objects: 100% (402150/402150), 286.10 MiB | 1.73 MiB/s, done.
+Resolving deltas: 100% (299116/299116), done.
+progsri@machine:~/Desktop/go_build|⇒  cd goroot 
+progsri@machine:~/Desktop/go_build/goroot|master 
+⇒  ;s -rlt
+zsh: command not found: s
+progsri@machine:~/Desktop/go_build/goroot|master 
+⇒  git checkout go1.13.4
+Note: checking out 'go1.13.4'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 3f995c3f3b [release-branch.go1.13] go1.13.4
+progsri@machine:~/Desktop/go_build/goroot|3f995c3f3b 
+⇒  cd src 
+progsri@machine:~/Desktop/go_build/goroot/src|3f995c3f3b 
+⇒  ls -lrt
+total 320
+-rw-r--r--  1 progsri progsri   553 Dec  2 14:49 Make.dist
+-rwxr-xr-x  1 progsri progsri   385 Dec  2 14:49 all.rc
+-rw-r--r--  1 progsri progsri   726 Dec  2 14:49 all.bat
+-rwxr-xr-x  1 progsri progsri   407 Dec  2 14:49 all.bash
+drwxr-xr-x  4 progsri progsri  4096 Dec  2 14:49 archive
+-rwxr-xr-x  1 progsri progsri   380 Dec  2 14:49 clean.rc
+-rw-r--r--  1 progsri progsri   565 Dec  2 14:49 clean.bat
+-rwxr-xr-x  1 progsri progsri   521 Dec  2 14:49 clean.bash
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 14:49 builtin
+-rwxr-xr-x  1 progsri progsri  3790 Dec  2 14:49 bootstrap.bash
+-rw-r--r--  1 progsri progsri  1519 Dec  2 14:49 cmp.bash
+drwxr-xr-x  5 progsri progsri  4096 Dec  2 14:49 container
+drwxr-xr-x  8 progsri progsri  4096 Dec  2 14:49 compress
+drwxr-xr-x 21 progsri progsri  4096 Dec  2 14:49 crypto
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 14:49 database
+drwxr-xr-x  8 progsri progsri  4096 Dec  2 14:49 debug
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 14:49 expvar
+drwxr-xr-x 13 progsri progsri  4096 Dec  2 14:49 encoding
+drwxr-xr-x 14 progsri progsri  4096 Dec  2 14:49 go
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 14:49 html
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 14:49 index
+drwxr-xr-x  9 progsri progsri  4096 Dec  2 14:49 image
+-rwxr-xr-x  1 progsri progsri  3177 Dec  2 14:49 make.rc
+-rw-r--r--  1 progsri progsri  4007 Dec  2 14:49 make.bat
+-rwxr-xr-x  1 progsri progsri  1988 Dec  2 14:49 iostest.bash
+-rw-r--r--  1 progsri progsri  1041 Dec  2 14:49 race.bat
+-rwxr-xr-x  1 progsri progsri  1021 Dec  2 14:49 race.bash
+-rwxr-xr-x  1 progsri progsri   435 Dec  2 14:49 run.rc
+-rw-r--r--  1 progsri progsri  1164 Dec  2 14:49 run.bat
+-rwxr-xr-x  1 progsri progsri  2155 Dec  2 14:49 run.bash
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 14:49 sort
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 14:49 testdata
+drwxr-xr-x  5 progsri progsri  4096 Dec  2 14:49 text
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 14:49 unsafe
+drwxr-xr-x 21 progsri progsri  4096 Dec  2 17:35 internal
+drwxr-xr-x  6 progsri progsri  4096 Dec  2 17:35 hash
+-rw-r--r--  1 progsri progsri  2273 Dec  2 17:35 README.vendor
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 bufio
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 bytes
+-rwxr-xr-x  1 progsri progsri  2043 Dec  2 17:35 buildall.bash
+drwxr-xr-x 24 progsri progsri  4096 Dec  2 17:35 cmd
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 context
+-rw-r--r--  1 progsri progsri  1400 Dec  2 17:35 go.sum
+-rw-r--r--  1 progsri progsri   245 Dec  2 17:35 go.mod
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 fmt
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 flag
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 errors
+-rwxr-xr-x  1 progsri progsri  6844 Dec  2 17:35 make.bash
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 17:35 log
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 17:35 io
+-rwxr-xr-x  1 progsri progsri  1224 Dec  2 17:35 nacltest.bash
+-rwxr-xr-x  1 progsri progsri  1263 Dec  2 17:35 naclmake.bash
+drwxr-xr-x  5 progsri progsri  4096 Dec  2 17:35 mime
+drwxr-xr-x  6 progsri progsri  4096 Dec  2 17:35 math
+drwxr-xr-x 10 progsri progsri 12288 Dec  2 17:35 net
+drwxr-xr-x  4 progsri progsri  4096 Dec  2 17:35 regexp
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 reflect
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 plugin
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 17:35 path
+drwxr-xr-x  5 progsri progsri  4096 Dec  2 17:35 os
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 17:35 sync
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 strings
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 17:35 strconv
+drwxr-xr-x 10 progsri progsri 20480 Dec  2 17:35 runtime
+drwxr-xr-x  5 progsri progsri  4096 Dec  2 17:35 testing
+drwxr-xr-x  3 progsri progsri 20480 Dec  2 17:35 syscall
+drwxr-xr-x  4 progsri progsri  4096 Dec  2 17:35 unicode
+drwxr-xr-x  2 progsri progsri  4096 Dec  2 17:35 time
+drwxr-xr-x  3 progsri progsri  4096 Dec  2 17:35 vendor
+progsri@machine:~/Desktop/go_build/goroot/src|3f995c3f3b 
+⇒  cd ..
+progsri@machine:~/Desktop/go_build/goroot|3f995c3f3b 
+⇒  ls
+api              CONTRIBUTORS  lib      PATENTS     SECURITY.md  VERSION
+AUTHORS          doc           LICENSE  README.md   src
+CONTRIBUTING.md  favicon.ico   misc     robots.txt  test
+progsri@machine:~/Desktop/go_build/goroot|3f995c3f3b 
+⇒  cd src
+progsri@machine:~/Desktop/go_build/goroot/src|3f995c3f3b 
+⇒  ./all.bash 
+Building Go cmd/dist using /home/progsri/ProgSri/ENGINE/GO.
+Building Go toolchain1 using /home/progsri/ProgSri/ENGINE/GO.
+Building Go bootstrap cmd/go (go_bootstrap) using Go toolchain1.
+Building Go toolchain2 using go_bootstrap and Go toolchain1.
+,Building Go toolchain3 using go_bootstrap and Go toolchain2.
+0Building packages and commands for linux/amd64.
+	
+##### Testing packages.
+ok  	archive/tar	0.081s
+ok  	archive/zip	0.091s
+ok  	bufio	0.161s
+ok  	bytes	0.283s
+ok  	compress/bzip2	0.100s
+ok  	compress/flate	0.701s
+ok  	compress/gzip	0.043s
+ok  	compress/lzw	0.010s
+ok  	compress/zlib	0.063s
+ok  	container/heap	0.028s
+ok  	container/list	0.011s
+ok  	container/ring	0.054s
+ok  	context	0.991s
+ok  	crypto	0.020s
+ok  	crypto/aes	0.038s
+ok  	crypto/cipher	0.010s
+ok  	crypto/des	0.035s
+ok  	crypto/dsa	0.021s
+ok  	crypto/ecdsa	0.192s
+ok  	crypto/ed25519	0.075s
+ok  	crypto/elliptic	0.047s
+ok  	crypto/hmac	0.005s
+ok  	crypto/internal/subtle	0.004s
+ok  	crypto/md5	0.008s
+ok  	crypto/rand	0.012s
+ok  	crypto/rc4	0.100s
+ok  	crypto/rsa	0.084s
+ok  	crypto/sha1	0.030s
+ok  	crypto/sha256	0.006s
+ok  	crypto/sha512	0.005s
+ok  	crypto/subtle	0.020s
+ok  	crypto/tls	1.126s
+ok  	crypto/x509	0.732s
+ok  	database/sql	0.617s
+ok  	database/sql/driver	0.039s
+ok  	debug/dwarf	0.047s
+ok  	debug/elf	0.043s
+ok  	debug/gosym	0.017s
+ok  	debug/macho	0.003s
+ok  	debug/pe	0.008s
+ok  	debug/plan9obj	0.017s
+ok  	encoding/ascii85	0.021s
+ok  	encoding/asn1	0.009s
+ok  	encoding/base32	0.035s
+ok  	encoding/base64	0.013s
+ok  	encoding/binary	0.037s
+ok  	encoding/csv	0.046s
+ok  	encoding/gob	0.031s
+ok  	encoding/hex	0.022s
+ok  	encoding/json	0.151s
+ok  	encoding/pem	0.022s
+ok  	encoding/xml	0.041s
+ok  	errors	0.017s
+ok  	expvar	0.028s
+ok  	flag	0.038s
+ok  	fmt	0.128s
+ok  	go/ast	0.021s
+ok  	go/build	0.117s
+ok  	go/constant	0.015s
+ok  	go/doc	0.064s
+ok  	go/format	0.011s
+ok  	go/importer	0.162s
+ok  	go/internal/gccgoimporter	0.016s
+ok  	go/internal/gcimporter	0.635s
+ok  	go/internal/srcimporter	0.948s
+ok  	go/parser	0.041s
+ok  	go/printer	0.437s
+ok  	go/scanner	0.017s
+ok  	go/token	0.033s
+ok  	go/types	0.921s
+ok  	hash	0.025s
+ok  	hash/adler32	0.043s
+ok  	hash/crc32	0.019s
+ok  	hash/crc64	0.034s
+ok  	hash/fnv	0.015s
+ok  	html	0.028s
+ok  	html/template	0.081s
+ok  	image	0.105s
+ok  	image/color	0.023s
+ok  	image/draw	0.135s
+ok  	image/gif	0.478s
+ok  	image/jpeg	0.333s
+ok  	image/png	0.057s
+ok  	index/suffixarray	0.359s
+ok  	internal/cpu	0.085s
+ok  	internal/fmtsort	0.028s
+ok  	internal/poll	0.096s
+ok  	internal/reflectlite	0.012s
+ok  	internal/singleflight	0.018s
+ok  	internal/trace	0.061s
+ok  	internal/xcoff	0.048s
+ok  	io	0.066s
+ok  	io/ioutil	0.028s
+ok  	log	0.007s
+ok  	log/syslog	1.247s
+ok  	math	0.037s
+ok  	math/big	0.363s
+ok  	math/bits	0.026s
+ok  	math/cmplx	0.024s
+ok  	math/rand	0.210s
+ok  	mime	0.013s
+ok  	mime/multipart	0.264s
+ok  	mime/quotedprintable	0.038s
+ok  	net	3.477s
+ok  	net/http	4.023s
+ok  	net/http/cgi	0.604s
+ok  	net/http/cookiejar	0.013s
+ok  	net/http/fcgi	0.060s
+ok  	net/http/httptest	0.073s
+ok  	net/http/httptrace	0.012s
+ok  	net/http/httputil	0.066s
+ok  	net/http/internal	0.027s
+ok  	net/http/pprof	2.007s
+ok  	net/internal/socktest	0.002s
+ok  	net/mail	0.003s
+ok  	net/rpc	0.035s
+ok  	net/rpc/jsonrpc	0.005s
+ok  	net/smtp	0.033s
+ok  	net/textproto	0.011s
+ok  	net/url	0.054s
+ok  	os	0.779s
+ok  	os/exec	0.762s
+ok  	os/signal	5.074s
+ok  	os/user	0.029s
+ok  	path	0.005s
+ok  	path/filepath	0.023s
+ok  	plugin	0.038s
+ok  	reflect	0.283s
+ok  	regexp	0.129s
+ok  	regexp/syntax	0.506s
+ok  	runtime	50.485s
+ok  	runtime/debug	0.111s
+ok  	runtime/internal/atomic	0.029s
+ok  	runtime/internal/math	0.024s
+ok  	runtime/internal/sys	0.024s
+ok  	runtime/pprof	7.734s
+ok  	runtime/pprof/internal/profile	0.023s
+ok  	runtime/trace	1.047s
+ok  	sort	0.067s
+ok  	strconv	0.562s
+ok  	strings	0.217s
+ok  	sync	0.540s
+ok  	sync/atomic	0.083s
+ok  	syscall	0.257s
+ok  	testing	0.145s
+ok  	testing/quick	0.057s
+ok  	text/scanner	0.013s
+ok  	text/tabwriter	0.014s
+ok  	text/template	0.038s
+ok  	text/template/parse	0.007s
+ok  	time	2.639s
+ok  	unicode	0.012s
+ok  	unicode/utf16	0.018s
+ok  	unicode/utf8	0.021s
+ok  	cmd/addr2line	1.654s
+ok  	cmd/api	0.023s
+ok  	cmd/asm/internal/asm	0.688s
+ok  	cmd/asm/internal/lex	0.020s
+ok  	cmd/compile	0.035s
+ok  	cmd/compile/internal/gc	13.517s
+ok  	cmd/compile/internal/ssa	0.913s
+ok  	cmd/compile/internal/syntax	0.038s
+ok  	cmd/compile/internal/test	0.035s [no tests to run]
+ok  	cmd/compile/internal/types	0.044s
+ok  	cmd/cover	3.883s
+ok  	cmd/doc	0.101s
+ok  	cmd/fix	0.054s
+ok  	cmd/go	60.453s
+ok  	cmd/go/internal/auth	0.008s
+ok  	cmd/go/internal/cache	0.252s
+ok  	cmd/go/internal/dirhash	0.048s
+ok  	cmd/go/internal/generate	0.024s
+ok  	cmd/go/internal/get	0.026s
+ok  	cmd/go/internal/imports	0.029s
+ok  	cmd/go/internal/load	0.026s
+ok  	cmd/go/internal/lockedfile	0.017s
+ok  	cmd/go/internal/lockedfile/internal/filelock	0.075s
+ok  	cmd/go/internal/modconv	0.037s
+ok  	cmd/go/internal/modfetch	0.038s
+ok  	cmd/go/internal/modfetch/codehost	0.004s
+ok  	cmd/go/internal/modfile	0.014s
+ok  	cmd/go/internal/modload	0.047s
+ok  	cmd/go/internal/module	0.017s
+ok  	cmd/go/internal/mvs	0.008s
+ok  	cmd/go/internal/note	0.022s
+ok  	cmd/go/internal/par	0.034s
+ok  	cmd/go/internal/renameio	0.122s
+ok  	cmd/go/internal/search	0.003s
+ok  	cmd/go/internal/semver	0.014s
+ok  	cmd/go/internal/sumweb	0.036s
+ok  	cmd/go/internal/tlog	1.104s
+ok  	cmd/go/internal/txtar	0.019s
+ok  	cmd/go/internal/web	0.005s
+ok  	cmd/go/internal/work	0.011s
+ok  	cmd/gofmt	0.047s
+ok  	cmd/internal/buildid	0.214s
+ok  	cmd/internal/dwarf	0.019s
+ok  	cmd/internal/edit	0.023s
+ok  	cmd/internal/goobj	0.868s
+ok  	cmd/internal/obj	0.010s
+ok  	cmd/internal/obj/arm64	0.056s
+ok  	cmd/internal/obj/x86	0.422s
+ok  	cmd/internal/objabi	0.024s
+ok  	cmd/internal/src	0.004s
+ok  	cmd/internal/test2json	0.115s
+ok  	cmd/link	7.473s
+ok  	cmd/link/internal/ld	3.121s
+ok  	cmd/link/internal/sym	0.032s
+ok  	cmd/nm	3.791s
+ok  	cmd/objdump	2.682s
+ok  	cmd/pack	2.255s
+ok  	cmd/trace	0.054s
+ok  	cmd/vet	9.588s
+
+##### os/user with tag osusergo
+ok  	os/user	0.019s
+
+##### GOMAXPROCS=2 runtime -cpu=1,2,4 -quick
+ok  	runtime	17.037s
+
+##### cmd/go terminal test
+PASS
+ok  	cmd/go/testdata/testterminal18153	0.002s
+
+##### Testing without libgcc.
+ok  	crypto/x509	0.588s
+ok  	net	0.032s
+ok  	os/user	0.034s
+
+##### internal linking of -buildmode=pie
+ok  	reflect	1.334s
+ok  	os/user	0.497s
+
+##### sync -cpu=10
+ok  	sync	0.528s
+
+##### Testing race detector
+ok  	runtime/race	16.647s
+ok  	flag	1.034s
+ok  	net	1.067s
+ok  	os	1.161s
+ok  	os/exec	3.037s
+ok  	encoding/gob	1.077s
+ok  	flag	1.065s
+ok  	os/exec	3.087s
+
+##### ../misc/cgo/stdio
+PASS
+
+##### ../misc/cgo/life
+PASS
+
+##### ../misc/cgo/test
+PASS
+ok  	misc/cgo/test	6.505s
+PASS
+ok  	misc/cgo/test	6.421s
+PASS
+ok  	misc/cgo/test	6.608s
+PASS
+ok  	misc/cgo/testtls	0.014s
+PASS
+ok  	misc/cgo/testtls	0.014s
+PASS
+ok  	misc/cgo/testtls	0.003s
+PASS
+ok  	misc/cgo/nocgo	0.005s
+PASS
+ok  	misc/cgo/nocgo	0.012s
+PASS
+ok  	misc/cgo/nocgo	0.005s
+PASS
+ok  	misc/cgo/test	5.136s
+PASS
+ok  	misc/cgo/test	6.384s
+PASS
+ok  	misc/cgo/test	5.931s
+PASS
+ok  	misc/cgo/testtls	0.014s
+PASS
+ok  	misc/cgo/nocgo	0.007s
+
+##### ../misc/cgo/testgodefs
+
+##### ../misc/cgo/testso
+ok  	misc/cgo/testso	1.058s
+
+##### ../misc/cgo/testsovar
+ok  	misc/cgo/testsovar	1.078s
+
+##### ../misc/cgo/testcarchive
+SKIP - short mode and $GO_BUILDER_NAME not set
+
+##### ../misc/cgo/testcshared
+SKIP - short mode and $GO_BUILDER_NAME not set
+
+##### ../misc/cgo/testshared
+ok  	misc/cgo/testshared	33.283s
+
+##### ../misc/cgo/testplugin
+ok  	misc/cgo/testplugin	0.001s
+
+##### ../misc/cgo/testasan
+
+##### ../misc/cgo/testsanitizers
+PASS
+
+##### ../misc/cgo/errors
+PASS
+
+##### ../misc/cgo/testsigfwd
+
+##### ../test/bench/go1
+
+##### ../test
+
+##### API check
+Go version is "go1.13.4", ignoring -next /home/progsri/Desktop/go_build/goroot/api/next.txt
+
+ALL TESTS PASSED
+---
+Installed Go for linux/amd64 in /home/progsri/Desktop/go_build/goroot
+Installed commands in /home/progsri/Desktop/go_build/goroot/bin
+*** You need to add /home/progsri/Desktop/go_build/goroot/bin to your PATH.
+progsri@machine:~/Desktop/go_build/goroot/src|3f995c3f3b 
+
+progsri@machine:~/Desktop/go_build/goroot/bin|3f995c3f3b 
+⇒  ls -lr
+total 18216
+-rwxr-xr-x 1 progsri progsri  3556263 Dec  2 17:38 gofmt
+-rwxr-xr-x 1 progsri progsri 15091875 Dec  2 17:38 go
