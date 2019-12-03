@@ -1,6 +1,10 @@
+<h2><strong> Building go binary from source  </strong> </h2>
 
-
-progsri@machine:~/Desktop/go_build|⇒  git clone https://go.googlesource.com/go goroot
+<!----------------------------------------------------------------------------------------->
+<hr>
+<h4><stong> Clone Go source </strong> </h4>
+<code>git clone https://go.googlesource.com/go goroot </code>
+<pre class="language-sh line-numbers"><code>
 Cloning into 'goroot'...
 remote: Sending approximately 286.21 MiB ...
 remote: Counting objects: 50, done
@@ -8,12 +12,15 @@ remote: Finding sources: 100% (28/28)
 remote: Total 402150 (delta 299116), reused 402137 (delta 299116)
 Receiving objects: 100% (402150/402150), 286.10 MiB | 1.73 MiB/s, done.
 Resolving deltas: 100% (299116/299116), done.
-progsri@machine:~/Desktop/go_build|⇒  cd goroot 
+
 progsri@machine:~/Desktop/go_build/goroot|master 
-⇒  ;s -rlt
-zsh: command not found: s
-progsri@machine:~/Desktop/go_build/goroot|master 
-⇒  git checkout go1.13.4
+</code></pre>
+
+<!----------------------------------------------------------------------------------------->
+<hr>
+<h4><stong> Checkout the required version </strong> </h4>
+<code>git checkout go1.13.4</code>
+<pre class="language-sh line-numbers"><code>
 Note: checking out 'go1.13.4'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -107,6 +114,12 @@ progsri@machine:~/Desktop/go_build/goroot|3f995c3f3b
 api              CONTRIBUTORS  lib      PATENTS     SECURITY.md  VERSION
 AUTHORS          doc           LICENSE  README.md   src
 CONTRIBUTING.md  favicon.ico   misc     robots.txt  test
+</code></pre>
+
+<!----------------------------------------------------------------------------------------->
+<hr>
+<h4><stong> Build </strong> </h4>
+<pre class="language-sh line-numbers"><code>
 progsri@machine:~/Desktop/go_build/goroot|3f995c3f3b 
 ⇒  cd src
 progsri@machine:~/Desktop/go_build/goroot/src|3f995c3f3b 
@@ -443,10 +456,21 @@ ALL TESTS PASSED
 Installed Go for linux/amd64 in /home/progsri/Desktop/go_build/goroot
 Installed commands in /home/progsri/Desktop/go_build/goroot/bin
 *** You need to add /home/progsri/Desktop/go_build/goroot/bin to your PATH.
-progsri@machine:~/Desktop/go_build/goroot/src|3f995c3f3b 
+</code></pre>
 
+<!----------------------------------------------------------------------------------------->
+<hr>
+<h4><stong> Verify the go binary  </strong> </h4>
+<pre class="language-sh line-numbers"><code>
 progsri@machine:~/Desktop/go_build/goroot/bin|3f995c3f3b 
 ⇒  ls -lr
 total 18216
 -rwxr-xr-x 1 progsri progsri  3556263 Dec  2 17:38 gofmt
 -rwxr-xr-x 1 progsri progsri 15091875 Dec  2 17:38 go
+progsri@machine:~/ProgSri/ENGINE/GO/bin|
+⇒  go version
+go version go1.13.4 linux/amd64
+</code></pre>
+
+
+
