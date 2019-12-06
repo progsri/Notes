@@ -1,5 +1,6 @@
 <h2><strong> Inversion of Control  </strong></h2>
-<!----------------- Another Topic ------------------->
+
+<!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
 <h4><strong> Inversion of control </strong></h4>
@@ -20,7 +21,7 @@
    autowires B object into C object by constructor or setter.
 </p>
 
-<!----------------- Another Topic ------------------->
+<!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 <h4><strong> IoC Container </strong></h4>
 <p>
@@ -49,7 +50,7 @@
    </code></pre>
 </p>
 
-<!----------------- Another Topic ------------------->
+<!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 <h4><strong> Creating Beans </strong></h4>
 <h6><strong> Method 1 </strong></h6>
@@ -105,7 +106,8 @@
    We can also provide spring with a instance factory method, for that w first have to create a bean either by @Component or @Bean and 
    then provide a method in that bean which would create the necessary beans.  <span class="text-danger"> When is this used </span>
 </p>
-<!----------------- Another Topic ------------------->
+
+<!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 <h4><strong> Autowiring ( Dependency Injection ) </strong></h4>
 <p>
@@ -113,9 +115,46 @@
 </p>
 <h6><strong> Method 1 - Constructor based </strong></h6>
 <p>
+   In the below code as ClassA is dependent on ClassB via the constructor argument, IoC first creats ClassB object and then while
+   creating ClassA  object with the 
 </p>
-<h6><strong> Method 1 - Setter or Property based </strong></h6>
+<pre class="language-java line-numbers"><code>
+
+@Component
+public class ClassB {
+    public  ClassB(){
+        System.out.println("Constructor of ClassB called.");
+    }
+}
+
+@Component
+public class ClassA {
+
+    private ClassB classB;
+
+    public void  ClassA(){
+        System.out.println("no arg Constructor of ClassA called.");
+    }
+
+    @Autowired
+    public ClassA(ClassB classB){
+        this.classB = classB;
+        System.out.println("Constructor of ClassA called with arg " + classB);
+    }
+}
+</code></pre>
+
+output
+<pre class="language-sh line-numbers"><code>
+Constructor of ClassB called.
+Constructor of ClassA called with arg com.ninjashore.sample.Components.ClassB@2a2da905
+</code></pre>
+
+
+<h6><strong> Method 2 - Setter or Property based </strong></h6>
 <p>
 </p>
+<pre class="language-java line-numbers"><code>
 
+</code></pre>
  
