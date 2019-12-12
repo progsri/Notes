@@ -115,8 +115,8 @@
 </p>
 <h6><strong> Method 1 - Constructor based </strong></h6>
 <p>
-   In the below code as ClassA is dependent on ClassB via the constructor argument, IoC first creats ClassB object and then while
-   creating ClassA  object with the 
+   In the below code as ClassA is dependent on ClassB via the constructor argument, IoC first creates ClassB object and then while
+   creating ClassA object with the ClassB as a dependency will injectvia ClassA's constructor.
 </p>
 <pre class="language-java line-numbers"><code>
 
@@ -132,7 +132,7 @@ public class ClassA {
 
     private ClassB classB;
 
-    public void  ClassA(){
+    public ClassA(){
         System.out.println("no arg Constructor of ClassA called.");
     }
 
