@@ -124,6 +124,10 @@
 <p>
    Used when you have mandatory dependencies as the dependencies are first created for later injection.
 </p>
+<p>
+   If ClassA depends on ClassB and vice versa, circular dependency issue occurs as each one waits for the other bean to be created, this 
+   does not happen in setter/property based injection.
+</p>
 <pre class="language-java line-numbers"><code>
 
 @Component
@@ -166,6 +170,10 @@ Constructor of ClassA called with arg com.ninjashore.sample.Components.ClassB@2a
 </p>
 <p>
    Used when you have optional dependencies.
+</p>
+<p>
+   if classA depends on classB and vice versa, then unlike constructor based injection circular dependency issue would not occur as
+   the beans are created independently and the autowirng happens later via setter methods.
 </p>
 <pre class="language-java line-numbers"><code>
 
