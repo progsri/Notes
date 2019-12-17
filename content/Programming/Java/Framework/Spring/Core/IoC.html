@@ -115,8 +115,8 @@
 </p>
 <h6><strong> Method 1 - Constructor based </strong></h6>
 <p>
-   In the below code as ClassA is dependent on ClassB via the constructor argument, IoC first creates ClassB object and then while
-   creating ClassA object with the ClassB as a dependency will injectvia ClassA's constructor.
+   In the below code as ClassA is dependent on ClassB via the constructor argument, IoC first creates ClassB object <b> first </b> and 
+   then while creating ClassA object with the ClassB as a dependency will injectvia ClassA's constructor.
 </p>
 <pre class="language-java line-numbers"><code>
 
@@ -150,11 +150,75 @@ Constructor of ClassB called.
 Constructor of ClassA called with arg com.ninjashore.sample.Components.ClassB@2a2da905
 </code></pre>
 
-
-<h6><strong> Method 2 - Setter or Property based </strong></h6>
+<!------------------------------------------------------------------->
+<h6><strong> Method 2  - Setter based </strong></h6>
 <p>
+   Same as Property based 
+</p>
+<p>
+   Observe that Class A and Class B are created seperately and then class B is injected into ClassA.
 </p>
 <pre class="language-java line-numbers"><code>
 
+@Component
+public class ClassB {
+    public  ClassB(){
+        System.out.println("Constructor of ClassB called.");
+    }
+}
+
+@Component
+public class ClassA {
+
+    private ClassB classB;
+
+    public ClassA(){
+        System.out.println("no arg Constructor of ClassA called.");
+    }
+
+    public ClassB getClassB() {
+        return classB;
+    }
+
+    @Autowired
+    public void setClassB(ClassB classB) {
+        System.out.println("setting ClassB in ClassA");
+        this.classB = classB;
+    }
+}
+</code></pre>
+
+output
+<pre class="language-sh line-numbers"><code>
+no arg Constructor of ClassA called.
+Constructor of ClassB called.
+setting ClassB in ClassA
+</code></pre>
+
+<!------------------------------------------------------------------->
+<h6><strong> Method 2  - Property based </strong></h6>
+<p>
+   Same as Setter based 
+</p>
+<pre class="language-java line-numbers"><code>
+
+@Component
+public class ClassB {
+    public  ClassB(){
+        System.out.println("Constructor of ClassB called.");
+    }
+}
+
+@Component
+public class ClassA {
+
+    @Autowired
+    private ClassB classB;
+
+    public ClassA(){
+        System.out.println("no arg Constructor of ClassA called.");
+    }
+}
 </code></pre>
  
+<!------------------------------------------------------------------------------------------------------------------------->
