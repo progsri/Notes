@@ -118,6 +118,9 @@
    In the below code as ClassA is dependent on ClassB via the constructor argument, IoC first creates ClassB object <b> first </b> and 
    then while creating ClassA object with the ClassB as a dependency will injectvia ClassA's constructor.
 </p>
+<p>
+   Used when you have mandatory dependencies as the dependencies are first created for later injection.
+</p>
 <pre class="language-java line-numbers"><code>
 
 @Component
@@ -157,6 +160,9 @@ Constructor of ClassA called with arg com.ninjashore.sample.Components.ClassB@2a
 </p>
 <p>
    Observe that Class A and Class B are created seperately and then class B is injected into ClassA.
+</p>
+<p>
+   Used when you have optional dependencies.
 </p>
 <pre class="language-java line-numbers"><code>
 
@@ -222,3 +228,4 @@ public class ClassA {
 </code></pre>
  
 <!------------------------------------------------------------------------------------------------------------------------->
+
