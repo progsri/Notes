@@ -238,6 +238,11 @@ Proto RefCnt Flags       Type       State         I-Node   PID/Program name     
 unix  2      [ ]         DGRAM                    2780406  27695/./named    
 
 --------------------------------
+ 
+ RNDC stands for Remote Name Daemon Control. It is a name server control utility in bind. This name server control utility 
+ allows command line administration of the named service both locally and remotely. It is a command line utility and it
+ controls the operation of a name server.
+ 
 ⇒  sudo rndc status
 [sudo] password for progsri: 
 version: BIND 9.11.14 (Extended Support Version) <id:ea40923>
@@ -257,6 +262,11 @@ query logging is OFF
 recursive clients: 0/900/1000
 tcp clients: 6/150
 TCP high-water: 6
+ 
+ 
+ -------------------------------
+ References
+ https://www.interserver.net/tips/kb/what-and-how-to-use-rndc/
 server is up and running
 progsri@machine:~/ProgSri/ENGINE/Bin
 
