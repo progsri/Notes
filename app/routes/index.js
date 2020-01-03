@@ -38,6 +38,7 @@ router.get("/", function(req, res, next) {
           }
           
           tags =  data[index][constants.PATH].replace(constants.BASEPATH + "/", "").replace(/\//g,' - ');
+          tags = "      " + tags // adding spaces for the view
 
           ui.push({
             path:
