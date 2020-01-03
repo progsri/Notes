@@ -37,7 +37,7 @@ router.get("/", function(req, res, next) {
             }
           }
           
-          tags =  data[index][constants.PATH].replace(constants.BASEPATH, "").replace("//"," - ");
+          tags =  data[index][constants.PATH].replace(constants.BASEPATH, "").replace(/\//,' - ');
 
           ui.push({
             path:
