@@ -36,6 +36,8 @@ router.get("/", function(req, res, next) {
               status = data[index][constants.STATUS];
             }
           }
+          
+          tags =  data[index][constants.PATH].replace(constants.BASEPATH, "").replace("/"," - ");
 
           ui.push({
             path:
@@ -51,7 +53,8 @@ router.get("/", function(req, res, next) {
                 .replace(".html", "")
                 .replace(/_/g, " ") + "   ",
             status: status,
-            color: color
+            color: color,
+            tags: tags
           });
         }
       }
