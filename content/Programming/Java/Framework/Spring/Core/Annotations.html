@@ -1,0 +1,63 @@
+<h2><strong> Annotations </strong></h2>
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><strong> @Configuration </strong></h4>
+<p> works only on a Class </p>
+<p>
+  Used to indicate the class that create the Java beans
+</p>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><strong> @Bean </strong></h4>
+<p> works only on a method </p>
+<p>
+  Used to indicate a Java bean, use <code> @Configuration </code> on the class that has the @Bean method.
+</p>
+<pre class="language-java line-numbers"><code>
+@Configuration
+public class ClassD {
+
+    @Bean("dataSource")
+    public void createDataSource(){
+        System.out.println("Creating datasource");
+    }
+}
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><strong> @DependsOn </strong></h4>
+<p> Used when one bean depends indirectly on other bean, if there is a direct dependency we can autowire.</p>
+<p> Also used sometimes we can add <code> @Autowire </code> as we cannot modify the source code. </p>
+
+<pre class="language-java line-numbers"><code>
+@Configuration
+public class ClassD {
+
+    @Bean("dataSource")
+    public void createDataSource(){
+        System.out.println("Creating datasource");
+    }
+
+    @Bean
+    @DependsOn("dataSource")
+    public void handleDataSource(){
+        System.out.println("looking for the bean named datasource");
+    }
+
+}
+</code></pre>
+
+<p> Here until bean dataSource is created, bean handleDataSource will not be created as it depends on it.</p>
+
+<pre class="language-sh line-numbers"><code>
+Creating datasource
+looking for the bean named datasource
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
