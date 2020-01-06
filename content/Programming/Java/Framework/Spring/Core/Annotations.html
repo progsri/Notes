@@ -33,6 +33,8 @@ public class ClassD {
 <h4><strong> @DependsOn </strong></h4>
 <p> Used when one bean depends indirectly on other bean, if there is a direct dependency we can autowire.</p>
 <p> Also used sometimes we can add <code> @Autowire </code> as we cannot modify the source code. </p>
+<p> <b> Creation order </b> Dependent beans are created first. </p>
+<p> <b> Destruction order </b> Independent beans are destroyed first. </p>
 
 <pre class="language-java line-numbers"><code>
 @Configuration
