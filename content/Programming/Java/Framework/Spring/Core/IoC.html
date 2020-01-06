@@ -247,8 +247,8 @@ public class ClassA {
 <p> In general beans are created eagerly at startup </p>
 <p> Works on Class, Method</p>
 <p class="text-danger"> Works on Constructor, Field, Parameter</p>
-<p> Are initialized when they are requested </p>
-<p> if another bean which is not lazyly initialized depends on the lazy initializedbean, then laziness is not applied </p>
+<p> Lazy beans are initialized when they are requested </p>
+<p> if another bean which is not lazyly initialized depends on the lazy initialized bean, then laziness is not applied </p>
 <p> For a complete Laziness all the dependent beans should be maked with marked with <code> @Lazy </code> </p>
 
 <pre class="language-java line-numbers"><code>
