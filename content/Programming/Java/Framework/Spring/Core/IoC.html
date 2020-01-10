@@ -263,6 +263,21 @@ public class ClassLazy {
 }
 </code></pre>
  
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> Method Injection </b></h4>
+<p>
+    When Singleton bean has a dependency on a singleton bean or a Prototype bean has a dependency on a singleton bean or a 
+   prototype bean has a dependency on a prototype bean then the injection is straigth forward, but what happens when a singleton
+   bean depends on a Prototype bean...the container when creating the singleton bean simply injects the Protype bean for the first time
+   and when ever this singleton bean is used the old Protype bean is used which actually is <b> not </b> the Prototype behaviour as we 
+   need a new bean each time.
+</p>
+<p class="text-danger">
+   To solve this look at Method Injection or <code> @Lookup </code>
+</p>
+
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
