@@ -283,12 +283,12 @@ public class ClassLazy {
 
 <h4><b> Scope of Bean </b></h4>
 
-<h6><b> Singleton </b></h6>
+<h5><b> Singleton </b></h5>
 <p> This is the default scope.  </p>
 <p> <mark> A application can have multiple containers </mark>, so per container always returns the same object.</p>
 <p> Good for stateless objects. </p>
 
-<h6><b> Prototype </b></h6>
+<h5><b> Prototype </b></h5>
 <p> Annotated as <code> @Scope("prototype") </code> along with <code> @Component </code> </p>
 <p> When ever this object is requested, container creates a new bean. </p>
 <p> Good for stateful objects. </p>
@@ -300,7 +300,7 @@ public class ClassLazy {
    every time ...look at <b> Method injection or @Lookup </b>. 
 </p>
 
-<h6><b> Request </b></h6>
+<h5><b> Request </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @RequestScope </code>  along with <code> @Component </code> </p>
 <p> Container creates a new bean for  each and every new HTTP request. So changes made in one request does not effect other request
@@ -308,7 +308,7 @@ public class ClassLazy {
 </p>
 <p> When the request processing is completed, then this bean is discarded. </p>
 
-<h6><b> Session </b></h6>
+<h5><b> Session </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @SessionScope </code>  along with <code> @Component </code> </p>
 <p> Create a new bean per HTTP session. Changes made on the bean effects that session only, typically sessions are tracked using
@@ -316,7 +316,7 @@ public class ClassLazy {
 </p>
 <p> This bean is discarded when the session is discarded. </p>
 
-<h6><b class="text-danger"> Application </b></h6>
+<h5><b class="text-danger"> Application </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @ApplicationScope </code>  along with <code> @Component </code> </p>
 
