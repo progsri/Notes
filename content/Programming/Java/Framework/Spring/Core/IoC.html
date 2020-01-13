@@ -289,6 +289,7 @@ public class ClassLazy {
 <p> Good for stateless objects. </p>
 
 <h6><b> Prototype </b></h6>
+<p> Annotated as <code> @Scope("prototype") </code> along with <code> @Component </code> </p>
 <p> When ever this object is requested, container creates a new bean. </p>
 <p> Good for stateful objects. </p>
 <p class="text-danger"> Destruction lifecycle callbacks are not called, it is upto the code to clean up the beans, for Spring to 
@@ -300,6 +301,9 @@ public class ClassLazy {
 </p>
 
 <h6><b> Request </b></h6>
+<p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
+<p> Annotated as <code> @RequestScope </code>  along with <code> @Component </code> </p>
+<p> Container creates a new bean for  each and every new HTTP request. </p>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
