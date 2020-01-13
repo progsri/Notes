@@ -307,6 +307,9 @@ public class ClassLazy {
    changes.
 </p>
 <p> When the request processing is completed, then this bean is discarded. </p>
+<p class="text-danger"> When injecting a short lived bean into a long lived bean, in order to get the new short lived bean each time use  
+   <aop:scoped-proxy/>
+</p>
 
 <h5><b> Session </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
@@ -315,6 +318,10 @@ public class ClassLazy {
    <code> JSESSIONID </code>. Would reuse the bean if the same session is used ( may be JSESSIONID in Header ) 
 </p>
 <p> This bean is discarded when the session is discarded. </p>
+<p class="text-danger"> When injecting a short lived bean into a long lived bean, in order to get the new short lived bean each time use  
+   <aop:scoped-proxy/>
+</p>
+
 
 <h5><b class="text-danger"> Application </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
