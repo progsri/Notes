@@ -289,7 +289,11 @@ public class ClassLazy {
 <p> Good for stateless objects. </p>
 
 <h6><b> Prototype </b></h6>
-<p> </p>
+<p> When ever this object is requested, container creates a new bean. </p>
+<p> Good for stateful objects. </p>
+<p class="text-danger"> Destruction lifecycle callbacks are not called, it is upto the code to clean up the beans, for Spring to 
+   clean up the beans use bean post processor.
+</p>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
