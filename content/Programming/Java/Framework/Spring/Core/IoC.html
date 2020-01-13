@@ -288,6 +288,8 @@ public class ClassLazy {
 <p> <mark> A application can have multiple containers </mark>, so per container always returns the same object.</p>
 <p> Good for stateless objects. </p>
 
+<!----------------------------------------->
+
 <h5><b> Prototype </b></h5>
 <p> Annotated as <code> @Scope("prototype") </code> along with <code> @Component </code> </p>
 <p> When ever this object is requested, container creates a new bean. </p>
@@ -300,6 +302,8 @@ public class ClassLazy {
    every time ...look at <b> Method injection or @Lookup </b>. 
 </p>
 
+<!----------------------------------------->
+
 <h5><b> Request </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @RequestScope </code>  along with <code> @Component </code> </p>
@@ -310,6 +314,8 @@ public class ClassLazy {
 <p class="text-danger"> When injecting a short lived bean into a long lived bean, in order to get the new short lived bean each time use  
    <b> aop:scoped-proxy </b>
 </p>
+
+<!----------------------------------------->
 
 <h5><b> Session </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
@@ -322,14 +328,57 @@ public class ClassLazy {
    <b> aop:scoped-proxy </b>
 </p>
 
+<!----------------------------------------->
 
 <h5><b class="text-danger"> Application </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @ApplicationScope </code>  along with <code> @Component </code> </p>
 
+<!----------------------------------------->
 
 <h5><b> Custom </b></h5>
 <p> We can create our own custom scope by implementing <code> org.springframework.beans.factory.config.Scope </code> interface </p>
+
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> LifeCycle Callbacks </b></h4>
+
+<h5><b> Initialization  </b></h5>
+<p> Helps to call a bean method just after the bean is created </p>
+<p> use <code> @PostConstruct </code> on a method to invoke just after the bean is created </p>
+<p class="tet-danger"> can be used to assign instance values to the static members in a bean </p> 
+
+<pre class="language-java line-numbers"><code>
+@Component
+public class ClassC {
+
+   {
+        System.out.println("Static block of Class C");
+    }
+
+    public ClassC(){
+        System.out.println("Constructor of ClassC called.");
+    }
+
+    @PostConstruct
+    public void test(){
+        System.out.println("Post Construct");
+    }
+
+
+}
+</code></pre>
+
+<pre class="language-java line-numbers"><code>
+Static block of Class C
+Constructor of ClassC called.
+Post Construct
+</code></pre>
+
+<!----------------------------------------->
+
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
