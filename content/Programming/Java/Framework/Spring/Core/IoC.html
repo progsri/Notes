@@ -303,7 +303,20 @@ public class ClassLazy {
 <h6><b> Request </b></h6>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @RequestScope </code>  along with <code> @Component </code> </p>
-<p> Container creates a new bean for  each and every new HTTP request. </p>
+<p> Container creates a new bean for  each and every new HTTP request. So changes made in one request does not effect other request
+   changes.
+</p>
+<p> When the request processing is completed, then this bean is discarded. </p>
+
+<h6><b> Session </b></h6>
+<p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
+<p> Annotated as <code> @SessionScope </code>  along with <code> @Component </code> </p>
+<p> Create a new bean per HTTP session. Changes made on the bean effects that session only, typically sessions are tracked using
+   <code> JSESSIONID </code>. Would reuse the bean if the same session is used ( may be JSESSIONID in Header ) 
+</p>
+<p> This bean is discarded when the session is discarded. </p>
+
+
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
