@@ -380,7 +380,7 @@ Post Construct
 </code></pre>
 
 <p> Instead of @PostConstruct we can also use Spring interface <code> org.springframework.beans.factory.InitializingBean </code> </p>
-<p> Prefer @PostConstruct over InitializingBean as PostConstruct is part of <b> javax </b> so less dependency on Spring frameork.</p>
+<p> Prefer @PostConstruct over InitializingBean as PostConstruct is part of <b> javax </b> so less dependency on Spring framework.</p>
 
 Usage of  InitializingBean
 <pre class="language-java line-numbers"><code>
@@ -414,11 +414,11 @@ afterPropertiesSet
 
 <h5><b> Destruction  </b></h5>
 <p> Called before a bean is being destroyed. </p>
-<p> <code> @PreDestroy </code> is used in annotation based or <code> destroy-method in xml config </code>  or 
-<code> Disposable </code> interface.
+<p> use <code> @PreDestroy </code> is used in annotation based or <code> destroy-method </code> in xml config  or use
+<code> Disposable </code> interface on a class.
 </p>
 <p>
-   Prefer  <b> @PreDestroy </b>  over <b>  Disposable </b> asit is part of <b> javax </b> so less dependency on Spring frameork.
+   Prefer  <b> @PreDestroy </b>  over <b>  Disposable </b> asit is part of <b> javax </b> so less dependency on Spring framework.
 </p>
 <p>
    Destruction callbacks are not called for the protoype beans <span class="text-danger"> WHY ??? </span>
