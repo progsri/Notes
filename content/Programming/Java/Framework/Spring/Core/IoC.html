@@ -409,6 +409,9 @@ afterPropertiesSet
 
 <p> Initialiation callbacks are called for singleton, Prototype beans </p>
 <p class="text-danger"> Are initialiation callbacks called for request, session, application, custom scoped beans </p>
+<p> we can have both PostConstruct and InitializingBean in a class in that case PostConstruct method is executed first and then
+   then the afterPropertiesSet() of InitializingBean is executed
+</p>
 
 <!----------------------------------------->
 
@@ -422,6 +425,10 @@ afterPropertiesSet
 </p>
 <p>
    Destruction callbacks are not called for the protoype beans <span class="text-danger"> WHY ??? </span>
+</p>
+<p>
+  we can have @PreDestroy and Disposable method in class in that case @PreDestroy method is executed first and then the destroy method
+   of Disposable is executed.
 </p>
 
 <!------------------------------------------------------------------------------------------------------------------------->
