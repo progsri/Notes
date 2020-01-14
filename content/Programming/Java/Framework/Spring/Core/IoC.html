@@ -283,14 +283,14 @@ public class ClassLazy {
 
 <h4><b> Scope of Bean </b></h4>
 
-<h5><b> Singleton </b></h5>
+<h5><b> -- Singleton </b></h5>
 <p> This is the default scope.  </p>
 <p> <mark> A application can have multiple containers </mark>, so per container always returns the same object.</p>
 <p> Good for stateless objects. </p>
 
 <!----------------------------------------->
 
-<h5><b> Prototype </b></h5>
+<h5><b> -- Prototype </b></h5>
 <p> Annotated as <code> @Scope("prototype") </code> along with <code> @Component </code> </p>
 <p> When ever this object is requested, container creates a new bean. </p>
 <p> Good for stateful objects. </p>
@@ -304,7 +304,7 @@ public class ClassLazy {
 
 <!----------------------------------------->
 
-<h5><b> Request </b></h5>
+<h5><b> -- Request </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @RequestScope </code>  along with <code> @Component </code> </p>
 <p> Container creates a new bean for  each and every new HTTP request. So changes made in one request does not effect other request
@@ -317,7 +317,7 @@ public class ClassLazy {
 
 <!----------------------------------------->
 
-<h5><b> Session </b></h5>
+<h5><b> -- Session </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @SessionScope </code>  along with <code> @Component </code> </p>
 <p> Create a new bean per HTTP session. Changes made on the bean effects that session only, typically sessions are tracked using
@@ -330,7 +330,7 @@ public class ClassLazy {
 
 <!----------------------------------------->
 
-<h5><b class="text-danger"> Application </b></h5>
+<h5><b class="text-danger"> -- Application </b></h5>
 <p class="text-danger"> Need addtional configuration as it only works in <b> web aware </b> context.</p>
 <p> Annotated as <code> @ApplicationScope </code>  along with <code> @Component </code> </p>
 
@@ -345,7 +345,7 @@ public class ClassLazy {
 
 <h4><b> LifeCycle Callbacks </b></h4>
 
-<h5><b> Initialization  </b></h5>
+<h5><b> -- Initialization  </b></h5>
 <p> Helps to call a bean method just after the bean is created </p>
 <p> use <code> @PostConstruct </code> on a method to invoke just after the bean is created or constructed </p>
 <p> use <code> init-method </code> in xml configuration </p>
@@ -412,7 +412,7 @@ afterPropertiesSet
 
 <!----------------------------------------->
 
-<h5><b> Destruction  </b></h5>
+<h5><b> -- Destruction  </b></h5>
 <p> Called before a bean is being destroyed. </p>
 <p> use <code> @PreDestroy </code> is used in annotation based or <code> destroy-method </code> in xml config  or use
 <code> Disposable </code> interface on a class.
