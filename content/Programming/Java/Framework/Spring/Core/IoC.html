@@ -347,7 +347,7 @@ public class ClassLazy {
 
 <h5><b> Initialization  </b></h5>
 <p> Helps to call a bean method just after the bean is created </p>
-<p> use <code> @PostConstruct </code> on a method to invoke just after the bean is created </p>
+<p> use <code> @PostConstruct </code> on a method to invoke just after the bean is created or constructed </p>
 <p> use <code> init-method </code> in xml configuration </p>
 <p class="tet-danger"> can be used to assign instance values to the static members in a bean </p> 
 
@@ -407,7 +407,19 @@ Constructor of ClassC called.
 afterPropertiesSet
 </code></pre>
 
+<p> Initialiation callbacks are called for singleton, Prototype beans </p>
+<p class="text-danger"> Are initialiation callbacks called for request, session, application, custom scoped beans </p>
+
 <!----------------------------------------->
+
+<h5><b> Destruction  </b></h5>
+<p> Called before a bean is being destroyed. </p>
+<p> <code> @PreDestroy </code> is used in annotation based or <code> destroy-method in xml config </code>  or 
+<code> Disposable </code> interface.
+</p>
+<p>
+   Prefer  <b> @PreDestroy </b>  over <b>  Disposable </b> asit is part of <b> javax </b> so less dependency on Spring frameork.
+</p>
 
 
 <!------------------------------------------------------------------------------------------------------------------------->
