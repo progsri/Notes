@@ -348,8 +348,10 @@ public class ClassLazy {
 <h5><b> Initialization  </b></h5>
 <p> Helps to call a bean method just after the bean is created </p>
 <p> use <code> @PostConstruct </code> on a method to invoke just after the bean is created </p>
+<p> use <code> init-method </code> in xml configuration </p>
 <p class="tet-danger"> can be used to assign instance values to the static members in a bean </p> 
 
+Usage of  @PostConstruct
 <pre class="language-java line-numbers"><code>
 @Component
 public class ClassC {
@@ -375,6 +377,34 @@ public class ClassC {
 Static block of Class C
 Constructor of ClassC called.
 Post Construct
+</code></pre>
+
+<p> Instead of @PostConstruct we can also use Spring interface <code> org.springframework.beans.factory.InitializingBean </code> </p>
+<p> Prefer @PostConstruct over InitializingBean as PostConstruct is part of <b> javax </b> so less dependency on Spring frameork.</p>
+
+Usage of  InitializingBean
+<pre class="language-java line-numbers"><code>
+@Component
+public class ClassC implements InitializingBean {
+
+   {
+        System.out.println("Static block of Class C");
+    }
+
+    public ClassC(){
+        System.out.println("Constructor of ClassC called.");
+    }
+   
+   public void afterPropertiesSet() throws Exception {
+        System.out.println("afterPropertiesSet");
+    }
+}
+</code></pre>
+
+<pre class="language-java line-numbers"><code>
+Static block of Class C
+Constructor of ClassC called.
+afterPropertiesSet
 </code></pre>
 
 <!----------------------------------------->
