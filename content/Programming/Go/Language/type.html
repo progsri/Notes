@@ -1,0 +1,55 @@
+<h2><b> type </b> </h2>
+<!----------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4>  Type alias for basic types </h4>
+<p>  As go is statically typed which means we can make use of type system and can accept only a particular type, 
+now if a method wants to accept a int/string value but of a particular type we can do as <code> type <nameOfType> int</code>
+</p>
+
+<pre class="language-java line-numbers"><code>
+package main
+
+import "fmt"
+import "reflect"
+
+type Subscription int
+
+type Category string
+
+func main() {
+
+	i := Subscription(0)
+	fmt.Printf("value of i = %d \n", i)
+	fmt.Printf("type of i = %s \n", reflect.TypeOf(i))
+
+	k := 1
+	fmt.Printf("value of k = %d \n", k)
+	fmt.Printf("type of k = %s \n", reflect.TypeOf(k))
+
+	a := Category("aaa")
+	fmt.Printf("value of a = %s \n", a)
+	fmt.Printf("type of a = %s \n", reflect.TypeOf(a))
+
+	b := "bbb"
+	fmt.Printf("value of b = %s \n", b)
+	fmt.Printf("type of b = %s \n", reflect.TypeOf(b))
+
+}
+
+</code> </pre>
+<pre class="language-go line-numbers"><code>
+
+value of i = 0 
+type of i = main.Subscription 
+value of k = 1 
+type of k = int 
+value of a = aaa 
+type of a = main.Category 
+value of b = bbb 
+type of b = string 
+</code> </pre>
+
+
+<!----------------------------------------------------------------------------------------------------------------->
+<hr>
