@@ -82,5 +82,49 @@ Start
 
 <!---------------------------------------------------->
 
+<h4><b> main method with invoked class only </b></h4>
+
+<p> Observe that JVM loades the class <code> TraceMeA </code> as it is being used/invoked. </p>
+
+<pre class="language-java line-numbers"><code>
+package com.ninjashore.sample.tracing;
+
+public class Main {
+
+    public static void main(String[] args){
+
+        System.out.println("Start");
+        TraceMeA traceMeA = new TraceMeA();
+        traceMeA.m1();
+    }
+}
+
+package com.ninjashore.sample.tracing;
+
+public class TraceMeA {
+
+    private String var1;
+
+    public void m1(){
+        System.out.println(TraceMeA.class + "m1");
+    }
+}
+
+</code></pre>
+<pre class="language-java line-numbers"><code>
+..... has more Loaded classes, just not showing
+[Loaded java.net.SocketInputStream from C:\ENGINE\JDK64\1.8.0.221\jre\lib\rt.jar]
+[Loaded sun.nio.cs.US_ASCII$Decoder from C:\ENGINE\JDK64\1.8.0.221\jre\lib\rt.jar]
+[Loaded com.ninjashore.sample.tracing.Main from file:/I:/Hive/Chase/CODE/Play/Moneta/sample/target/classes/]
+[Loaded sun.launcher.LauncherHelper$FXHelper from C:\ENGINE\JDK64\1.8.0.221\jre\lib\rt.jar]
+[Loaded java.lang.Class$MethodArray from C:\ENGINE\JDK64\1.8.0.221\jre\lib\rt.jar]
+[Loaded java.lang.Void from C:\ENGINE\JDK64\1.8.0.221\jre\lib\rt.jar]
+Start
+[Loaded com.ninjashore.sample.tracing.TraceMeA from file:/I:/Hive/ENGINE/CODE/Play/Tracing/sample/target/classes/]
+class com.ninjashore.sample.tracing.TraceMeAm1
+[Loaded java.lang.Shutdown from C:\ENGINE\JDK64\1.8.0.221\jre\lib\rt.jar]
+[Loaded java.lang.Shutdown$Lock from C:\ENGINE\JDK64\1.8.0.221\jre\lib\rt.jar]
+</code></pre>
+
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
