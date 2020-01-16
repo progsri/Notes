@@ -85,6 +85,10 @@ Start
 <h4><b> main method with invoked class only </b></h4>
 
 <p> Observe that JVM loades the class <code> TraceMeA </code> as it is being used/invoked. </p>
+<p> <mark> 
+  So, even though there are lot of libraries in the classpath of the application/JVM, JVM will load only the classes that are invoked
+  and would not bother about the other classes/libraries.
+ </mark> </p>
 
 <pre class="language-java line-numbers"><code>
 package com.ninjashore.sample.tracing;
