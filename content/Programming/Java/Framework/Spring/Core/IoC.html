@@ -443,7 +443,19 @@ afterPropertiesSet
 <hr>
 
 <h4><b> Aware Callbacks </b></h4>
-
+<p> 
+   In general all the beans can be accessed via <code> org.springframework.context.ApplicationContextAware </code> either by 
+   autowiring them or implementing the interface.
+</p>
+<p>
+   If a bean implements this interface then Spring invokes (at the time of bean initialization) the interface method 
+   <code> setApplicationContext(ApplicationContext applicationContext) </code> via which we can either access or 
+   <span class="text-danger"> manipulate </span> other beans 
+</p>
+<p class="text-danger">
+   Refer other Aware callbacks such as <code> ResourceLoaderAware </code> for Resources and <code> ServletContextAware </code>
+   for Spring MVC.
+</p>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
