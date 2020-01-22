@@ -459,3 +459,85 @@ afterPropertiesSet
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
+
+<h4><b> BeanPostProcessor </b></h4>
+<p>
+   Is called for each bean after the object is created and before calling the initializing callbacks (@PostConstruct) and
+   again after the initializing callbacks.
+</p>
+<p>
+   <code> org.springframework.beans.factory.config.BeanPostProcessor </code> interface has 2 methods, <b>preProcessBeforeInitialization</b>
+   is called before the initializing callbacks and <b> postProcessAfterInitialization </b> is called after the initialization callbacks.
+</p>
+<p> 
+   Per container there can be many implementations of BeanPostProcessor.
+</p>
+<p>
+   Spring auto detects the classes that implements BeanPostProcessor and calls the interface methods for each bean. The order of the 
+   which BeanPostProcessor to call depends on the ordered returned by the interface <code> Ordered </code>
+</p>
+
+<p class="text-danger">
+   What is the usage of it ?
+</p>
+
+<pre class="language-java line-numbers"><code>
+@Configuration
+public class PostProc1 implements BeanPostProcessor {
+
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("Before BeanPostProcessor 1 " + bean.getClass() + "  "  + bean.toString());
+        return bean;
+    }
+
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("After BeanPostProcessor 1 " + bean.getClass() + "  "  + bean.toString());
+        return bean;
+    }
+
+}
+</code></pre>
+
+<b> PostProc1 has the order of 1 and PostProc2 has the order of 0, so PostProc2 gets executed first and then PostProc1. </b>
+<pre class="language-java line-numbers"><code>
+@Configuration
+public class PostProc1 implements BeanPostProcessor, Ordered {
+
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("Before BeanPostProcessor 1 " + bean.getClass() + "  "  + bean.toString());
+        return bean;
+    }
+
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("After BeanPostProcessor 1 " + bean.getClass() + "  "  + bean.toString());
+        return bean;
+    }
+    
+    @Override
+    public int getOrder() {
+        return 1;
+    }
+}
+
+@Configuration
+public class PostProc2 implements BeanPostProcessor, Ordered {
+
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("Before BeanPostProcessor 2 " + bean.getClass());
+        return bean;
+    }
+
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("After BeanPostProcessor 2 " + bean.getClass());
+        return bean;
+    }
+
+    @Override
+    public int getOrder() {
+        return 0;
+    }
+}
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
