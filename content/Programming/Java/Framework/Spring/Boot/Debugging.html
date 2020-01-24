@@ -1,0 +1,77 @@
+<h2><b> Debugging </b></h2>
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> CONDITIONS EVALUATION REPORT </b></h4>
+<p>
+  Provides details about the positive and negative bean matches. Also provides information about exclusions and unconditional classes.
+</p>
+
+<pre class="language-java line-numbers"><code>
+@SpringBootApplication()
+public class SampleApplication {
+    public static void main(final String[] args) {
+        String[] newArgs = {"--debug"};
+        SpringApplication.run(SampleApplication.class, newArgs);
+
+    }
+}
+</code></pre>
+<pre class="language-sh line-numbers"><code>
+
+============================
+CONDITIONS EVALUATION REPORT
+============================
+
+
+Positive matches:
+-----------------
+
+   CodecsAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.codec.CodecConfigurer' (OnClassCondition)
+
+   CodecsAutoConfiguration.JacksonCodecConfiguration matched:
+      - @ConditionalOnClass found required class 'com.fasterxml.jackson.databind.ObjectMapper' (OnClassCondition)
+
+
+
+Negative matches:
+-----------------
+
+   ActiveMQAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'javax.jms.ConnectionFactory' (OnClassCondition)
+
+   AopAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.aspectj.lang.annotation.Aspect' (OnClassCondition)
+
+   ArtemisAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'javax.jms.ConnectionFactory' (OnClassCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
+
+    org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
+
+    org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
+
+
+
+2020-01-24 10:11:57.315  INFO 33868 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2020-01-24 10:11:57.318  INFO 33868 --- [           main] com.ninjashore.sample.SampleApplication  : Started SampleApplication in 12.456 seconds (JVM running for 13.753)
+
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
