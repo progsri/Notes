@@ -539,6 +539,31 @@ public class PostProc2 implements BeanPostProcessor, Ordered {
 }
 </code></pre>
 
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> BeanPostProcessor </b></h4>
+
+<p>
+   When you implement <code> org.springframework.beans.factory.config.BeanFactoryPostProcessor </code> Spring calls this interface 
+   method before creating any of the beans. 
+</p>
+<p>
+   <code> PropertySourcesPlaceholderConfigurer </code> which interpolates <mark> ${propoerty-name} </mark> uses this approach.
+</p>
+
+<pre class="language-java line-numbers"><code>
+@Configuration
+public class FactoryPostProc1 implements BeanFactoryPostProcessor {
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        System.out.println("Gets called before Spring creates any of the bean");
+    }
+}
+</code></pre>
+
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
