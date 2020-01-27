@@ -1,15 +1,113 @@
 <h2><strong> Mutex </strong></h2>
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
+
 <p> 
   The go routine which is waiting for the mutex(lock) first will the first one to get access to the mutex. So order is 
   maintained based on the request for acquiring the lock.
 </p>
+<p>
+  Go routine has nothing to do with the mutex, mutex is independent and is shared with other go routines so that the desired
+  flow of control is acheived via mutex lock.
+</p>
 
-<pre class="language-java line-numbers"><code>
-  
+<pre class="language-go line-numbers"><code>
+  package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func go_rt_main() string {
+	return time.Now().String() + " go_routine_main :: "
+}
+
+func go_rt_x(number string) string {
+	return time.Now().String() + " go_routine_" + number + " :: "
+}
+
+func main() {
+	fmt.Println(go_rt_main() + "start ")
+	m := &sync.Mutex{}
+
+	fmt.Println(go_rt_main() + "locking the mutex ")
+	m.Lock()
+
+	fmt.Println(go_rt_main() + "will call go routine 1")
+	go func() {
+		fmt.Println(go_rt_x("1") + "trying to lock the mutex")
+		m.Lock()
+
+		fmt.Println(go_rt_x("1") + "doing something ")
+
+		m.Unlock()
+		fmt.Println(go_rt_x("1") + "mutex is unlocked")
+
+	}()
+
+	fmt.Println(go_rt_main() + "will call  go routine 2")
+	go func() {
+		fmt.Println(go_rt_x("2") + "trying to lock the mutex")
+		m.Lock()
+
+		fmt.Println(go_rt_x("2") + "doing something ")
+
+		m.Unlock()
+		fmt.Println(go_rt_x("2") + "mutex is unlocked")
+
+	}()
+
+	fmt.Println(go_rt_main() + "will call ting go routine 3")
+	go func() {
+		fmt.Println(go_rt_x("3") + "trying to lock the mutex")
+		m.Lock()
+
+		fmt.Println(go_rt_x("3") + "doing something ")
+
+		m.Unlock()
+		fmt.Println(go_rt_x("3") + "mutex is unlocked")
+
+	}()
+
+	fmt.Println(go_rt_main() + "mutex is locked")
+
+	//sleep to see if go routine executes
+	fmt.Println(go_rt_main() + "sleeping for 10 secs")
+	time.Sleep(10 * time.Second)
+	fmt.Println(go_rt_main() + "woke up")
+
+	m.Unlock()
+	fmt.Println(go_rt_main() + "mutex is unlocked")
+
+	fmt.Println(go_rt_main() + "sleeping again for 10 secs")
+	time.Sleep(10 * time.Second)
+	fmt.Println(go_rt_main() + "end")
+
+}
+
 </code></pre>
-<pre class="language-java line-numbers"><code>
-  
+<pre class="language-sh line-numbers"><code>
+2020-01-27 08:11:35.078714713 -0600 CST m=+0.000149155 go_routine_main :: start 
+2020-01-27 08:11:35.078993941 -0600 CST m=+0.000428373 go_routine_main :: locking the mutex 
+2020-01-27 08:11:35.079011145 -0600 CST m=+0.000445571 go_routine_main :: will call go routine 1
+2020-01-27 08:11:35.079037737 -0600 CST m=+0.000472175 go_routine_main :: will call  go routine 2
+2020-01-27 08:11:35.079069293 -0600 CST m=+0.000503728 go_routine_main :: will call ting go routine 3
+2020-01-27 08:11:35.079089435 -0600 CST m=+0.000523870 go_routine_main :: mutex is locked
+2020-01-27 08:11:35.079103993 -0600 CST m=+0.000538433 go_routine_main :: sleeping for 10 secs
+2020-01-27 08:11:35.07913993 -0600 CST m=+0.000574438 go_routine_1 :: trying to lock the mutex
+2020-01-27 08:11:35.079191535 -0600 CST m=+0.000626007 go_routine_3 :: trying to lock the mutex
+2020-01-27 08:11:35.079167215 -0600 CST m=+0.000601711 go_routine_2 :: trying to lock the mutex
+2020-01-27 08:11:45.079288839 -0600 CST m=+10.000723310 go_routine_main :: woke up
+2020-01-27 08:11:45.079502538 -0600 CST m=+10.000937000 go_routine_main :: mutex is unlocked
+2020-01-27 08:11:45.079606522 -0600 CST m=+10.001041007 go_routine_main :: sleeping again for 10 secs
+2020-01-27 08:11:45.079557694 -0600 CST m=+10.000992168 go_routine_1 :: doing something 
+2020-01-27 08:11:45.079901792 -0600 CST m=+10.001336264 go_routine_1 :: mutex is unlocked
+2020-01-27 08:11:45.079953955 -0600 CST m=+10.001388416 go_routine_3 :: doing something 
+2020-01-27 08:11:45.079992441 -0600 CST m=+10.001426895 go_routine_3 :: mutex is unlocked
+2020-01-27 08:11:45.080058121 -0600 CST m=+10.001492594 go_routine_2 :: doing something 
+2020-01-27 08:11:45.080089613 -0600 CST m=+10.001524111 go_routine_2 :: mutex is unlocked
+2020-01-27 08:11:55.079877051 -0600 CST m=+20.001311626 go_routine_main :: end
 </code></pre>
 <!------------------------------------------------------------------------------------------------------------------------->
