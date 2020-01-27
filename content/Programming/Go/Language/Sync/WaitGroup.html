@@ -1,0 +1,109 @@
+<h2><b> WaitGroup </b></h2>
+<!------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<p>
+  <code> WaitGroup </code> lets you wait till all the registered go routines are be completed.
+</p>
+<p>
+  we create a WaitGroup variable and then for each go routine to keep a track call <code> WaitGroupVariable.Add </code> 
+  to register the number of go routine to track, then call  <code> WaitGroupVariable.Wait </code> from the main go routine to
+  wait for all the registered go routines to complete, then once the child go routine are done executing from the child 
+  go routine call  <code> WaitGroupVariable.Done </code> to indicate their done status.
+</p>
+
+<pre class="language-go line-numbers"><code>
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func go_rt_main() string {
+	return time.Now().String() + " go_routine_main :: "
+}
+
+func go_rt_x(number string) string {
+	return time.Now().String() + " go_routine_" + number + " :: "
+}
+
+func main() {
+	fmt.Println(go_rt_main() + "start ")
+	wg := &sync.WaitGroup{}
+
+	fmt.Println(go_rt_main() + "add to wait group")
+	wg.Add(1)
+
+	go func() {
+
+		fmt.Println(go_rt_x("1") + "doing something ")
+
+		fmt.Println(go_rt_x("1") + "sleeping for 11 secs ")
+		time.Sleep(11 * time.Second)
+
+		wg.Done()
+		fmt.Println(go_rt_x("1") + "done")
+
+	}()
+
+	fmt.Println(go_rt_main() + "add to wait group")
+	wg.Add(1)
+
+	go func() {
+
+		fmt.Println(go_rt_x("2") + "doing something ")
+
+		fmt.Println(go_rt_x("2") + "sleeping for 10 secs ")
+		time.Sleep(10 * time.Second)
+
+		wg.Done()
+		fmt.Println(go_rt_x("2") + "done")
+
+	}()
+
+	fmt.Println(go_rt_main() + "add to wait group")
+	wg.Add(1)
+
+	go func() {
+
+		fmt.Println(go_rt_x("3") + "doing something ")
+
+		fmt.Println(go_rt_x("3") + "sleeping for 12 secs ")
+		time.Sleep(12 * time.Second)
+
+		wg.Done()
+		fmt.Println(go_rt_x("3") + "done")
+
+	}()
+
+	fmt.Println(go_rt_main() + "waiting for the registered go routines to complete ")
+	wg.Wait()
+	fmt.Println(go_rt_main() + "end")
+
+}
+
+</pre></code>
+<pre class="language-go line-numbers"><code>
+2020-01-27 16:57:56.698053403 -0600 CST m=+0.000070013 go_routine_main :: start 
+2020-01-27 16:57:56.698233052 -0600 CST m=+0.000249661 go_routine_main :: add to wait group
+2020-01-27 16:57:56.698249936 -0600 CST m=+0.000266552 go_routine_main :: add to wait group
+2020-01-27 16:57:56.698264785 -0600 CST m=+0.000281410 go_routine_main :: add to wait group
+2020-01-27 16:57:56.698281081 -0600 CST m=+0.000297708 go_routine_main :: waiting for the registered go routines to complete 
+2020-01-27 16:57:56.69830686 -0600 CST m=+0.000323461 go_routine_3 :: doing something 
+2020-01-27 16:57:56.69833481 -0600 CST m=+0.000351399 go_routine_3 :: sleeping for 12 secs 
+2020-01-27 16:57:56.698370531 -0600 CST m=+0.000387129 go_routine_2 :: doing something 
+2020-01-27 16:57:56.69839365 -0600 CST m=+0.000410254 go_routine_2 :: sleeping for 10 secs 
+2020-01-27 16:57:56.698346559 -0600 CST m=+0.000363182 go_routine_1 :: doing something 
+2020-01-27 16:57:56.698426722 -0600 CST m=+0.000443317 go_routine_1 :: sleeping for 11 secs 
+2020-01-27 16:58:06.698553638 -0600 CST m=+10.000570229 go_routine_2 :: done
+2020-01-27 16:58:07.698631352 -0600 CST m=+11.000648056 go_routine_1 :: done
+2020-01-27 16:58:08.698539889 -0600 CST m=+12.000556663 go_routine_3 :: done
+2020-01-27 16:58:08.698775732 -0600 CST m=+12.000792451 go_routine_main :: end
+</pre></code>
+
+
+
+<!------------------------------------------------------------------------------------------------------------->
+<hr>
