@@ -1,0 +1,79 @@
+<h4><b> Annotations </b></h4>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> @ConditionalOnBean by type </b></h4>
+<p> Will create the bean annotated with @ConditionalOnBean only if Spring container finds the list of bean(s) of the type mentioned in
+the argument
+</p>
+
+<p> CondClassPresent bean will only be created if the beans of type ClassI and ClassH are created </p>
+<pre class="language-java line-numbers"><code>
+@Component
+public class ClassI {
+
+    public ClassI(){
+        System.out.println("Class I : Constructor");
+    }
+}
+
+@Component
+public class ClassH {
+
+    public ClassI(){
+        System.out.println("Class H : Constructor");
+    }
+}
+
+@Configuration
+@ConditionalOnBean({ClassI.class, ClassH.class})
+public class CondClassPresent {
+
+    CondClassPresent(){
+        System.out.println("CondClassPresent :: constructor");
+    }
+}
+</code></pre>
+
+<!--------------------------------------------------------->
+
+<h4><b> @ConditionalOnBean by name of the bean </b></h4>
+<p> 
+Will create the bean annotated with @ConditionalOnBean only if Spring container finds the list of bean(s) names mentioned 
+in the argument 
+</p>
+
+<p> CondClassPresent bean will only be created if the beans of name bean1 and bean2 created </p>
+<pre class="language-java line-numbers"><code>
+@Component("bean1")
+public class ClassI {
+
+    public ClassI(){
+        System.out.println("Class I : Constructor");
+    }
+}
+
+@Component("bean2")
+public class ClassH {
+
+    public ClassI(){
+        System.out.println("Class H : Constructor");
+    }
+}
+
+@Configuration
+@ConditionalOnBean(name = {"bean1","bean2"})
+public class CondClassPresent {
+
+    CondClassPresent(){
+        System.out.println("CondClassPresent :: constructor");
+    }
+}
+</code></pre>
+
+
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
