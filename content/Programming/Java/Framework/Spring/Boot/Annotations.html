@@ -115,3 +115,22 @@ public class CondPropertyClass {
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
+
+<h4><b> @ConditionalOnMissingBean based on missing bean </b></h4>
+<p>
+    CondMissingClass bean would be created only if there is no bean with name bean1 in the spring container </mark>
+</p>
+
+<pre class="language-java line-numbers"><code>
+@Configuration
+@ConditionalOnMissingBean(name = {"bean1"})
+public class CondMissingClass {
+
+    CondMissingClass(){
+        System.out.println("CondMissingClass :: constructor");
+    }
+}
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
