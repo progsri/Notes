@@ -252,4 +252,10 @@ router.get("/", function (req, res, next) {
   res.send("OK");
 });
 
+router.get("/onlyindex", function (req, res, next) {
+  afterGitPull();
+  res.send("OK");
+});
+
+
 module.exports = router;
