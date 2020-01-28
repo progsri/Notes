@@ -45,7 +45,10 @@ var insertRecords = function(records) {
     client.connect(function(err) {
       const db = client.db(dbName);
       const collection = db.collection("Notes");
-      collection.insertMany(records, function(err, r) {
+      collection.insertMany(records,  {
+        w: 'majority'
+      , wtimeout: 10000},
+       function(err, r) {
         assert.equal(err, null);
         console.log("Number of records inserted " + r.insertedCount);
         //client.close();
