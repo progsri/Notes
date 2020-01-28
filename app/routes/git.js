@@ -52,6 +52,10 @@ function isValid(path) {
   if (path.includes("images")) {
     return false;
   }
+  
+   if (path.includes(".git")) {
+    return false;
+  }
 
   return true;
 }
