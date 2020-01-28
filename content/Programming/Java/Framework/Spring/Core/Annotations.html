@@ -190,6 +190,66 @@ public class Type3 {
 
 </code></pre>
 
+Type1 bean is autowired.
+<pre class="language-java line-numbers"><code>
+Type3{c1=com.ninjashore.sample.Components.Type1@df3b78}
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> @Qualifier  </b></h4>
+<p> In case Spring find 2 or more beans of the same type we can use <code> @Qualifier </code> to mention which bean to pick,
+  also you need to name the bean accordingly, if you do not name the bean then Spring names the name with the regular convention of
+  small letter as small case, for example in the below code though I did not give Type2 class a name Spring named it as type2 and
+  autowired it.
+</p>
+
+<pre class="language-java line-numbers"><code>
+@Component("type1")
+public class Type1 implements CommonType {
+
+    public Type1(){
+        System.out.println(
+                "Type1 constructor"
+        );
+    }
+}
+
+@Component
+public class Type2 implements CommonType {
+
+    public Type2(){
+        System.out.println("Type 2 constructor");
+    }
+}
+
+@Component
+public class Type3 {
+
+    @Autowired
+    @Qualifier("type2")
+    private CommonType c1;
+
+    @PostConstruct
+    public void m1(){
+        System.out.println(this.toString());
+    }
+
+    @Override
+    public String toString() {
+        return "Type3{" +
+                "c1=" + c1 +
+                '}';
+    }
+}
+
+</code></pre>
+
+Type 2 bean is autowired.
+<pre class="language-java line-numbers"><code>
+Type3{c1=com.ninjashore.sample.Components.Type2@df4b72}
+</code></pre>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
