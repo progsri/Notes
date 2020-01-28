@@ -142,6 +142,57 @@ public class ClassLazy {
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
+<h4><b> @Primary </b></h4>
+<p> 
+  Without @Primary Spring would fail as Spring would find 2 beans of the same type, So by adding @Primary to one of the bean, we can
+  tell Spring to use that in such scenarios.
+</p>
+
+
+<pre class="language-java line-numbers"><code>
+@Component
+@Primary
+public class Type1 implements CommonType {
+
+    public Type1(){
+        System.out.println(
+                "Type1 constructor"
+        );
+    }
+}
+
+@Component
+public class Type2 implements CommonType {
+
+    public Type2(){
+        System.out.println("Type 2 constructor");
+    }
+}
+
+@Component
+public class Type3 {
+
+    @Autowired
+    private CommonType c1;
+
+    @PostConstruct
+    public void m1(){
+        System.out.println(this.toString());
+    }
+
+    @Override
+    public String toString() {
+        return "Type3{" +
+                "c1=" + c1 +
+                '}';
+    }
+}
+
+</code></pre>
+
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
 
 
 
