@@ -34,7 +34,7 @@ var getRecords = function() {
           console.log("Found the following records");
           console.log(records);
           resolve(records);
-          client.close();
+          //client.close();
         });
     });
   });
@@ -52,7 +52,7 @@ var insertRecords = function(records) {
        function(err, r) {
         assert.equal(err, null);
         console.log("Number of records inserted " + r.insertedCount);
-        client.close();
+        //client.close();
       });
     });
   }
@@ -92,7 +92,7 @@ function updateRecords(
     ) {
       assert.equal(err, null);
       console.log("after Updated " + util.inspect(r.result));
-      client.close();
+      //client.close();
     });
   });
 }
@@ -109,7 +109,7 @@ function deleteRecord(id) {
     ) {
       assert.equal(err, null);
       console.log("after delete " + util.inspect(r.result));
-      client.close();
+     // client.close();
     });
   });
 }
