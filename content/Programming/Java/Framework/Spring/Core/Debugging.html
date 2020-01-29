@@ -1,0 +1,23 @@
+<h2><b> Debugging </b></h2>
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4<b> Print all the beans created by Spring Container.</b></h4>
+
+<pre class="language-java line-numbers"><code>
+
+//Autowire ApplicationContext as dependency as 
+@Autowired
+ApplicationContext applicationContext;
+
+for(String name : applicationContext.getBeanDefinitionNames() ) {
+	try{
+		System.out.println(name + " -- " + ApplicationContextProvider.getApplicationContext().getBean(name).toString() ) ;
+	}catch(Exception ex){
+		System.out.println("ERROR " +  name );
+	}
+} 
+</code></pre>
+
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<hr>
