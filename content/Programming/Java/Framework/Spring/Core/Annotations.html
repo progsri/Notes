@@ -261,6 +261,45 @@ Type3{c1=com.ninjashore.sample.Components.Type2@df4b72}
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
+<h4><b> @PropertySource  </b></h4>
+<p> 
+  By default properties are looked at <mark> application.properties </mark>, but if you want to change to a new properties file then
+  you can acheive with this <code> @PropertySource("classpath:<new-file-name>") </code>. Create the new file in <mark> resources </mark>
+</p>
+
+<pre class="language-java line-numbers"><code>
+
+@SpringBootApplication()
+@PropertySource("classpath:test.properties")
+public class SampleApplication2 {
+    public static void main(final String[] args) {
+        SpringApplication.run(SampleApplication2.class, args);
+    }
+}
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> @Valid  </b></h4>
+<p> 
+  @valid looks for the property key at default location <mark> application.properties </mark> which can be changed by <code>
+  @PropertySource </code>. To interpolate the value use <code> ${} </code>
+</p>
+
+<pre class="language-java line-numbers"><code>
+@Component
+public class ClassA2 {
+
+    @Value("${p1}")
+    private String p1;
+
+    @PostConstruct
+    public void m1(){
+        System.out.println(this.p1);   /// Prints the value of p1 picked up application.properties.
+    }
+}
+</code></pre>
 
 
 <!------------------------------------------------------------------------------------------------------------------------->
