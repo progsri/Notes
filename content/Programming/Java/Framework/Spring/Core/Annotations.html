@@ -281,7 +281,7 @@ public class SampleApplication2 {
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
-<h4><b> @Valid  </b></h4>
+<h4><b> @Valid  - application properties </b></h4>
 <p> 
   @valid looks for the property key at default location <mark> application.properties </mark> which can be changed by <code>
   @PropertySource </code>. To interpolate the value use <code> ${} </code>
@@ -300,6 +300,36 @@ public class ClassA2 {
     }
 }
 </code></pre>
+
+<!----------------------------------------------------------->
+<h4><b> @Valid  - system properties </b></h4>
+<p> 
+  <code> #{systemProperties['propertykey']} </code>  gives the system property value for propertykey.
+</p>
+
+<pre class="language-java line-numbers"><code>
+@Component
+public class ClassA2 {
+
+    @Value("#{systemProperties['java.runtime.version']}")
+    private String p1;
+
+    @PostConstruct
+    public void m1(){
+        System.out.println(this.p1); // this would print the system property java.runtime.version=1.8.0_221-b11
+    }
+}
+
+</code></pre>
+
+<!----------------------------------------------------------->
+
+<h4><b> @Valid  - JVM arguments </b></h4>
+<p class="text-danger"> 
+  How to read JVM argument
+</p>
+
+<!----------------------------------------------------------->
 
 
 <!------------------------------------------------------------------------------------------------------------------------->
