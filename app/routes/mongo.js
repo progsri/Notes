@@ -31,10 +31,10 @@ var getRecords = function() {
         .sort({ updatedon: -1 })
         .toArray(function(err, records) {
           assert.equal(err, null);
-          //console.log("Found the following records");
+          console.log("Found the following records");
           console.log(records);
           resolve(records);
-          //client.close();
+          client.close();
         });
     });
   });
@@ -42,6 +42,7 @@ var getRecords = function() {
 
 var insertRecords = function(records) {
   if (records.length > 0) {
+    console.log("number of records to insert " + records.length);
     client.connect(function(err) {
       const db = client.db(dbName);
       const collection = db.collection("Notes");
@@ -51,7 +52,7 @@ var insertRecords = function(records) {
        function(err, r) {
         assert.equal(err, null);
         console.log("Number of records inserted " + r.insertedCount);
-        //client.close();
+        client.close();
       });
     });
   }
@@ -84,13 +85,14 @@ function updateRecords(
         updatedon: updatedon
       }
     };
+    console.log("updateMany");
     collection.updateMany(filter, operation, { upsert: false }, function(
       err,
       r
     ) {
       assert.equal(err, null);
       console.log("after Updated " + util.inspect(r.result));
-      //client.close();
+      client.close();
     });
   });
 }
@@ -100,12 +102,14 @@ function deleteRecord(id) {
     const db = client.db(dbName);
     const collection = db.collection("Notes");
     let filter = { _id: id };
+    
+    console.log("deleteOne");
     collection.deleteOne(filter, { upsert: true }, function(
       err,r
     ) {
       assert.equal(err, null);
       console.log("after delete " + util.inspect(r.result));
-      //client.close();
+      client.close();
     });
   });
 }
