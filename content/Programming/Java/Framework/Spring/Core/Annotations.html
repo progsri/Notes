@@ -329,8 +329,35 @@ public class ClassA2 {
   How to read JVM argument
 </p>
 
+<!----------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> @ComponentScan </b></h4>
+<p>
+  Takes the one or more package names for argument <code> basePackages </code>. Then Spring Container will look in the classpath for
+  these packages, if found will look for spring defined annotation sucb as @Component, @Controller, @Service, @Configuration and perform
+  the necessary steps.
+</p>
+<pre class="language-java line-numbers"><code>
+
+@SpringBootApplication
+@ComponentScan(basePackages = {"com.ninjashore.sample.Components","com.ninjashore.sample.OOP"})
+public class Start {
+    public static void main(final String[] args) {
+        SpringApplication.run(Start.class, args);
+    }
+}
+
+</code></pre>
+
 <!----------------------------------------------------------->
 
+<h4><b> @ComponentScan - includeFilters </b></h4>
+
+
+<!----------------------------------------------------------->
+
+<h4><b> @ComponentScan - excludeFilters </b></h4>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
