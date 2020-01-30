@@ -338,6 +338,7 @@ public class ClassA2 {
   these packages, if found will look for spring defined annotation sucb as @Component, @Controller, @Service, @Configuration and perform
   the necessary steps.
 </p>
+
 <pre class="language-java line-numbers"><code>
 
 @SpringBootApplication
@@ -354,10 +355,34 @@ public class Start {
 
 <h4><b> @ComponentScan - includeFilters </b></h4>
 
+<p>
+  Using includeFilters we can include packages using <code> @Filter </code> type such as regex, aspectj or custom while performing
+  the component scan, so Spring would only look under these packages.
+</p>
+
+<pre class="language-java line-numbers"><code>
+@ComponentScan(basePackages = "org.example",includeFilters = @Filter(type = FilterType.REGEX, pattern = ".*Stub.*Repository")
+</code></pre>
 
 <!----------------------------------------------------------->
 
 <h4><b> @ComponentScan - excludeFilters </b></h4>
+
+<p>
+  Using excludeFilters we can exclude packages using <code> @Filter </code> type such as regex, aspectj or custom while performing
+  the component scan, so Spring would not look under these packages.
+</p>
+
+<pre class="language-java line-numbers"><code>
+@ComponentScan(basePackages = "org.example", excludeFilters = @Filter(Repository.class))
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+
+<h4><b> @Filter </b></h4>
+<p>
+  Used with <code> @ComponentScan </code> to filter out the type of packages.
+</p>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
