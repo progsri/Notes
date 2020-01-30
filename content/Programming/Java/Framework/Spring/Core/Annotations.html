@@ -384,5 +384,26 @@ public class Start {
   Used with <code> @ComponentScan </code> to filter out the type of packages.
 </p>
 
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+
+<h4><b> @Import </b></h4>
+<p>
+  IT is used to import the <code> @Configuration </code> annotated java class. Sometimes when The @Configuration class is not in the 
+  packages Spring is looking under then we can explicit import it.
+</p>
+<p>
+  Also when we import a regular java class ( non @Configuration class )  with Spring annotations such as @Component etc... then
+  Spring simply creates the bean.
+</p>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+
+<h4><b> @ImportResource </b></h4>
+<p>
+   We can import  the old XML file using this.
+</p>
+
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
