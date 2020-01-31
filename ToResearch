@@ -26,3 +26,8 @@ what is lazy-init, init-method, destroy-method, depends-on?
    at https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#beans-dependencies
    a large number of constructor arguments is a bad code smell, implying that the class likely has too many responsibilities and
    should be refactored to better address proper separation of concerns.
+23. Explore Bind9 for DNS features.
+24. Explore Kea for DHCP features.
+25. Explore Ha Proxy for L4 load balancing features.
+26. Expore Nginx for web server features.
+
