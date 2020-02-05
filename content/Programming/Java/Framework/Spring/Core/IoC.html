@@ -114,6 +114,22 @@
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
+<h4><strong> Bean Name </strong></h4>
+<p>
+  Beans are named by the class implementing this interface <code> org.springframework.beans.factory.support.BeanNameGenerator </code>. 
+</p>
+<p>
+   If you mention <code> @Component("name1") </code> then a bean with the name "name1" would be created in the 
+   container. 
+</p>
+<p>
+   If no name is explicitly mentioned then Spring creates beans with  first letter as small letter in the name. For example 
+   ResourceCreater.class would have a bean name as resourceCreator.
+</p>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
 <h4><strong> Autowiring ( Dependency Injection ) </strong></h4>
 <p>
    <span class="text-danger"> Benefits </span>
