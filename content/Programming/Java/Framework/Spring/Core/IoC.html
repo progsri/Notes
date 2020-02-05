@@ -675,10 +675,15 @@ After BeanPostProcessor class com.ninjashore.sample.Components.ClassG  ClassG{cl
 
 <h4><b> Avoiding CGLIB proxying </b></h4>
 
+<p>
+   If you want to avoid Spring from adding CGLIB proxying for beans.
+</p>
 <p class="text-danger">
-   If you want to avoid Spring from adding CGLIB proxying for beans. One way is to mark the method as static which is annotated with
-   <code> @Bean </code> inside a <code> @Configuration </code> class. Another way is to  create a bean inside a <code> @Component 
-   </code> class ( yes we can create bean using @Component with out the need for @Configuration ). 
+   One way is to mark the method as static which is annotated with <code> @Bean </code> inside a <code> @Configuration </code> class. 
+</p>
+<p class="text-danger">
+   Another way is to create a bean inside a <code> @Component </code> class ( yes we can create bean using @Component with out
+   the need for @Configuration ). 
 </p>
 
 <!------------------------------------------------------------------------------------------------------------------------->
