@@ -27,6 +27,14 @@ public class ClassD {
 }
 </code></pre>
 
+<p class="text-danger">
+  Can be used with @Component as well in this case Spring would not use CGLIB proxying as it did with <code> @Configuration </code>
+</p>
+
+<p class="text-danger">
+   If the method marked with @Bean in the class marked with @Configuration is static then Spring would not use CGLIB proxying.
+</p>
+
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
