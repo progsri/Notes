@@ -699,6 +699,36 @@ After BeanPostProcessor class com.ninjashore.sample.Components.ClassG  ClassG{cl
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 <hr>
+
+<h4><b> Programatically create beans </b></h4>
+<p>
+   This way we can create beans from configuration class at runtime.
+</p>
+<pre class="language-java line-numbers"><code>
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+    context.register(Config1.class, Config2.class); // These classes contains @Bean
+    context.refresh();
+    
+    Service1 serv = context.getBean(Service1.class);
+    serv.doStuff();
+</code></pre>
+<pre class="language-java line-numbers"><code>
+</code></pre>
+
+<p>
+   This way we can create beans by scanning for packages at runtime.
+</p>
+<pre class="language-java line-numbers"><code>
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+    context.scan("com.ninjashore");
+    context.refresh();
+    
+    Service1 serv = context.getBean(Service1.class);
+    serv.doStuff();
+</code></pre>
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<hr>
 <h4> <b> References </b> </h4>
 <a href="https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html"> Spring 5.2 Core reference document </a>
 
