@@ -447,6 +447,12 @@ afterPropertiesSet
    destroy method of Disposable interface is executed.
 </p>
 
+<p>
+   If a a bean methods <mark> close </mark> or <mark> shutdown </mark> then Spring calls these methods as part of the destruction 
+   lifecycle, to avoid this behaviour simple mark as destroyMethod="", this tells spring not to call any destruction lifecycle methods
+   and as part of that these methods also would not be called. 
+</p>
+
 
 <h5><b class="text-danger"> -- Startup  </b></h5>
 
