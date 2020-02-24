@@ -1,0 +1,19 @@
+<h2><b> Issues </b></h2>
+<hr>
+
+<h4><b> ZuulException </b></h4>
+<p>
+  One of the way this issue occurs is when the threadpool executor used by the Zuul's ( Gateway's ) Hysterix has used up all 
+  the threads. Hysterix is the one which sents out HTTP requests to the applications.By default Hysterix uses default 
+  <a href="https://github.com/Netflix/Hystrix/wiki/Configuration">  threadpool executor configuration, which have very 
+  minimum threads and no queue to store the requests after all the threads are in  active use. So When a new request comes 
+  when all threads are in active usage with no queue configured to store them, all requests submitted to threadpool will
+  immediately fails resulting in Gateway throwing a 500 HTTP with Zuul Exception.
+</p>
+
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------>
+<hr>
