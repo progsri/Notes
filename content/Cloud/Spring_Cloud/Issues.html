@@ -11,7 +11,17 @@
   immediately fails resulting in Gateway throwing a 500 HTTP with Zuul Exception.
 </p>
 
+<p>
+  Solution for this is to configure the threadpool executor according to the application load, using parameters such as
+  coreSize, maxQueueSize. 
+</p>
 
+<p>
+  If <b>maxQueueSize</b> is very large, then all the applications calling other applications would be sitting in the queue 
+  when all the threads are active for a longer time until the threads are free to process them, this might lead to 
+  <code> feign.RetryableException: Read timed out </code> at the calling application if the feign client as lesser timeout
+  value. We can increase <code> feign.client.config.default.readTimeout </code> value.
+</p>
 
 
 
