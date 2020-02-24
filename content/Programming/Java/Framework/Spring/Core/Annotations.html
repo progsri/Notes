@@ -35,6 +35,22 @@ public class ClassD {
    If the method marked with @Bean in the class marked with @Configuration is static then Spring would not use CGLIB proxying.
 </p>
 
+<p>
+  For the below code Spring takes care of injecting ServiceB before calling ServiceA ( kind of like <code>@Autowired</code> ) due to
+  the presence of <mark> @Bean </mark>.
+</p>
+<pre class="language-java line-numbers"><code>
+@Configuration
+public class ClassD {
+
+    @Bean
+    public void ServiceA(ServiceB serviceB){
+       //logic
+    }
+}
+</code></pre>
+
+
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
