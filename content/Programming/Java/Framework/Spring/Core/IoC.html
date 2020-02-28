@@ -307,8 +307,16 @@ public class ClassLazy {
 <!----------------------------------------->
 
 <h5><b> -- Prototype </b></h5>
-<p> Annotated as <code> @Scope("prototype") </code> along with <code> @Component </code> </p>
-<p> When ever this object is requested, container creates a new bean. </p>
+<p> Annotated as <code> @Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS) </code> along with
+   <code> @Component </code> 
+</p>
+<p> 
+   When ever this object is requested, container creates a new bean, For this to happen you need mention the type of proxy needed.
+   Proxy is specified by ProxyMode. Refer the annotation section for example.
+</p>
+<p class="text-danger">
+   Without proxyMode and with @Scope("prototype") it behaves like a singleton bean.
+</p>
 <p> Good for stateful objects. </p>
 <p class="text-danger"> Destruction lifecycle callbacks are not called, it is upto the code to clean up the beans, for Spring to 
    clean up the beans use bean post processor.
