@@ -136,9 +136,53 @@ public class ClassLazy {
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
-<h4><b> @Scope </b></h4>
+<h4><b> @Scope default is singleton </b></h4>
 <p> Refer </p>
 <p> takes argument on the type of the scope such as singleton, prototype </p>
+
+<!------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> @Scope("prototype") </b></h4>
+<p> takes argument on the type of the scope such as singleton, prototype </p>
+
+<p>
+  The below code does not create prototype bean, it behavies like a singleton bean.
+</p>
+<pre class="language-java line-numbers"><code>
+
+@Bean
+@Scope(value = "prototype")
+public Component3 m1(){
+     return new Component3();
+}
+
+@Component
+@Scope(value = "prototype")
+public class Component1{
+
+    private String date;
+
+    public void change(){
+        date = new Date().toString();
+    }
+}
+
+</code></pre>
+
+<p>
+  To make it behave like a prototype bean, we need to use proxy, which means instead of injecting the bean Spring will inject the 
+  proxy so that when using the proxy the code goes thr
+</p>
+<pre class="language-java line-numbers"><code>
+
+</code></pre>
+
+
+<pre class="language-java line-numbers"><code>
+
+</code></pre>
+
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
