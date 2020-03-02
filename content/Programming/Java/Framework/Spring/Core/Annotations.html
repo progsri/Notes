@@ -50,6 +50,33 @@ public class ClassD {
 }
 </code></pre>
 
+<p>
+    We can provide a bean with a custom name 
+</p>
+<pre class="language-java line-numbers"><code>
+@Configuration
+public class ClassD {
+
+    @Bean(name="customName")
+    public void ServiceA(ServiceB serviceB){
+       //logic
+    }
+}
+</code></pre>
+
+<p>
+    We can provide a bean with multiple names
+</p>
+<pre class="language-java line-numbers"><code>
+@Configuration
+public class ClassD {
+
+    @Bean({"name-1", "name-2", "name-3"})
+    public void ServiceA(ServiceB serviceB){
+       //logic
+    }
+}
+</code></pre>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
