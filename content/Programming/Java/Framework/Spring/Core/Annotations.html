@@ -147,7 +147,7 @@ public class ClassLazy {
 <p> takes argument on the type of the scope such as singleton, prototype </p>
 
 <p>
-  The below code does not create prototype bean, it behavies like a singleton bean.
+  The below code does <b> not </b> create prototype bean, it behaves like a singleton bean.
 </p>
 <pre class="language-java line-numbers"><code>
 
@@ -156,6 +156,8 @@ public class ClassLazy {
 public Component3 m1(){
      return new Component3();
 }
+
+//-----------------------------------
 
 @Component
 @Scope(value = "prototype")
@@ -171,18 +173,80 @@ public class Component1{
 </code></pre>
 
 <p>
-  To make it behave like a prototype bean, we need to use proxy, which means instead of injecting the bean Spring will inject the 
-  proxy so that when using the proxy the code goes thr
+  To make it behave like a prototype bean, we need to use proxy, which means instead of injecting the bean, <mark>Spring will inject a 
+  proxy bean </mark>, this proxy bean will have the prototype bean. spring injects proxy beans due to the fact that  a bean can be
+  injected only once.
+  So the prototype bean (  also means new bean ) is created each time the methods in the proxy bean are called at runtime. So a proxy
+  bean will have all the methods to either use existing bean or create a new bean by looking at the annotation of the bean. Prototype,
+  RequestScope and SessionScope in general require new bean.
 </p>
+<p>
+   TO create a prototype bean, we can ask Spring to inject Proxy in 2 different ways.
+</p>
+
+<p> ScopedProxyMode as TARGET_CLASS, this inject a CGLIB based proxy, this does not require a Interface that the Class/bean has to 
+  implement.</p>
 <pre class="language-java line-numbers"><code>
 
+public class Component3 {
+}
+
+@Bean
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
+public Component3 m1(){
+     return new Component3();
+}
+
+//-----------------------------------
+
+@Component
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class Component1{
+
+    private String date;
+
+    public void change(){
+        date = new Date().toString();
+    }
+}
 </code></pre>
 
 
+<p> ScopedProxyMode as INTERFACES, this inject a JDK Dynamic proxy, this <b> needs </b> a Interface that the Class/bean has to
+  implement.</p>
 <pre class="language-java line-numbers"><code>
 
-</code></pre>
+public class Component3 implements ComponentType {
+   public void change(){
+        date = new Date().toString();
+    }
+}
 
+@Bean
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.INTERFACES)
+public Component3 m1(){
+     return new Component3();
+}
+
+//-----------------------------------
+
+@Component
+@Scope(value = "prototype", proxyMode = ScopedProxyMode.INTERFACES)
+public class Component1 implements ComponentType{
+
+    private String date;
+
+    public void change(){
+        date = new Date().toString();
+    }
+}
+
+public interface ComponentType {
+
+    public void change();
+}
+
+</code></pre>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
