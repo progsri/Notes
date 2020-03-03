@@ -78,6 +78,55 @@ public class ClassD {
 }
 </code></pre>
 
+<!-------------------------------------------->
+<h6> Inter bean dependencies </h6>
+<p>
+  This is only applicable when <code> @Bean </code> is used with <code> @Configuration </code> and does <b> not </b> apply when
+  used with <code> @Component </code>
+</p>
+<p>
+  Spring to create component3 bean, it would not create component4 twice rather it would check in it's applicationContext if such
+  a bean exists and will use that (assuming singleton behaviour is required).
+</p>
+
+<pre class="language-java line-numbers"><code>
+@Component
+public class Component3 {
+
+    private Component4 component4;
+
+    @Autowired
+    public Component3(Component4 component4){
+        this.component4 = component4;
+    }
+
+}
+
+//---------------------------------
+
+@Component
+public class Component4 {
+}
+
+//-----------------------------------
+
+@org.springframework.context.annotation.Configuration
+public class Configuration {
+
+    @Bean
+    public Component3 getComponent3(){
+        return new Component3(getComponent4());
+    }
+
+    @Bean
+    public Component4 getComponent4(){
+        return new Component4();
+    }
+
+
+}
+
+</code></pre>
 
 <!------------------------------------------------------------------------------------------------------------------------->
 <hr>
