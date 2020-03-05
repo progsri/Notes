@@ -633,7 +633,7 @@ public class Start {
   be created. The below bean component3 will only be created if you pass the Profile as dev.
 </p>
 <p>
-  Profile takes multiple comma seperated profile values.
+  Profile takes multiple comma seperated profile values such as <code> -Dspring.profiles.active=dev,local </code>.
 </p>
 <pre class="language-java line-numbers"><code>
 @Component
@@ -644,6 +644,11 @@ public class Component3 {
 
 <p class="text-danger">
   Profile expressions such as ! | & can be used.
+</p>
+
+<p>
+  To create default profile which will create beans when no profile is mentioned <code> @Profile("default") </code>. The "default"
+  string can be changed accordingly.
 </p>
 
 <!------------------------------------------------------------------------------------------------------------------------------->
