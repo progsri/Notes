@@ -622,6 +622,22 @@ public class Start {
  
 </p>
 
+<!------------------------------------------------------------------------------------------------------------------------------->
+
+<h4><b> @Profile </b></h4>
+<p>
+  Let's you create beans only if you pass proper profile <code> -Dspring.profiles.active=dev </code>, otherwise the bean would not 
+  be created. The below bean component3 will only be created if you pass the Profile as dev.
+</p>
+<p>
+  Profile takes multiple comma seperated profile values.
+</p>
+<pre class="language-java line-numbers"><code>
+@Component
+@Profile("dev")
+public class Component3 {
+}
+</code></pre>
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 
