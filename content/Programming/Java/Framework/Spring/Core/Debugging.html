@@ -30,7 +30,12 @@ for(String name : applicationContext.getBeanDefinitionNames() ) {
 	ApplicationContext.
 </p>
 
-
+<p>
+    <code>applicationContext.getEnvironment().getProperty("property-name") </code> can also read property from <b> System Property </b>,
+    system properties are properties that are passed / configured to JVM ( can also be obtained at runtime by <code> 
+	System.getenv() </code> and can also read <b> Environment property </b>, which is operating system properties ( can also be
+	obtained from <code> System.getProperties() ) </code>
+</p>
 
 
 <!---------------------------------------------------------------------------------------------------------------------------------->
