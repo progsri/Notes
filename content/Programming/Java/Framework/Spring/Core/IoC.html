@@ -748,6 +748,32 @@ After BeanPostProcessor class com.ninjashore.sample.Components.ClassG  ClassG{cl
 
 <!------------------------------------------------------------------------------------------------------------------------------->
 <hr>
+
+<h4><b> Environment variables. </b></h4>
+
+<p>
+   The applicationContext is access to environment variables via <code> applicationContext.getEnvironment() </code>.
+</p>
+<p>
+  If a property is found in all the below locations, the order is as follows:
+   <ul>
+      <li> ServletConfig Parameters </li> 
+      <li> ServletContext Parameters - this is the context-param in web.xml </li> 
+      <li> JNDI environment variables </li> 
+      <li> System properties </li> 
+      <li> Environement Variables of the operating system </li> 
+   </ul>
+</p>
+<p>
+   If required we can change the Highest order of precendence for the property.
+</p>
+<pre class="language-java line-numbers"><code>
+   applicationContext.getEnvironment().getPropertySources().addFirst(new NewProperties())
+</code></pre>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------->
+<hr>
 <h4> <b> References </b> </h4>
 <a href="https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html"> Spring 5.2 Core reference document </a>
 
