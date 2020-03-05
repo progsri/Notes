@@ -21,3 +21,18 @@ for(String name : applicationContext.getBeanDefinitionNames() ) {
 
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <hr>
+
+<h4<b> At runtime to find the property name </b></h4>
+<p>
+	After autowiring ApplicationContext to applicationContext doing 
+	<code>applicationContext.getEnvironment().getProperty("property-name") </code> gives you the value for the property-name.
+	It can show the properties that the applicationContext is aware of. Remember a application can have more than one
+	ApplicationContext.
+</p>
+
+
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
