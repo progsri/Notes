@@ -71,7 +71,7 @@ value1_ja
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
-<h4><b>  Single default value </b></h4>
+<h4><b> Default value if not not found </b></h4>
 
 <p>
   In case if the key does not exist in the property file, we can use a default value per LOCALE.
@@ -82,6 +82,32 @@ applicationContext.getMessage("testaa", null,"Default-Value", Locale.ENGLISH);
 applicationContext.getMessage("testaa", null,"Default-Value-fr", Locale.FRENCH);
 </code></pre>
 
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b> Interpolation / substitution </b></h4>
+
+<p>
+  We can 
+</p>
+
+<pre class="language-java line-numbers"> <code>
+
+//file1.properties
+key1=values are {0}, {1}
+
+//file1_fr.properties
+key1=values are {0}, {1}
+
+applicationContext.getMessage("testa", new Object [] {"en1", "en2"},"Default", Locale.ENGLISH);
+
+applicationContext.getMessage("testa", new Object [] {"fr1", "fr2"},"Default", Locale.FRENCH);
+</code></pre>
+
+<pre class="language-java line-numbers"> <code>
+values are en1, en2
+values are fr1, fr2
+</code></pre>
 
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <hr>
