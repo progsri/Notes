@@ -50,6 +50,7 @@ key1=value2_ja
 
 
 //------------------------------
+// ApplicationContext can be injected
 applicationContext.getMessage("key1", null,"Default", Locale.ENGLISH); 
 applicationContext.getMessage("key1", null,"Default", Locale.FRANCE); 
 applicationContext.getMessage("key1", null,"Default", Locale.JAPAN); 
@@ -66,6 +67,20 @@ value1_ja
 <hr>
 
 <h4><b class="text-danger">  Custom location for properties file </b></h4>
+
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b>  Single default value </b></h4>
+
+<p>
+  In case if the key does not exist in the property file, we can use a default value per LOCALE.
+</p>
+
+<pre class="language-java line-numbers"> <code>
+applicationContext.getMessage("testaa", null,"Default-Value", Locale.ENGLISH);
+applicationContext.getMessage("testaa", null,"Default-Value-fr", Locale.FRENCH);
+</code></pre>
 
 
 <!---------------------------------------------------------------------------------------------------------------------------------->
