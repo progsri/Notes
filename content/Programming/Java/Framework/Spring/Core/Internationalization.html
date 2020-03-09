@@ -1,0 +1,72 @@
+<h4><b> Internationalization (i18n) </b> </h4>
+<hr>
+
+<h4><b> Basic configuration </b> </h4>
+
+<p>
+  Spring looks for the bean with a specific name <mark> messageSource </mark>.
+</p>
+<p>
+  Looks for the configured properties files( based on Basenames ) in the resources.
+</p>
+<p>
+  If a key is present in 2 files, based on the order of Basenames given, the first matching would take precedence.
+</p>
+<p>
+Based on the LOCALE <code> java.util.Locale </code> looks for the corresponding files that match the basenames. For example if 
+the basename is give file-3 then Spring will look for file-3.properties for LOCALE.ENGLISH, file-3_fr.properties for LOCALE.FRENCH,
+file-3_ja.properties for LOCALE.JAPAN in the resources.
+</p>
+
+<pre class="language-java line-numbers"> <code>
+@Configuration
+public class Message {
+
+    @Bean("messageSource")
+    public ResourceBundleMessageSource createMessageResource() {
+        ResourceBundleMessageSource resourceBundleMessageSource = new ResourceBundleMessageSource();
+        resourceBundleMessageSource.setBasenames("file1","file2","file3");
+        return resourceBundleMessageSource;
+    }
+}
+
+//file1.properties in resources
+key1=value1
+
+//file1_fr.properties in resources
+key1=value1_fr
+
+//file1_ja.properties in resources
+key1=value1_ja
+
+//file2.properties in resources
+key1=value2
+
+//file2_fr.properties in resources
+key1=value2_fr
+
+//file2_ja.properties in resources
+key1=value2_ja
+
+
+//------------------------------
+applicationContext.getMessage("key1", null,"Default", Locale.ENGLISH); 
+applicationContext.getMessage("key1", null,"Default", Locale.FRANCE); 
+applicationContext.getMessage("key1", null,"Default", Locale.JAPAN); 
+</code></pre>
+
+<pre class="language-sh line-numbers"> <code>
+value1
+value1_fr
+value1_ja
+</code></pre>
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4><b class="text-danger">  Custom location for properties file </b></h4>
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<hr>
