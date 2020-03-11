@@ -86,8 +86,8 @@ session=[null]; user=[null]; time=[1383ms]; status=[OK]
 <p>
   One usage is, let say we get an exception or http 500 error while making calls to third party. We can then emit a custom event that
   would record the error in a database, the code that records to the database would be in the event listener where you register the 
-  event.
-  <span class="text-danger"> What is the use of this when we can directly make a DAO call ..there is no need to emit a event </span>
+  event. This is evry useful when you have external jar that emits these events and in your code you can register the events to perform
+  the required steps to operate on it..may be you can drop it in a queue or sql engine or make a http call to log it to splunk.
 </p>
 
 <p> Create the custom event you want to generate</p>
