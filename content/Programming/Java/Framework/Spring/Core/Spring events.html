@@ -1,0 +1,32 @@
+<h4> <b> Spring Events - @EventListener </b> </h4>
+<hr>
+
+<p> 
+  spring lets you to listen to specfic events.
+</p>
+
+<h4> <b> ContextRefreshedEvent </b> </h4>
+<p>
+   This event is generated when the application context is initialized or refreshed.
+</p>
+<p>
+  When you start the application, the below event is captured as the context is initialized.
+</p>
+<pre class="language-java line-numbers"><code>
+@Component
+public class EventHandle{
+
+    @EventListener
+    public void handleContextRefresh(ContextRefreshedEvent event) {
+        System.out.println("EventHandle :: " + event);
+    }
+}
+</code></pre>
+<pre class="language-java line-numbers">><code>
+EventHandle1 :: org.springframework.context.event.ContextRefreshedEvent
+[source=org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@c667f46,
+started on Wed Mar 11 11:43:10 CDT 2020]
+</code></pre>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
