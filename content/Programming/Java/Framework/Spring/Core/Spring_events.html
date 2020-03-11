@@ -25,7 +25,7 @@ public class EventHandle{
     }
 }
 </code></pre>
-<pre class="language-java line-numbers">><code>
+<pre class="language-java line-numbers"><code>
 EventHandle :: org.springframework.context.event.ContextRefreshedEvent
 [source=org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@c667f46,
 started on Wed Mar 11 11:43:10 CDT 2020]
@@ -48,7 +48,7 @@ public class EventHandle{
     }
 }
 </code></pre>
-<pre class="language-java line-numbers">><code>
+<pre class="language-java line-numbers"><code>
 EventHandle :: ServletRequestHandledEvent: url=[/test]; client=[0:0:0:0:0:0:0:1]; method=[GET]; servlet=[dispatcherServlet];
 session=[null]; user=[null]; time=[1383ms]; status=[OK]
 </code></pre>
@@ -74,5 +74,62 @@ session=[null]; user=[null]; time=[1383ms]; status=[OK]
 
 <h4> <b class="text-danger"> ServletRequestHandledEvent </b> </h4>
 
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b> Custom Event </b> </h4>
+
+<p>
+    We can also generate custom events from the application.
+</p>
+<p>
+  One usage is, let say we get an exception or http 500 error while making calls to third party. We can then emit a custom event that
+  would record the error in a database, the code that records to the database would be in the event listener where you register the 
+  event.
+  <span class="text-danger"> What is the use of this when we can directly make a DAO call ..there is no need to emit a event </span>
+</p>
+
+<p> Create the custom event you want to generate</p>
+<pre class="language-java line-numbers"><code>
+public class CustomEvent {
+}
+</code></pre>
+
+<p> Register the custom event </p>
+<pre class="language-java line-numbers"><code>
+@Component
+public class EventHandle{
+
+    @EventListener
+    public void custom(CustomEvent event) {
+        System.out.println("CustomEvent :: " + event);
+    }
+}
+</code></pre>
+
+<p> 
+  when needed emit the event, to emit you need <code> ApplicationEventPublisherAware </code> which has the <code> publishEvent</code>
+  method.
+</p>
+<pre class="language-java line-numbers"><code>
+@Component
+public class CustomEventPublisher implements ApplicationEventPublisherAware {
+
+    private ApplicationEventPublisher applicationEventPublisher;
+
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        this.applicationEventPublisher = applicationEventPublisher;
+    }
+
+    public void sendEvent(){
+        applicationEventPublisher.publishEvent(new CustomEvent());
+    }
+}
+</code></pre>
+<pre class="language-sh line-numbers"><code>
+CustomEvent :: com.ninjashore.springframework.general.CustomEvent@2e91a487
+</code></pre>
 <!----------------------------------------------------------------------------------------------------------------------------------->
 <hr>
