@@ -5,6 +5,9 @@
   spring lets you to listen to specfic events.
 </p>
 
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
 <h4> <b> ContextRefreshedEvent </b> </h4>
 <p>
    This event is generated when the application context is initialized or refreshed.
@@ -23,10 +26,53 @@ public class EventHandle{
 }
 </code></pre>
 <pre class="language-java line-numbers">><code>
-EventHandle1 :: org.springframework.context.event.ContextRefreshedEvent
+EventHandle :: org.springframework.context.event.ContextRefreshedEvent
 [source=org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@c667f46,
 started on Wed Mar 11 11:43:10 CDT 2020]
 </code></pre>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b> RequestHandledEvent </b> </h4>
+<p>
+   This event is generated when the a http request is processed and while response is being sent out.
+</p>
+<pre class="language-java line-numbers"><code>
+@Component
+public class EventHandle{
+
+       @EventListener
+    public void handleContextRefresh(RequestHandledEvent event) {
+        System.out.println("EventHandle :: " + event);
+    }
+}
+</code></pre>
+<pre class="language-java line-numbers">><code>
+EventHandle :: ServletRequestHandledEvent: url=[/test]; client=[0:0:0:0:0:0:0:1]; method=[GET]; servlet=[dispatcherServlet];
+session=[null]; user=[null]; time=[1383ms]; status=[OK]
+</code></pre>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b class="text-danger"> ContextStartedEvent </b> </h4>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b class="text-danger"> ContextStoppedEvent </b> </h4>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b class="text-danger"> ContextClosedEvent </b> </h4>
+
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b class="text-danger"> ServletRequestHandledEvent </b> </h4>
 
 <!----------------------------------------------------------------------------------------------------------------------------------->
 <hr>
