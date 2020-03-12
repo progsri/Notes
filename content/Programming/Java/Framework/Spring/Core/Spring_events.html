@@ -165,6 +165,19 @@ public void EventHandle() {
 <!----------------------------------------------------------------------------------------------------------------------------------->
 <hr>
 
+<h4> <b> Filtering events by Spring Expression language (SpEL) </b> </h4>
+<p>
+    We can choose to act on only few events by filtering them using Spring Expression language (SpEL) on <code> condition </code>
+</p>
+<pre class="language-sh line-numbers"><code>
+@EventListener(condition = "#blEvent.content == 'specific-event'")
+public void EventHandle(CustomEvent blEvent) {.
+}
+</code></pre>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
 <h4> <b> Chaining events </b> </h4>
 
 <p>
