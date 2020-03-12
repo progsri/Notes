@@ -162,7 +162,7 @@ CustomEvent :: com.ninjashore.springframework.general.CustomEvent@2e91a487
 <p>
   If certain events that do the same operation need to be grouped, it can be done as follows.
 </p>
-<pre class="language-sh line-numbers"><code>
+<pre class="language-java line-numbers"><code>
 @EventListener({ContextStartedEvent.class, ContextRefreshedEvent.class})
 public void EventHandle() {
 }
@@ -175,7 +175,7 @@ public void EventHandle() {
 <p>
     We can choose to act on only few events by filtering them using Spring Expression language (SpEL) on <code> condition </code>
 </p>
-<pre class="language-sh line-numbers"><code>
+<pre class="language-java line-numbers"><code>
 @EventListener(condition = "#blEvent.content == 'specific-event'")
 public void EventHandle(CustomEvent blEvent) {.
 }
@@ -192,7 +192,7 @@ public void EventHandle(CustomEvent blEvent) {.
 <p>
   In the below code once event CustomEventOne operation is done, it emits another event CustomEventTwo...and this can be chained so on.
 </p>
-<pre class="language-sh line-numbers"><code>
+<pre class="language-java line-numbers"><code>
 @Component
 public class EventHandle{
 
@@ -212,5 +212,37 @@ public class EventHandle{
 }
 </code></pre>
 
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b> Ordering of events </b> </h4>
+<p>
+   <code> @Order </code> lets you invoke a particular event listener first, we can give priority to one listener over the other
+  when we have multiple event listener on the same event.
+</p>
+<pre class="language-java line-numbers"><code>
+@Component
+public class EventHandle{
+
+    @EventListener
+    @Order(2)
+    public void handleContextRefresh1(RequestHandledEvent event) {
+        System.out.println("EventHandle1 :: " + event);
+    }
+
+    @EventListener
+    @Order(1)
+    public void handleContextRefresh2(RequestHandledEvent event) {
+        System.out.println("EventHandle2 :: " + event);
+    }
+}
+</code></pre>
+<pre class="language-sh line-numbers"><code>
+EventHandle2 :: ServletRequestHandledEvent: url=[/test]; client=[0:0:0:0:0:0:0:1]; method=[GET]; 
+servlet=[dispatcherServlet]; session=[null]; user=[null]; time=[2ms]; status=[OK]
+EventHandle1 :: ServletRequestHandledEvent: url=[/test]; client=[0:0:0:0:0:0:0:1]; method=[GET]; 
+servlet=[dispatcherServlet]; session=[null]; user=[null]; time=[2ms]; status=[OK]
+</code></pre>
 <!----------------------------------------------------------------------------------------------------------------------------------->
 <hr>
