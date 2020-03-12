@@ -148,5 +148,50 @@ public class CustomEventPublisher {
 <pre class="language-sh line-numbers"><code>
 CustomEvent :: com.ninjashore.springframework.general.CustomEvent@2e91a487
 </code></pre>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b> Grouping events </b> </h4>
+<p>
+  If certain events that do the same operation need to be grouped, it can be done as follows.
+</p>
+<pre class="language-sh line-numbers"><code>
+@EventListener({ContextStartedEvent.class, ContextRefreshedEvent.class})
+public void EventHandle() {
+}
+</code></pre>
+
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<hr>
+
+<h4> <b> Chaining events </b> </h4>
+
+<p>
+  If one event needs to trigger another event, we just need to call <code> publishEvent </code> once we received the first event. 
+</p>
+<p>
+  In the below code once event CustomEventOne operation is done, it emits another event CustomEventTwo...and this can be chained so on.
+</p>
+<pre class="language-sh line-numbers"><code>
+@Component
+public class EventHandle{
+
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
+
+    @EventListener
+    public void custom(CustomEventOne event) {
+        System.out.println("CustomEvent :: " + event);
+         applicationEventPublisher.publishEvent(new CustomEventTwo()); // Calls another event.
+    }
+    
+     @EventListener
+    public void custom(CustomEventTwo event) {
+        System.out.println("CustomEvent :: " + event);
+    }
+}
+</code></pre>
+
 <!----------------------------------------------------------------------------------------------------------------------------------->
 <hr>
