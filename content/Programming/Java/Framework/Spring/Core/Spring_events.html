@@ -5,6 +5,12 @@
   Spring lets you to listen to specfic events. This lets the application behave accordingly for known Spring events or we can develop
   a mechanism to act on based on our custom events.
 </p>
+<p>
+  The method annotated with <code> @EventListener </code> is synchronous that is the same thread which emitted the event would process
+  the code inside eventlistener, we can either choose spawn another <code> Thread </code> or annotate the method using <code> @Async 
+  </code> for asynchronous processing.
+</p>
+
 
 <!----------------------------------------------------------------------------------------------------------------------------------->
 <hr>
