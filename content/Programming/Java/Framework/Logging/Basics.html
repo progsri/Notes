@@ -16,6 +16,13 @@ Examples
 </ul>
 
 <h4> <b> Implementors </b> </h4>
+<p>
+  These frameworks are the actual code that do the logging. They can choose to implement the bridges or not, if they choose
+  to implement the bridges like logback implements SLF4j then where ever SLF4J is used we can simply drop the logback in the
+  <code> pom.xml </code> and start logging, so by implementing the well know bridges the implementors have a higher chance to
+  be adopted as the pplication developers tend to use the bridges so that in the long future if the present implementor is 
+  not maintained then they can look for other implementors of that bridge.
+</p>
 
 Examples
 <ul>
