@@ -1,0 +1,21 @@
+<h2><b> dependencyManagement </b></h2>
+<hr>
+
+<p>
+<code> dependencyManagement </code> is used when more than one module is using the same dependency. It is always part of the 
+parent. We mark all the common dependenices under dependencyManagement tag and then in the module ( child ) we will have to 
+explicity mention the dependency we need under the <code> dependencies </code>.
+</p>
+
+<p>
+  It helps to keep all the dependencies and the version same in all the modules. Without this each module might use a different
+  version of the dependency as they can mention the version explicity.
+</p>
+
+<p>
+  <code>  dependencyManagement </code> does not download the dependencies, the modules should explicity mention the dependency
+  they need under <code> dependencies <code>
+</p>
+
+<hr>
+
