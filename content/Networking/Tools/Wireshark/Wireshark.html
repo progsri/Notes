@@ -19,9 +19,15 @@
   The maximum packet size is <mark> 1500 bytes </mark> for Ethernet v2.Which means even though a device in the routing path
   can send a bigger packet it is still effected by the small MTU device. As most of the consumers user Ethernet v2 between
   internet provider and router we see that 1500 bytes is the maximum size of the packet for internet. This is also the 
-  reason for our network cards having <code> MTU </code> as 1500 bytes as seen in the below image.
+  reason for our network cards having <code> MTU </code> as 1500 bytes except loopback interface as seen in the below image.
 </p>
 <img src="./images/nic_mtu.png" width="1100" height="800" >
+
+<h4><b> loopback interface MTU </b> </h4> 
+<p class="text-danger">
+   Why does the loopback interface have greater than 1500 bytes MTU 
+<p>
+<img src="./images/loopback_mtu.png" width="1100" height="800" >
 
 
 <hr>
