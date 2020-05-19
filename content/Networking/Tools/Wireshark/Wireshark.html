@@ -9,3 +9,21 @@
   this packet ( just ignore the first part which is the wireshark's frame ).
 </p>
 <img src="./images/Wireshark_frame.png" width="1100" height="800" >
+
+<h4><b> Size of the packet </b> </h4> 
+<p>
+ In the wireshark frame section, there is the packet size in bytes and bits. This size is not part of the standard
+  packet but only added by wireshar ( as discussed above ).
+</p>
+<p>
+  The maximum packet size is <mark> 1500 bytes </mark> for Ethernet v2.Which means even though a device in the routing path
+  can send a bigger packet it is still effected by the small MTU device. As most of the consumers user Ethernet v2 between
+  internet provider and router we see that 1500 bytes is the maximum size of the packet for internet. This is also the 
+  reason for our network cards having <code> MTU </code> as 1500 bytes as seen in the below image.
+</p>
+<img src="./images/nic_mtu.png" width="1100" height="800" >
+
+
+<hr>
+<h4><b> References </b> </h4> 
+<a href="https://en.wikipedia.org/wiki/Maximum_transmission_unit">MTU</a>
