@@ -22,6 +22,11 @@
   reason for our network cards having <code> MTU </code> as 1500 bytes except loopback interface as seen in the below image.
 </p>
 <img src="./images/nic_mtu.png" width="1100" height="800" >
+<p>
+  As the max size is 1500 bytes that means if the data to be sent is more than that sender would be sending multiple packets, 
+  where ehternet frame, IP data, TCP data, parts of the specific protocol ( HTTP / FTP / SSH ) would remain same but the
+  actual data will vary.
+</p>
 
 <h4><b> loopback interface MTU </b> </h4> 
 <p class="text-danger">
