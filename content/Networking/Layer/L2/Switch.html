@@ -30,5 +30,15 @@ Example of L2 (Ethernet II) inside a single network packet.... If you observe th
 <p>
   what happens if the destination MAC address is not in the MAC address table, then the switch would have to forward the 
   packet to all ports except the port from which it received the packet, this process is called <code> flooding </code>.
-  And not send the packet to the port it received from is called <code> filtering </code>
+  And not send the packet to the port it received from is called <code> filtering </code>. In the process of the flooding
+  if the packet reaches the host whose MAC address is not the destination MAC address then the host ( let say Network card)
+  would simply discard the packet. Also mostly that host would send back a ACK in case of TCP or respond to a ARP protocol,
+  when it does then the switch will then learn it's MAC address and add it to it's table.
 </p>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------->
+<p class="text-danger"> How does switch know where does the L2 layer start and finish OR how does it extract 
+the source and destination MAC address.</p>
+
