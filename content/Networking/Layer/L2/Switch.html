@@ -1,1 +1,32 @@
+<h2> <b> Switch </b> </h2>
+<hr>
 
+<p>
+  Switch is a physical device which has physical port to connect machine to it. Switches operate on the layer 2. It looks at 
+  the ethernet frame of the packet to find out where the packet needs to go, the frame at L2 has the destination MAC address. 
+  Switch will forward the packet to the port that has this destination MAC address using the MAC address table.
+</p>
+
+<h4><b> Example of L2  </b></h4>
+Example of L2 (Ethernet II) inside a single network packet.... If you observe the IPV4 is L3 and TCP is the L4.
+<img src="./images/Layer_2.png" width="800" height="600" >
+
+<h4><b> Mac address table  </b></h4>
+<p> Switch use this Mac address table to forward the packet from one physical port to another port. </p>
+<p>
+    When switch receives the packet from a physical port, it will look at the source MAC address from the Ehternet frame and 
+  maps it to the physical port thus creating a <code> MAC Address table </code> which has all the Source Mac Address and it's
+  physical port mapping.This processs is called <code> learning </code>
+</p>
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------->
+<h4><b> Forwarding the packet </b></h4>
+<p>
+  When switch receives the packet, it would look at the destination MAC address and then using the MAC address table would 
+  fetch the physical port that MAC address is mapped to. Then would send the packet to that port. This is called <code>
+  Forwarding </code>.
+</p>
+<p>
+  
+</p>
