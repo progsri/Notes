@@ -47,9 +47,21 @@ the source and destination MAC address.</p>
 <h4><b> Broadcasting  </b></h4>
 <p>
   When a host or a machine wants to broadcast to all the hosts in the network ( only LAN i.e all the connected hosts to
-  the switch ) then it would send out a packet with destination MAC address as <code> ff:ff:ff:ff:ff:ff </code>. If you 
-  observe the below ARP protocol the destination MAC address is ff:ff:ff:ff:ff:ff since the host is looking for the MAC
-  address of the machine which has the IPv4 
+  the switch ) then it would send out a packet with destination MAC address as <code> ff:ff:ff:ff:ff:ff </code>. ARP is an 
+  example for Broadcasting. If you observe the below ARP protocol the destination MAC address is ff:ff:ff:ff:ff:ff since the 
+  source host is looking for the MAC address of the machine which has the IPv4 10.0.0.1, though this packet reaches all the
+  hosts in the network only the host that has the IP 10.0.0.1 will respond back with the IP address and other hosts would
+  drop the packet. so here switch helps in broadcasting as it would not find any of it's own physical ports mapped to the 
+  MAC ff:ff:ff:ff:ff::ff in it's MAC Address table.. so the switch will start flooding process which is basically create
+  copies of that packet and send it to all the ports except the port on which the packet is received. 
 </p>
-ARP Protocol
+<p>
+  So, in order for a host to Broadcast in the LAN, it needs to send out with L2 destination <code> MAC as ff:ff:ff:ff:ff:ff
+  </code>
+</p>
+<p> ARP Protocol which here is doing who has 10.0.0.1 ? Tell 10.0.0.64 </p>
 <img src="./images/Arp.png" width="800" height="600" >
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------->
+<h4><b class="text-danger"> Multiple Switches  </b></h4>
