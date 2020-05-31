@@ -25,8 +25,10 @@ Example of L2 (Ethernet II) inside a single network packet.... If you observe th
 <p>
   When switch receives the packet, it would look at the destination MAC address and then using the MAC address table would 
   fetch the physical port that MAC address is mapped to. Then would send the packet to that port. This is called <code>
-  Forwarding </code>.
+  forwarding </code>.
 </p>
 <p>
-  
+  what happens if the destination MAC address is not in the MAC address table, then the switch would have to forward the 
+  packet to all ports except the port from which it received the packet, this process is called <code> flooding </code>.
+  And not send the packet to the port it received from is called <code> filtering </code>
 </p>
