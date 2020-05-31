@@ -13,9 +13,11 @@
  * Delete operation (DONE)
  * Order of notes should depend on the latest git log commit date (DONE)
  * auto restart mongo and app when server restarts or app crashes (DONE)
-
+ * Seperate the loader ( use a different node to process the webhook calls ) (DONE)
+ * Use pm2 to monitor Nginx
 ## pm2
  * pm2 start Notes/app/bin/www --watch
+ * pm2 start Notes_load/app/bin/www --watch
  * pm2 start mongodb-linux-x86_64-ubuntu1804-4.1.9/bin/start-mongo.sh 
  
  ## Mongo
