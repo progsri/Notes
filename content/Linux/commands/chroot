@@ -1,0 +1,51 @@
+<h2> <b> chroot </b> </h2>
+<hr>
+
+<p>
+  chroot
+</p>
+
+<h4> <b> Example </b> </h4>
+<pre class="language-shell line-numbers"><code>
+
+#Create a directory for that would be the new root.
+progsri@machine:~/Desktop$ mkdir chroot
+
+</code></pre>
+
+<p>
+Since we need a sheel for the process to run, let say bash, we need to copy the binary and it's dependencies into the new
+root directory.
+</p>
+
+Use <code> ldd </code> to get all the dependencies for <code> bash </code>  binary.
+<pre class="language-shell line-numbers"><code>
+ldd /bin/bash
+	linux-vdso.so.1 (0x00007ffdc9fa9000)
+	libtinfo.so.6 => /lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007f9d81990000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f9d8198a000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f9d81798000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f9d81b0e000)
+
+</code></pre>
+
+<pre class="language-shell line-numbers"><code>
+cd /home/progsri/Desktop/chroot
+mkdir bin
+mkdir lib
+mkdir lib64
+</code></pre>
+
+<p>
+  copy the /bin/bash and all the libraries (dependencies) into the new bin,lib,lib64 directories in the new root.
+</p>
+<p>
+  Create the new root using <code> chroot <code>
+</p>
+<pre class="language-shell line-numbers"><code>
+progsri@machine:~/Desktop/chroot$ pwd
+/home/progsri/Desktop/chroot
+progsri@machine:~/Desktop/chroot$ sudo chroot ./ /bin/bash
+</code></pre>
+
+
