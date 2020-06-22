@@ -46,6 +46,11 @@ mkdir lib64
 progsri@machine:~/Desktop/chroot$ pwd
 /home/progsri/Desktop/chroot
 progsri@machine:~/Desktop/chroot$ sudo chroot ./ /bin/bash
+bash-5.0#
 </code></pre>
 
-
+<p>
+   Inside the new root only bash will be available and the other commands that come with the bash sheel such as <code> pwd 
+   </code>, <code> echo </code>, <code> kill </code> . To find the list of available code that are in built use <code> help 
+   </code> as sen below
+<p>
