@@ -70,7 +70,7 @@ function pullNewchanges() {
         //console.log("Continue with code");
         afterGitPull();
       } else {
-        ///console.log("call again pullNewchanges " + data);
+        console.log("call again pullNewchanges " + data);
        
       }
     });
@@ -120,7 +120,7 @@ function geMetadata(path, resource) {
   metadata[constants.TOPIC] = $(
     "div[class=" + constants.NOTES + "-" + constants.TOPIC + "]"
   ).html();
-  //console.log("metadata " + util.inspect(metadata));
+  console.log("metadata " + util.inspect(metadata));
 
   const hash = md5File.sync(path + "/" + resource);
   metadata[constants.HASH] = hash;
@@ -154,7 +154,7 @@ function afterGitPull() {
 
   selectPromise
     .then(data => {
-      //console.log("mongo selectPromise" + util.inspect(data));
+      console.log("mongo selectPromise" + util.inspect(data));
 
       let resourceToHashMap = new Map();
       let resourceToIdMap = new Map();
