@@ -121,7 +121,7 @@ unix  2      [ ]         DGRAM                    404612   /run/wpa_supplicant/w
 
 <p> observe that inside the chroot, netstat does not display anything as netstat pulls the data from <code> proc </code> 
     file system and there is no access to proc from inside chroot. In order to access proc file system we would need  to
-    <code> mount <code> it inside the chroot as below and then netstat would display the data for the entire system.
+    <code> mount </code> it inside the chroot as below and then netstat would display the data for the entire system.
 </p>
 <pre class="language-shell line-numbers"><code>	
 mkdir chroot_dir/proc
