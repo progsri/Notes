@@ -1,11 +1,13 @@
 <h2> <b> chroot </b> </h2>	
 <hr>	
+<!---------------------------------------------------------------------------------------------------->
 
 <p>	
   chroot	
-</p>	
+</p>
 
-<br>
+<!---------------------------------------------------------------------------------------------------->
+<hr>
 <h4> <b> Example </b> </h4>	
 <pre class="language-shell line-numbers"><code>	
 
@@ -88,6 +90,13 @@ bash-5.0# ls
 bin  lib  lib64
 </code></pre>	
 
+<p> In case if we just copy the binary without dependenices then while executing the binary inside the chroot we would see 
+    this below error </p>
+<pre class="language-shell line-numbers"><code>	
+Copied only the binary for command ss
+ss: error while loading shared libraries: libmnl.so.0: cannot open shared object file: No such file or directory
+</code></pre>
+
 <!---------------------------------------------------------------------------------------------------->
 <hr>
 <h4> <b> Filesystems </b> </h4>	
@@ -144,13 +153,22 @@ unix  2      [ ]         DGRAM                    404612   /run/wpa_supplicant/w
 
 <!---------------------------------------------------------------------------------------------------->
 <hr>
-<h4> <b> Chrooted user </b> </h4>	
-https://www.tecmint.com/restrict-ssh-user-to-directory-using-chrooted-jail/
+<h4> <b> Providing Chrooted user access </b> </h4>	
+
+<p> Refer <a href="https://www.tecmint.com/restrict-ssh-user-to-directory-using-chrooted-jail/" /> <p>
+<p> For user to access a server, we generally use <mark> ssh server </mark>. These ssh servers do provide option for 
+   <code> ChrootDirectory </code> for a particular user in their config. It is the sysadmin responsibility to create the
+   chroot directory and the dependencies that are needed for the user before hand. SSH server would then use the provided
+   chroot directory as the home directory for the user.
+</p>
 
 <!---------------------------------------------------------------------------------------------------->
 <hr>
 <h4> <b> Chrooted Process </b> </h4>
-you will need to login using a ssh which will use ChrootDirectory and then you can execute the process.
+<p> you will need to login using a ssh server which will use ChrootDirectory as explained above and then you can execute
+   the process if it is visible(has binary and dependencies) to the user. Which means the process itself is in the chroot
+   environment bcoz of the user.
+<p>
 
 <!---------------------------------------------------------------------------------------------------->
 <hr>
