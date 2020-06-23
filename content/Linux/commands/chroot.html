@@ -55,7 +55,7 @@ bash-5.0#
    </code>, <code> echo </code>, <code> kill </code> . To find the list of available code that are in built use <code> help 	
    </code> as seen below	
 <p>
-<img src="./images/sheel_inbuilt.png" width="800" height="600">
+<img src="./images/sheel_inbuilt.png" width="800" height="800">
 	
 <hr>
 <h4> <b> New commmands </b> </h4>
@@ -87,6 +87,34 @@ bash-5.0# ls
 bin  lib  lib64
 </code></pre>	
 
+<hr>
+<h4> <b> netstat </b> </h4>	
+
+<p> after copying the binary and dependencies for netstat, the below is the command output inside chroot </p>
+<pre class="language-shell line-numbers"><code>	
+bash-5.0# netstat
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+</code></pre>	
+
+<p>  below is the netstat command output  outside chroot </p>
+<pre class="language-shell line-numbers"><code>	
+⇒  netstat
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+udp        0      0 machine:bootpc          _gateway:bootps         ESTABLISHED
+udp6       0      0 localhost:37896         localhost:37896         ESTABLISHED
+udp6       0      0 localhost:38804         localhost:38804         ESTABLISHED
+udp6       0      0 localhost:55223         localhost:55223         ESTABLISHED
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ]         DGRAM                    36896    /run/user/1001/systemd/notify
+unix  2      [ ]         DGRAM                    27337    /var/spool/postfix/dev/log
+unix  4      [ ]         DGRAM                    16115    /run/systemd/notify
+unix  2      [ ]         DGRAM                    404612   /run/wpa_supplicant/wlo1
+</code></pre>	
 
 <hr>
 <h4> <b> Chrooted user </b> </h4>	
