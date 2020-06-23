@@ -58,6 +58,35 @@ bash-5.0#
 <img src="./images/sheel_inbuilt.png" width="800" height="600">
 	
 <hr>
+<h4> <b> New commmands </b> </h4>
+<pre class="language-shell line-numbers"><code>	
+bash-5.0# ls
+bash: ls: command not found
+</code></pre>	
+<p> Observe the ls command is not found inside the chroot as we have not copied it</p>
+
+<pre class="language-shell line-numbers"><code>	
+ldd /bin/ls
+	linux-vdso.so.1 (0x00007fff50fe0000)
+	libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f4a12461000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f4a1226f000)
+	libpcre2-8.so.0 => /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007f4a121df000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f4a121d9000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f4a124d3000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f4a121b6000)
+	
+copy all these to lib or lib64
+</code></pre>	
+
+<pre class="language-shell line-numbers"><code>	
+cp /bin/ls ~/Desktop/chroot/bin
+sudo chroot ~/Desktop/chroot/ /bin/bash
+bash-5.0# ls
+bin  lib  lib64
+</code></pre>	
+
+
+<hr>
 <h4> <b> Chrooted user </b> </h4>	
 https://www.tecmint.com/restrict-ssh-user-to-directory-using-chrooted-jail/
 
