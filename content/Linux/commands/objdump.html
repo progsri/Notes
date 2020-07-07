@@ -1,1 +1,77 @@
 
+
+objdump -d /bin/ls
+
+
+/bin/ls:     file format elf64-x86-64
+
+<pre class="language-shell line-numbers"/> <code>
+Disassembly of section .init:
+
+0000000000004000 <.init>:
+    4000:	f3 0f 1e fa          	endbr64 
+    4004:	48 83 ec 08          	sub    $0x8,%rsp
+    4008:	48 8b 05 c9 ef 01 00 	mov    0x1efc9(%rip),%rax        # 22fd8 <__gmon_start__>
+    400f:	48 85 c0             	test   %rax,%rax
+    4012:	74 02                	je     4016 <free@plt-0x6ba>
+    4014:	ff d0                	callq  *%rax
+    4016:	48 83 c4 08          	add    $0x8,%rsp
+    401a:	c3                   	retq   
+
+Disassembly of section .plt:
+
+0000000000004020 <.plt>:
+    4020:	ff 35 3a ec 01 00    	pushq  0x1ec3a(%rip)        # 22c60 <quoting_style_args@@Base+0x260>
+    4026:	f2 ff 25 3b ec 01 00 	bnd jmpq *0x1ec3b(%rip)        # 22c68 <quoting_style_args@@Base+0x268>
+    402d:	0f 1f 00             	nopl   (%rax)
+    4030:	f3 0f 1e fa          	endbr64 
+    4034:	68 00 00 00 00       	pushq  $0x0
+    4039:	f2 e9 e1 ff ff ff    	bnd jmpq 4020 <free@plt-0x6b0>
+    403f:	90                   	nop
+    4040:	f3 0f 1e fa          	endbr64 
+    4044:	68 01 00 00 00       	pushq  $0x1
+    4049:	f2 e9 d1 ff ff ff    	bnd jmpq 4020 <free@plt-0x6b0>
+    404f:	90                   	nop
+    4050:	f3 0f 1e fa          	endbr64 
+    4054:	68 02 00 00 00       	pushq  $0x2
+    4059:	f2 e9 c1 ff ff ff    	bnd jmpq 4020 <free@plt-0x6b0>
+    405f:	90                   	nop
+
+...
+...
+...
+  17520:	4c 89 f2             	mov    %r14,%rdx
+   17523:	4c 89 ee             	mov    %r13,%rsi
+   17526:	44 89 e7             	mov    %r12d,%edi
+   17529:	41 ff 14 df          	callq  *(%r15,%rbx,8)
+   1752d:	48 83 c3 01          	add    $0x1,%rbx
+   17531:	48 39 dd             	cmp    %rbx,%rbp
+   17534:	75 ea                	jne    17520 <_obstack_memory_used@@Base+0x8c0>
+   17536:	48 83 c4 08          	add    $0x8,%rsp
+   1753a:	5b                   	pop    %rbx
+   1753b:	5d                   	pop    %rbp
+   1753c:	41 5c                	pop    %r12
+   1753e:	41 5d                	pop    %r13
+   17540:	41 5e                	pop    %r14
+   17542:	41 5f                	pop    %r15
+   17544:	c3                   	retq   
+   17545:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+   1754c:	00 00 00 00 
+   17550:	f3 0f 1e fa          	endbr64 
+   17554:	c3                   	retq   
+   17555:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+   1755c:	00 00 00 
+   1755f:	90                   	nop
+   17560:	f3 0f 1e fa          	endbr64 
+   17564:	48 8b 15 9d ba 00 00 	mov    0xba9d(%rip),%rdx        # 23008 <quoting_style_args@@Base+0x608>
+   1756b:	31 f6                	xor    %esi,%esi
+   1756d:	e9 2e d7 fe ff       	jmpq   4ca0 <__cxa_atexit@plt>
+
+Disassembly of section .fini:
+
+0000000000017574 <.fini>:
+   17574:	f3 0f 1e fa          	endbr64 
+   17578:	48 83 ec 08          	sub    $0x8,%rsp
+   1757c:	48 83 c4 08          	add    $0x8,%rsp
+   17580:	c3                   	retq   
+ </code></pre>
