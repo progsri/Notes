@@ -12,7 +12,7 @@ const ID = "_id";
 const NINJASHORE = "Ninjashore";
 const MONGOURL = "mongodb://localhost:27017";
 const STATICPATH = "../";
-const BASEPATH = "./content";
+const BASEPATH = "../content";
 const STATUS_ONGOING = "ongoing";
 const STATUS_BACKLOG = "backlog";
 
