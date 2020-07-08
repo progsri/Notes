@@ -62,6 +62,7 @@ function isValid(path) {
 
 function pullNewchanges() {
   try{
+    process.chdir( process.cwd()+"/Notes_load");
     console.log(" pwd :: " + process.cwd());
     const ls = spawn("git", ["pull"]);
 
