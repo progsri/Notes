@@ -19,6 +19,7 @@
  * pm2 start Notes/app/bin/www --watch
  * pm2 start Notes_load/app/bin/www --watch
  * pm2 start mongodb-linux-x86_64-ubuntu1804-4.1.9/bin/start-mongo.sh 
+ * For logs::  pm2 logs 
  
  ## Mongo
   * Dump  
