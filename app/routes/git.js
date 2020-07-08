@@ -149,7 +149,7 @@ function lastModifiedDateOnGit(path, resource){
 
 function afterGitPull() {
   console.log("Updated git repo");
-  metadatas = getFiles(constants.BASEPATH);
+  metadatas = getFiles("./content");
   let selectPromise = mongo.getRecords();
 
   console.log("Promise " + util.inspect(selectPromise));
