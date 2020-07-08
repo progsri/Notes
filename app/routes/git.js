@@ -62,6 +62,7 @@ function isValid(path) {
 
 function pullNewchanges() {
   try{
+    console.log(" pwd :: " + process.cwd());
     const ls = spawn("git", ["pull"]);
 
     ls.stdout.on("data", data => {
