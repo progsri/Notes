@@ -63,7 +63,8 @@ router.get("/", function(req, res, next) {
      let sri = "https://www.linkedin.com/in/srikanth-lankapalli-37a4a1124/"
      let siri = "https://www.linkedin.com/in/sirisha-boothapati-57540757/"
       res.render("index", {
-        title: "Notes by Srikanth Lankapalli & Sirisha Boothapati",
+        title: "Notes by <a href=\"https://www.linkedin.com/in/srikanth-lankapalli-37a4a1124\">Srikanth Lankapalli</a>
+         & "Notes by <a href=\"https://www.linkedin.com/in/sirisha-boothapati-57540757/\"> Sirisha Boothapati </a>",
     
         resources: ui
       });
