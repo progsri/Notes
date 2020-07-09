@@ -149,8 +149,6 @@ function lastModifiedDateOnGit(path, resource) {
 
 function afterGitPull() {
   console.log("Updated git repo");
-  process.chdir(process.cwd() + "/Notes_load");
-  console.log(" pwd :: " + process.cwd());
 
   metadatas = getFiles("./content");
   let selectPromise = mongo.getRecords();
@@ -181,6 +179,7 @@ function afterGitPull() {
       let deleteMetadata = [];
       for (index in metadatas) {
         let metadata = metadatas[index];
+        metadata = metadata.replace('./content', '');
         let unique = metadata[constants.PATH] + "-" + metadata[constants.RESOURCE];
         if (resourceToHashMap.get(unique) == undefined) {
           // Resource does not exist in mongo.
