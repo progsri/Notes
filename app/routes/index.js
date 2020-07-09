@@ -5,14 +5,14 @@ const mongo = require("./mongo.js");
 const constants = require("./constants.js");
 const util = require("util");
 
-router.get("/", function(req, res, next) {
+router.get("/", function (req, res, next) {
   let selectPromise = mongo.getRecords();
   selectPromise
     .then(data => {
       let ui = [];
       for (index in data) {
         if (data[index][constants.RESOURCE] === "tmp" || data[index][constants.RESOURCE] === "temp") {
-        }else{
+        } else {
           let color = "";
           let status = "";
           if (data[index][constants.STATUS] != undefined) {
@@ -36,8 +36,8 @@ router.get("/", function(req, res, next) {
               status = data[index][constants.STATUS];
             }
           }
-          
-          tags =  data[index][constants.PATH].replace(constants.BASEPATH + "/", "").replace(/\//g,' - ');
+
+          tags = data[index][constants.PATH].replace(constants.BASEPATH + "/", "").replace(/\//g, ' - ');
           tags = "      " + tags // adding spaces for the view
 
           ui.push({
@@ -60,12 +60,12 @@ router.get("/", function(req, res, next) {
         }
       }
       console.log(data);
-     let sri = "https://www.linkedin.com/in/srikanth-lankapalli-37a4a1124/"
-     let siri = "https://www.linkedin.com/in/sirisha-boothapati-57540757/"
+      let sri = "https://www.linkedin.com/in/srikanth-lankapalli-37a4a1124/"
+      let siri = "https://www.linkedin.com/in/sirisha-boothapati-57540757/"
       res.render("index", {
-        title: "Notes by <a href=\"https://www.linkedin.com/in/srikanth-lankapalli-37a4a1124\">Srikanth Lankapalli</a>
-         & "Notes by <a href=\"https://www.linkedin.com/in/sirisha-boothapati-57540757/\"> Sirisha Boothapati </a>",
-    
+        title: "Notes by <a href=\"https://www.linkedin.com/in/srikanth-lankapalli-37a4a1124\">Srikanth Lankapalli</a> & \
+         <a href=\"https://www.linkedin.com/in/sirisha-boothapati-57540757/\">Sirisha Boothapati</a>",
+
         resources: ui
       });
     })
