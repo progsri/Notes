@@ -179,7 +179,7 @@ function afterGitPull() {
       let deleteMetadata = [];
       for (index in metadatas) {
         let metadata = metadatas[index];
-        metadata[constants.PATH] = metadata[constants.PATH].replace('./content', '');
+        metadata[constants.PATH] = metadata[constants.PATH].replace('./content/', '');
         let unique = metadata[constants.PATH] + "-" + metadata[constants.RESOURCE];
         if (resourceToHashMap.get(unique) == undefined) {
           // Resource does not exist in mongo.
