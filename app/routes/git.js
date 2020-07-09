@@ -52,8 +52,8 @@ function isValid(path) {
   if (path.includes("images")) {
     return false;
   }
-  
-   if (path.includes(".git")) {
+
+  if (path.includes(".git")) {
     return false;
   }
 
@@ -61,8 +61,8 @@ function isValid(path) {
 }
 
 function pullNewchanges() {
-  try{
-    process.chdir( process.cwd()+"/Notes_load");
+  try {
+    process.chdir(process.cwd() + "/Notes_load");
     console.log(" pwd :: " + process.cwd());
     const ls = spawn("git", ["pull"]);
 
@@ -73,7 +73,7 @@ function pullNewchanges() {
         afterGitPull();
       } else {
         console.log("call again pullNewchanges " + data);
-       
+
       }
     });
 
@@ -85,7 +85,7 @@ function pullNewchanges() {
     ls.on("close", code => {
       console.log(`Git pull child process exited with code ${code}`);
     });
-  }catch(err){
+  } catch (err) {
     pullNewchanges();
   }
 
@@ -127,28 +127,31 @@ function geMetadata(path, resource) {
   const hash = md5File.sync(path + "/" + resource);
   metadata[constants.HASH] = hash;
 
-  metadata[constants.UPDATEDON] = lastModifiedDateOnGit(path,resource);
-  
+  metadata[constants.UPDATEDON] = lastModifiedDateOnGit(path, resource);
+
   return metadata;
 }
 
-function lastModifiedDateOnGit(path, resource){
-        let dateGitFormat = spawnSync("git", [
-                    "log",
-                    "-1",
-                    '--format="%ad"',
-                    path + '/' + resource
-                ]);
-                console.log("lastModifiedDateOnGit " + path  + " " + resource +
-                dateGitFormat.stdout.toString());
-                let date = new Date(dateGitFormat.stdout.toString());
-                console.log(date);
-          return date;
+function lastModifiedDateOnGit(path, resource) {
+  let dateGitFormat = spawnSync("git", [
+    "log",
+    "-1",
+    '--format="%ad"',
+    path + '/' + resource
+  ]);
+  console.log("lastModifiedDateOnGit " + path + " " + resource +
+    dateGitFormat.stdout.toString());
+  let date = new Date(dateGitFormat.stdout.toString());
+  console.log(date);
+  return date;
 }
 
 
 function afterGitPull() {
   console.log("Updated git repo");
+  process.chdir(process.cwd() + "/Notes_load");
+  console.log(" pwd :: " + process.cwd());
+
   metadatas = getFiles("./content");
   let selectPromise = mongo.getRecords();
 
@@ -186,7 +189,7 @@ function afterGitPull() {
           //metadata[constants.UPDATEDON] = new Date(); //disable as we are pulling from git
           insertMetadata.push(metadata);
         } else {
-           // Resource exist in mongo.
+          // Resource exist in mongo.
           if (resourceToIdMap.get(unique) == metadata[constants.HASH]) {
             console.log(unique + " NO Need to update");
             metadata[constants.ID] = resourceToIdMap.get(
@@ -201,7 +204,7 @@ function afterGitPull() {
             );
             updateMetadata.push(metadata);
           }
-          
+
           //delete the key so that the remaining ones can be deleted ( these are present in mongo but not in file system )
           resourceToHashMap.delete(unique);
         }
@@ -230,12 +233,12 @@ function afterGitPull() {
           );
         }
       }
-     
+
       console.log("deleteMetadata ");
       for (const k of resourceToHashMap.keys()) {
-        if (resourceToIdMap.has(k)){
-          console.log( k + " to delete ");
-         mongo.deleteRecord(resourceToIdMap.get(k));
+        if (resourceToIdMap.has(k)) {
+          console.log(k + " to delete ");
+          mongo.deleteRecord(resourceToIdMap.get(k));
         }
       }
 
