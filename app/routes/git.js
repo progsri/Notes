@@ -91,10 +91,12 @@ function pullNewchanges() {
     ls.on("close", code => {
       console.log(`Git pull child process exited with code ${code}`);
     });
-    syncNotesDir();
+
   } catch (err) {
     pullNewchanges();
   }
+
+  syncNotesDir();
 
 }
 
