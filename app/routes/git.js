@@ -61,6 +61,7 @@ function isValid(path) {
 }
 
 function syncNotesDir() {
+  console.log("Sync Notes dir");
   process.chdir(process.cwd() + "/Notes");
   console.log(" pwd :: " + process.cwd());
   const ls = spawn("git", ["pull"]);
