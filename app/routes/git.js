@@ -60,6 +60,12 @@ function isValid(path) {
   return true;
 }
 
+function syncNotesDir() {
+  process.chdir(process.cwd() + "/Notes");
+  console.log(" pwd :: " + process.cwd());
+  const ls = spawn("git", ["pull"]);
+}
+
 function pullNewchanges() {
   try {
     process.chdir(process.cwd() + "/Notes_load");
@@ -85,6 +91,7 @@ function pullNewchanges() {
     ls.on("close", code => {
       console.log(`Git pull child process exited with code ${code}`);
     });
+    syncNotesDir();
   } catch (err) {
     pullNewchanges();
   }
