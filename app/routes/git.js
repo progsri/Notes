@@ -94,7 +94,7 @@ function pullNewchanges() {
     });
 
   } catch (err) {
-    pullNewchanges();
+    //pullNewchanges();
   }
 
   syncNotesDir();
