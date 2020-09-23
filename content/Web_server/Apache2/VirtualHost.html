@@ -18,9 +18,9 @@ the same port 80?
   Imagine 3 webapps which are accessible over internet, say node-1.com, node-2.com, node-3.com. Each domain is brought from diffrent domain name providers, 
   know these domain providers whill register this domain name along with the name servers ( the DNS server of the company where the host in this case apache is 
   running ) to ICANN. Which means if you ping either node-1.com or node-2.com or node-3.com, they all will result to the same IP which is the IP of the apache
-  server, then apache using the <code> HOST </code> information from the HTTP protocol ( see the below forthe packet )which in this case will be either node-1.com
-  or node-2.com or node-3.com depending on the packet and the <code> VirtualHost </code> configured for that host will process that particular host traffic 
-  according to the rules mentioned in the VirtualHost.
+  server, then apache using the <code> HOST </code> information from the HTTP protocol ( see the below for the packet which has ninjashore.com as HOST ) which in
+  this case will be either node-1.com or node-2.com or node-3.com depending on the packet and the <code> VirtualHost </code> configured for that host will process
+  that particular host traffic according to the rules mentioned in the VirtualHost.
 </p>
 <img src="./images/http.png" width="800" height="600" >
 </br>
