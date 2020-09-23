@@ -1,0 +1,24 @@
+<h2><b> VirtualHost </b> </h2>
+<br>
+
+<p> 
+Imagine if you are hosting a webapp, let say apache server on a host host-1 at port 80. And this host-1 is reachable across internet via node-1.com, Which means 
+ICANN ( internetauthority ) will have a mapping of node-1.com to the name servers ( the name servers where host-1 machine is present ). So, if any one types
+node-1.com it gets to this machine host-1 an to the port 80 which is being listened by apache server. What if this apache server needs to host another web app on 
+the same port 80?
+</p>
+
+<p>
+  This can be done by VitualHost which means the same apache server on port 80 can handle the traffic for different web apps by configuring <code> VirtualHost </code>
+  directive for each web app. 
+</p>
+
+<h4> <b> Working </b> </h4>
+<p>
+  Imagine 3 webapps which are accessible over internet, say node-1.com, node-2.com, node-3.com. Each domain is brought from diffrent domain name providers, 
+  know these domain providers whill register this domain name along with the name servers ( the DNS server of the company where the host in this case apache is 
+  running ) to ICANN. Which means if you ping either node-1.com or node-2.com or node-3.com, they all will result to the same IP which is the IP of the apache
+  server, then apache using the <code> HOST </code> information from the HTTP protocol ( see the below forthe packet )which in this case will be either node-1.com
+  or node-2.com or node-3.com depending on the packet and the <code> VirtualHost </code> configured for that host will process that particular host traffic 
+  according to the rules mentioned in the VirtualHost.
+</p>
