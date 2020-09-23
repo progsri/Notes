@@ -69,14 +69,15 @@ function syncNotesDir() {
 
 function pullNewchanges() {
   try {
+    console.log("Sync Notes_load dir");
     process.chdir(process.cwd() + "/Notes_load");
     console.log(" pwd :: " + process.cwd());
     const ls = spawn("git", ["pull"]);
 
     ls.stdout.on("data", data => {
-      console.log("GIT stdout " + data);
+      console.log("Notes_load GIT pull stdout " + data);
       if (data.includes("Already up to date.")) {
-        //console.log("Continue with code");
+        console.log("Continue with code");
         afterGitPull();
       } else {
         console.log("call again pullNewchanges " + data);
@@ -85,6 +86,7 @@ function pullNewchanges() {
     });
 
     ls.stderr.on("data", data => {
+      console.log("Notes_load git pull failed");
       console.log(`GIT stderr: ${data}`);
       pullNewchanges();
     });
@@ -95,6 +97,7 @@ function pullNewchanges() {
 
   } catch (err) {
     //pullNewchanges();
+    console.log("Notes_load error");
   }
 
   syncNotesDir();
