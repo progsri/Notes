@@ -105,7 +105,7 @@ function pullNewchanges() {
     
   } catch (err) {
     //pullNewchanges();
-    console.log("Notes_load error");
+    console.log("Notes_load error " + err);
   }
 
   syncNotesDir();
