@@ -8,7 +8,8 @@ const util = require("util");
 const mongo = require("./mongo.js");
 const md5File = require("md5-file");
 const process = require("process");
-const { spawnSync } = require("child_process")
+// const { spawnSync } = require("child_process")
+let cp = require("child_process")
 
 var getFiles = function (path) {
   console.log("PWD " + process.cwd());
@@ -64,7 +65,10 @@ function syncNotesDir() {
   console.log("Sync Notes dir");
   process.chdir("/root/APPS/Notes");
   console.log(" pwd :: " + process.cwd());
-  const ls = spawn("git", ["pull"]);
+//   const ls = spawn("git", ["pull"]);
+  
+        var ls = cp.spawnSync('git', ['pull'], { encoding : 'utf8' });
+    console.log('stdout here: \n' + ls.stdout);
 }
 
 function pullNewchanges() {
@@ -72,29 +76,33 @@ function pullNewchanges() {
     console.log("Sync Notes_load dir");
     process.chdir(process.cwd() + "/Notes_load");
     console.log(" pwd :: " + process.cwd());
-    const ls = spawn("git", ["pull"]);
+//     const ls = spawn("git", ["pull"]);
 
-    ls.stdout.on("data", data => {
-      console.log("Notes_load GIT pull stdout " + data);
-      if (data.includes("Already up to date.")) {
-        console.log("Continue with code");
-        afterGitPull();
-      } else {
-        console.log("call again pullNewchanges " + data);
 
-      }
-    });
+//     ls.stdout.on("data", data => {
+//       console.log("Notes_load GIT pull stdout " + data);
+//       if (data.includes("Already up to date.")) {
+//         console.log("Continue with code");
+//         afterGitPull();
+//       } else {
+//         console.log("call again pullNewchanges " + data);
 
-    ls.stderr.on("data", data => {
-      console.log("Notes_load git pull failed");
-      console.log(`GIT stderr: ${data}`);
-      pullNewchanges();
-    });
+//       }
+//     });
 
-    ls.on("close", code => {
-      console.log(`Git pull child process exited with code ${code}`);
-    });
+//     ls.stderr.on("data", data => {
+//       console.log("Notes_load git pull failed");
+//       console.log(`GIT stderr: ${data}`);
+//       pullNewchanges();
+//     });
 
+//     ls.on("close", code => {
+//       console.log(`Git pull child process exited with code ${code}`);
+//     });
+
+        var ls = cp.spawnSync('git', ['pull'], { encoding : 'utf8' });
+    console.log('stdout here: \n' + ls.stdout);
+    
   } catch (err) {
     //pullNewchanges();
     console.log("Notes_load error");
