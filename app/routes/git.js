@@ -74,7 +74,7 @@ function syncNotesDir() {
 function pullNewchanges() {
   try {
     console.log("Sync Notes_load dir");
-    process.chdir(process.cwd() + "/Notes_load");
+    process.chdir("/root/APPS/Notes_load");
     console.log(" pwd :: " + process.cwd());
 //     const ls = spawn("git", ["pull"]);
 
