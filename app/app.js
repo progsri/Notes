@@ -25,6 +25,7 @@ app.use(cookieParser());
 app.use("/", index);
 app.use("/resource", resource);
 app.use("/load", git);
+app.use("/onlyindex", git);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
