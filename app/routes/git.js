@@ -109,6 +109,7 @@ function pullNewchanges() {
   }
 
   syncNotesDir();
+  afterGitPull();
 
 }
 
