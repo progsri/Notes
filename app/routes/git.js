@@ -163,6 +163,7 @@ function lastModifiedDateOnGit(path, resource) {
   ]);
   console.log("lastModifiedDateOnGit " + path + " " + resource +
     dateGitFormat);
+  console.log("dateGitFormat " + JSON.stringify(dateGitFormat));
   let date = new Date(dateGitFormat.stdout.toString());
   console.log(date);
   return date;
