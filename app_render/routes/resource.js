@@ -6,8 +6,8 @@ const constants = require('./constants')
 const process = require("process");
 
 router.get("/*", function (req, res, next) {
-
-  path = process.cwd().replace("/app", "") + req.originalUrl.replace("/" + constants.RESOURCE, "")
+  console.log("read the contents of ")
+  path = process.cwd().replace("/app_render", "") + req.originalUrl.replace("/" + constants.RESOURCE, "")
   console.log('get contents of ' + path)
   if (path.includes("/images")) {
     // fs.readFile(path, 'utf8', function (err, contents) {
