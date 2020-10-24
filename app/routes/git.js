@@ -8,7 +8,7 @@ const util = require("util");
 const mongo = require("./mongo.js");
 const md5File = require("md5-file");
 const process = require("process");
-const { spawnSync } = require("child_process")
+const { spawn, spawnSync } = require("child_process")
 let cp = require("child_process")
 
 var getFiles = function (path) {
@@ -155,7 +155,7 @@ function geMetadata(path, resource) {
 }
 
 function lastModifiedDateOnGit(path, resource) {
-  let dateGitFormat = spawnSync("git", [
+  let dateGitFormat = spawn("git", [
     "log",
     "-1",
     '--format="%ad"',
