@@ -8,8 +8,8 @@ const process = require("process");
 router.get("/*", function (req, res, next) {
   console.log("read the contents of " + req.originalUrl)
   console.log("process.cwd() " + process.cwd());
-  path = process.cwd().replace("/app_render", "")  + req.originalUrl.replace("/" + constants.RESOURCE, "")
-  console.log('get contents of ' + path)
+  path = process.cwd() + req.originalUrl.replace("/" + constants.RESOURCE, "/Notes")
+  console.log('path ' + path)
   if (path.includes("/images")) {
     // fs.readFile(path, 'utf8', function (err, contents) {
     res.sendFile(path);
