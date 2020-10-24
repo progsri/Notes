@@ -6,16 +6,29 @@
 
 <hr>
 <h4> <b> Request </b> </h4>
-Here I am trying to visit reactjs.org in a browser. To get the IP address or TYPE A ot IPV4 address, the OS has sent 
+<p>
+  Here I am trying to visit reactjs.org in a browser. To get the IP address or TYPE A or IPV4 address, the OS has sent DNS I am request to the dns nameserver on the
+network. My home internet netwrok is from xfinity so the dns nameserver is running at 75.75.75.75. In the below packet if you observe the request in the Internet 
+Protocoal 4 section we can see the <code> src </code> as my ip and <code> dst </code> as 75.75.75.75.
+</p>
 <img src="./images/dns-request.png" width="1100" height="800" >
 
-
 <h4> <b> Response </b> </h4>
+
+<p>
+  This is the response for the above DNS request. This tells that the ip addresses for reactjs.org are 104.26.9.29 / 104.26.8.29 / 172.67.70.91 .
+</p>
+
 
 Response part 1
 <img src="./images/dns-response-1.png" width="1100" height="800" >
 
 Response part 2
 <img src="./images/dns-response-2.png" width="1100" height="800" >
+
+<p class="text-danger">
+  Why does https://104.26.8.29:443 fail on browser with ERR_SSL_VERSION_OR_CIPHER_MISMATCH, for SSL do we need the hostname ?
+</p>
+
 
 <hr>
