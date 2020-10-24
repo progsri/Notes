@@ -168,9 +168,12 @@ function lastModifiedDateOnGit(path, resource) {
   try {
     dateGitFormat.stdout.toString();
   }catch(err){
+    console.log("exception occured so stop the node : pm2 will watch and bring it back up"); 
+    //you will see many restarts in pm2 status
     process.exit(1);
+
   }
-  
+
   let date = new Date(dateGitFormat.stdout.toString());
   console.log(date);
   return date;
