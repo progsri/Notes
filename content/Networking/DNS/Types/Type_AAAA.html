@@ -1,0 +1,26 @@
+<h2> <b> Type AAAA query </b> </h2>
+<hr>
+
+<p> Type A query is for <code> IPV6 </code> ip address.</p>
+<p> DNS queries have done on UDP .</p>
+
+<hr>
+<h4> <b> Request </b> </h4>
+<p>
+  Here I am trying to visit reactjs.org in a browser. To get the IP6 address or TYPE AAA or IPV6 address, the OS has sent DNS request for both IPV6 & IPV4 ( discussed 
+  in another article ) to the dns nameserver on the network. My home internet netwrok is from xfinity so the dns nameserver is running at 75.75.75.75. In the 
+  below packet if you observe the request in the Internet Protocoal 4 section we can see the <code> src </code> as my ip and <code> dst </code> as 75.75.75.75.
+</p>
+<img src="./images/dns-type-aaaa-request.png" width="1100" height="800" >
+
+<h4> <b> Response </b> </h4>
+
+<p>
+  This is the response for the above DNS request. This tells that there are 3  ip addresses, you can see that they start with 2606. 
+</p>
+
+
+Response 
+<img src="./images/dns-type-aaaa-response.png" width="1100" height="800" >
+
+<hr>
