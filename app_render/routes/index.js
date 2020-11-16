@@ -16,6 +16,10 @@ router.get("/", function (req, res, next) {
           let color = "";
           let status = "";
           if (data[index][constants.STATUS] != undefined) {
+               if (data[index][constants.STATUS].includes("researching")) {
+              color = "badge badge-warning";
+              status = data[index][constants.STATUS];
+            }
             if (data[index][constants.STATUS].includes("ongoing")) {
               color = "badge badge-warning";
               status = data[index][constants.STATUS];
