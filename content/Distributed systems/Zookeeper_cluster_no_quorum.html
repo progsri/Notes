@@ -3,6 +3,8 @@
 <h2> <b> ZooKeeper cluster (ensemble) without quorum </b> </h2>
 <hr>
 
+<p> Zookeeper cluster is also called zookeeper ensemble. This example cluster is without quorum configuration.</p>
+
 <h4> <b> Basic setup  </b> </h4>
 <p> Create 3 virtual machines and download the ZooKeeper binaries into each VM.  <p>
 <hr>
@@ -63,7 +65,28 @@ server.3=192.168.122.157:2888:3888
 <p> For each of the VM, <code> ./bin/zkServer.sh start  </code> would start the zookeeper in that vm and will connect with t VM cluster.</p>
 <hr>
 
-<h4> <b> Start the cluster </b> </h4>
+<h4> <b> Test if the cluster formed </b> </h4>
+<p> connect to zookeeper in vm 1 <code> /zkCli.sh -server 192.168.122.211 </code> </p>
+<p> create a znode </p>
+<pre class="line-numbers language-shell"><code>
+[zk: 192.168.122.211(CONNECTED) 1] ls /
+[zookeeper]
+[zk: 192.168.122.211(CONNECTED) 2] create /test
+Created /test
+[zk: 192.168.122.211(CONNECTED) 3] ls /
+[test, zookeeper]
+</code></pre>
+
+<p> Kill the zookeeper in vm 1 using <code> kill -9 pid_of_zookeeper </code> </p>
+<p> connect to zookeeper in vm 2 <code> /zkCli.sh -server 192.168.122.109 </code> </p>
+<p> verify if the znode created from vm1 still exists </p>
+<pre class="line-numbers language-shell"><code>
+[zk: 192.168.122.109(CONNECTED) 0] ls /
+[test, zookeeper]
+</code></pre>
+
+<p> This proves that the zookeeper cluster works and the data is being replicated </p>
+
 <hr>
 
 <hr>
