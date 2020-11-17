@@ -1,0 +1,69 @@
+<div class="badge badge-warning notes-status">researching</div>
+
+<h2> <b> ZooKeeper cluster (ensemble) without quorum </b> </h2>
+<hr>
+
+<h4> <b> Basic setup  </b> </h4>
+<p> Create 3 virtual machines and download the ZooKeeper binaries into each VM.  <p>
+<hr>
+
+<h4> <b> Configuration </b> </h4>
+<p> in <code> conf </code> directory of the zookeeper create zoo.cfg as below for each of the 3 VMs. 192.168.122.211 is the ip of VM 1, 192.168.122.109 is the 
+  ip of vm 2 and 192.168.122.157 is the ip of vm 3.
+</p>
+
+<pre class="line-numbers language-shell"><code>
+# The number of milliseconds of each tick
+tickTime=2000
+# The number of ticks that the initial 
+# synchronization phase can take
+initLimit=10
+# The number of ticks that can pass between 
+# sending a request and getting an acknowledgement
+syncLimit=5
+# the directory where the snapshot is stored.
+# do not use /tmp for storage, /tmp here is just 
+# example sakes.
+dataDir=./data
+# the port at which the clients will connect
+clientPort=2181
+# the maximum number of client connections.
+# increase this if you need to handle more clients
+#maxClientCnxns=60
+#
+# Be sure to read the maintenance section of the 
+# administrator guide before turning on autopurge.
+#
+# http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance
+#
+# The number of snapshots to retain in dataDir
+#autopurge.snapRetainCount=3
+# Purge task interval in hours
+# Set to "0" to disable auto purge feature
+#autopurge.purgeInterval=1
+
+## Metrics Providers
+#
+# https://prometheus.io Metrics Exporter
+#metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider
+#metricsProvider.httpPort=7000
+#metricsProvider.exportJvmInfo=true
+server.1=192.168.122.211:2888:3888
+server.2=192.168.122.109:2888:3888
+server.3=192.168.122.157:2888:3888
+
+</code></pre>
+
+<p> 
+  under the dataDir given in the above conf create a file <code> myid </code> and write 1 in vm 1, 2 in vm 2 and 3 in vm 3.
+</p>
+<hr>
+
+<h4> <b> Start the cluster </b> </h4>
+<p> For each of the VM, <code> ./bin/zkServer.sh start  </code> would start the zookeeper in that vm and will connect with t VM cluster.</p>
+<hr>
+
+<h4> <b> Start the cluster </b> </h4>
+<hr>
+
+<hr>
