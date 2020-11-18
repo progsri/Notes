@@ -212,6 +212,7 @@ function afterGitPull() {
       let deleteMetadata = [];
       for (index in metadatas) {
         let metadata = metadatas[index];
+        console.log("PATH/Resource " +  metadata[constants.PATH] + "-" + metadata[constants.RESOURCE]  + " HASH " + metadata[constants.HASH] );
         metadata[constants.PATH] = metadata[constants.PATH].replace('./content/', '');
         let unique = metadata[constants.PATH] + "-" + metadata[constants.RESOURCE];
         if (resourceToHashMap.get(unique) == undefined) {
@@ -222,7 +223,7 @@ function afterGitPull() {
           insertMetadata.push(metadata);
         } else {
           // Resource exist in mongo.
-          if (resourceToIdMap.get(unique) == metadata[constants.HASH]) {
+          if (resourceToHashMap.get(unique) == metadata[constants.HASH]) {
             console.log(unique + " NO Need to update");
             metadata[constants.ID] = resourceToIdMap.get(
               metadata[constants.RESOURCE]
