@@ -60,11 +60,13 @@ server.3=192.168.122.157:2888:3888
 <hr>
 
 <h4> <b> Start the cluster </b> </h4>
-<p> For each of the VM, <code> ./bin/zkServer.sh start  </code> would start the zookeeper in that vm and will connect with t VM cluster.</p>
+<p> For each of the VM, <code> ./bin/zkServer.sh start  </code> would start the zookeeper in that vm and will connect with  VM cluster.</p>
 <hr>
 
 <h4> <b> Test if the cluster formed </b> </h4>
-<p> connect to zookeeper in vm 1 <code> /zkCli.sh -server 192.168.122.211 </code> </p>
+<p> connect to zookeeper in vm 1 <code> /zkCli.sh -server 192.168.122.211 </code> or connect to all 3 zookeepers using 
+  <code> ./zkCli.sh -server 192.168.122.211,192.168.122.109,192.168.122.157 </code>.</p>
+<p> Port number used by client to connect to individual zookeeper is mentioned in <code> zoo.cfg </code> as <code> clientPort </code> </p>
 <p> create a znode </p>
 <pre class="line-numbers language-shell"><code>
 [zk: 192.168.122.211(CONNECTED) 1] ls /
