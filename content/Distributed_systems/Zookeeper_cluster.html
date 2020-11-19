@@ -77,7 +77,7 @@ Created /test
 [test, zookeeper]
 </code></pre>
 
-<p> Kill the zookeeper in vm 1 using <code> kill -9 pid_of_zookeeper </code> </p>
+<p> Kill the zookeeper in vm 1 using <code> kill -9 pid_of_zookeeper </code> or <code> /bin/zkServer.sh stop </code> </p>
 <p> connect to zookeeper in vm 2 <code> /zkCli.sh -server 192.168.122.109 </code> </p>
 <p> verify if the znode created from vm1 still exists </p>
 <pre class="line-numbers language-shell"><code>
