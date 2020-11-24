@@ -11,7 +11,7 @@
   We already have a Zookeeper cluster created. Please refer.
 </p>
 <p> 
-  Let's say we have 3 services. S1, S2 and S3. Each one will try to create a <code> ephermeral znode <code>. znode is simply a zookeeper directory. 
+Let's say we have 3 services. S1, S2 and S3. Each one will try to create a <code> ephermeral znode </code>. znode is simply like a linux directory that can hold data. . 
   Ephermal indicates a temporary session, so that in case the service which create he znode dies or is having network issues, then zookeeper will detect that 
   by sending the hearbeat to the service which if the service does not respond then zookeeper would delete the znode as it is dependent on the session which is
   temporary, in this way other serices will be able to create znode.
@@ -19,10 +19,60 @@
 <p>
   Create a znode is creating a <b>lock</b> as only the first service can create the znode. 
 </p>
+ <p>
+   The services that could not create the znode will create <code> watch </code> on that znode, so that 
+ <p>
  
-Imagine at this point all services are trying to create a znode ( lock ).
+ <p> Imagine at this point all services are trying to create a znode ( lock ). </p>
+  
+<h5> Service 2  creates a znode  </h5>
+<p> /master is the name of the node,  -e is for ephemeral node , ip-of-service-that-hold-the-lock(replace with real ip) is the data of the znode  </p>
  <pre class="line-numbers language-shell"><code>
- 
+   ./zkCli.sh -server 192.168.122.109
+   [zk: 192.168.122.109(CONNECTED) 0]  create -e /master "192.168.122.2"
+   Created /master
+   </code></pre>
+
+   <h5> Service 1 and Service 3  will fail to creates the same znode  </h5> 
+ <pre class="line-numbers language-shell"><code>
+   ./zkCli.sh -server 192.168.122.109
+   [zk: 192.168.122.109(CONNECTED) 0]  create -e /master "192.168.122.2"
+  Node already exists: /master
  </code></pre>
   
+<p> since the service 1 and 3 have failed to create the znode, they would set a watch on the znode for any changes using <code> -w argument </code> </p>
+<pre class="line-numbers language-shell"><code>
+   [zk: 192.168.122.109(CONNECTED) 0] get -w /master
+192.168.122.2
+ </code></pre>
+  
+<h5> Service 2  which holds the lock does not respond or dies </h5>
+ <p> Since service 2 died, zookeeper sends <b> notifications </b> to service 1 and 3 as they have set the <b> watch </b> on the master znode. Zookeeper is able
+   to send notifications when the service 2 dies as the session is ephemeral or temporary other wise if the session is not ephemeral Zookeeper would not be able
+   to send the notifications and lock would be under the control of the dead service 2.
+  </p>
+<pre class="line-numbers language-shell"><code>
+  [zk: 192.168.122.211(CONNECTED) 8] 
+WATCHER::
+
+WatchedEvent state:SyncConnected type:NodeDeleted path:/master
+ </code></pre>
+ 
+<p> Once service 1 and 3 receive the notification they can now try to create the same master znode and only one of them succeeds in creating the znode or
+  getting the lock
+</p>
+ 
+ <h5> Service 2 to release the lock or delete the znode </h5>
+  <p> deleting the znode is releasing the lock </p>
+ <pre class="line-numbers language-shell"><code>
+   [zk: 192.168.122.109(CONNECTED) 2] delete /master
+ </code></pre>
+ 
+  <p> Deleting the znode will send notifications to service 1 and 3. This notification has nothing to do with ephemeral mode.</p>
+  <pre class="line-numbers language-shell"><code>
+    [zk: 192.168.122.211(CONNECTED) 2] 
+  WATCHER::
+
+  WatchedEvent state:SyncConnected type:NodeDeleted path:/master
+   </code></pre>
 <hr>
