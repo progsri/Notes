@@ -12,15 +12,13 @@
 </p>
 <p> 
 Let's say we have 3 services. S1, S2 and S3. Each one will try to create a <code> ephermeral znode </code>. znode is simply like a linux directory that can hold data. . 
-  Ephermal indicates a temporary session, so that in case the service which create he znode dies or is having network issues, then zookeeper will detect that 
+  Ephermal indicates a temporary session, so that in case the service which creates the znode dies or is having network issues, then zookeeper will detect that 
   by sending the hearbeat to the service which if the service does not respond then zookeeper would delete the znode as it is dependent on the session which is
-  temporary, in this way other serices will be able to create znode.
+  temporary, in this way other serices will be able to create znode even when the holder of the locker is not reachable.
 </p>
 <p>
-  Create a znode is creating a <b>lock</b> and only one service which ever can create first can create the znode. 
-</p>
- <p>
-   The services that could not create the znode will create <code> watch </code> on that znode, so that 
+  Create a znode is creating a <b>lock</b> and only one service which ever can create first can create the znode. The services that could not create the 
+  znode will create <code> watch </code> on that znode, so that any changes on the znode will sent to them as notifications by the zookeeper.
  <p>
  
  <p> Imagine at this point all services are trying to create a znode ( lock ). </p>
