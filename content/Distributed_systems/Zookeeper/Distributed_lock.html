@@ -3,8 +3,26 @@
 
 <p> 
   When you have mulitple services which are trying to access a common resource, having a distributed lock will be helpful so that only the service which has
-  the lock will be able to access the resource while other services would be waiting to get hold of the lock.
+  the lock will be able to access the resource while other services would be waiting to get hold of the lock. Here I will be using Zookeeper to implement a 
+  distributed lock.
 </p>
 
-
+<p>
+  We already have a Zookeeper cluster created. Please refer.
+</p>
+<p> 
+  Let's say we have 3 services. S1, S2 and S3. Each one will try to create a <code> ephermeral znode <code>. znode is simply a zookeeper directory. 
+  Ephermal indicates a temporary session, so that in case the service which create he znode dies or is having network issues, then zookeeper will detect that 
+  by sending the hearbeat to the service which if the service does not respond then zookeeper would delete the znode as it is dependent on the session which is
+  temporary, in this way other serices will be able to create znode.
+</p>
+<p>
+  Create a znode is creating a <b>lock</b> as only the first service can create the znode. 
+</p>
+ 
+Imagine at this point all services are trying to create a znode ( lock ).
+ <pre class="line-numbers language-shell"><code>
+ 
+ </code></pre>
+  
 <hr>
