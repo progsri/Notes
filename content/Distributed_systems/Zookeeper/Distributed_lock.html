@@ -26,7 +26,7 @@ Let's say we have 3 services. S1, S2 and S3. Each one will try to create a <code
  <p> Imagine at this point all services are trying to create a znode ( lock ). </p>
   
 <h5> Service 2  creates a znode  </h5>
-<p> /master is the name of the node,  -e is for ephemeral node , ip-of-service-that-hold-the-lock(replace with real ip) is the data of the znode  </p>
+<p> /master is the name of the znode,  -e is for ephemeral znode , ip-of-service-that-hold-the-lock(replace with real ip) is the data of the znode  </p>
  <pre class="line-numbers language-shell"><code>
    ./zkCli.sh -server 192.168.122.109
    [zk: 192.168.122.109(CONNECTED) 0]  create -e /master "192.168.122.2"
