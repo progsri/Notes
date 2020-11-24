@@ -17,7 +17,7 @@ Let's say we have 3 services. S1, S2 and S3. Each one will try to create a <code
   temporary, in this way other serices will be able to create znode.
 </p>
 <p>
-  Create a znode is creating a <b>lock</b> as only the first service can create the znode. 
+  Create a znode is creating a <b>lock</b> and only one service which ever can create first can create the znode. 
 </p>
  <p>
    The services that could not create the znode will create <code> watch </code> on that znode, so that 
