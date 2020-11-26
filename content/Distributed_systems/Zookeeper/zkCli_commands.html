@@ -1,0 +1,39 @@
+<h2> <b> zkCli Commands </b> </h2>
+<hr>
+
+<h4> </b> Create a znode </b> </h4>
+<p> Creating a znode without data </p>
+<p> This is persistent znode </p>
+<pre class="line-numbers language-shell"><code>
+  [zk: 192.168.122.109(CONNECTED) 3] create /test_znode_1
+  Created /test_znode_1
+</pre></code>
+
+<p> Creating a znode with data </p>
+<p> This is persistent znode </p>
+<pre class="line-numbers language-shell"><code>
+  [zk: 192.168.122.109(CONNECTED) 4] create /test_znode_2 "data"
+  Created /test_znode_2
+</pre></code>
+
+</hr>
+<!----------------------------------------------->
+
+<h4> </b> list znodes </b> </h4>
+<p> List the znodes created </p>
+<pre class="line-numbers language-shell"><code>
+  [zk: 192.168.122.109(CONNECTED) 5] ls /
+  [test_znode_1, test_znode_2, zookeeper]
+</pre></code>
+
+</hr>
+<!----------------------------------------------->
+
+
+<h4> </b>  </b> </h4>
+
+</hr>
+<!----------------------------------------------->
+
+
+<hr>
