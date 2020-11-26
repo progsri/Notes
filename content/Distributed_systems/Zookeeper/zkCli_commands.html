@@ -41,19 +41,71 @@ make a connection to the zookeeper cluster. Session is maintained inside the zoo
 </hr>
 <!----------------------------------------------->
 
-
-<h4> </b> Ephermeral znode </b> </h4>
-<p> Ephermeral znode is a znode that is linked to the  </p>
+<h4> </b>  Set data  </b> </h4>
+<p> Setting data for a znode </p>
 <pre class="line-numbers language-shell"><code>
-  [zk: 192.168.122.109(CONNECTED) 7] delete /test_znode_1
-  [zk: 192.168.122.109(CONNECTED) 8] ls /
-  [test_znode_2, zookeeper]
+[zk: 192.168.122.109(CONNECTED) 12] set /test_znode_2 "data"
 </pre></code>
 
 </hr>
 
 </hr>
 <!----------------------------------------------->
+
+<h4> </b>  Get data  </b> </h4>
+<p>  Getting the data of znode</p>
+<pre class="line-numbers language-shell"><code>
+[zk: 192.168.122.109(CONNECTED) 13] get /test_znode_2 
+data
+</pre></code>
+
+</hr>
+
+</hr>
+<!----------------------------------------------->
+
+<h4> </b> Watch  </b> </h4>
+<p> <code> -w </code> sets the watch for <code> get </code> command. The watch will enable to get notification. </p>
+
+<p> Client 1 sets the watch </p>
+<pre class="line-numbers language-shell"><code>
+[zk: 192.168.122.157(CONNECTED) 4] get -w /test_znode_2
+data
+</pre></code>
+
+<p> Client 2 set the data for znode </p>
+<pre class="line-numbers language-shell"><code>
+set /test_znode_2 "another data"
+</pre></code>
+
+<p> Client 1 gets the notification </p>
+<pre class="line-numbers language-shell"><code>
+[zk: 192.168.122.157(CONNECTED) 5] 
+WATCHER::
+
+WatchedEvent state:SyncConnected type:NodeDataChanged path:/test_znode_2
+</pre></code>
+</hr>
+
+</hr>
+<!----------------------------------------------->
+
+<h4> </b> Ephermeral znode </b> </h4>
+<p> Ephermeral znode is a znode that is linked to the session, if a client looses the connection then zookeeper will delete the session. </p>
+
+<p> <code> -e </code> creates a ephermeral node using the <code> create </code> command </p>
+<pre class="line-numbers language-shell"><code>
+
+</pre></code>
+
+<pre class="line-numbers language-shell"><code>
+
+</pre></code>
+
+</hr>
+<!----------------------------------------------->
+
+
 
 
 <hr>
