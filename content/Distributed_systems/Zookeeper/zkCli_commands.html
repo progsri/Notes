@@ -3,6 +3,9 @@
 
 <h4> </b> Create a znode </b> </h4>
 <p> Creating a znode without data. This is persistent znode </p>
+<p> Persistent znode is a znode that is not linked to  a session. So if the session is lost the znode will not be deleted. Session is created when the client
+make a connection to the zookeeper cluster. Session is maintained inside the zookeeper. 
+</p>
 <pre class="line-numbers language-shell"><code>
   [zk: 192.168.122.109(CONNECTED) 3] create /test_znode_1
   Created /test_znode_1
@@ -39,7 +42,15 @@
 <!----------------------------------------------->
 
 
-<h4> </b>  </b> </h4>
+<h4> </b> Ephermeral znode </b> </h4>
+<p> Ephermeral znode is a znode that is linked to the  </p>
+<pre class="line-numbers language-shell"><code>
+  [zk: 192.168.122.109(CONNECTED) 7] delete /test_znode_1
+  [zk: 192.168.122.109(CONNECTED) 8] ls /
+  [test_znode_2, zookeeper]
+</pre></code>
+
+</hr>
 
 </hr>
 <!----------------------------------------------->
