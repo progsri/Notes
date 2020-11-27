@@ -65,7 +65,8 @@ data
 <!----------------------------------------------->
 
 <h4> </b> Watch  </b> </h4>
-<p> <code> -w </code> sets the watch for <code> get </code> command. The watch will enable to get notification. </p>
+<p> <code> -w </code> sets the watch for <code> get </code> command. The watch will enable to get notification when there is change on the znode the watch
+  was set. </p>
 
 <p> Client 1 sets the watch </p>
 <pre class="line-numbers language-shell"><code>
@@ -78,7 +79,7 @@ data
 set /test_znode_2 "another data"
 </pre></code>
 
-<p> Client 1 gets the notification </p>
+<p> Client 1 gets the notification, The notification also tells you the type of the notification ( it could be node deleted, data changed etc... ) </p>
 <pre class="line-numbers language-shell"><code>
 [zk: 192.168.122.157(CONNECTED) 5] 
 WATCHER::
