@@ -2,7 +2,7 @@
 <hr>
 
 <h4> </b> Create a znode </b> </h4>
-<p> Creating a znode without data. This is persistent znode </p>
+<p> -- Creating a znode without data. This is persistent znode </p>
 <p> Persistent znode is a znode that is not linked to  a session. So if the session is lost the znode will not be deleted. Session is created when the client
 make a connection to the zookeeper cluster. Session is maintained inside the zookeeper. 
 </p>
@@ -11,13 +11,13 @@ make a connection to the zookeeper cluster. Session is maintained inside the zoo
   Created /test_znode_1
 </pre></code>
 
-<p> Creating a znode with data. This is persistent znode </p>
+<p> -- Creating a znode with data. This is persistent znode </p>
 <pre class="line-numbers language-shell"><code>
   [zk: 192.168.122.109(CONNECTED) 4] create /test_znode_2 "data"
   Created /test_znode_2
 </pre></code>
 
-</hr>
+<hr>
 <!----------------------------------------------->
 
 <h4> </b> list znodes </b> </h4>
@@ -27,7 +27,7 @@ make a connection to the zookeeper cluster. Session is maintained inside the zoo
   [test_znode_1, test_znode_2, zookeeper]
 </pre></code>
 
-</hr>
+<hr>
 <!----------------------------------------------->
 
 <h4> </b> Delete znode </b> </h4>
@@ -47,9 +47,7 @@ make a connection to the zookeeper cluster. Session is maintained inside the zoo
 [zk: 192.168.122.109(CONNECTED) 12] set /test_znode_2 "data"
 </pre></code>
 
-</hr>
-
-</hr>
+<hr>
 <!----------------------------------------------->
 
 <h4> </b>  Get data  </b> </h4>
@@ -59,9 +57,7 @@ make a connection to the zookeeper cluster. Session is maintained inside the zoo
 data
 </pre></code>
 
-</hr>
-
-</hr>
+<hr>
 <!----------------------------------------------->
 
 <h4> </b> Watch  </b> </h4>
@@ -86,9 +82,8 @@ WATCHER::
 
 WatchedEvent state:SyncConnected type:NodeDataChanged path:/test_znode_2
 </pre></code>
-</hr>
+<hr>
 
-</hr>
 <!----------------------------------------------->
 
 <h4> </b> Ephermeral znode </b> </h4>
@@ -103,7 +98,7 @@ WatchedEvent state:SyncConnected type:NodeDataChanged path:/test_znode_2
 
 </pre></code>
 
-</hr>
+<hr>
 <!----------------------------------------------->
 
 
