@@ -91,11 +91,8 @@ WatchedEvent state:SyncConnected type:NodeDataChanged path:/test_znode_2
 
 <p> <code> -e </code> creates a ephermeral node using the <code> create </code> command </p>
 <pre class="line-numbers language-shell"><code>
-
-</pre></code>
-
-<pre class="line-numbers language-shell"><code>
-
+  [zk: 192.168.122.109(CONNECTED) 1] create -e  /test_znode_3
+  Created /test_znode_3
 </pre></code>
 
 <hr>
@@ -110,8 +107,6 @@ server.1=192.168.122.211:6888:7888:participant
 server.2=192.168.122.109:2888:3888:participant
 server.3=192.168.122.157:2888:3888:participant
 version=0
-<pre class="line-numbers language-shell"><code>
-
 </pre></code>
 
 <hr>
