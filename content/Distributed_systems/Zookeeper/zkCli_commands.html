@@ -101,6 +101,22 @@ WatchedEvent state:SyncConnected type:NodeDataChanged path:/test_znode_2
 <hr>
 <!----------------------------------------------->
 
+<h4> </b> config </b> </h4>
+<p> Get the config of the present zookeeper cluster. Shows the ips and ports used of the individual zookeepers </p>
+
+<pre class="line-numbers language-shell"><code>
+[zk: 192.168.122.109(CONNECTED) 5] config
+server.1=192.168.122.211:6888:7888:participant
+server.2=192.168.122.109:2888:3888:participant
+server.3=192.168.122.157:2888:3888:participant
+version=0
+<pre class="line-numbers language-shell"><code>
+
+</pre></code>
+
+<hr>
+<!----------------------------------------------->
+
 
 
 
