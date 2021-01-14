@@ -1,0 +1,91 @@
+<h2> <b> Breadth First Search </b> </h2>
+<hr>
+
+<pre class="line-numbers language-java"><code>
+package org.ninjashore.graph;
+
+import java.util.*;
+
+public class Bfs {
+
+    private static HashMap<String, Set<String>> graph = new HashMap<>();
+    private static List<String> visitedVertices = new ArrayList<>();
+    private static List<String> traversalPath = new ArrayList<>();
+    private static Queue<String> nextVerticesToProcess = new LinkedList<>();
+
+    private static void addVertix(String origin, String connection){
+
+        if(graph.containsKey(origin)){
+            graph.get(origin).add(connection);
+        }else{
+            Set<String> connections = new HashSet<>();
+            connections.add(connection);
+            graph.put(origin,connections);
+        }
+    }
+
+    private static void traversalByBfs(String vertexToStart){
+        addToTraversalPath(vertexToStart);
+        for(String SubVertex : graph.get(vertexToStart)){
+            if(!visitedVertices.contains(SubVertex)) {
+                nextVerticesToProcess.add(SubVertex);
+            }
+            addToTraversalPath(SubVertex);
+        }
+
+        if(!nextVerticesToProcess.isEmpty()) {
+          while(  nextVerticesToProcess.size()> 0 ) {
+              String vertex = nextVerticesToProcess.poll();
+              traversalByBfs(vertex);
+          }
+        }
+    }
+
+    public static void addToTraversalPath(String vertex){
+        if(!visitedVertices.contains(vertex)) {
+            traversalPath.add(vertex);
+            visitedVertices.add(vertex);
+        }
+    }
+
+    private static void getTraversalPath(){
+        System.out.println("BFS path " + traversalPath.toString());
+    }
+
+    public static void main(String args[]){
+
+        //create the graph
+        addVertix("1", "2");
+        addVertix("1", "3");
+        addVertix("1", "4");
+        addVertix("1", "10");
+        addVertix("2", "7");
+        addVertix("2", "1");
+        addVertix("3", "7");
+        addVertix("3", "1");
+        addVertix("4", "5");
+        addVertix("4", "6");
+        addVertix("4", "1");
+        addVertix("5", "4");
+        addVertix("6", "4");
+        addVertix("7", "2");
+        addVertix("7", "3");
+        addVertix("7", "8");
+        addVertix("8", "7");
+        addVertix("7", "9");
+        addVertix("9", "7");
+        addVertix("10", "1");
+
+        //Graph is created
+
+        //Start Breadth first search traversal
+        traversalByBfs("1");
+
+        getTraversalPath();
+    }
+
+}
+
+</code></pre>
+
+<hr>
