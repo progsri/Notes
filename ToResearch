@@ -30,4 +30,5 @@ what is lazy-init, init-method, destroy-method, depends-on?
 24. Explore Kea for DHCP features.
 25. Explore Ha Proxy for L4 load balancing features.
 26. Expore Nginx for web server features.
-
+27. If the transactional bean is implementing an interface, by default the proxy will be a Java Dynamic Proxy. This means that only external method calls that 
+    come in through the proxy will be intercepted. Any self-invocation calls will not start any transaction,even if the method has the @Transactional annotation.
