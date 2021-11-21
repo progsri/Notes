@@ -24,6 +24,7 @@ app.use(cookieParser());
 
 app.use("/", index);
 app.use("/resource", resource);
+app.use("/", editor);
 // app.use("/load", git);
 // app.use("/onlyindex", git);
 
