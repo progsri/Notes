@@ -9,6 +9,7 @@ router.get("/*", function (req, res, next) {
   console.log("read the contents of " + req.originalUrl)
   console.log("process.cwd() " + process.cwd());
   path = process.cwd() + req.originalUrl.replace("/" + constants.RESOURCE, "/Notes")
+  console.log('resource path :: ' + path)
   console.log('path ' + path)
   if (path.includes("/images")) {
     // fs.readFile(path, 'utf8', function (err, contents) {
