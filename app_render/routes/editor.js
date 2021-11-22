@@ -7,7 +7,7 @@ const process = require("process");
 
 router.get("/*", function (req, res, next) {
 
-  let path = "../../content/Template/editor.html"
+  let path = "/root/APPS/Notes/content/Template/editor.html"
   fs.readFile(path, 'utf8', function (err, contents) {
     console.log('editor content :: ' + contents)
     res.render("resource", {
@@ -16,7 +16,7 @@ router.get("/*", function (req, res, next) {
   });
 
   //---------
-  // console.log("read the contents of " + req.originalUrl)
+  // console.log("read the contents of " + req.originalUrl)dsh
   // console.log("process.cwd() " + process.cwd());
   // path = process.cwd() + req.originalUrl.replace("/" + constants.RESOURCE, "/Notes")
   // console.log('path ' + path)
