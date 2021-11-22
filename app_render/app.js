@@ -8,6 +8,7 @@ var bodyParser = require("body-parser");
 var index = require("./routes/index");
 var git = require("./routes/git");
 var resource = require("./routes/resource");
+var editor = require("./routes/editor");
 var app = express();
 const constants = require("./routes/constants.js");
 
