@@ -9,6 +9,7 @@ router.get("/*", function (req, res, next) {
 
   let path = "../../content/Template/editor.html"
   fs.readFile(path, 'utf8', function (err, contents) {
+    console.log('editor content :: ' + contents)
     res.render("resource", {
       content: contents
     });
